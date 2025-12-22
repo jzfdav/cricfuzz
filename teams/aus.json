@@ -1,0 +1,16 @@
+{
+  "id": "AUS", "name": "Australia", "color": "#FFD700",
+  "players": [
+    { "name": "Travis Head", "role": "Batsman", "skill": 92, "aggression": 96 },
+    { "name": "Jake Fraser-McGurk", "role": "Batsman", "skill": 84, "aggression": 98 },
+    { "name": "Mitchell Marsh", "role": "All-Rounder", "skill": 88, "aggression": 88 },
+    { "name": "Glenn Maxwell", "role": "All-Rounder", "skill": 90, "aggression": 95 },
+    { "name": "Josh Inglis", "role": "Wicketkeeper", "skill": 86, "aggression": 85 },
+    { "name": "Marcus Stoinis", "role": "All-Rounder", "skill": 87, "aggression": 85 },
+    { "name": "Tim David", "role": "Batsman", "skill": 84, "aggression": 94 },
+    { "name": "Pat Cummins", "role": "Bowler", "skill": 93, "economy": 7.2 },
+    { "name": "Mitchell Starc", "role": "Bowler", "skill": 91, "economy": 7.9 },
+    { "name": "Adam Zampa", "role": "Bowler", "skill": 90, "economy": 7.0 },
+    { "name": "Josh Hazlewood", "role": "Bowler", "skill": 91, "economy": 6.8 }
+  ]
+}

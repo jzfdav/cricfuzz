@@ -1,0 +1,16 @@
+{
+  "id": "BAN", "name": "Bangladesh", "color": "#006A4E",
+  "players": [
+    { "name": "Tanzid Hasan", "role": "Batsman", "skill": 82, "aggression": 85 },
+    { "name": "Soumya Sarkar", "role": "Batsman", "skill": 80, "aggression": 80 },
+    { "name": "Najmul Hossain Shanto", "role": "Batsman", "skill": 85, "aggression": 75 },
+    { "name": "Towhid Hridoy", "role": "Batsman", "skill": 86, "aggression": 82 },
+    { "name": "Mushfiqur Rahim", "role": "Wicketkeeper", "skill": 87, "aggression": 70 },
+    { "name": "Mahmudullah", "role": "All-Rounder", "skill": 84, "aggression": 78 },
+    { "name": "Mehidy Hasan Miraz", "role": "All-Rounder", "skill": 88, "economy": 6.9 },
+    { "name": "Rishad Hossain", "role": "Bowler", "skill": 85, "economy": 7.2 },
+    { "name": "Taskin Ahmed", "role": "Bowler", "skill": 88, "economy": 7.5 },
+    { "name": "Mustafizur Rahman", "role": "Bowler", "skill": 89, "economy": 7.1 },
+    { "name": "Tanzim Hasan Sakib", "role": "Bowler", "skill": 83, "economy": 8.1 }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "IRE", "name": "Ireland", "color": "#169B62",
+  "players": [
+    { "name": "Paul Stirling", "role": "Batsman", "skill": 86, "aggression": 90 },
+    { "name": "Andrew Balbirnie", "role": "Batsman", "skill": 85, "aggression": 72 },
+    { "name": "Lorcan Tucker", "role": "Wicketkeeper", "skill": 84, "aggression": 82 },
+    { "name": "Harry Tector", "role": "Batsman", "skill": 88, "aggression": 78 },
+    { "name": "Curtis Campher", "role": "All-Rounder", "skill": 85, "aggression": 84 },
+    { "name": "George Dockrell", "role": "All-Rounder", "skill": 83, "aggression": 80 },
+    { "name": "Gareth Delany", "role": "All-Rounder", "skill": 81, "aggression": 88 },
+    { "name": "Mark Adair", "role": "Bowler", "skill": 87, "economy": 7.8 },
+    { "name": "Josh Little", "role": "Bowler", "skill": 89, "economy": 7.4 },
+    { "name": "Barry McCarthy", "role": "Bowler", "skill": 82, "economy": 8.2 },
+    { "name": "Craig Young", "role": "Bowler", "skill": 81, "economy": 8.0 }
+  ]
+}

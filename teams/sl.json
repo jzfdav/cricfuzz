@@ -1,0 +1,16 @@
+{
+  "id": "SL", "name": "Sri Lanka", "color": "#FFBE29",
+  "players": [
+    { "name": "Pathum Nissanka", "role": "Batsman", "skill": 89, "aggression": 78 },
+    { "name": "Kusal Mendis", "role": "Wicketkeeper", "skill": 87, "aggression": 85 },
+    { "name": "Kusal Perera", "role": "Batsman", "skill": 85, "aggression": 92 },
+    { "name": "Charith Asalanka", "role": "Batsman", "skill": 88, "aggression": 82 },
+    { "name": "Kamindu Mendis", "role": "All-Rounder", "skill": 86, "aggression": 80 },
+    { "name": "Wanindu Hasaranga", "role": "All-Rounder", "skill": 92, "economy": 6.7 },
+    { "name": "Dasun Shanaka", "role": "All-Rounder", "skill": 82, "aggression": 88 },
+    { "name": "Maheesh Theekshana", "role": "Bowler", "skill": 90, "economy": 6.5 },
+    { "name": "Matheesha Pathirana", "role": "Bowler", "skill": 91, "economy": 7.8 },
+    { "name": "Dilshan Madushanka", "role": "Bowler", "skill": 87, "economy": 7.4 },
+    { "name": "Nuwan Thushara", "role": "Bowler", "skill": 86, "economy": 7.6 }
+  ]
+}

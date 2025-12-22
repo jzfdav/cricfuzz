@@ -1,0 +1,16 @@
+{
+  "id": "WI", "name": "West Indies", "color": "#7B0031",
+  "players": [
+    { "name": "Brandon King", "role": "Batsman", "skill": 85, "aggression": 82 },
+    { "name": "Evin Lewis", "role": "Batsman", "skill": 84, "aggression": 94 },
+    { "name": "Nicholas Pooran", "role": "Wicketkeeper", "skill": 91, "aggression": 95 },
+    { "name": "Shai Hope", "role": "Batsman", "skill": 87, "aggression": 70 },
+    { "name": "Rovman Powell", "role": "All-Rounder", "skill": 85, "aggression": 92 },
+    { "name": "Andre Russell", "role": "All-Rounder", "skill": 89, "aggression": 98 },
+    { "name": "Sherfane Rutherford", "role": "Batsman", "skill": 83, "aggression": 88 },
+    { "name": "Romario Shepherd", "role": "All-Rounder", "skill": 84, "economy": 8.5 },
+    { "name": "Akeal Hosein", "role": "Bowler", "skill": 89, "economy": 6.5 },
+    { "name": "Alzarri Joseph", "role": "Bowler", "skill": 88, "economy": 7.9 },
+    { "name": "Gudakesh Motie", "role": "Bowler", "skill": 87, "economy": 6.9 }
+  ]
+}
