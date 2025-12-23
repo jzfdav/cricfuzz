@@ -350,8 +350,8 @@ export class GameEngine {
             striker.batStats.runs += res;
             const newRuns = striker.batStats.runs;
 
-            if (oldRuns < 50 && newRuns >= 50) this.addCommentary(this.commentary.getMilestoneCommentary('fifty'), 'milestone');
-            if (oldRuns < 100 && newRuns >= 100) this.addCommentary(this.commentary.getMilestoneCommentary('century'), 'milestone');
+            if (oldRuns < 50 && newRuns >= 50) this.addCommentary(this.commentary.getMilestoneCommentary('fifty', striker.name), 'milestone');
+            if (oldRuns < 100 && newRuns >= 100) this.addCommentary(this.commentary.getMilestoneCommentary('century', striker.name), 'milestone');
 
             if (res === 4) {
                 if (typeof window !== 'undefined') window.navigator.vibrate?.([40]);

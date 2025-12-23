@@ -2,61 +2,60 @@ export class CommentaryEngine {
     constructor() {
         this.templates = {
             wicket: [
-                "In the air... and TAKEN! A massive blow!",
-                "Bowled him! The timber is disturbed! Absolute cracker of a delivery.",
-                "Edged and gone! The finger goes up! The bowling captain is ecstatic.",
-                "That is a huge wicket in the context of this game!",
-                "Silence in the ground. The big man has to go.",
-                "Caught! A simple catch in the end, but the pressure forced the error.",
-                "Cleaned him up! You miss, I hit!",
-                "LBW! That looked plumb in front.",
-                "Run out! A tragedy of errors in the middle!"
+                "In the air... and TAKEN! {batter} hits it straight to the fielder!",
+                "Bowled him! The timber is disturbed! {bowler} breaks through!",
+                "Edged and gone! {bowler} gets the wicket of {batter}.",
+                "{batter} walks back to the pavilion. Massive blow!",
+                "Caught! Simple catch in the end. {batter} departs.",
+                "Cleaned him up! {bowler} is on fire! You miss, I hit!",
+                "LBW! {batter} is trapped in front!",
+                "Run out! {batter} is short of the crease. Tragedy!"
             ],
             four: [
-                "Four runs! That raced away to the fence like a rocket.",
-                "Beautifully driven! That's pure class.",
+                "Four runs! {batter} times that to perfection.",
+                "Beautifully driven by {batter}! That's pure class.",
                 "Cracked through the covers! No one moved.",
-                "Short and punished! That's a boundary any day of the week.",
-                "Tickled fine for four. Smart batting.",
-                "Power and placement! One bounce and over the ropes for four."
+                "Short and punished by {batter}! Raced to the fence.",
+                "Tickled fine for four. Smart batting from {batter}.",
+                "Power and placement! {batter} finds the gap."
             ],
             six: [
-                "SIX! That's gone like a tracer bullet into the stands!",
-                "Maximum! He picked the length early and dispatched it.",
-                "That's huge! It's out of the stadium!",
-                "High and handsome! Six runs.",
-                "Muscle! Sheer muscle! Clears the long-on boundary with ease.",
-                "Downtown! That is a monster hit!"
+                "SIX! {batter} launches that into orbit!",
+                "Maximum! {batter} picked the length early and dispatched it.",
+                "That's huge! {bowler} watches it sail over his head!",
+                "High and handsome! Six runs for {batter}.",
+                "Muscle! Sheer muscle from {batter}! Clears the boundary ease.",
+                "Downtown! {batter} hits a monster!"
             ],
             dot: [
-                "No run. Good solid defense.",
-                "Straight to the fielder.",
-                "Beaten! Lovely bowling.",
-                "Play and a miss. The bowler is asking questions here.",
-                "Dot ball. Pressure building.",
+                "No run. Good solid defense from {batter}.",
+                "Straight to the fielder. {batter} can't pierce the gap.",
+                "Beaten! Lovely bowling from {bowler}.",
+                "Play and a miss. {bowler} asking questions.",
+                "Dot ball. Pressure building on {batter}.",
                 "Fielded well at point. No run."
             ],
             single: [
-                "Just a single. Rotating the strike.",
+                "Just a single. {batter} rotates the strike.",
                 "Pushed to long-on for one.",
-                "Quick single! Good running between the wickets.",
+                "Quick single! Good running.",
                 "Dropped into the gap and they scamper through.",
-                "Direct hit would have been interesting! Safe in the end."
+                "Worked away for a single."
             ],
             maiden: [
-                "MAIDEN OVER! Brilliant stuff. The batter had no answers.",
-                "Six dots in a row! That is gold dust in this format.",
+                "MAIDEN OVER! Brilliant stuff from {bowler}.",
+                "Six dots in a row! {bowler} is tightening the screws.",
                 "A maiden! Supreme control from the bowler."
             ],
             fifty: [
-                "Fifty for the batter! A fine innings, well constructed.",
-                "Half-century! Raises the bat to the applause of the crowd.",
+                "Fifty for {batter}! A fine innings, well constructed.",
+                "Half-century! {batter} raises the bat to the applause.",
                 "That's 50! A crucial knock for the team."
             ],
             century: [
-                "HUNDRED! What a magnificent innings! Take a bow!",
-                "Century! A masterclass in batting today.",
-                "100 runs! A special performance on the big stage."
+                "HUNDRED! What a magnificent innings by {batter}! Take a bow!",
+                "Century! {batter} is playing a masterclass today.",
+                "100 runs! A special performance from {batter} on the big stage."
             ],
             closeGame: [
                 "Heart rates are peaking! We are heading for a grandstand finish.",
@@ -72,15 +71,19 @@ export class CommentaryEngine {
         };
     }
 
+    getSurname(fullName) {
+        if (!fullName) return "The batter";
+        const parts = fullName.trim().split(' ');
+        return parts.length > 1 ? parts[parts.length - 1] : fullName;
+    }
+
     getCommentary(result, state, bowlerName, batterName) {
         const { score, wickets, balls, target, format } = state;
         const over = Math.floor(balls / 6);
         const ballInOver = balls % 6;
-        const config = format === 'T20' ? { balls: 120 } : format === 'ODI' ? { balls: 300 } : { balls: 2400 }; // Simplified access
+        const config = format === 'T20' ? { balls: 120 } : format === 'ODI' ? { balls: 300 } : { balls: 2400 };
 
         let lines = [];
-
-        // Special Events
         if (result === 'W') lines = this.templates.wicket;
         else if (result === 6) lines = this.templates.six;
         else if (result === 4) lines = this.templates.four;
@@ -88,34 +91,27 @@ export class CommentaryEngine {
         else lines = this.templates.single;
 
         // Contextual Overrides
-        // High Pressure Chase
         if (target && (target - score) < 20 && (config.balls - balls) < 18) {
             if (Math.random() > 0.6) return this.getRandom(this.templates.closeGame);
         }
-
-        // Death Overs (T20 specific for now)
         if (format === 'T20' && over >= 16 && wickets < 8 && ballInOver === 1) {
             if (Math.random() > 0.7) return this.getRandom(this.templates.deathOvers);
         }
 
-        // Maidens are handled by the consumer usually, but we have lines for it
+        const rawLine = this.getRandom(lines);
+        const bName = this.getSurname(batterName);
+        const boName = this.getSurname(bowlerName);
 
-        // Default Event Commentary
-        const baseLine = this.getRandom(lines);
-
-        // Add flavor strictly for output construction if needed, 
-        // but for now, we return the base line as the "Vibey" part.
-        // The calling code constructs the "Bowler to Batter" part.
-
-        return baseLine;
+        return rawLine.replace(/{batter}/g, bName).replace(/{bowler}/g, boName);
     }
 
     getRandom(arr) {
         return arr[Math.floor(Math.random() * arr.length)];
     }
 
-    getMaidenCommentary() {
-        return this.getRandom(this.templates.maiden);
+    getMaidenCommentary(bowlerName) {
+        const line = this.getRandom(this.templates.maiden);
+        return line.replace(/{bowler}/g, this.getSurname(bowlerName) || "the bowler");
     }
 
     getIntroCommentary(winner, decision, pitch) {
@@ -127,9 +123,13 @@ export class CommentaryEngine {
         return this.getRandom(templates);
     }
 
-    getMilestoneCommentary(milestone) {
-        if (milestone === 'fifty') return this.getRandom(this.templates.fifty);
-        if (milestone === 'century') return this.getRandom(this.templates.century);
-        return null;
+    getMilestoneCommentary(milestone, batterName) { // Added batterName
+        const bName = this.getSurname(batterName);
+        let lines = [];
+        if (milestone === 'fifty') lines = this.templates.fifty;
+        if (milestone === 'century') lines = this.templates.century;
+        if (!lines.length) return null;
+
+        return this.getRandom(lines).replace(/{batter}/g, bName);
     }
 }
