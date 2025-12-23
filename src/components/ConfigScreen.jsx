@@ -70,6 +70,7 @@ export function ConfigScreen({ engine }) {
                         >
                             <option value="T20">T20</option>
                             <option value="ODI">ODI</option>
+                            <option value="TEST">Test Match</option>
                         </select>
                     </div>
                     <div className="p-4 bg-[#161B22] rounded-2xl border border-gray-800">
