@@ -65,3 +65,8 @@ This document records functionality regressions and issues identified during the
 - **Issue**: ODI matches were consistently producing unrealistic totals (390+), indicating an imbalance in the simulation engine for 50-over formats.
 - **Reason**: The base engine values were too aggressive for the longer format.
 - **Status**: ✅ Fixed (Aggressively tuned ODI modifiers: Dot Balls +50%, Boundaries -30%).
+
+## 14. Persistent Target (New Match)
+- **Issue**: The target from the previous game was visible in the 1st innings of the next game.
+- **Reason**: `GameState.target` was not being reset to `null` in the `resetToConfig` method.
+- **Status**: ✅ Fixed (Added explicit reset for `target`).

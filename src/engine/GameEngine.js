@@ -131,6 +131,7 @@ export class GameEngine {
         GameState.history.value = [];
         GameState.totalTeam1Score.value = 0;
         GameState.totalTeam2Score.value = 0;
+        GameState.target.value = null;
         // Missing Resets
         GameState.allOut.value = false;
         GameState.overRuns.value = 0;
