@@ -29,9 +29,7 @@ This document outlines planned and in-progress features for the CricFuzz simulat
 - **Features**: "Top Performer" Logic, Dynamic Description.
 
 
-
-
-## 4. Phased Gameplay (Powerplays)
+## 3. Phased Gameplay (Powerplays)
 - **Status**: ✅ COMPLETED
 - **Features**: 
     - **T20**: Powerplay (0-5), Middle (6-15), Death (16-20).
@@ -50,8 +48,7 @@ This document outlines planned and in-progress features for the CricFuzz simulat
 
 ### Recommended Order
 1. **Maiden Overs** - Most valuable feature, adds statistical completeness
-2. **Ball Pill Refactor** - Quick win, improves code maintainability
-3. **Enhanced Messages** - Nice polish, can be done later
+2. **Enhanced Messages** - Nice polish, can be done later
 
 ---
 
