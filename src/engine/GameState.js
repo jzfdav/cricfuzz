@@ -23,6 +23,9 @@ export const GameState = {
     isRunning: signal(false),
     speed: signal(50), // 1-100 scale (UX Fix: 100=Fast, 1=Slow)
 
+    totalTeam1Score: signal(0),
+    totalTeam2Score: signal(0),
+
     innings: signal(1),
     score: signal(0),
     wickets: signal(0),
