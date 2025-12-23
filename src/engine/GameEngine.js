@@ -129,6 +129,7 @@ export class GameEngine {
         GameState.commentary.value = [];
         GameState.matchResult.value = null;
         GameState.history.value = [];
+        GameState.inningsTimeline.value = [];
         GameState.totalTeam1Score.value = 0;
         GameState.totalTeam2Score.value = 0;
         GameState.target.value = null;
@@ -158,7 +159,8 @@ export class GameEngine {
             wickets: GameState.wickets.value,
             overs: GameState.balls.value,
             batting: JSON.parse(JSON.stringify(GameState.battingSquad.value)),
-            bowling: JSON.parse(JSON.stringify(GameState.bowlingSquad.value))
+            bowling: JSON.parse(JSON.stringify(GameState.bowlingSquad.value)),
+            timeline: JSON.parse(JSON.stringify(GameState.inningsTimeline.value))
         };
         GameState.history.value = [...GameState.history.value, entry];
 
@@ -198,7 +200,10 @@ export class GameEngine {
         GameState.allOut.value = false;
         GameState.overRuns.value = 0;
         GameState.lastOverWasMaiden.value = false;
+        GameState.overRuns.value = 0;
+        GameState.lastOverWasMaiden.value = false;
         GameState.nextBatterIndex.value = 2;
+        GameState.inningsTimeline.value = [];
 
         // Swap Teams
         const oldBat = GameState.battingSquad.value;
@@ -238,7 +243,8 @@ export class GameEngine {
             wickets: GameState.wickets.value,
             overs: GameState.balls.value,
             batting: JSON.parse(JSON.stringify(GameState.battingSquad.value)),
-            bowling: JSON.parse(JSON.stringify(GameState.bowlingSquad.value))
+            bowling: JSON.parse(JSON.stringify(GameState.bowlingSquad.value)),
+            timeline: JSON.parse(JSON.stringify(GameState.inningsTimeline.value))
         }];
         setTimeout(() => {
             GameState.view.value = "result";
@@ -432,6 +438,17 @@ export class GameEngine {
         GameState.timeline.value = [res, ...GameState.timeline.value].slice(0, 12);
 
         if (GameState.balls.value % 6 === 0) {
+
+            // Record Graph Data
+            GameState.inningsTimeline.value = [
+                ...GameState.inningsTimeline.value,
+                {
+                    over: GameState.balls.value / 6,
+                    score: GameState.score.value,
+                    wickets: GameState.wickets.value
+                }
+            ];
+
             if (GameState.overRuns.value === 0 && !GameState.allOut.value) {
                 if (bowlerObj) bowlerObj.bowlStats.maidens++;
                 this.addCommentary(this.commentary.getMaidenCommentary(), 'maiden');

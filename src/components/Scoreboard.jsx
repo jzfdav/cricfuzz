@@ -1,4 +1,5 @@
 import { GameState, currentOver, runRate, currentPhase } from "../engine/GameState";
+import { WormGraph } from "./WormGraph";
 
 export function Scoreboard() {
     return (
@@ -65,6 +66,12 @@ export function Scoreboard() {
                     </div>
                 ))}
             </div>
+
+            <WormGraph
+                data={[{ over: 0, score: 0, wickets: 0 }, ...GameState.inningsTimeline.value]}
+                totalOvers={GameState.formatConfigs[GameState.format.value].balls / 6}
+                color={GameState.innings.value === 2 ? "#ecc94b" : "#60a5fa"}
+            />
         </header>
     );
 }

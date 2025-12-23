@@ -1,5 +1,6 @@
 import { useState } from 'preact/hooks';
 import { GameState } from "../engine/GameState";
+import { WormGraph } from "./WormGraph";
 
 export function ResultScreen({ engine }) {
     const result = GameState.matchResult.value || "Match Ended";
@@ -18,6 +19,18 @@ export function ResultScreen({ engine }) {
                     </p>
                 </div>
             </div>
+
+            {/* Match Analysis Graph */}
+            {(history.length >= 1) && (
+                <div className="w-full max-w-2xl mb-6">
+                    <WormGraph
+                        data={[{ over: 0, score: 0, wickets: 0 }, ...(history[0]?.timeline || [])]}
+                        targetData={history[1] ? [{ over: 0, score: 0, wickets: 0 }, ...(history[1]?.timeline || [])] : null}
+                        totalOvers={GameState.formatConfigs[GameState.format.value].balls / 6}
+                        color="#60a5fa"
+                    />
+                </div>
+            )}
 
             <div className="w-full max-w-2xl space-y-6 flex-grow overflow-y-auto pb-10">
                 {history.map((inn, i) => {

@@ -60,6 +60,7 @@ export const GameState = {
     timeline: signal([]), // Array of recent ball results
     commentary: signal([]), // Array of { text, style } objects
     history: signal([]), // Past innings data
+    inningsTimeline: signal([]), // [{ over, score, wickets }] for graph
 
     // Status Flags
     lastOverWasMaiden: signal(false),
