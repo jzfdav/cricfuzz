@@ -364,8 +364,8 @@ export class MatchController {
 
             if (GameState.nextBatterIndex.value < GameState.battingSquad.value.length) {
                 // Pause for dramatic effect
-                GameState.speed.value = 1; // You might want a better way to pause/slow down
-                // Actually, GameEngine handles pauseMultiplier. MatchController can't easily control GameEngine's timer directly unless we expose it.
+                // Pause for dramatic effect dealt with in GameEngine
+                // GameState.speed.value = 1; // REMOVED: Causing persistent slow down
                 // For now, let's just do the commentary logic.
 
                 const nextBatter = GameState.battingSquad.value[GameState.nextBatterIndex.value];
