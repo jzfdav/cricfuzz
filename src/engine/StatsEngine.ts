@@ -114,6 +114,18 @@ export class StatsEngine {
         // Timeline Update
         GameState.timeline.value = [result, ...GameState.timeline.value].slice(0, 12);
 
-        // This method encapsulates all "Math" regarding stats
+        // Innings Timeline (Graph Data) - End of Over
+        if (GameState.balls.value % 6 === 0) {
+            GameState.inningsTimeline.value = [
+                ...GameState.inningsTimeline.value,
+                {
+                    over: GameState.balls.value / 6,
+                    score: GameState.score.value,
+                    wickets: GameState.wickets.value
+                }
+            ];
+        }
+
+        this.calculateWinProbability();
     }
 }

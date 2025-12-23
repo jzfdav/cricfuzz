@@ -387,18 +387,7 @@ export class MatchController {
         }
 
         // Timeline checks & Over Management
-        if (GameState.balls.value % 6 === 0) {
-            GameState.inningsTimeline.value = [
-                ...GameState.inningsTimeline.value,
-                {
-                    over: GameState.balls.value / 6,
-                    score: GameState.score.value,
-                    wickets: GameState.wickets.value
-                }
-            ];
-        }
 
-        this.stats.calculateWinProbability();
 
         // Maiden Check
         if (GameState.overRuns.value === 0 && !GameState.allOut.value && GameState.balls.value > 0 && GameState.balls.value % 6 === 0) {
