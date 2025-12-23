@@ -20,8 +20,8 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
 
     // Config - Compact Defaults
     const width = expanded ? 700 : 300;
-    const height = expanded ? 350 : 100; // Reduced from 150 to 100
-    const padding = expanded ? 40 : 15;  // Reduced from 30 to 15
+    const height = expanded ? 350 : 120; // Increased height slightly to accommodate padding
+    const padding = expanded ? 40 : 25;  // Increased padding to clear title overlap
     const graphWidth = width - padding * 2;
     const graphHeight = height - padding * 2;
 
@@ -79,7 +79,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
 
                 {expanded && <h3 className="font-black uppercase tracking-[0.2em] text-amber-500 text-sm mb-4 text-center">Match Analysis</h3>}
 
-                <svg width="100%" height={expanded ? 400 : 100} viewBox={`0 0 ${width} ${height}`} className="overflow-visible">
+                <svg width="100%" height={expanded ? 400 : 120} viewBox={`0 0 ${width} ${height}`} className="overflow-visible">
                     {/* Axes & Grid */}
                     <>
                         {/* Grid & Ticks */}
@@ -90,7 +90,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
                             return (
                                 <g key={`x-${tick}`}>
                                     <line x1={x} y1={padding} x2={x} y2={height - padding} stroke="#333" strokeWidth="0.5" strokeDasharray="2" />
-                                    <text x={x} y={height - padding + (expanded ? 15 : 8)} fill="#666" fontSize={expanded ? "10" : "6"} textAnchor="middle" fontWeight="bold">{tick}</text>
+                                    <text x={x} y={height - padding + (expanded ? 15 : 10)} fill="#666" fontSize={expanded ? "10" : "4.5"} textAnchor="middle" fontWeight="bold">{tick}</text>
                                 </g>
                             );
                         })}
@@ -103,7 +103,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
                             return (
                                 <g key={`y-${tick}`}>
                                     <line x1={padding} y1={y} x2={width - padding} y2={y} stroke="#333" strokeWidth="0.5" strokeDasharray="2" />
-                                    <text x={padding - (expanded ? 5 : 2)} y={y + 3} fill="#666" fontSize={expanded ? "10" : "6"} textAnchor="end" fontWeight="bold">{tick}</text>
+                                    <text x={padding - (expanded ? 5 : 2)} y={y + (expanded ? 3 : 1.5)} fill="#666" fontSize={expanded ? "10" : "4.5"} textAnchor="end" fontWeight="bold">{tick}</text>
                                 </g>
                             );
                         })}
