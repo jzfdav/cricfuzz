@@ -22,101 +22,12 @@ This document outlines planned and in-progress features for the CricFuzz simulat
 - **Status**: ✅ COMPLETED
 - **Features**: 6-ball dot over detection, highlight in scorecard, unique commentary.
 
-### What is a Maiden Over?
-A maiden over is an over (6 balls) in which no runs are scored off the bat (extras like wides/no-balls don't count against it).
-
-### Implementation Plan
-
-#### Phase 1: Tracking Logic
-1. **Add maiden detection in `updateState()`**:
-   - Track runs conceded per over for each bowler
-   - When an over completes (6 balls), check if runs = 0
-   - Increment `bowlStats.maidens` if condition met
-   - Reset per-over counter for next over
-
-2. **Handle edge cases**:
-   - Wickets don't reset maiden tracking (only runs do)
-   - Extras (wides, no-balls) should be tracked separately
-   - Maiden is only valid if bowler completes the full over
-
-#### Phase 2: Display
-1. **Update scorecard** (`renderScorecard()`):
-   - Add "M" column to bowler statistics table
-   - Display `bowlStats.maidens` value
-   - Highlight maiden overs (e.g., green text for 2+ maidens)
-
-2. **Live commentary**:
-   - Add commentary message when a maiden over is bowled
-   - Example: "Maiden over! Excellent bowling from [Bowler Name]"
-
-#### Phase 3: Statistics
-1. **Match summary**:
-   - Include total maiden overs in match description
-   - Highlight bowlers with most maidens
-
-### Estimated Effort
-- **Phase 1**: 2-3 hours (tracking logic + edge cases)
-- **Phase 2**: 1-2 hours (UI updates)
-- **Phase 3**: 1 hour (summary integration)
-- **Total**: 4-6 hours
-
-### Priority
-**Medium** - Nice-to-have feature that adds realism but not critical for core functionality.
-
 ---
 
 ## 2. Enhanced Result Messages
+- **Status**: ✅ COMPLETED (ResultScreen Update)
+- **Features**: "Top Performer" Logic, Dynamic Description.
 
-### Current State
-- **Status**: Basic implementation, enhancement prepared but not used
-- **Location**: `src/main.js` line 308 (unused `loser` variable)
-- **What exists**: Winner and margin are displayed, but loser name is prepared but unused
-
-### Current Implementation
-```javascript
-const winner = this.teams.team2Name;
-this.endMatch(`${winner} WINS by an innings and ${margin} runs!`);
-```
-
-### Enhancement Plan
-
-#### Phase 1: Detailed Messages
-1. **Include loser in all result messages**:
-   - "Team X WINS by an innings and Y runs against Team Z"
-   - "Team X WINS by Z wickets against Team Y"
-   - "Team X WINS by Y runs against Team Z"
-
-2. **Format variations**:
-   - Short format: "IND wins by 5 wickets"
-   - Long format: "India wins by 5 wickets against Australia"
-   - Configurable via user preference (future)
-
-#### Phase 2: Contextual Messages
-1. **Add match context**:
-   - Include match format in message
-   - Add venue/date if tracking added later
-   - Highlight close finishes ("thrilling finish", "nail-biter")
-
-2. **Special achievements**:
-   - "Record-breaking performance"
-   - "Dominant victory"
-   - "Comeback win"
-
-### Implementation Steps
-1. Update `endMatch()` to accept both winner and loser
-2. Modify all `endMatch()` call sites to pass both teams
-3. Create message formatting function
-4. Update UI to display enhanced messages
-
-### Estimated Effort
-- **Phase 1**: 1-2 hours (message updates)
-- **Phase 2**: 2-3 hours (contextual enhancements)
-- **Total**: 3-5 hours
-
-### Priority
-**Low** - Cosmetic improvement, current messages are functional.
-
----
 
 ## 3. Ball Pill Styling Refactor
 
@@ -162,6 +73,15 @@ pill.className = `px-3 py-1 rounded mono text-xs animate-ball ${res === 'W' ? 'b
 
 ### Priority
 **Low** - Code works fine as-is, refactor is optional.
+
+---
+
+## 4. Phased Gameplay (Powerplays)
+- **Status**: ✅ COMPLETED
+- **Features**: 
+    - **T20**: Powerplay (0-5), Middle (6-15), Death (16-20).
+    - **ODI**: P1 (0-9), P2 (10-39), P3 (40-49).
+    - **Dynamic Modifiers**: Aggression, Boundary, and Wicket probabilities shift per phase.
 
 ---
 

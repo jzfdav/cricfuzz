@@ -73,6 +73,8 @@ cricfuzz/
 - **Randomize Teams**: One-click instant matchup generation.
 - **Test Match Support**: Full 4-innings simulation support.
 - **Detailed Scorecards**: Expanded views for all players.
+- **Phased Gameplay**: Realistic Powerplay, Middle, and Death over phases for T20 and ODI.
+- **Match Summary**: Dynamic "Man of the Match" announcer and impact summary.
 
 ## License
 
