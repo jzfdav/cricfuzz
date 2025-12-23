@@ -123,6 +123,11 @@ export class MatchController {
         loopCallback();
     }
 
+    resumeMatch(loopCallback: () => void) {
+        GameState.isRunning.value = true;
+        loopCallback();
+    }
+
     resetToConfig() {
         this.stopMatch();
         GameState.view.value = "config";

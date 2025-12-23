@@ -3,7 +3,6 @@ import { GameState } from './engine/GameState';
 import { Scoreboard } from './components/Scoreboard';
 // @ts-ignore - Allowing JS import for now
 import { CommentaryFeed } from './components/CommentaryFeed';
-// @ts-ignore - Allowing JS import for now
 import { Controls } from './components/Controls';
 // @ts-ignore - Allowing JS import for now
 import { ConfigScreen } from './components/ConfigScreen';

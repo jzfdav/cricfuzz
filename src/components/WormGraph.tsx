@@ -18,10 +18,10 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
 
     const [expanded, setExpanded] = useState(false);
 
-    // Config
-    const width = expanded ? 600 : 300;
-    const height = expanded ? 300 : 150;
-    const padding = expanded ? 40 : 30;
+    // Config - Compact Defaults
+    const width = expanded ? 700 : 300;
+    const height = expanded ? 350 : 100; // Reduced from 150 to 100
+    const padding = expanded ? 40 : 15;  // Reduced from 30 to 15
     const graphWidth = width - padding * 2;
     const graphHeight = height - padding * 2;
 
@@ -51,11 +51,11 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
 
     return (
         <div
-            className={`transition-all duration-300 ${expanded ? 'fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm' : 'relative'}`}
+            className={`transition-all duration-300 ${expanded ? 'fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm' : 'relative mt-2'}`}
             onClick={() => setExpanded(!expanded)}
         >
             <div
-                className={`bg-[#161B22] border border-gray-700 rounded-xl overflow-hidden transition-all duration-300 relative ${expanded ? 'w-[700px] p-8' : 'w-full hover:border-amber-500/50 cursor-pointer'}`}
+                className={`bg-[#161B22] border border-gray-700 rounded-xl overflow-hidden transition-all duration-300 relative ${expanded ? 'w-[750px] p-6 shadow-2xl' : 'w-full hover:border-amber-500/50 cursor-pointer shadow-sm'}`}
                 onClick={(e) => {
                     if (expanded) e.stopPropagation();
                 }}
@@ -72,12 +72,14 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
                     </button>
                 )}
 
-                <div className="flex justify-between items-center mb-2 px-2 pt-2">
-                    <h3 className={`font-bold uppercase tracking-widest text-gray-400 ${expanded ? 'text-lg' : 'text-[10px]'}`}>Worm Graph</h3>
-                    {!expanded && <span className="text-[10px] text-amber-500">Click to Expand</span>}
+                <div className="flex justify-between items-center px-4 pt-2 absolute w-full top-0 left-0">
+                    {!expanded && <h3 className="font-bold uppercase tracking-widest text-gray-500 text-[9px]">Worm Graph</h3>}
+                    {!expanded && <span className="text-[9px] text-amber-500 opacity-60">Click to Expand</span>}
                 </div>
 
-                <svg width="100%" height={expanded ? 400 : 180} viewBox={`0 0 ${width} ${height}`} className="overflow-visible">
+                {expanded && <h3 className="font-black uppercase tracking-[0.2em] text-amber-500 text-sm mb-4 text-center">Match Analysis</h3>}
+
+                <svg width="100%" height={expanded ? 400 : 100} viewBox={`0 0 ${width} ${height}`} className="overflow-visible">
                     {/* Axes & Grid */}
                     <>
                         {/* Grid & Ticks */}
@@ -87,8 +89,8 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
                             const x = getX(tick);
                             return (
                                 <g key={`x-${tick}`}>
-                                    <line x1={x} y1={padding} x2={x} y2={height - padding} stroke="#333" strokeWidth="1" strokeDasharray="2" />
-                                    <text x={x} y={height - padding + 15} fill="#666" fontSize="8" textAnchor="middle">{tick}</text>
+                                    <line x1={x} y1={padding} x2={x} y2={height - padding} stroke="#333" strokeWidth="0.5" strokeDasharray="2" />
+                                    <text x={x} y={height - padding + (expanded ? 15 : 8)} fill="#666" fontSize={expanded ? "10" : "6"} textAnchor="middle" fontWeight="bold">{tick}</text>
                                 </g>
                             );
                         })}
@@ -97,25 +99,26 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
                             const tick = i * 50;
                             if (tick > maxScore) return null;
                             const y = getY(tick);
+                            if (tick === 0) return null; // Skip 0
                             return (
                                 <g key={`y-${tick}`}>
-                                    <line x1={padding} y1={y} x2={width - padding} y2={y} stroke="#333" strokeWidth="1" strokeDasharray="2" />
-                                    <text x={padding - 5} y={y + 3} fill="#666" fontSize="8" textAnchor="end">{tick}</text>
+                                    <line x1={padding} y1={y} x2={width - padding} y2={y} stroke="#333" strokeWidth="0.5" strokeDasharray="2" />
+                                    <text x={padding - (expanded ? 5 : 2)} y={y + 3} fill="#666" fontSize={expanded ? "10" : "6"} textAnchor="end" fontWeight="bold">{tick}</text>
                                 </g>
                             );
                         })}
 
-                        <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding} stroke="#555" strokeWidth="2" />
-                        <line x1={padding} y1={padding} x2={padding} y2={height - padding} stroke="#555" strokeWidth="2" />
+                        <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding} stroke="#555" strokeWidth="1" />
+                        <line x1={padding} y1={padding} x2={padding} y2={height - padding} stroke="#555" strokeWidth="1" />
                     </>
 
                     {/* Target Line (if 2nd innings) */}
                     {targetLine && (
-                        <path d={targetLine} fill="none" stroke="#555" strokeWidth="2" strokeDasharray="4" />
+                        <path d={targetLine} fill="none" stroke="#555" strokeWidth="1.5" strokeDasharray="3" />
                     )}
 
                     {/* Main Line */}
-                    <path d={mainLine} fill="none" stroke={color} strokeWidth={expanded ? 3 : 2} />
+                    <path d={mainLine} fill="none" stroke={color} strokeWidth={expanded ? 2.5 : 1.5} />
 
                     {/* Wickets */}
                     {data.filter(p => p.wickets > (data[data.indexOf(p) - 1]?.wickets || 0)).map((p, i) => (
@@ -123,7 +126,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
                             key={i}
                             cx={getX(p.over)}
                             cy={getY(p.score)}
-                            r={expanded ? 4 : 2}
+                            r={expanded ? 3 : 1.5}
                             fill="#ef4444"
                             stroke="#161B22"
                             strokeWidth="1"

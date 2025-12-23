@@ -45,6 +45,14 @@ export class GameEngine {
         this.match.resetToConfig();
     }
 
+    stopMatch() {
+        this.match.stopMatch();
+    }
+
+    resumeMatch() {
+        this.match.resumeMatch(() => this.loop());
+    }
+
     setSpeed(val: number) {
         GameState.speed.value = val;
     }
