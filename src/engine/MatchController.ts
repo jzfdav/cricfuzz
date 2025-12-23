@@ -35,7 +35,7 @@ export class MatchController {
 
     performToss() {
         // Random Pitch
-        const pitches = ["Flat", "Green", "Dusty", "Balanced"] as const;
+        const pitches = ["Flat", "Green", "Dusty", "Balanced", "Dry"] as const;
         const p = pitches[Math.floor(Math.random() * pitches.length)];
         GameState.pitch.value = p;
 

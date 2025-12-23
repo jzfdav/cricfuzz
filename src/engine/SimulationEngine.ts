@@ -1,5 +1,6 @@
 import { GameState } from "./GameState";
 import { Player } from "../types";
+import { clamp } from "../utils";
 
 export class SimulationEngine {
 
@@ -22,7 +23,6 @@ export class SimulationEngine {
         else if (pitch === "Green") { batterSkill *= 0.95; bowlerSkill *= 1.15; }
         else if (pitch === "Dusty") { batterSkill *= 0.9; bowlerSkill *= 1.1; }
 
-        const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
         let aggFactor = clamp((batterAggression / 90) * config.aggMod, 0.5, 1.8);
         const skillFactor = clamp(batterSkill / 90, 0.6, 1.4);
         const bowlSkillFactor = clamp(bowlerSkill / 90, 0.6, 1.4);

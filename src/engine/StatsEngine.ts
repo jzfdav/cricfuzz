@@ -1,5 +1,6 @@
 import { GameState } from "./GameState";
 import { Player } from "../types";
+import { clamp } from "../utils";
 
 export class StatsEngine {
 
@@ -41,7 +42,7 @@ export class StatsEngine {
 
         const resourceFactor = Math.pow(wicketsInHand / 10, 1.2);
         const crr = ballsThrown > 0 ? (current / (ballsThrown / 6)) : 0;
-        const momentum = rrr > 0 ? Math.max(0.8, Math.min(1.2, crr / rrr)) : 1;
+        const momentum = rrr > 0 ? clamp(crr / rrr, 0.8, 1.2) : 1;
 
         let finalProb = baseProb * resourceFactor * momentum;
 
