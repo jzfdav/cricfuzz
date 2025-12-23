@@ -61,7 +61,7 @@ export function ResultScreen({ engine }: ResultScreenProps) {
                             <div className="grid grid-cols-2 gap-4 p-4 text-xs text-gray-400">
                                 <div>
                                     <p className="mb-2 font-bold uppercase text-[10px] text-amber-500/80">Batting</p>
-                                    {(isExpanded ? inn.batting : inn.batting.sort((a, b) => b.batStats.runs - a.batStats.runs).slice(0, 3)).map(p => (
+                                    {(isExpanded ? inn.batting : [...inn.batting].sort((a, b) => b.batStats.runs - a.batStats.runs).slice(0, 3)).map(p => (
                                         <div key={p.name} className={`flex justify-between border-b border-gray-800 py-1 ${p.batStats.out ? 'text-gray-500' : 'text-white'}`}>
                                             <span>{p.name.split(' ').pop()} {p.batStats.out ? '' : '*'}</span>
                                             <span className="font-mono">{p.batStats.runs} ({p.batStats.balls})</span>
