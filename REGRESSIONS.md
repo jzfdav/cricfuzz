@@ -70,3 +70,8 @@ This document records functionality regressions and issues identified during the
 - **Issue**: The target from the previous game was visible in the 1st innings of the next game.
 - **Reason**: `GameState.target` was not being reset to `null` in the `resetToConfig` method.
 - **Status**: ✅ Fixed (Added explicit reset for `target`).
+
+## 15. Stale State Cleanup
+- **Issue**: Potential for stale data (toss results, team names) to persist if the app state wasn't fully cleared on restart.
+- **Reason**: `resetToConfig` omitted several state properties (`tossResult`, `lastMilestone`, `squads`).
+- **Status**: ✅ Fixed (Added comprehensive state cleanup in `resetToConfig`).

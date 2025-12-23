@@ -132,6 +132,15 @@ export class GameEngine {
         GameState.totalTeam1Score.value = 0;
         GameState.totalTeam2Score.value = 0;
         GameState.target.value = null;
+
+        // Full State Cleanup
+        GameState.tossResult.value = "";
+        GameState.battingTeamName.value = "";
+        GameState.bowlingTeamName.value = "";
+        GameState.battingSquad.value = [];
+        GameState.bowlingSquad.value = [];
+        GameState.lastMilestone.value = null;
+
         // Missing Resets
         GameState.allOut.value = false;
         GameState.overRuns.value = 0;
