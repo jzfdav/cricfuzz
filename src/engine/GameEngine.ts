@@ -482,6 +482,10 @@ export class GameEngine {
                 GameState.overRuns.value += res;
             }
             if (res === 'W') bowlerObj.bowlStats.wicketsTaken++;
+        } else {
+            console.error(`Bowler not found: ${GameState.bowler.value}`);
+            // Force re-select for next ball
+            this.selectBestBowler();
         }
 
         // Striker
@@ -602,7 +606,13 @@ export class GameEngine {
             return ((b.bowlingSkill || 0) + Math.random()) - ((a.bowlingSkill || 0) + Math.random());
         });
 
-        if (candidates.length) GameState.bowler.value = candidates[0].name;
+        if (candidates.length) {
+            GameState.bowler.value = candidates[0].name;
+        } else if (squad.length > 0) {
+            // Panic fallback: just pick the first player if no one matches criteria
+            // This prevents the 'bowler from previous innings' bug
+            GameState.bowler.value = squad[0].name;
+        }
     }
 
     addCommentary(text: string | null | undefined, type: CommentaryEntry['type']) {
