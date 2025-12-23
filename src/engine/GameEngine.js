@@ -5,6 +5,7 @@ export class GameEngine {
     constructor() {
         this.commentary = new CommentaryEngine();
         this.timer = null;
+        this.pauseMultiplier = 1;
     }
 
     /* --- SETUP & TOSS --- */
@@ -316,7 +317,10 @@ export class GameEngine {
         if (!GameState.isRunning.value) return;
         this.playBall();
         if (GameState.matchResult.value) return;
-        this.timer = setTimeout(() => this.loop(), this.getDelay());
+
+        const delay = this.getDelay() * (this.pauseMultiplier || 1);
+        this.pauseMultiplier = 1; // Reset for next ball
+        this.timer = setTimeout(() => this.loop(), delay);
     }
 
     playBall() {
@@ -404,6 +408,18 @@ export class GameEngine {
             this.addCommentary(this.commentary.getCommentary('W', GameState, GameState.bowler.value, striker.name), 'wicket');
 
             if (GameState.nextBatterIndex.value < GameState.battingSquad.value.length) {
+                // Pause for dramatic effect
+                this.pauseMultiplier = 4;
+
+                // Get next batter name for preview
+                const nextBatter = GameState.battingSquad.value[GameState.nextBatterIndex.value];
+                this.addCommentary(this.commentary.getNewBatterCommentary(nextBatter.name), 'intro');
+
+                // Occasional situation update
+                if (Math.random() > 0.7) {
+                    this.addCommentary(this.commentary.getSituationCommentary(), 'info');
+                }
+
                 const next = GameState.battingSquad.value[GameState.nextBatterIndex.value++];
                 GameState.striker.value = next;
             } else {

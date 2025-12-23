@@ -9,7 +9,14 @@ export class CommentaryEngine {
                 "Caught! Simple catch in the end. {batter} departs.",
                 "Cleaned him up! {bowler} is on fire! You miss, I hit!",
                 "LBW! {batter} is trapped in front!",
-                "Run out! {batter} is short of the crease. Tragedy!"
+                "Run out! {batter} is short of the crease. Tragedy!",
+                "GOT HIM! {bowler} induces the false shot and {batter} has to go!",
+                "Straight to mid-off! {batter} will be disappointed with that shot.",
+                "Up goes the finger! LBW! {bowler} pleads and the umpire agrees.",
+                "Chopped on! {batter} drags it onto the stumps. Unlucky!",
+                "Stumped! The batter stepped out, missed the turn, and the keeper did the rest.",
+                "A screamer of a catch! {batter} can't believe it!",
+                "The bails fly! Pace and accuracy from {bowler} proved too much."
             ],
             four: [
                 "Four runs! {batter} times that to perfection.",
@@ -17,15 +24,22 @@ export class CommentaryEngine {
                 "Cracked through the covers! No one moved.",
                 "Short and punished by {batter}! Raced to the fence.",
                 "Tickled fine for four. Smart batting from {batter}.",
-                "Power and placement! {batter} finds the gap."
+                "Power and placement! {batter} finds the gap.",
+                "Slashed away past point! Variable bounce helps the batter.",
+                "Over the infield and runs away for four!",
+                "Full toss and put away! {batter} accepts the gift.",
+                "Swept away fine! The fielder had no chance."
             ],
             six: [
                 "SIX! {batter} launches that into orbit!",
                 "Maximum! {batter} picked the length early and dispatched it.",
                 "That's huge! {bowler} watches it sail over his head!",
                 "High and handsome! Six runs for {batter}.",
-                "Muscle! Sheer muscle from {batter}! Clears the boundary ease.",
-                "Downtown! {batter} hits a monster!"
+                "Muscle! Sheer muscle from {batter}! Clears the boundary with ease.",
+                "Downtown! {batter} hits a monster!",
+                "That's gone miles! Clean striking from {batter}.",
+                "Crowd catch! {batter} deposits that into the stands!",
+                "Flat six! That travelled like a bullet."
             ],
             dot: [
                 "No run. Good solid defense from {batter}.",
@@ -33,19 +47,23 @@ export class CommentaryEngine {
                 "Beaten! Lovely bowling from {bowler}.",
                 "Play and a miss. {bowler} asking questions.",
                 "Dot ball. Pressure building on {batter}.",
-                "Fielded well at point. No run."
+                "Fielded well at point. No run.",
+                "Shouldering arms. Good carry to the keeper.",
+                "Solid block. Respecting the good ball."
             ],
             single: [
                 "Just a single. {batter} rotates the strike.",
                 "Pushed to long-on for one.",
                 "Quick single! Good running.",
                 "Dropped into the gap and they scamper through.",
-                "Worked away for a single."
+                "Worked away for a single.",
+                "Soft hands, they steal a run."
             ],
             maiden: [
                 "MAIDEN OVER! Brilliant stuff from {bowler}.",
                 "Six dots in a row! {bowler} is tightening the screws.",
-                "A maiden! Supreme control from the bowler."
+                "A maiden! Supreme control from the bowler.",
+                "Not a run conceded. Perfect line and length."
             ],
             fifty: [
                 "Fifty for {batter}! A fine innings, well constructed.",
@@ -67,6 +85,20 @@ export class CommentaryEngine {
                 "The death overs are here. Expect some fireworks now!",
                 "Slog time! Every ball counts.",
                 "Bowlers under pressure. Batters looking to launch."
+            ],
+            newBatter: [
+                "New batter {batter} walks to the crease. Can they steady the ship?",
+                "Here comes {batter}. Big responsibility on their shoulders.",
+                "{batter} joins the action. Needs to build a partnership here.",
+                "Enter {batter}. Known for their {style} play.",
+                "The crowd welcomes {batter} to the middle."
+            ],
+            situation: [
+                "The run rate is creeping up. Need a boundary soon.",
+                "Crucial phase of the game. Wickets in hand are key.",
+                "The fielding captain brings the field up to save the single.",
+                "The bowler is finding some reverse swing now.",
+                "Partnership is building nicely. Frustration for the fielding side."
             ]
         };
     }
@@ -137,5 +169,15 @@ export class CommentaryEngine {
         if (!lines.length) return null;
 
         return this.getRandom(lines).replace(/{batter}/g, bName);
+    }
+
+    getNewBatterCommentary(batterName) {
+        const bName = this.getSurname(batterName);
+        const line = this.getRandom(this.templates.newBatter);
+        return line.replace(/{batter}/g, bName).replace(/{style}/g, "aggressive");
+    }
+
+    getSituationCommentary() {
+        return this.getRandom(this.templates.situation);
     }
 }

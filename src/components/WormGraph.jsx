@@ -76,7 +76,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }) {
                             return (
                                 <g key={`x-${tick}`}>
                                     <line x1={x} y1={padding} x2={x} y2={height - padding} stroke="#333" strokeWidth="1" strokeDasharray="2" />
-                                    <text x={x} y={height - padding + 15} fill="#666" fontSize="10" textAnchor="middle">{tick}</text>
+                                    <text x={x} y={height - padding + 15} fill="#666" fontSize="8" textAnchor="middle">{tick}</text>
                                 </g>
                             );
                         })}
@@ -88,7 +88,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }) {
                             return (
                                 <g key={`y-${tick}`}>
                                     <line x1={padding} y1={y} x2={width - padding} y2={y} stroke="#333" strokeWidth="1" strokeDasharray="2" />
-                                    <text x={padding - 5} y={y + 3} fill="#666" fontSize="10" textAnchor="end">{tick}</text>
+                                    <text x={padding - 5} y={y + 3} fill="#666" fontSize="8" textAnchor="end">{tick}</text>
                                 </g>
                             );
                         })}
