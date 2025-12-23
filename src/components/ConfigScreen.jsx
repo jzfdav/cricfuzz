@@ -38,6 +38,14 @@ export function ConfigScreen({ engine }) {
         { id: 'zim', name: 'Zimbabwe' }
     ];
 
+    const randomizeTeams = () => {
+        const idx1 = Math.floor(Math.random() * teams.length);
+        let idx2 = Math.floor(Math.random() * teams.length);
+        while (idx2 === idx1) idx2 = Math.floor(Math.random() * teams.length);
+        setT1(teams[idx1].id);
+        setT2(teams[idx2].id);
+    };
+
     return (
         <div className="min-h-screen flex flex-col items-center justify-center p-6 space-y-8 animate-fade-in">
             <div className="text-center">
@@ -48,9 +56,16 @@ export function ConfigScreen({ engine }) {
             <div className="w-full max-w-md space-y-4">
                 {/* Team Selection */}
                 <div className="bg-[#161B22] p-6 rounded-2xl border border-gray-800 space-y-4">
-                    <div className="grid grid-cols-2 gap-4 text-[10px] text-gray-500 uppercase font-bold">
+                    <div className="flex justify-between items-center text-[10px] text-gray-500 uppercase font-bold">
                         <span>Home Team</span>
-                        <span className="text-right">Away Team</span>
+                        <button
+                            onClick={randomizeTeams}
+                            className="bg-gray-800 hover:bg-gray-700 text-amber-500 p-1 rounded transition-colors"
+                            title="Randomize Teams"
+                        >
+                            🎲 Randomize
+                        </button>
+                        <span>Away Team</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <TeamSelect value={t1} onChange={(v) => preventSame(v, true)} teams={teams} />
