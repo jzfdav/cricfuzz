@@ -1,7 +1,19 @@
-
 import { useState } from 'preact/hooks';
 
-export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }) {
+interface DataPoint {
+    over: number;
+    score: number;
+    wickets: number;
+}
+
+interface WormGraphProps {
+    data: DataPoint[];
+    targetData?: DataPoint[] | null;
+    totalOvers: number;
+    color?: string;
+}
+
+export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: WormGraphProps) {
     if (!data || data.length === 0) return null;
 
     const [expanded, setExpanded] = useState(false);
@@ -21,11 +33,11 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }) {
         100
     );
 
-    const getX = (over) => padding + (over / maxOvers) * graphWidth;
-    const getY = (score) => height - padding - (score / maxScore) * graphHeight;
+    const getX = (over: number) => padding + (over / maxOvers) * graphWidth;
+    const getY = (score: number) => height - padding - (score / maxScore) * graphHeight;
 
     // Build Paths
-    const buildPath = (pts) => {
+    const buildPath = (pts: DataPoint[]) => {
         if (!pts.length) return "";
         let d = `M ${getX(0)} ${getY(0)} `;
         pts.forEach(p => {

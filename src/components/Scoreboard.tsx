@@ -1,5 +1,6 @@
 import { GameState, currentOver, runRate, currentPhase } from "../engine/GameState";
 import { WormGraph } from "./WormGraph";
+import { Player } from "../types";
 
 export function Scoreboard() {
     return (
@@ -54,7 +55,7 @@ export function Scoreboard() {
                         {GameState.bowler.value.split(' ').pop()}
                     </p>
                     {(() => {
-                        const bowlerObj = GameState.bowlingSquad.value.find(p => p.name === GameState.bowler.value);
+                        const bowlerObj = GameState.bowlingSquad.value.find((p: Player) => p.name === GameState.bowler.value);
                         if (!bowlerObj) return null;
                         const cv = bowlerObj.bowlStats;
                         return (

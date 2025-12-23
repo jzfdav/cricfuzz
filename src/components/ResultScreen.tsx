@@ -1,11 +1,17 @@
 import { useState } from 'preact/hooks';
 import { GameState } from "../engine/GameState";
 import { WormGraph } from "./WormGraph";
+import { GameEngine } from "../engine/GameEngine";
+import { MatchHistoryEntry, Player } from '../types';
 
-export function ResultScreen({ engine }) {
+interface ResultScreenProps {
+    engine: GameEngine;
+}
+
+export function ResultScreen({ engine }: ResultScreenProps) {
     const result = GameState.matchResult.value || "Match Ended";
     const history = GameState.history.value;
-    const [expanded, setExpanded] = useState(null); // Index of expanded card
+    const [expanded, setExpanded] = useState<number | null>(null); // Index of expanded card
 
     return (
         <div className="min-h-screen p-6 flex flex-col items-center animate-fade-in bg-[#0B0E14] text-white">
@@ -110,7 +116,7 @@ export function ResultScreen({ engine }) {
     );
 }
 
-function getMatchDescription(history, t1, t2, format) {
+function getMatchDescription(history: MatchHistoryEntry[], t1: string, t2: string, format: string) {
     // Calculate total maidens for description
     let totalMaidens = 0;
     history.forEach(inn => {
@@ -118,17 +124,17 @@ function getMatchDescription(history, t1, t2, format) {
     });
 
     // Dynamic summary
-    let topPerformer = null;
+    let topPerformer: { name: string; stat: string; type: 'bat' | 'bowl' } | null = null;
     let maxImpact = -1;
 
     history.forEach(inn => {
-        inn.batting.forEach(p => {
+        inn.batting.forEach((p: Player) => {
             if (p.batStats.runs > maxImpact) {
                 maxImpact = p.batStats.runs;
                 topPerformer = { name: p.name, stat: `${p.batStats.runs}(${p.batStats.balls})`, type: 'bat' };
             }
         });
-        inn.bowling.forEach(p => {
+        inn.bowling.forEach((p: Player) => {
             const bowlImpact = (p.bowlStats.wicketsTaken * 25) + (p.bowlStats.maidens * 15) - p.bowlStats.runsConceded;
             if (bowlImpact > maxImpact) {
                 maxImpact = bowlImpact;
@@ -142,8 +148,7 @@ function getMatchDescription(history, t1, t2, format) {
     let description = `A thrilling ${format} encounter between ${t1} and ${t2}. `;
     if (totalMaidens > 0) description += `Defensive pressure was key with ${totalMaidens} maiden over${totalMaidens > 1 ? 's' : ''} bowled. `;
     if (topPerformer) {
-        description += `${topPerformer.name.split(' ').pop()}'s ${topPerformer.stat} was the standout performance of the match.`;
+        description += `${(topPerformer as any).name.split(' ').pop()}'s ${(topPerformer as any).stat} was the standout performance of the match.`;
     }
     return description;
 }
-

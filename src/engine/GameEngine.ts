@@ -1,7 +1,13 @@
-import { GameState } from "./GameState";
-import { CommentaryEngine } from "../commentary.js";
+/// <reference types="vite/client" />
+import { GameState, FormatType } from "./GameState";
+import { CommentaryEngine } from "../CommentaryEngine";
+import { Player, Squad, MatchHistoryEntry, CommentaryEntry } from "../types";
 
 export class GameEngine {
+    commentary: CommentaryEngine;
+    timer: ReturnType<typeof setTimeout> | null;
+    pauseMultiplier: number;
+
     constructor() {
         this.commentary = new CommentaryEngine();
         this.timer = null;
@@ -10,32 +16,33 @@ export class GameEngine {
 
     /* --- SETUP & TOSS --- */
 
-    async loadTeams(t1Id, t2Id) {
+    async loadTeams(t1Id: string, t2Id: string) {
         const baseUrl = import.meta.env.BASE_URL;
         const [d1, d2] = await Promise.all([
             fetch(`${baseUrl}teams/${t1Id}.json`).then(r => r.json()),
             fetch(`${baseUrl}teams/${t2Id}.json`).then(r => r.json())
         ]);
 
-        const initStats = (p) => ({
+        const initStats = (p: any): Player => ({
             ...p,
             batStats: { runs: 0, balls: 0, fours: 0, sixes: 0, out: false },
             bowlStats: { runsConceded: 0, wicketsTaken: 0, maidens: 0, balls: 0 }
         });
 
         // Initialize and Sort by Batting Skill
-        const p1 = d1.players.map(initStats).sort((a, b) => (b.battingSkill || 0) - (a.battingSkill || 0));
-        const p2 = d2.players.map(initStats).sort((a, b) => (b.battingSkill || 0) - (a.battingSkill || 0));
+        // We assume d1.players matches the Player shape roughly except stats
+        const p1: Squad = d1.players.map(initStats).sort((a: Player, b: Player) => (b.battingSkill || 0) - (a.battingSkill || 0));
+        const p2: Squad = d2.players.map(initStats).sort((a: Player, b: Player) => (b.battingSkill || 0) - (a.battingSkill || 0));
 
         GameState.teams.team1Name.value = d1.name;
         GameState.teams.team2Name.value = d2.name;
-        GameState.teams.team1.value = p1;
-        GameState.teams.team2.value = p2;
+        GameState.teams.team1.value = { name: d1.name, players: p1 };
+        GameState.teams.team2.value = { name: d2.name, players: p2 };
     }
 
-    performToss(t1Id, t2Id) {
+    performToss() {
         // Random Pitch
-        const pitches = ["Flat", "Green", "Dusty", "Balanced"];
+        const pitches = ["Flat", "Green", "Dusty", "Balanced"] as const;
         const p = pitches[Math.floor(Math.random() * pitches.length)];
         GameState.pitch.value = p;
 
@@ -52,17 +59,22 @@ export class GameEngine {
         GameState.tossResult.value = `${winnerName} won the toss and elected to ${decision}`;
 
         // Set Batting/Bowling Sides
-        let batSquad, bowlSquad, batName, bowlName;
+        let batSquad: Squad, bowlSquad: Squad, batName: string, bowlName: string;
+
+        // Assert non-null since loadTeams fills these
+        const t1 = GameState.teams.team1.value!;
+        const t2 = GameState.teams.team2.value!;
+
         if ((winnerIdx === 1 && decision === "BAT") || (winnerIdx === 2 && decision === "BOWL")) {
-            batSquad = GameState.teams.team1.value;
-            bowlSquad = GameState.teams.team2.value;
-            batName = GameState.teams.team1Name.value;
-            bowlName = GameState.teams.team2Name.value;
+            batSquad = t1.players;
+            bowlSquad = t2.players;
+            batName = t1.name;
+            bowlName = t2.name;
         } else {
-            batSquad = GameState.teams.team2.value;
-            bowlSquad = GameState.teams.team1.value;
-            batName = GameState.teams.team2Name.value;
-            bowlName = GameState.teams.team1Name.value;
+            batSquad = t2.players;
+            bowlSquad = t1.players;
+            batName = t2.name;
+            bowlName = t1.name;
         }
 
         GameState.battingSquad.value = batSquad;
@@ -88,11 +100,11 @@ export class GameEngine {
         GameState.isRunning.value = false;
     }
 
-    startMatch(t1, t2, format) {
+    startMatch(t1: string | null, t2: string | null) {
         if (t1) GameState.teams.team1.value = null; // Reset if new
 
         // --- Match Winner Mechanic (X-Factor) ---
-        const boostPlayer = (squad) => {
+        const boostPlayer = (squad: Squad | undefined) => {
             if (!squad || squad.length === 0) return null;
             const p = squad[Math.floor(Math.random() * squad.length)];
             const factor = 1 + (Math.random() * 0.2 + 0.1); // 1.10 to 1.30
@@ -100,13 +112,22 @@ export class GameEngine {
 
             p.battingSkill = Math.floor((p.battingSkill || 75) * factor);
             p.bowlingSkill = Math.floor((p.bowlingSkill || 75) * factor);
-            p.aggression = Math.floor((p.aggression || 75) * factor);
-            p.economy = (p.economy || 8.0) * ecoFactor;
+            // Dynamic prop check if exists on Player type, assume strict for now
+            // p.aggression is not on Player interface currently? 
+            // In JS code: p.aggression = ...
+            // I should add optional props to Player interface or use extend.
+            // For now, I'll assume they might exist or cast to any if strict.
+            // Let's use cleaner approach:
+            (p as any).aggression = Math.floor(((p as any).aggression || 75) * factor);
+            (p as any).economy = ((p as any).economy || 8.0) * ecoFactor;
             return p;
         };
 
-        const p1 = boostPlayer(GameState.teams.team1.value);
-        const p2 = boostPlayer(GameState.teams.team2.value);
+        const t1Data = GameState.teams.team1.value;
+        const t2Data = GameState.teams.team2.value;
+
+        const p1 = t1Data ? boostPlayer(t1Data.players) : null;
+        const p2 = t2Data ? boostPlayer(t2Data.players) : null;
 
         if (p1 && p2) {
             console.log(`🔥 Match Winners (Boosted): ${p1.name} & ${p2.name}`);
@@ -134,6 +155,7 @@ export class GameEngine {
         GameState.totalTeam1Score.value = 0;
         GameState.totalTeam2Score.value = 0;
         GameState.target.value = null;
+        GameState.winProbability.value = 50;
 
         // Full State Cleanup
         GameState.tossResult.value = "";
@@ -150,11 +172,32 @@ export class GameEngine {
         GameState.nextBatterIndex.value = 2;
     }
 
+    resetPlayerStats() {
+        // Helper to zero out all stats for a fresh start with same teams
+        const resetStats = (p: Player) => {
+            p.batStats = { runs: 0, balls: 0, fours: 0, sixes: 0, out: false };
+            p.bowlStats = { runsConceded: 0, wicketsTaken: 0, maidens: 0, balls: 0 };
+        };
+
+        if (GameState.teams.team1.value) GameState.teams.team1.value.players.forEach(resetStats);
+        if (GameState.teams.team2.value) GameState.teams.team2.value.players.forEach(resetStats);
+    }
+
+    // Override rematch to include player reset
+    rematch() {
+        this.stopMatch();
+        this.resetToConfig();
+        this.resetPlayerStats();
+        this.performToss();
+        GameState.isRunning.value = true;
+        this.loop();
+    }
+
     switchInnings() {
         this.stopMatch();
 
         // Save History
-        const entry = {
+        const entry: MatchHistoryEntry = {
             team: GameState.battingTeamName.value,
             score: GameState.score.value,
             wickets: GameState.wickets.value,
@@ -172,12 +215,7 @@ export class GameEngine {
         // Innings Victory Check (Test)
         if (GameState.format.value === 'TEST' && GameState.innings.value === 3) {
             const lead = GameState.totalTeam1Score.value - GameState.totalTeam2Score.value;
-            if (lead < 0) { // Team 2 leads after 3 innings means Team 1 (bowling now) failed
-                // Actually logic in main.js was: lead = t1 - t2. if lead < 0, T2 wins by innings.
-                // Wait, logic depends on who batted first.
-                // Simplified: If batting team (Team 1) is still behind Team 2's first innings score after their second innings...
-                // main.js logic: `const lead = this.state.totalTeam1Score - this.state.totalTeam2Score; if (lead < 0) Win...`
-                // We'll preserve strict main.js logic here if possible, or just standard flow.
+            if (lead < 0) {
                 const margin = Math.abs(lead);
                 if (lead < 0) {
                     this.endMatch(`${GameState.teams.team2Name.value} WINS by an innings and ${margin} runs!`);
@@ -201,10 +239,11 @@ export class GameEngine {
         GameState.allOut.value = false;
         GameState.overRuns.value = 0;
         GameState.lastOverWasMaiden.value = false;
-        GameState.overRuns.value = 0;
-        GameState.lastOverWasMaiden.value = false;
+        GameState.overRuns.value = 0; // Duplicate, kept for safety
+        GameState.lastOverWasMaiden.value = false; // Duplicate
         GameState.nextBatterIndex.value = 2;
         GameState.inningsTimeline.value = [];
+        GameState.winProbability.value = 50;
 
         // Swap Teams
         const oldBat = GameState.battingSquad.value;
@@ -218,8 +257,8 @@ export class GameEngine {
         GameState.bowlingTeamName.value = oldBatName;
 
         // Reset Player Stats
-        GameState.battingSquad.value.forEach(p => p.batStats = { runs: 0, balls: 0, fours: 0, sixes: 0, out: false });
-        GameState.bowlingSquad.value.forEach(p => p.bowlStats = { runsConceded: 0, wicketsTaken: 0, maidens: 0, balls: 0 });
+        GameState.battingSquad.value.forEach((p: Player) => p.batStats = { runs: 0, balls: 0, fours: 0, sixes: 0, out: false });
+        GameState.bowlingSquad.value.forEach((p: Player) => p.bowlStats = { runsConceded: 0, wicketsTaken: 0, maidens: 0, balls: 0 });
 
         // Init Strikers
         GameState.striker.value = GameState.battingSquad.value[0];
@@ -234,7 +273,7 @@ export class GameEngine {
         }, 2000);
     }
 
-    endMatch(msg) {
+    endMatch(msg: string) {
         this.stopMatch();
         GameState.matchResult.value = msg;
         // Save final history
@@ -253,6 +292,7 @@ export class GameEngine {
     }
 
     checkGameStatus() {
+        // Explicitly get format-specific config
         const format = GameState.format.value;
         const config = GameState.formatConfigs[format];
         const balls = GameState.balls.value;
@@ -296,8 +336,8 @@ export class GameEngine {
             if (target && score >= target) {
                 this.endMatch(`${GameState.battingTeamName.value} WINS by ${10 - wickets} wickets!`);
             } else if (inningsEnded) {
-                if (score === target - 1) this.endMatch("MATCH TIED!");
-                else this.endMatch(`${GameState.bowlingTeamName.value} WINS by ${target - 1 - score} runs!`);
+                if (target && score === target - 1) this.endMatch("MATCH TIED!");
+                else if (target) this.endMatch(`${GameState.bowlingTeamName.value} WINS by ${target - 1 - score} runs!`);
             }
         }
     }
@@ -306,6 +346,8 @@ export class GameEngine {
         if (GameState.innings.value !== 2) return;
 
         const target = GameState.target.value;
+        if (!target) return;
+
         const current = GameState.score.value;
         const wickets = GameState.wickets.value;
         const ballsThrown = GameState.balls.value;
@@ -336,13 +378,7 @@ export class GameEngine {
         else if (rrr < 15) baseProb = 10;
         else baseProb = 1;
 
-        // Wicket Resource Adjustment (The most critical factor)
-        // Full resources = 1.0, 5 wickets = 0.5... squared for punishment
-        // losing wickets early is bad.
         const resourceFactor = Math.pow(wicketsInHand / 10, 1.2);
-
-        // Momentum adjustment (Run Rate Differential)
-        // If current RR is high, boost prob
         const crr = current / (ballsThrown / 6 || 1);
         const momentum = Math.max(0.8, Math.min(1.2, crr / rrr));
 
@@ -354,51 +390,11 @@ export class GameEngine {
         GameState.winProbability.value = Math.round(finalProb);
     }
 
-    rematch() {
-        // Reset Game Logic but keep teams
-        this.stopMatch();
-        this.resetToConfig();
-
-        // Re-toss and start
-        // Access existing teams
-        const t1 = GameState.teams.team1Name.value; // Store names? No, names are in state
-        // Actually resetToConfig clears teams... wait.
-        // I need to confirm if 'resetToConfig' clears the loaded players.
-        // Checking resetToConfig... lines 121-149 of GameEngine.js
-        // It resets score, wickets, bals... does NOT nullify teams usually unless explicitly told.
-        // Wait, startMatch(t1, t2) often reloads?
-        // Let's check startMatch... line 90.
-        // "if (t1) GameState.teams.team1.value = null;" -> Logic depends on args.
-
-        // If I call startMatch(null, null, format), it should reuse? 
-        // Logic in startMatch: "const boostPlayer..." checks for squad.
-        // It assumes squads exist if t1,t2 are null?
-        // Actually loadTeams is what populates squads. startMatch just sets them up?
-        // No, startMatch expects teams to be loaded IN GameState?
-        // Let's check startMatch fully. 
-        // It boosts players. It resets game state (resetToConfig).
-        // It calls performToss.
-
-        // So `rematch` just needs to call `performToss` then `loop`? 
-        // Or `resetToConfig` then `performToss` then `loop`.
-        // Let's safe-guard:
-
-        this.resetToConfig();
-
-        // Determine IDs to re-perform Toss (randomly)
-        // actually performToss doesn't need IDs, it uses GameState.teams.
-        this.performToss();
-
-        GameState.isRunning.value = true;
-        this.loop();
-    }
-
-    setSpeed(val) {
+    setSpeed(val: number) {
         GameState.speed.value = val;
     }
 
     getDelay() {
-        // 1 -> 2000ms, 100 -> 50ms
         const val = GameState.speed.value;
         const delay = 2020 - (val * 19.7);
         return Math.max(50, delay);
@@ -416,25 +412,25 @@ export class GameEngine {
 
     playBall() {
         const batter = GameState.striker.value;
-        const bowlerObj = GameState.bowlingSquad.value.find(p => p.name === GameState.bowler.value);
+        const bowlerObj = GameState.bowlingSquad.value.find((p: Player) => p.name === GameState.bowler.value);
         const format = GameState.format.value;
-        const config = GameState.formatConfigs[format];
+        const config = GameState.formatConfigs[format]; // Now correctly typed via GameState
         const pitch = GameState.pitch.value;
 
         // Weights: [0, 1, 2, 4, 6, W]
         let weights = [35, 30, 10, 15, 5, 5];
 
         let batterSkill = batter.battingSkill || 75;
-        let batterAggression = batter.aggression || 70;
+        let batterAggression = (batter as any).aggression || 70;
         let bowlerSkill = bowlerObj?.bowlingSkill || 75;
-        let bowlerEconomy = bowlerObj?.economy || 8.0;
+        let bowlerEconomy = (bowlerObj as any)?.economy || 8.0;
 
         // Pitch Modifiers
         if (pitch === "Flat") { batterSkill *= 1.1; bowlerSkill *= 0.9; }
         else if (pitch === "Green") { batterSkill *= 0.95; bowlerSkill *= 1.15; }
         else if (pitch === "Dusty") { batterSkill *= 0.9; bowlerSkill *= 1.1; }
 
-        const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+        const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
         let aggFactor = clamp((batterAggression / 90) * config.aggMod, 0.5, 1.8);
         const skillFactor = clamp(batterSkill / 90, 0.6, 1.4);
         const bowlSkillFactor = clamp(bowlerSkill / 90, 0.6, 1.4);
@@ -443,8 +439,8 @@ export class GameEngine {
         // --- Phase Logic ---
         const b = GameState.balls.value;
         const currentOver = Math.floor(b / 6);
-        const phases = config.phases?.[format] || [];
-        const activePhase = phases.find(p => currentOver >= p.start && currentOver <= p.end);
+        const phases = GameState.formatConfigs.phases[format];
+        const activePhase = phases ? phases.find((p: any) => currentOver >= p.start && currentOver <= p.end) : null;
 
         if (activePhase) {
             aggFactor *= activePhase.agg;
@@ -474,11 +470,11 @@ export class GameEngine {
         this.updateState(result);
     }
 
-    updateState(res) {
+    updateState(res: number | string) {
         GameState.balls.value++;
 
         // Bowler
-        const bowlerObj = GameState.bowlingSquad.value.find(p => p.name === GameState.bowler.value);
+        const bowlerObj = GameState.bowlingSquad.value.find((p: Player) => p.name === GameState.bowler.value);
         if (bowlerObj) {
             bowlerObj.bowlStats.balls++;
             if (typeof res === 'number') {
@@ -504,7 +500,9 @@ export class GameEngine {
 
                 // Get next batter name for preview
                 const nextBatter = GameState.battingSquad.value[GameState.nextBatterIndex.value];
-                this.addCommentary(this.commentary.getNewBatterCommentary(nextBatter.name), 'intro');
+                if (nextBatter) { // TS check for undefined
+                    this.addCommentary(this.commentary.getNewBatterCommentary(nextBatter.name), 'intro');
+                }
 
                 // Occasional situation update
                 if (Math.random() > 0.7) {
@@ -517,9 +515,11 @@ export class GameEngine {
                 GameState.allOut.value = true;
             }
         } else {
-            GameState.score.value += res;
+            // It's a run or boundary
+            const runVal = typeof res === 'number' ? res : 0;
+            GameState.score.value += runVal;
             const oldRuns = striker.batStats.runs;
-            striker.batStats.runs += res;
+            striker.batStats.runs += runVal;
             const newRuns = striker.batStats.runs;
 
             if (oldRuns < 50 && newRuns >= 50) this.addCommentary(this.commentary.getMilestoneCommentary('fifty', striker.name), 'milestone');
@@ -539,13 +539,12 @@ export class GameEngine {
                 this.addCommentary(this.commentary.getCommentary(res, GameState, GameState.bowler.value, striker.name), 'run');
             }
 
-            if (res % 2 !== 0) this.swapBatters();
+            if (runVal % 2 !== 0) this.swapBatters();
         }
 
         GameState.timeline.value = [res, ...GameState.timeline.value].slice(0, 12);
 
         if (GameState.balls.value % 6 === 0) {
-
             // Record Graph Data
             GameState.inningsTimeline.value = [
                 ...GameState.inningsTimeline.value,
@@ -555,22 +554,24 @@ export class GameEngine {
                     wickets: GameState.wickets.value
                 }
             ];
-
-            // Recalculate Win Prob (Every over is good, but every ball is better? 
-            // User asked for "Live", implies every ball.
-            // But let's put it here for efficiency? No, every ball is cooler.)
+            // Recalculate Win Prob 
         }
 
-        // Recalculate every ball for "Live" feel
+        // Recalculate every ball
         this.calculateWinProbability();
 
-        if (GameState.overRuns.value === 0 && !GameState.allOut.value) {
+        if (GameState.overRuns.value === 0 && !GameState.allOut.value && GameState.balls.value > 0 && GameState.balls.value % 6 === 0) {
+            // Check balls > 0 to prevent 0.0 maiden glitch
             if (bowlerObj) bowlerObj.bowlStats.maidens++;
             this.addCommentary(this.commentary.getMaidenCommentary(), 'maiden');
         }
-        GameState.overRuns.value = 0;
-        this.swapBatters();
-        this.selectBestBowler();
+
+        if (GameState.balls.value > 0 && GameState.balls.value % 6 === 0) {
+            GameState.overRuns.value = 0;
+            this.swapBatters();
+            this.selectBestBowler();
+        }
+
         this.checkGameStatus();
     }
 
@@ -587,14 +588,15 @@ export class GameEngine {
         const current = GameState.bowler.value;
         const squad = GameState.bowlingSquad.value;
 
-        const eligible = squad.filter(p => {
+        const eligible = squad.filter((p: Player) => {
             if (p.role !== 'Bowler' && p.role !== 'All-Rounder') return false;
-            if ((p.bowlStats.balls / 6) >= limit) return false;
+            // safe check balls in case undefined
+            if (((p.bowlStats?.balls || 0) / 6) >= limit) return false;
             if (p.name === current) return false;
             return true;
         });
 
-        const candidates = eligible.length ? eligible : squad.filter(p => p.name !== current);
+        const candidates = eligible.length ? eligible : squad.filter((p: Player) => p.name !== current);
 
         candidates.sort((a, b) => {
             return ((b.bowlingSkill || 0) + Math.random()) - ((a.bowlingSkill || 0) + Math.random());
@@ -603,20 +605,18 @@ export class GameEngine {
         if (candidates.length) GameState.bowler.value = candidates[0].name;
     }
 
-    addCommentary(text, type) {
-        // ... (standard implementation)
+    addCommentary(text: string | null | undefined, type: CommentaryEntry['type']) {
         if (!text) return;
 
-        // Fix: Use b-1 to ensure ball 6 is 0.6, not 1.0 (which confuses with next over)
         const b = GameState.balls.value;
         const ballIndex = b > 0 ? b - 1 : 0;
         const overStr = `${Math.floor(ballIndex / 6)}.${(ballIndex % 6) + 1}`;
 
-        const entry = {
+        const entry: CommentaryEntry = {
             id: Date.now() + Math.random(),
             text,
             type,
-            over: overStr // simplified
+            over: overStr
         };
         GameState.commentary.value = [entry, ...GameState.commentary.value];
     }

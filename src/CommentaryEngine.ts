@@ -1,4 +1,23 @@
+import { GameState } from "./engine/GameState";
+
+interface CommentaryTemplates {
+    wicket: string[];
+    four: string[];
+    six: string[];
+    dot: string[];
+    single: string[];
+    maiden: string[];
+    fifty: string[];
+    century: string[];
+    closeGame: string[];
+    deathOvers: string[];
+    newBatter: string[];
+    situation: string[];
+}
+
 export class CommentaryEngine {
+    templates: CommentaryTemplates;
+
     constructor() {
         this.templates = {
             wicket: [
@@ -103,13 +122,13 @@ export class CommentaryEngine {
         };
     }
 
-    getSurname(fullName) {
+    getSurname(fullName: string | null | undefined): string {
         if (!fullName) return "The batter";
         const parts = fullName.trim().split(' ');
         return parts.length > 1 ? parts[parts.length - 1] : fullName;
     }
 
-    getCommentary(result, state, bowlerName, batterName) {
+    getCommentary(result: number | string, state: typeof GameState, bowlerName: string, batterName: string): string | undefined {
         // Fix: State values are Preact Signals, so we need to access .value
         const score = state.score.value;
         const wickets = state.wickets.value;
@@ -121,7 +140,7 @@ export class CommentaryEngine {
         const ballInOver = balls % 6;
         const config = format === 'T20' ? { balls: 120 } : format === 'ODI' ? { balls: 300 } : { balls: 2400 };
 
-        let lines = [];
+        let lines: string[] = [];
         if (result === 'W') lines = this.templates.wicket;
         else if (result === 6) lines = this.templates.six;
         else if (result === 4) lines = this.templates.four;
@@ -140,19 +159,21 @@ export class CommentaryEngine {
         const bName = this.getSurname(batterName);
         const boName = this.getSurname(bowlerName);
 
+        if (!rawLine) return undefined;
+
         return rawLine.replace(/{batter}/g, bName).replace(/{bowler}/g, boName);
     }
 
-    getRandom(arr) {
+    getRandom(arr: string[]): string {
         return arr[Math.floor(Math.random() * arr.length)];
     }
 
-    getMaidenCommentary(bowlerName) {
+    getMaidenCommentary(bowlerName?: string): string {
         const line = this.getRandom(this.templates.maiden);
         return line.replace(/{bowler}/g, this.getSurname(bowlerName) || "the bowler");
     }
 
-    getIntroCommentary(winner, decision, pitch) {
+    getIntroCommentary(winner: string, decision: string, pitch: string): string {
         const templates = [
             `Welcome everyone! ${winner} has won the toss and decided to ${decision} first. The pitch looks ${pitch}.`,
             `We are live! ${winner} wins the coin flip. They will ${decision} on this ${pitch} surface.`,
@@ -161,9 +182,9 @@ export class CommentaryEngine {
         return this.getRandom(templates);
     }
 
-    getMilestoneCommentary(milestone, batterName) { // Added batterName
+    getMilestoneCommentary(milestone: 'fifty' | 'century', batterName: string): string | null {
         const bName = this.getSurname(batterName);
-        let lines = [];
+        let lines: string[] = [];
         if (milestone === 'fifty') lines = this.templates.fifty;
         if (milestone === 'century') lines = this.templates.century;
         if (!lines.length) return null;
@@ -171,13 +192,13 @@ export class CommentaryEngine {
         return this.getRandom(lines).replace(/{batter}/g, bName);
     }
 
-    getNewBatterCommentary(batterName) {
+    getNewBatterCommentary(batterName: string): string {
         const bName = this.getSurname(batterName);
         const line = this.getRandom(this.templates.newBatter);
         return line.replace(/{batter}/g, bName).replace(/{style}/g, "aggressive");
     }
 
-    getSituationCommentary() {
+    getSituationCommentary(): string {
         return this.getRandom(this.templates.situation);
     }
 }
