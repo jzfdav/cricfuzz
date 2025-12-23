@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 import { GameState } from "./GameState";
-import { Player, Squad, MatchHistoryEntry } from "../types";
+import { Player, Squad, MatchHistoryEntry, CommentaryEntry } from "../types";
 import { StatsEngine } from "./StatsEngine";
 import { CommentaryEngine } from "./CommentaryEngine";
 
@@ -16,8 +16,8 @@ export class MatchController {
             fetch(`${baseUrl}teams/${t2Id}.json`).then(r => r.json())
         ]);
 
-        const initStats = (p: any): Player => ({
-            ...p,
+        const initStats = (p: Partial<Player>): Player => ({
+            ...p as Player,
             batStats: { runs: 0, balls: 0, fours: 0, sixes: 0, out: false },
             bowlStats: { runsConceded: 0, wicketsTaken: 0, maidens: 0, balls: 0 }
         });
@@ -423,7 +423,7 @@ export class MatchController {
         }
     }
     // Helper to delegate commentary to engine and update state
-    private addCommentary(text: string | null | undefined, type: any) {
+    private addCommentary(text: string | null | undefined, type: CommentaryEntry['type']) {
         if (!text) return;
         const b = GameState.balls.value;
         const ballIndex = b > 0 ? b - 1 : 0;
@@ -435,6 +435,6 @@ export class MatchController {
             type,
             over: overStr
         };
-        GameState.commentary.value = [entry, ...GameState.commentary.value];
+        GameState.commentary.value = [entry, ...GameState.commentary.value].slice(0, 100);
     }
 }
