@@ -28,7 +28,9 @@ const app = {
         totalTeam1Score: 0,
         totalTeam2Score: 0,
         history: [], // Stores scorecard for each innings
-        allOut: false
+        allOut: false,
+        overRuns: 0,
+        lastOverWasMaiden: false
     },
 
     preventSameTeam(selectedVal, otherDropdownId) {
@@ -70,6 +72,8 @@ const app = {
         this.state.totalTeam2Score = 0;
         this.state.history = [];
         this.state.allOut = false;
+        this.state.overRuns = 0;
+        this.state.lastOverWasMaiden = false;
 
         const targetEl = document.getElementById('target-display');
         targetEl.innerText = "1st INNINGS";
@@ -198,6 +202,7 @@ const app = {
 
         this.updateState(result);
         this.render(result, currentStrikerName);
+        this.state.lastOverWasMaiden = false; // Reset after render
         this.checkGameStatus();
     },
 
@@ -219,7 +224,10 @@ const app = {
         // Update Bowler Stats
         if (currentBowlerObj) {
             currentBowlerObj.bowlStats.balls++;
-            if (typeof res === 'number') currentBowlerObj.bowlStats.runsConceded += res;
+            if (typeof res === 'number') {
+                currentBowlerObj.bowlStats.runsConceded += res;
+                this.state.overRuns += res;
+            }
             if (res === 'W') currentBowlerObj.bowlStats.wicketsTaken++;
         }
 
@@ -244,6 +252,12 @@ const app = {
         }
 
         if (this.state.balls % 6 === 0) {
+            if (this.state.overRuns === 0) {
+                if (currentBowlerObj) currentBowlerObj.bowlStats.maidens++;
+                this.state.lastOverWasMaiden = true;
+            }
+            this.state.overRuns = 0;
+
             if (!this.state.allOut && (res !== 'W' || this.state.wickets < 10)) {
                 [this.state.striker, this.state.nonStriker] = [this.state.nonStriker, this.state.striker];
             }
@@ -329,6 +343,8 @@ const app = {
             this.state.balls = 0;
             this.state.nextBatterIndex = 2;
             this.state.allOut = false;
+            this.state.overRuns = 0;
+            this.state.lastOverWasMaiden = false;
 
             // Swap Teams
             [this.teams.batting, this.teams.bowling] = [this.teams.bowling, this.teams.batting];
@@ -416,6 +432,8 @@ const app = {
         this.state.totalTeam2Score = 0;
         this.state.history = [];
         this.state.allOut = false;
+        this.state.overRuns = 0;
+        this.state.lastOverWasMaiden = false;
 
         // Clear UI sections that are dynamically populated
         document.getElementById('timeline').innerHTML = "";
@@ -446,6 +464,11 @@ const app = {
         document.getElementById('results-screen').classList.remove('hidden');
         document.getElementById('result-message').innerText = msg;
 
+        // Calculate total maidens for description
+        let totalMaidens = 0;
+        this.state.history.forEach(inn => {
+            inn.bowlers.forEach(p => totalMaidens += (p.bowlStats.maidens || 0));
+        });
         // Dynamic summary
         let topPerformer = null;
         let maxImpact = -1;
@@ -458,15 +481,18 @@ const app = {
                 }
             });
             inn.bowlers.forEach(p => {
-                const bowlImpact = p.bowlStats.wicketsTaken * 25 - p.bowlStats.runsConceded;
+                const bowlImpact = (p.bowlStats.wicketsTaken * 25) + (p.bowlStats.maidens * 15) - p.bowlStats.runsConceded;
                 if (bowlImpact > maxImpact) {
                     maxImpact = bowlImpact;
-                    topPerformer = { name: p.name, stat: `${p.bowlStats.wicketsTaken}/${p.bowlStats.runsConceded}`, type: 'bowl' };
+                    let statStr = `${p.bowlStats.wicketsTaken}/${p.bowlStats.runsConceded}`;
+                    if (p.bowlStats.maidens > 0) statStr += ` (${p.bowlStats.maidens}m)`;
+                    topPerformer = { name: p.name, stat: statStr, type: 'bowl' };
                 }
             });
         });
 
         let description = `A thrilling ${this.state.format} encounter between ${this.teams.team1Name} and ${this.teams.team2Name}. `;
+        if (totalMaidens > 0) description += `Defensive pressure was key with ${totalMaidens} maiden over${totalMaidens > 1 ? 's' : ''} bowled. `;
         if (topPerformer) {
             description += `${topPerformer.name}'s ${topPerformer.stat} was the standout performance of the match.`;
         }
@@ -511,11 +537,13 @@ const app = {
             `}).join('');
 
             let bowlersRows = inn.bowlers.filter(b => b.bowlStats.balls > 0).map(b => {
-                const isTop = b.bowlStats.wicketsTaken >= 2;
+                const isTop = b.bowlStats.wicketsTaken >= 2 || b.bowlStats.maidens >= 1;
+                const isElite = b.bowlStats.maidens >= 2;
                 return `
-                <div class="grid grid-cols-5 p-4 border-b border-gray-800/50 text-xs bg-gray-900/30 items-center">
+                <div class="grid grid-cols-6 p-4 border-b border-gray-800/50 text-xs bg-gray-900/30 items-center hover:bg-gray-800/50 transition-colors">
                     <div class="col-span-2 font-bold ${isTop ? 'text-emerald-400' : 'text-gray-400'}">${b.name}</div>
                     <div class="text-right text-gray-500 mono">${this.formatOvers(b.bowlStats.balls)}</div>
+                    <div class="text-right ${isElite ? 'text-emerald-500 font-bold' : 'text-gray-500'} mono">${b.bowlStats.maidens}</div>
                     <div class="text-right text-gray-500 mono">${b.bowlStats.runsConceded}</div>
                     <div class="text-right font-black text-lg ${isTop ? 'text-emerald-500' : 'text-gray-400'}">${b.bowlStats.wicketsTaken}</div>
                 </div>
@@ -530,9 +558,10 @@ const app = {
                     <div class="text-right">SR</div>
                 </div>
                 ${batsmenRows}
-                <div class="bg-gray-900/50 text-[10px] uppercase tracking-[0.2em] font-black text-gray-600 grid grid-cols-5 px-4 py-3 border-b border-gray-800">
+                <div class="bg-gray-900/50 text-[10px] uppercase tracking-[0.2em] font-black text-gray-600 grid grid-cols-6 px-4 py-3 border-b border-gray-800">
                     <div class="col-span-2">Bowler</div>
                     <div class="text-right">O</div>
+                    <div class="text-right">M</div>
                     <div class="text-right">R</div>
                     <div class="text-right">W</div>
                 </div>
@@ -584,6 +613,13 @@ const app = {
                                       <strong>${this.state.bowler} to ${batterName}</strong>, 
                                       ${res === 'W' ? 'OUT! Massive wicket!' : res + ' runs. Shot! '}`;
         document.getElementById('commentary-feed').prepend(comm);
+
+        if (this.state.lastOverWasMaiden) {
+            const maidenComm = document.createElement('div');
+            maidenComm.className = "p-3 bg-emerald-600/20 border-l-4 border-emerald-500 text-sm font-bold animate-ball text-emerald-400 italic mt-2";
+            maidenComm.innerText = `MAIDEN OVER! Brilliant stuff from ${this.state.bowler}.`;
+            document.getElementById('commentary-feed').prepend(maidenComm);
+        }
     },
 
     getOrdinal(n) {
