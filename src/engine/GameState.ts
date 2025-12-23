@@ -4,7 +4,7 @@ import { Player, Squad, MatchHistoryEntry, CommentaryEntry } from "../types";
 export type FormatType = "T20" | "ODI" | "TEST";
 export type PitchType = "Green" | "Dry" | "Balanced" | "Flat" | "Dusty";
 
-interface PhaseConfig {
+export interface PhaseConfig {
     name: string;
     start: number;
     end: number;

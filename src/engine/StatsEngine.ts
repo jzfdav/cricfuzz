@@ -40,8 +40,8 @@ export class StatsEngine {
         else baseProb = 1;
 
         const resourceFactor = Math.pow(wicketsInHand / 10, 1.2);
-        const crr = current / (ballsThrown / 6 || 1);
-        const momentum = Math.max(0.8, Math.min(1.2, crr / rrr));
+        const crr = ballsThrown > 0 ? (current / (ballsThrown / 6)) : 0;
+        const momentum = rrr > 0 ? Math.max(0.8, Math.min(1.2, crr / rrr)) : 1;
 
         let finalProb = baseProb * resourceFactor * momentum;
 

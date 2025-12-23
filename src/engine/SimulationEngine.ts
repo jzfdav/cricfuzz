@@ -32,7 +32,7 @@ export class SimulationEngine {
         const b = GameState.balls.value; // Accessing signal directly since this is engine code
         const currentOver = Math.floor(b / 6);
         const phases = GameState.formatConfigs.phases[format];
-        const activePhase = phases ? phases.find((p: any) => currentOver >= p.start && currentOver <= p.end) : null;
+        const activePhase = phases ? phases.find((p) => currentOver >= p.start && currentOver <= p.end) : null;
 
         if (activePhase) {
             aggFactor *= activePhase.agg;
