@@ -92,7 +92,8 @@ export class MatchController {
     }
 
     startMatch(t1: string | null, t2: string | null, loopCallback: () => void) {
-        if (t1) GameState.teams.team1.value = null; // Reset if new
+        // if (t1) GameState.teams.team1.value = null; // Removed: This was wiping loaded teams
+
 
         // --- Match Winner Mechanic (X-Factor) ---
         const boostPlayer = (squad: Squad | undefined) => {
