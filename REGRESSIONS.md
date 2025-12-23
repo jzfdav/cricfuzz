@@ -50,3 +50,13 @@ This document records functionality regressions and issues identified during the
 - **Issue**: `ResultScreen.jsx` contained ` ```javascript ` and ` ``` ` lines, likely breaking the build.
 - **Reason**: Tool usage error where code blocks were pasted directly into the file content during a rewrite.
 - **Status**: ✅ Fixed (Removed artifacts).
+
+## 11. State Persistence (1-Ball Innings)
+- **Issue**: Starting a new match immediately after one ended (via "New Simulation") caused the 1st innings to end after just 1 ball if the previous match ended with an "All Out".
+- **Reason**: The `resetToConfig` method failed to reset the `allOut` flag to `false`. The new match inherited the "All Out" status of the old match.
+- **Status**: ✅ Fixed (Ensured full state reset on new match start).
+
+## 12. Missing Match Summary (MoM)
+- **Issue**: The "Match Summary" paragraph and "Man of the Match" (Top Performer) callout were missing from the Results screen.
+- **Reason**: The logic for generating the summary string was present in the deleted `main.js` but was not ported to `ResultScreen.jsx` during the migration.
+- **Status**: ✅ Fixed (Restored `getMatchDescription` logic in `ResultScreen.jsx`).

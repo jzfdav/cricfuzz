@@ -11,7 +11,12 @@ export function ResultScreen({ engine }) {
             <div className="text-center mt-10 mb-8">
                 <h2 className="text-xs uppercase tracking-[0.3em] text-amber-500 font-bold mb-2">Match Finished</h2>
                 <h1 className="text-3xl font-black italic mb-2">{result}</h1>
-                <p className="text-xs text-gray-400 italic">{GameState.tossResult.value}</p>
+                <p className="text-xs text-gray-400 italic mb-4">{GameState.tossResult.value}</p>
+                <div className="max-w-xl mx-auto p-4 bg-gray-800/30 rounded-xl border border-gray-800">
+                    <p className="text-sm text-gray-300 font-medium italic leading-relaxed">
+                        {getMatchDescription(history, GameState.teams.team1Name.value, GameState.teams.team2Name.value, GameState.format.value)}
+                    </p>
+                </div>
             </div>
 
             <div className="w-full max-w-2xl space-y-6 flex-grow overflow-y-auto pb-10">
@@ -83,3 +88,41 @@ export function ResultScreen({ engine }) {
         </div>
     );
 }
+
+function getMatchDescription(history, t1, t2, format) {
+    // Calculate total maidens for description
+    let totalMaidens = 0;
+    history.forEach(inn => {
+        inn.bowling.forEach(p => totalMaidens += (p.bowlStats.maidens || 0));
+    });
+
+    // Dynamic summary
+    let topPerformer = null;
+    let maxImpact = -1;
+
+    history.forEach(inn => {
+        inn.batting.forEach(p => {
+            if (p.batStats.runs > maxImpact) {
+                maxImpact = p.batStats.runs;
+                topPerformer = { name: p.name, stat: `${p.batStats.runs}(${p.batStats.balls})`, type: 'bat' };
+            }
+        });
+        inn.bowling.forEach(p => {
+            const bowlImpact = (p.bowlStats.wicketsTaken * 25) + (p.bowlStats.maidens * 15) - p.bowlStats.runsConceded;
+            if (bowlImpact > maxImpact) {
+                maxImpact = bowlImpact;
+                let statStr = `${p.bowlStats.wicketsTaken}/${p.bowlStats.runsConceded}`;
+                if (p.bowlStats.maidens > 0) statStr += ` (${p.bowlStats.maidens}m)`;
+                topPerformer = { name: p.name, stat: statStr, type: 'bowl' };
+            }
+        });
+    });
+
+    let description = `A thrilling ${format} encounter between ${t1} and ${t2}. `;
+    if (totalMaidens > 0) description += `Defensive pressure was key with ${totalMaidens} maiden over${totalMaidens > 1 ? 's' : ''} bowled. `;
+    if (topPerformer) {
+        description += `${topPerformer.name.split(' ').pop()}'s ${topPerformer.stat} was the standout performance of the match.`;
+    }
+    return description;
+}
+

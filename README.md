@@ -48,9 +48,10 @@ Build output is in the `dist/` directory, ready for deployment to any static hos
 ```
 cricfuzz/
 ├── src/
-│   ├── main.js          # Legacy Logic (Active)
-│   ├── engine/          # New Game Engine (Phase 2)
-│   ├── components/      # New Preact Components (Phase 3)
+│   ├── engine/          # Game Logic & State (Signals + Class)
+│   ├── components/      # Preact Components (UI)
+│   ├── app.jsx          # Main App Component
+│   ├── main.jsx         # Entry Point
 │   └── style.css        # Tailwind directives
 ├── public/
 │   └── teams/           # Team JSON data
@@ -62,10 +63,16 @@ cricfuzz/
 ## Technologies
 
 - **Vite**: Fast build tool
-- **Preact** (In Migration): Faster React alternative for UI
-- **Signals**: Reactive state management
+- **Preact**: Lightweight React alternative (Migration Complete)
+- **Signals**: High-performance reactive state management
 - **Tailwind CSS**: Utility-first CSS
-- **Vanilla JS**: Powering the legacy simulation loop
+
+## New Features (Post-Migration)
+
+- **X-Factor Mechanic**: Lucky players get a random 10-30% skill boost each match.
+- **Randomize Teams**: One-click instant matchup generation.
+- **Test Match Support**: Full 4-innings simulation support.
+- **Detailed Scorecards**: Expanded views for all players.
 
 ## License
 
