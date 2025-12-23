@@ -334,10 +334,25 @@ export class GameEngine {
         else if (pitch === "Dusty") { batterSkill *= 0.9; bowlerSkill *= 1.1; }
 
         const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+        let aggFactor = clamp((batterAggression / 90) * config.aggMod, 0.5, 1.8);
         const skillFactor = clamp(batterSkill / 90, 0.6, 1.4);
-        const aggFactor = clamp((batterAggression / 90) * config.aggMod, 0.5, 1.8);
         const bowlSkillFactor = clamp(bowlerSkill / 90, 0.6, 1.4);
         const ecoFactor = clamp((10 - bowlerEconomy) / 3, 0.4, 1.8);
+
+        // --- Phase Logic ---
+        const b = GameState.balls.value;
+        const currentOver = Math.floor(b / 6);
+        const phases = config.phases?.[format] || [];
+        const activePhase = phases.find(p => currentOver >= p.start && currentOver <= p.end);
+
+        if (activePhase) {
+            aggFactor *= activePhase.agg;
+            weights[0] *= activePhase.dot;   // Dot Ball
+            weights[3] *= activePhase.bound; // Fours
+            weights[4] *= activePhase.bound; // Sixes
+            weights[5] *= activePhase.wick;  // Wickets
+        }
+        // -------------------
 
         weights[0] *= config.dotMod * ecoFactor / skillFactor;
         weights[1] *= skillFactor;

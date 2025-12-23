@@ -1,4 +1,4 @@
-import { GameState, currentOver, runRate } from "../engine/GameState";
+import { GameState, currentOver, runRate, currentPhase } from "../engine/GameState";
 
 export function Scoreboard() {
     return (
@@ -8,7 +8,14 @@ export function Scoreboard() {
                     <h1 className="text-4xl font-black mono tracking-tighter text-white">
                         {GameState.score.value}-{GameState.wickets.value}
                     </h1>
-                    <p className="text-sm text-gray-400 font-bold">{currentOver.value} OVERS</p>
+                    <div className="flex items-center gap-2">
+                        <p className="text-sm text-gray-400 font-bold">{currentOver.value} OVERS</p>
+                        {currentPhase.value && (
+                            <span className="text-[10px] font-black uppercase bg-amber-500/20 text-amber-500 px-2 py-0.5 rounded border border-amber-500/30">
+                                {currentPhase.value}
+                            </span>
+                        )}
+                    </div>
                 </div>
                 <div className="text-right">
                     <p className={`text-[10px] font-bold uppercase ${GameState.innings.value === 2 ? 'text-amber-500' : 'text-gray-500'}`}>
