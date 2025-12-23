@@ -22,13 +22,27 @@ export function Scoreboard() {
             <div className="bg-[#0B0E14] rounded-lg p-3 border border-gray-800 grid grid-cols-2 gap-4 mb-3">
                 <div>
                     <p className="text-sm font-bold text-amber-400 italic">
-                        {GameState.striker.value.name}* <span className="text-white not-italic">{GameState.striker.value.batStats.runs}({GameState.striker.value.batStats.balls})</span>
+                        {GameState.striker.value.name.split(' ').pop()}* <span className="text-white not-italic">{GameState.striker.value.batStats.runs}({GameState.striker.value.batStats.balls})</span>
+                    </p>
+                    <p className="text-xs text-gray-400 mt-1">
+                        {GameState.nonStriker.value.name.split(' ').pop()} <span className="text-gray-300">{GameState.nonStriker.value.batStats.runs}({GameState.nonStriker.value.batStats.balls})</span>
                     </p>
                 </div>
                 <div className="text-right border-l border-gray-700 pl-4">
                     <p className="text-sm font-bold text-gray-300">
-                        {GameState.bowler.value} <span className="text-xs text-gray-500 font-normal">{GameState.overRuns.value} runs off over</span>
+                        {GameState.bowler.value.split(' ').pop()}
                     </p>
+                    {(() => {
+                        const bowlerObj = GameState.bowlingSquad.value.find(p => p.name === GameState.bowler.value);
+                        if (!bowlerObj) return null;
+                        const cv = bowlerObj.bowlStats;
+                        return (
+                            <p className="text-xs text-amber-500 font-mono mt-1">
+                                {cv.wicketsTaken}-{cv.runsConceded} <span className="text-gray-500">({Math.floor(cv.balls / 6)}.{cv.balls % 6})</span>
+                            </p>
+                        );
+                    })()}
+                    <p className="text-[9px] text-gray-600 mt-1 uppercase tracking-wider">This Over: {GameState.overRuns.value}</p>
                 </div>
             </div>
 
