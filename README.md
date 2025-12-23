@@ -17,6 +17,14 @@ The latest version is automatically deployed to GitHub Pages.
 - **Detailed Scorecards**: Visual worm graphs and detailed batting/bowling stats.
 - **10 International Teams**: India, Australia, England and more.
 
+## Disclaimer
+
+**CricFuzz is a non-commercial, educational project.**
+
+All player names, team names, and likenesses used in this simulation are for identification purposes only. This project is not affiliated with, endorsed by, or sponsored by the ICC, BCCI, Cricket Australia, or any other official cricket board or players' association.
+
+All data is simulated and does not reflect real-world performance or events.
+
 ## Development
 
 For instructions on setting up the project locally, building for production, or understanding the code architecture, please see the **[Development Guide](DEVELOPMENT.md)**.
