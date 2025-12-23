@@ -78,7 +78,13 @@ export class CommentaryEngine {
     }
 
     getCommentary(result, state, bowlerName, batterName) {
-        const { score, wickets, balls, target, format } = state;
+        // Fix: State values are Preact Signals, so we need to access .value
+        const score = state.score.value;
+        const wickets = state.wickets.value;
+        const balls = state.balls.value;
+        const target = state.target.value;
+        const format = state.format.value;
+
         const over = Math.floor(balls / 6);
         const ballInOver = balls % 6;
         const config = format === 'T20' ? { balls: 120 } : format === 'ODI' ? { balls: 300 } : { balls: 2400 };

@@ -81,3 +81,13 @@ This document records functionality regressions and issues identified during the
 - **Reason**: The combination of `wicketMod: 1.1` and high dot ball pressure was too lethal.
 - **Status**: ✅ Fixed (Reduced `wicketMod` to `0.9`, increased `boundaryMod` to `0.75`).
 
+## 17. Commentary Over Timestamp
+- **Issue**: The last ball of an over (e.g., 0.6) was displaying as "1.0" in the commentary feed.
+- **Reason**: The `balls` counter was incremented before the string generation, causing an off-by-one error for the 6th ball.
+- **Status**: ✅ Fixed (Adjusted over calculation to use `(balls-1)` logic).
+
+## 18. Missing Contextual Commentary
+- **Issue**: "Close Game" and "Death Overs" commentary lines were never triggered.
+- **Reason**: `commentary.js` was trying to access `target` and `score` directly from the `GameState` object, but they are Signals and require `.value`.
+- **Status**: ✅ Fixed (Added proper signal destructuring in `getCommentary`).
+

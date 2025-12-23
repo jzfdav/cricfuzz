@@ -461,12 +461,11 @@ export class GameEngine {
     addCommentary(text, type) {
         // ... (standard implementation)
         if (!text) return;
-        // Import computed helpers locally or assume GameState imports them if needed, 
-        // but here we need to recalculate currentOver since we can't easily import computed in class
-        // Actually we can import it.
-        // For simplicity:
+
+        // Fix: Use b-1 to ensure ball 6 is 0.6, not 1.0 (which confuses with next over)
         const b = GameState.balls.value;
-        const overStr = `${Math.floor(b / 6)}.${b % 6}`;
+        const ballIndex = b > 0 ? b - 1 : 0;
+        const overStr = `${Math.floor(ballIndex / 6)}.${(ballIndex % 6) + 1}`;
 
         const entry = {
             id: Date.now() + Math.random(),
