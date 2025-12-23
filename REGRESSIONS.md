@@ -60,3 +60,8 @@ This document records functionality regressions and issues identified during the
 - **Issue**: The "Match Summary" paragraph and "Man of the Match" (Top Performer) callout were missing from the Results screen.
 - **Reason**: The logic for generating the summary string was present in the deleted `main.js` but was not ported to `ResultScreen.jsx` during the migration.
 - **Status**: ✅ Fixed (Restored `getMatchDescription` logic in `ResultScreen.jsx`).
+
+## 13. High ODI Scores (Balancing)
+- **Issue**: ODI matches were consistently producing unrealistic totals (390+), indicating an imbalance in the simulation engine for 50-over formats.
+- **Reason**: The base engine values were too aggressive for the longer format.
+- **Status**: ✅ Fixed (Aggressively tuned ODI modifiers: Dot Balls +50%, Boundaries -30%).
