@@ -29,52 +29,7 @@ This document outlines planned and in-progress features for the CricFuzz simulat
 - **Features**: "Top Performer" Logic, Dynamic Description.
 
 
-## 3. Ball Pill Styling Refactor
 
-### Current State
-- **Status**: CSS class exists but unused, inline Tailwind classes used instead
-- **Location**: `src/style.css` line 20-22 (`.ball-pill` class)
-- **What exists**: Custom CSS class defined but never applied; code uses inline Tailwind utilities
-
-### Current Implementation
-```javascript
-pill.className = `px-3 py-1 rounded mono text-xs animate-ball ${res === 'W' ? 'bg-red-600' : res >= 4 ? 'bg-emerald-600' : 'bg-gray-700'}`;
-```
-
-### Refactor Plan
-
-#### Option A: Use Custom Class (Recommended)
-1. **Update CSS**:
-   - Keep `.ball-pill` base styles
-   - Add modifier classes: `.ball-pill--wicket`, `.ball-pill--boundary`, `.ball-pill--normal`
-   - Or use CSS variables for dynamic colors
-
-2. **Update JavaScript**:
-   ```javascript
-   pill.className = 'ball-pill';
-   if (res === 'W') pill.classList.add('ball-pill--wicket');
-   else if (res >= 4) pill.classList.add('ball-pill--boundary');
-   else pill.classList.add('ball-pill--normal');
-   ```
-
-#### Option B: Remove Unused CSS
-- Simply delete `.ball-pill` class if Tailwind approach is preferred
-- Cleaner if maintaining Tailwind-only styling
-
-### Benefits of Option A
-- Better separation of concerns
-- Easier to maintain consistent styling
-- Can add animations/transitions in CSS
-- More performant (single class vs multiple utilities)
-
-### Estimated Effort
-- **Option A**: 1 hour (CSS + JS updates)
-- **Option B**: 5 minutes (delete unused CSS)
-
-### Priority
-**Low** - Code works fine as-is, refactor is optional.
-
----
 
 ## 4. Phased Gameplay (Powerplays)
 - **Status**: ✅ COMPLETED
@@ -91,7 +46,7 @@ pill.className = `px-3 py-1 rounded mono text-xs animate-ball ${res === 'W' ? 'b
 |---------|----------|--------|--------|
 | Maiden Overs Tracking | Medium | 4-6 hours | High (adds realism) |
 | Enhanced Result Messages | Low | 3-5 hours | Low (cosmetic) |
-| Ball Pill Styling Refactor | Low | 1 hour | Low (code quality) |
+
 
 ### Recommended Order
 1. **Maiden Overs** - Most valuable feature, adds statistical completeness

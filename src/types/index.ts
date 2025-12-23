@@ -24,10 +24,7 @@ export interface Player {
 
 export type Squad = Player[];
 
-export interface Team {
-    name: string;
-    squad: Squad;
-}
+
 
 export interface MatchHistoryEntry {
     team: string;
