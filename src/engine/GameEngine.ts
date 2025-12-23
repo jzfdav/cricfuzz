@@ -189,6 +189,7 @@ export class GameEngine {
         this.resetToConfig();
         this.resetPlayerStats();
         this.performToss();
+        GameState.view.value = "live";
         GameState.isRunning.value = true;
         this.loop();
     }
