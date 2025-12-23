@@ -1,16 +1,95 @@
 {
-  "id": "SL", "name": "Sri Lanka", "color": "#FFBE29",
+  "id": "SL",
+  "name": "Sri Lanka",
+  "color": "#FFBE29",
   "players": [
-    { "name": "Pathum Nissanka", "role": "Batsman", "skill": 89, "aggression": 78 },
-    { "name": "Kusal Mendis", "role": "Wicketkeeper", "skill": 87, "aggression": 85 },
-    { "name": "Kusal Perera", "role": "Batsman", "skill": 85, "aggression": 92 },
-    { "name": "Charith Asalanka", "role": "Batsman", "skill": 88, "aggression": 82 },
-    { "name": "Kamindu Mendis", "role": "All-Rounder", "skill": 86, "aggression": 80 },
-    { "name": "Wanindu Hasaranga", "role": "All-Rounder", "skill": 92, "economy": 6.7 },
-    { "name": "Dasun Shanaka", "role": "All-Rounder", "skill": 82, "aggression": 88 },
-    { "name": "Maheesh Theekshana", "role": "Bowler", "skill": 90, "economy": 6.5 },
-    { "name": "Matheesha Pathirana", "role": "Bowler", "skill": 91, "economy": 7.8 },
-    { "name": "Dilshan Madushanka", "role": "Bowler", "skill": 87, "economy": 7.4 },
-    { "name": "Nuwan Thushara", "role": "Bowler", "skill": 86, "economy": 7.6 }
+    {
+      "name": "Pathum Nissanka",
+      "role": "Batsman",
+      "battingSkill": 89,
+      "bowlingSkill": 0,
+      "aggression": 78,
+      "economy": 0
+    },
+    {
+      "name": "Kusal Mendis",
+      "role": "Wicketkeeper",
+      "battingSkill": 87,
+      "bowlingSkill": 0,
+      "aggression": 85,
+      "economy": 0
+    },
+    {
+      "name": "Kusal Perera",
+      "role": "Batsman",
+      "battingSkill": 85,
+      "bowlingSkill": 0,
+      "aggression": 92,
+      "economy": 0
+    },
+    {
+      "name": "Charith Asalanka",
+      "role": "Batsman",
+      "battingSkill": 88,
+      "bowlingSkill": 45,
+      "aggression": 82,
+      "economy": 8.2
+    },
+    {
+      "name": "Kamindu Mendis",
+      "role": "All-Rounder",
+      "battingSkill": 86,
+      "bowlingSkill": 80,
+      "aggression": 80,
+      "economy": 7.5
+    },
+    {
+      "name": "Wanindu Hasaranga",
+      "role": "All-Rounder",
+      "battingSkill": 78,
+      "bowlingSkill": 92,
+      "aggression": 85,
+      "economy": 6.7
+    },
+    {
+      "name": "Dasun Shanaka",
+      "role": "All-Rounder",
+      "battingSkill": 82,
+      "bowlingSkill": 78,
+      "aggression": 88,
+      "economy": 8.1
+    },
+    {
+      "name": "Maheesh Theekshana",
+      "role": "Bowler",
+      "battingSkill": 15,
+      "bowlingSkill": 90,
+      "aggression": 25,
+      "economy": 6.5
+    },
+    {
+      "name": "Matheesha Pathirana",
+      "role": "Bowler",
+      "battingSkill": 10,
+      "bowlingSkill": 91,
+      "aggression": 30,
+      "economy": 7.8
+    },
+    {
+      "name": "Dilshan Madushanka",
+      "role": "Bowler",
+      "battingSkill": 10,
+      "bowlingSkill": 87,
+      "aggression": 25,
+      "economy": 7.4
+    },
+    {
+      "name": "Nuwan Thushara",
+      "role": "Bowler",
+      "battingSkill": 5,
+      "bowlingSkill": 86,
+      "aggression": 20,
+      "economy": 7.6
+    }
   ]
 }

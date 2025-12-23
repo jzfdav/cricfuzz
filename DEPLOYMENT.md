@@ -9,9 +9,12 @@ This guide explains how to deploy CricFuzz to GitHub Pages.
 
 ## Deployment Methods
 
-### Method 1: GitHub Actions (Recommended) ✅
+### Method 1: GitHub Actions (Active) ✅
 
-**Already configured!** The workflow file `.github/workflows/deploy.yml` is set up.
+**Current Configuration**: The project is using GitHub Actions via `.github/workflows/deploy.yml`.
+**Trigger**: Pushing code to the `main` branch.
+
+> **Note**: If you don't see changes immediately, check the **Actions** tab in your repository to ensure the `Deploy to GitHub Pages` workflow has finished successfully. Manual `npm run deploy` pushes to `gh-pages` branch, but if your repo is set to "Source: GitHub Actions", it ignores that branch.
 
 #### Steps:
 

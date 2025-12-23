@@ -1,5 +1,6 @@
 // CRICFUZZ ENGINE LOGIC
 import './style.css';
+import { CommentaryEngine } from './commentary.js';
 
 const app = {
     teams: {
@@ -27,11 +28,15 @@ const app = {
         format: "T20",
         totalTeam1Score: 0,
         totalTeam2Score: 0,
+        pitch: "Balanced",
+        toss: "",
         history: [], // Stores scorecard for each innings
         allOut: false,
         overRuns: 0,
-        lastOverWasMaiden: false
+        lastOverWasMaiden: false,
+        lastMilestone: null
     },
+    commentary: new CommentaryEngine(),
 
     preventSameTeam(selectedVal, otherDropdownId) {
         const otherDropdown = document.getElementById(otherDropdownId);
@@ -75,8 +80,12 @@ const app = {
         this.state.overRuns = 0;
         this.state.lastOverWasMaiden = false;
 
+        // Randomize Pitch
+        const pitches = ["Flat", "Green", "Dusty", "Balanced"];
+        this.state.pitch = pitches[Math.floor(Math.random() * pitches.length)];
+
         const targetEl = document.getElementById('target-display');
-        targetEl.innerText = "1st INNINGS";
+        targetEl.innerText = "Initializing...";
         targetEl.classList.remove('text-amber-500');
         targetEl.classList.add('text-gray-500');
 
@@ -90,6 +99,9 @@ const app = {
         const speedVal = parseInt(document.getElementById('speed-slider').value);
         this.state.speed = speedVal;
         document.getElementById('live-speed-slider').value = speedVal;
+
+        // Perform Toss
+        this.performToss(t1, t2);
 
         this.loop();
     },
@@ -130,13 +142,19 @@ const app = {
             this.teams.team1Name = safeTeam1.name || t1.toUpperCase();
             this.teams.team2Name = safeTeam2.name || t2.toUpperCase();
 
-            // Innings 1: Team 1 bats
+            // Strategic Ordering: Sort by batting skill
+            this.teams.team1.sort((a, b) => (b.battingSkill || 0) - (a.battingSkill || 0));
+            this.teams.team2.sort((a, b) => (b.battingSkill || 0) - (a.battingSkill || 0));
+
+            // Initial setup (will be overridden by toss)
             this.teams.batting = this.teams.team1;
             this.teams.bowling = this.teams.team2;
+            this.state.battingTeam = this.teams.team1Name;
+            this.state.bowlingTeam = this.teams.team2Name;
 
             this.state.striker = this.teams.batting[0];
             this.state.nonStriker = this.teams.batting[1] || this.teams.batting[0];
-            const defaultBowler = this.teams.bowling.find(p => p.role === 'Bowler' || p.role === 'All-Rounder') || this.teams.bowling[0];
+            const defaultBowler = [...this.teams.bowling].sort((a, b) => (b.bowlingSkill || 0) - (a.bowlingSkill || 0))[0];
             this.state.bowler = defaultBowler ? defaultBowler.name : "Bowler";
         } catch (err) {
             console.error(err);
@@ -160,11 +178,17 @@ const app = {
         // Base weights: [0, 1, 2, 4, 6, W]
         let weights = [35, 30, 10, 15, 5, 5];
 
-        // Defensive defaults so missing data never breaks the engine
-        const batterAggression = typeof batter.aggression === 'number' ? batter.aggression : 70;
-        const batterSkill = typeof batter.skill === 'number' ? batter.skill : 75;
-        const bowlerSkill = bowler && typeof bowler.skill === 'number' ? bowler.skill : 75;
-        const bowlerEconomy = bowler && typeof bowler.economy === 'number' ? bowler.economy : 8.0;
+        // Batting/Bowling logic using separate skills
+        let batterSkill = typeof batter.battingSkill === 'number' ? batter.battingSkill : 75;
+        let batterAggression = typeof batter.aggression === 'number' ? batter.aggression : 70;
+        let bowlerSkill = bowler && typeof bowler.bowlingSkill === 'number' ? bowler.bowlingSkill : 75;
+        let bowlerEconomy = bowler && typeof bowler.economy === 'number' ? bowler.economy : 8.0;
+
+        // Pitch Effects
+        if (this.state.pitch === "Flat") { batterSkill *= 1.1; bowlerSkill *= 0.9; }
+        else if (this.state.pitch === "Green") { batterSkill *= 0.95; bowlerSkill *= 1.15; }
+        else if (this.state.pitch === "Dusty") { batterSkill *= 0.9; bowlerSkill *= 1.1; }
+
 
         // Clamp values into sane ranges
         const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
@@ -245,7 +269,13 @@ const app = {
             }
         } else {
             this.state.score += res;
+            const currentRuns = this.state.striker.batStats.runs;
             this.state.striker.batStats.runs += res;
+            const newRuns = this.state.striker.batStats.runs;
+
+            if (currentRuns < 50 && newRuns >= 50) this.state.lastMilestone = 'fifty';
+            else if (currentRuns < 100 && newRuns >= 100) this.state.lastMilestone = 'century';
+
             if (res === 4) this.state.striker.batStats.fours++;
             if (res === 6) this.state.striker.batStats.sixes++;
             if (res % 2 !== 0) [this.state.striker, this.state.nonStriker] = [this.state.nonStriker, this.state.striker];
@@ -263,29 +293,8 @@ const app = {
             }
 
             // Determine realistic bowling rotation with simple over limits
-            const config = this.formatConfigs[this.state.format];
-            let maxOversPerBowler = Infinity;
-            if (this.state.format === 'T20') maxOversPerBowler = 4;
-            else if (this.state.format === 'ODI') maxOversPerBowler = 10;
-
-            const currentName = this.state.bowler;
-            const eligible = this.teams.bowling.filter(b => {
-                if (!(b.role === 'Bowler' || b.role === 'All-Rounder')) return false;
-                const oversBowled = Math.floor((b.bowlStats.balls || 0) / 6);
-                return oversBowled < maxOversPerBowler;
-            });
-
-            let candidates = eligible.length > 0 ? eligible : this.teams.bowling.filter(b => (b.role === 'Bowler' || b.role === 'All-Rounder'));
-
-            // Prefer not to bowl the same bowler in consecutive overs if alternatives exist
-            const nonCurrent = candidates.filter(b => b.name !== currentName);
-            if (nonCurrent.length > 0) {
-                candidates = nonCurrent;
-            }
-
-            if (candidates.length > 0) {
-                this.state.bowler = candidates[Math.floor(Math.random() * candidates.length)].name;
-            }
+            // Determine realistic bowling rotation using Skill-based selection
+            this.selectBestBowler(this.state.bowler);
         }
     },
 
@@ -356,8 +365,9 @@ const app = {
 
             this.state.striker = this.teams.batting[0];
             this.state.nonStriker = this.teams.batting[1];
-            const defaultBowler = this.teams.bowling.find(p => p.role === 'Bowler' || p.role === 'All-Rounder');
-            this.state.bowler = defaultBowler ? defaultBowler.name : (this.teams.bowling[0]?.name || "Bowler");
+
+            // Invoke Skill-based selection for the new innings
+            this.selectBestBowler();
 
             this.state.isRunning = true;
             this.loop();
@@ -396,6 +406,10 @@ const app = {
         }
 
         if (inningsEnded && !isLastInnings) {
+            const comm = document.createElement('div');
+            comm.className = "p-3 bg-gray-800 text-amber-500 font-bold text-center uppercase tracking-widest rounded mb-4 animate-pulse";
+            comm.innerText = "End of Innings. Preparing for the next phase...";
+            document.getElementById('commentary-feed').prepend(comm);
             this.switchInnings();
         }
     },
@@ -617,9 +631,129 @@ const app = {
         if (this.state.lastOverWasMaiden) {
             const maidenComm = document.createElement('div');
             maidenComm.className = "p-3 bg-emerald-600/20 border-l-4 border-emerald-500 text-sm font-bold animate-ball text-emerald-400 italic mt-2";
-            maidenComm.innerText = `MAIDEN OVER! Brilliant stuff from ${this.state.bowler}.`;
+            maidenComm.innerText = this.commentary.getMaidenCommentary();
             document.getElementById('commentary-feed').prepend(maidenComm);
         }
+
+        if (this.state.lastMilestone) {
+            const milestoneComm = document.createElement('div');
+            milestoneComm.className = "p-3 bg-purple-600/20 border-l-4 border-purple-500 text-sm font-bold animate-ball text-purple-400 italic mt-2";
+            milestoneComm.innerText = this.commentary.getMilestoneCommentary(this.state.lastMilestone);
+            document.getElementById('commentary-feed').prepend(milestoneComm);
+            this.state.lastMilestone = null; // Reset
+        }
+
+        // Vibe/Situational Commentary
+        const vibe = this.getVibeyCommentary(res);
+        if (vibe) {
+            const vibeComm = document.createElement('div');
+            vibeComm.className = "p-3 bg-amber-500/10 border-l-4 border-amber-500 text-xs font-medium animate-ball text-amber-200/80 italic mt-1 mb-1";
+            vibeComm.innerText = vibe;
+            document.getElementById('commentary-feed').prepend(vibeComm);
+        }
+    },
+
+    performToss(t1, t2) {
+        // Pitch Influence on Toss Decision
+        // Green: Favors Bowling (70%)
+        // Flat: Favors Batting (70%)
+        // Dusty: Favors Batting slightly (60%)
+        // Balanced: Neutral (50%)
+
+        let bowlProb = 0.5;
+        if (this.state.pitch === "Green") bowlProb = 0.7;
+        else if (this.state.pitch === "Flat") bowlProb = 0.3;
+        else if (this.state.pitch === "Dusty") bowlProb = 0.4;
+
+        const winner = Math.random() > 0.5 ? 1 : 2; // Coin toss is always 50/50
+        const decisionRoll = Math.random();
+        const decision = decisionRoll < bowlProb ? "BOWL" : "BAT";
+
+        const winnerName = winner === 1 ? this.teams.team1Name : this.teams.team2Name;
+        this.state.toss = `${winnerName} won the toss and elected to ${decision}`;
+
+        // Apply Decision
+        if ((winner === 1 && decision === "BAT") || (winner === 2 && decision === "BOWL")) {
+            this.teams.batting = this.teams.team1;
+            this.teams.bowling = this.teams.team2;
+            this.state.battingTeam = this.teams.team1Name;
+            this.state.bowlingTeam = this.teams.team2Name;
+        } else {
+            this.teams.batting = this.teams.team2;
+            this.teams.bowling = this.teams.team1;
+            this.state.battingTeam = this.teams.team2Name;
+            this.state.bowlingTeam = this.teams.team1Name;
+        }
+
+        // Reset Strikers based on final batting team
+        this.state.striker = this.teams.batting[0];
+        this.state.nonStriker = this.teams.batting[1] || this.teams.batting[0];
+
+        // Initial Bowler Choice: Highest Skill Bowler
+        this.selectBestBowler();
+
+        // Update UI
+        const targetEl = document.getElementById('target-display');
+        targetEl.innerText = "1st INNINGS";
+
+        // Display Intro
+        const intro = document.createElement('div');
+        intro.className = "p-4 bg-gray-900 border border-gray-800 rounded-xl mb-4 shadow-xl";
+        intro.innerHTML = `
+            <div class="text-amber-500 font-black text-xs uppercase tracking-tighter mb-2">Match Roundup</div>
+            <div class="text-white font-bold text-sm mb-1">${this.state.toss}</div>
+            <div class="text-gray-500 text-[11px]">Pitch Condition: <span class="text-emerald-400 font-bold">${this.state.pitch}</span></div>
+        `;
+        document.getElementById('commentary-feed').prepend(intro);
+
+        // Narrative Intro Commentary
+        const introComm = document.createElement('div');
+        introComm.className = "p-3 bg-gray-800 border-l-4 border-gray-600 text-sm font-medium animate-ball text-gray-400 italic mt-2";
+        introComm.innerText = this.commentary.getIntroCommentary(winnerName, decision, this.state.pitch);
+        document.getElementById('commentary-feed').prepend(introComm);
+    },
+
+    selectBestBowler(currentBowlerName = null) {
+        // Filter valid bowlers (Role = Bowler/All-Rounder)
+        // Checks over limits
+        // Sorts by Skill (Desc)
+        // Avoids previous bowler if possible (one end rule) - though typically in sim we just avoid same bowler twice in row
+
+        const config = this.formatConfigs[this.state.format];
+        let maxOversPerBowler = Infinity;
+        if (this.state.format === 'T20') maxOversPerBowler = 4;
+        else if (this.state.format === 'ODI') maxOversPerBowler = 10;
+
+        const eligible = this.teams.bowling.filter(b => {
+            if (!(b.role === 'Bowler' || b.role === 'All-Rounder')) return false;
+            const oversBowled = Math.floor((b.bowlStats.balls || 0) / 6);
+            if (oversBowled >= maxOversPerBowler) return false;
+            // Cannot bowl two overs in a row
+            if (currentBowlerName && b.name === currentBowlerName) return false;
+            return true;
+        });
+
+        // If no one eligible (everyone bowled out? rare), fallback to anyone who isn't current
+        let candidates = eligible;
+        if (candidates.length === 0) {
+            candidates = this.teams.bowling.filter(b => b.name !== currentBowlerName);
+        }
+
+        // Sort by Bowling Skill (Descending)
+        // We add a tiny random factor to avoid identical deterministic sequences if skills are same
+        candidates.sort((a, b) => {
+            const skillA = (a.bowlingSkill || 75) + Math.random();
+            const skillB = (b.bowlingSkill || 75) + Math.random();
+            return skillB - skillA;
+        });
+
+        if (candidates.length > 0) {
+            this.state.bowler = candidates[0].name;
+        }
+    },
+
+    getVibeyCommentary(res) {
+        return this.commentary.getCommentary(res, this.state, this.state.bowler, this.state.striker.name);
     },
 
     getOrdinal(n) {

@@ -1,0 +1,111 @@
+import { useState } from 'preact/hooks';
+import { GameState } from '../engine/GameState';
+
+export function ConfigScreen({ engine }) {
+    const [t1, setT1] = useState('ind');
+    const [t2, setT2] = useState('aus');
+    const [format, setFormat] = useState('T20');
+    const [loading, setLoading] = useState(false);
+
+    const handleStart = async () => {
+        setLoading(true);
+        try {
+            await engine.loadTeams(t1, t2);
+            engine.performToss(t1, t2);
+            GameState.format.value = format;
+            engine.startMatch();
+        } catch (e) {
+            alert("Failed to load teams: " + e.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const preventSame = (val, isT1) => {
+        if (isT1) {
+            setT1(val);
+            if (val === t2) setT2(val === 'ind' ? 'aus' : 'ind');
+        } else {
+            setT2(val);
+            if (val === t1) setT1(val === 'ind' ? 'aus' : 'ind');
+        }
+    };
+
+    const teams = [
+        { id: 'ind', name: 'India' }, { id: 'aus', name: 'Australia' }, { id: 'eng', name: 'England' },
+        { id: 'afg', name: 'Afghanistan' }, { id: 'ban', name: 'Bangladesh' }, { id: 'ire', name: 'Ireland' },
+        { id: 'nz', name: 'New Zealand' }, { id: 'sl', name: 'Sri Lanka' }, { id: 'wi', name: 'West Indies' },
+        { id: 'zim', name: 'Zimbabwe' }
+    ];
+
+    return (
+        <div className="min-h-screen flex flex-col items-center justify-center p-6 space-y-8 animate-fade-in">
+            <div className="text-center">
+                <h2 className="text-xs uppercase tracking-[0.3em] text-amber-500 font-bold mb-2">Vibe Coded Simulation</h2>
+                <h1 className="text-5xl font-black italic text-white">CRICFUZZ</h1>
+            </div>
+
+            <div className="w-full max-w-md space-y-4">
+                {/* Team Selection */}
+                <div className="bg-[#161B22] p-6 rounded-2xl border border-gray-800 space-y-4">
+                    <div className="grid grid-cols-2 gap-4 text-[10px] text-gray-500 uppercase font-bold">
+                        <span>Home Team</span>
+                        <span className="text-right">Away Team</span>
+                    </div>
+                    <div className="flex items-center gap-4">
+                        <TeamSelect value={t1} onChange={(v) => preventSame(v, true)} teams={teams} />
+                        <span className="font-black text-gray-600">VS</span>
+                        <TeamSelect value={t2} onChange={(v) => preventSame(v, false)} teams={teams} alignRight />
+                    </div>
+                </div>
+
+                {/* Format and Speed */}
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="p-4 bg-[#161B22] rounded-2xl border border-gray-800">
+                        <label className="text-[10px] text-gray-500 uppercase block mb-2">Format</label>
+                        <select
+                            value={format}
+                            onChange={(e) => setFormat(e.target.value)}
+                            className="w-full bg-transparent text-amber-500 font-bold outline-none text-xl"
+                        >
+                            <option value="T20">T20</option>
+                            <option value="ODI">ODI</option>
+                        </select>
+                    </div>
+                    <div className="p-4 bg-[#161B22] rounded-2xl border border-gray-800">
+                        <label className="text-[10px] text-gray-500 uppercase block mb-2 flex justify-between">
+                            <span>Sim Speed</span>
+                            <span className="text-amber-500">{GameState.speed.value}x</span>
+                        </label>
+                        <input
+                            type="range" min="1" max="100"
+                            value={GameState.speed.value}
+                            onInput={(e) => engine.setSpeed(parseInt(e.target.value))}
+                            className="w-full accent-amber-500"
+                        />
+                    </div>
+                </div>
+
+                <button
+                    onClick={handleStart}
+                    disabled={loading}
+                    className="w-full bg-amber-500 text-black py-5 rounded-2xl font-black uppercase tracking-widest text-xl shadow-lg active:scale-95 transition-transform disabled:opacity-50"
+                >
+                    {loading ? "Loading..." : "Start Match"}
+                </button>
+            </div>
+        </div>
+    );
+}
+
+function TeamSelect({ value, onChange, teams, alignRight }) {
+    return (
+        <select
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            className={`w-full bg-transparent text-2xl font-black text-amber-500 outline-none ${alignRight ? 'text-right' : 'text-left'}`}
+        >
+            {teams.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
+        </select>
+    );
+}

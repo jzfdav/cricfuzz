@@ -1,16 +1,95 @@
 {
-  "id": "ENG", "name": "England", "color": "#CE1124",
+  "id": "ENG",
+  "name": "England",
+  "color": "#CE1124",
   "players": [
-    { "name": "Phil Salt", "role": "Batsman", "skill": 90, "aggression": 95 },
-    { "name": "Jos Buttler", "role": "Wicketkeeper", "skill": 92, "aggression": 90 },
-    { "name": "Will Jacks", "role": "All-Rounder", "skill": 86, "aggression": 92 },
-    { "name": "Harry Brook", "role": "Batsman", "skill": 91, "aggression": 85 },
-    { "name": "Jacob Bethell", "role": "All-Rounder", "skill": 82, "aggression": 88 },
-    { "name": "Liam Livingstone", "role": "All-Rounder", "skill": 85, "aggression": 94 },
-    { "name": "Sam Curran", "role": "All-Rounder", "skill": 86, "aggression": 75 },
-    { "name": "Adil Rashid", "role": "Bowler", "skill": 90, "economy": 7.1 },
-    { "name": "Jofra Archer", "role": "Bowler", "skill": 92, "economy": 7.3 },
-    { "name": "Saqib Mahmood", "role": "Bowler", "skill": 84, "economy": 8.0 },
-    { "name": "Reece Topley", "role": "Bowler", "skill": 86, "economy": 7.5 }
+    {
+      "name": "Phil Salt",
+      "role": "Batsman",
+      "battingSkill": 90,
+      "bowlingSkill": 0,
+      "aggression": 95,
+      "economy": 0
+    },
+    {
+      "name": "Jos Buttler",
+      "role": "Wicketkeeper",
+      "battingSkill": 92,
+      "bowlingSkill": 0,
+      "aggression": 90,
+      "economy": 0
+    },
+    {
+      "name": "Will Jacks",
+      "role": "All-Rounder",
+      "battingSkill": 86,
+      "bowlingSkill": 75,
+      "aggression": 92,
+      "economy": 8.1
+    },
+    {
+      "name": "Harry Brook",
+      "role": "Batsman",
+      "battingSkill": 91,
+      "bowlingSkill": 20,
+      "aggression": 85,
+      "economy": 9.0
+    },
+    {
+      "name": "Jacob Bethell",
+      "role": "All-Rounder",
+      "battingSkill": 82,
+      "bowlingSkill": 70,
+      "aggression": 88,
+      "economy": 8.5
+    },
+    {
+      "name": "Liam Livingstone",
+      "role": "All-Rounder",
+      "battingSkill": 85,
+      "bowlingSkill": 78,
+      "aggression": 94,
+      "economy": 8.2
+    },
+    {
+      "name": "Sam Curran",
+      "role": "All-Rounder",
+      "battingSkill": 83,
+      "bowlingSkill": 86,
+      "aggression": 75,
+      "economy": 7.9
+    },
+    {
+      "name": "Adil Rashid",
+      "role": "Bowler",
+      "battingSkill": 35,
+      "bowlingSkill": 90,
+      "aggression": 45,
+      "economy": 7.1
+    },
+    {
+      "name": "Jofra Archer",
+      "role": "Bowler",
+      "battingSkill": 40,
+      "bowlingSkill": 92,
+      "aggression": 50,
+      "economy": 7.3
+    },
+    {
+      "name": "Saqib Mahmood",
+      "role": "Bowler",
+      "battingSkill": 25,
+      "bowlingSkill": 84,
+      "aggression": 40,
+      "economy": 8.0
+    },
+    {
+      "name": "Reece Topley",
+      "role": "Bowler",
+      "battingSkill": 15,
+      "bowlingSkill": 86,
+      "aggression": 25,
+      "economy": 7.5
+    }
   ]
 }

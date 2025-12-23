@@ -1,15 +1,26 @@
 # CricFuzz Feature Plan
 
-This document outlines incomplete/planned features identified during code cleanup. These features were partially implemented or planned but not completed.
+This document outlines planned and in-progress features for the CricFuzz simulation engine.
+
+---
+
+## 🚀 Engine Overhaul (✅ COMPLETED)
+
+### Features
+1. **Separate Skills**: Transitioning from a single `skill` to `battingSkill` and `bowlingSkill`.
+2. **Setup Intelligence**: 
+   - **Pitch Report**: Randomized pitch types (Flat, Seamer, Spinner) with performance modifiers.
+   - **Toss Logic**: Randomized toss winner and decision (Bat/Bowl).
+3. **Strategic AI**:
+   - **Batting Order**: Lineup sorted by `battingSkill`.
+   - **Bowling Rotation**: Prioritizing bowlers with high `bowlingSkill`.
+4. **Narrative Commentary**: A situational engine using real-world cricket terminology and famous lines.
 
 ---
 
 ## 1. Maiden Overs Tracking
-
-### Current State
-- **Status**: Data structure ready, tracking logic missing
-- **Location**: `src/main.js` lines 119, 339
-- **What exists**: `maidens: 0` is initialized in `bowlStats` but never updated or displayed
+- **Status**: ✅ COMPLETED
+- **Features**: 6-ball dot over detection, highlight in scorecard, unique commentary.
 
 ### What is a Maiden Over?
 A maiden over is an over (6 balls) in which no runs are scored off the bat (extras like wides/no-balls don't count against it).

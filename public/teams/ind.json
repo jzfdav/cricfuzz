@@ -1,16 +1,95 @@
 {
-  "id": "IND", "name": "India", "color": "#133C8B",
+  "id": "IND",
+  "name": "India",
+  "color": "#133C8B",
   "players": [
-    { "name": "Abhishek Sharma", "role": "Batsman", "skill": 91, "aggression": 95 },
-    { "name": "Suryakumar Yadav", "role": "Batsman", "skill": 92, "aggression": 90 },
-    { "name": "Tilak Varma", "role": "Batsman", "skill": 89, "aggression": 85 },
-    { "name": "Hardik Pandya", "role": "All-Rounder", "skill": 88, "aggression": 88 },
-    { "name": "Rinku Singh", "role": "Batsman", "skill": 86, "aggression": 92 },
-    { "name": "Sanju Samson", "role": "Wicketkeeper", "skill": 87, "aggression": 85 },
-    { "name": "Axar Patel", "role": "All-Rounder", "skill": 87, "aggression": 60 },
-    { "name": "Jasprit Bumrah", "role": "Bowler", "skill": 99, "economy": 6.1 },
-    { "name": "Kuldeep Yadav", "role": "Bowler", "skill": 91, "economy": 6.8 },
-    { "name": "Arshdeep Singh", "role": "Bowler", "skill": 88, "economy": 7.6 },
-    { "name": "Varun Chakaravarthy", "role": "Bowler", "skill": 88, "economy": 6.7 }
+    {
+      "name": "Abhishek Sharma",
+      "role": "Batsman",
+      "battingSkill": 91,
+      "bowlingSkill": 15,
+      "aggression": 95,
+      "economy": 9.0
+    },
+    {
+      "name": "Suryakumar Yadav",
+      "role": "Batsman",
+      "battingSkill": 92,
+      "bowlingSkill": 10,
+      "aggression": 90,
+      "economy": 9.0
+    },
+    {
+      "name": "Tilak Varma",
+      "role": "Batsman",
+      "battingSkill": 89,
+      "bowlingSkill": 25,
+      "aggression": 85,
+      "economy": 8.5
+    },
+    {
+      "name": "Hardik Pandya",
+      "role": "All-Rounder",
+      "battingSkill": 88,
+      "bowlingSkill": 85,
+      "aggression": 88,
+      "economy": 7.8
+    },
+    {
+      "name": "Rinku Singh",
+      "role": "Batsman",
+      "battingSkill": 86,
+      "bowlingSkill": 10,
+      "aggression": 92,
+      "economy": 9.0
+    },
+    {
+      "name": "Sanju Samson",
+      "role": "Wicketkeeper",
+      "battingSkill": 87,
+      "bowlingSkill": 0,
+      "aggression": 85,
+      "economy": 0
+    },
+    {
+      "name": "Axar Patel",
+      "role": "All-Rounder",
+      "battingSkill": 87,
+      "bowlingSkill": 88,
+      "aggression": 60,
+      "economy": 7.2
+    },
+    {
+      "name": "Jasprit Bumrah",
+      "role": "Bowler",
+      "battingSkill": 25,
+      "bowlingSkill": 99,
+      "aggression": 40,
+      "economy": 6.1
+    },
+    {
+      "name": "Kuldeep Yadav",
+      "role": "Bowler",
+      "battingSkill": 20,
+      "bowlingSkill": 91,
+      "aggression": 30,
+      "economy": 6.8
+    },
+    {
+      "name": "Arshdeep Singh",
+      "role": "Bowler",
+      "battingSkill": 15,
+      "bowlingSkill": 88,
+      "aggression": 35,
+      "economy": 7.6
+    },
+    {
+      "name": "Varun Chakaravarthy",
+      "role": "Bowler",
+      "battingSkill": 10,
+      "bowlingSkill": 88,
+      "aggression": 30,
+      "economy": 6.7
+    }
   ]
 }

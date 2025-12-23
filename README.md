@@ -48,24 +48,36 @@ Build output is in the `dist/` directory, ready for deployment to any static hos
 ```
 cricfuzz/
 ├── src/
-│   ├── main.js          # Main application logic
-│   └── style.css        # Tailwind directives + custom styles
+│   ├── main.js          # Legacy Logic (Active)
+│   ├── engine/          # New Game Engine (Phase 2)
+│   ├── components/      # New Preact Components (Phase 3)
+│   └── style.css        # Tailwind directives
 ├── public/
-│   └── teams/           # Team JSON data files
-├── index.html           # Entry HTML file
-├── vite.config.js       # Vite configuration
-├── tailwind.config.js   # Tailwind CSS configuration
-└── package.json         # Dependencies and scripts
+│   └── teams/           # Team JSON data
+├── index.html           # Entry HTML
+├── vite.config.js       # Vite + Preact
+└── package.json         # Dependencies
 ```
 
 ## Technologies
 
-- **Vite**: Fast build tool and dev server
-- **Tailwind CSS**: Utility-first CSS framework
-- **Vanilla JavaScript**: No heavy frameworks, pure JS
-- **PostCSS**: CSS processing with Autoprefixer
+- **Vite**: Fast build tool
+- **Preact** (In Migration): Faster React alternative for UI
+- **Signals**: Reactive state management
+- **Tailwind CSS**: Utility-first CSS
+- **Vanilla JS**: Powering the legacy simulation loop
 
 ## License
 
 ISC
+
+## Deployment
+
+This project uses **GitHub Actions** for deployment.
+Any push to the `main` branch automatically builds and deploys the Preact app to GitHub Pages.
+
+- **URL**: `https://jzfdav.github.io/cricfuzz/`
+- **Workflow**: `.github/workflows/deploy.yml`
+
+> **Note**: Changes may take a few minutes to appear while the Action is running. Check the **Actions** tab on GitHub for status.
 

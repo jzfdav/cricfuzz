@@ -1,16 +1,95 @@
 {
-  "id": "AUS", "name": "Australia", "color": "#FFD700",
+  "id": "AUS",
+  "name": "Australia",
+  "color": "#FFD700",
   "players": [
-    { "name": "Travis Head", "role": "Batsman", "skill": 92, "aggression": 96 },
-    { "name": "Jake Fraser-McGurk", "role": "Batsman", "skill": 84, "aggression": 98 },
-    { "name": "Mitchell Marsh", "role": "All-Rounder", "skill": 88, "aggression": 88 },
-    { "name": "Glenn Maxwell", "role": "All-Rounder", "skill": 90, "aggression": 95 },
-    { "name": "Josh Inglis", "role": "Wicketkeeper", "skill": 86, "aggression": 85 },
-    { "name": "Marcus Stoinis", "role": "All-Rounder", "skill": 87, "aggression": 85 },
-    { "name": "Tim David", "role": "Batsman", "skill": 84, "aggression": 94 },
-    { "name": "Pat Cummins", "role": "Bowler", "skill": 93, "economy": 7.2 },
-    { "name": "Mitchell Starc", "role": "Bowler", "skill": 91, "economy": 7.9 },
-    { "name": "Adam Zampa", "role": "Bowler", "skill": 90, "economy": 7.0 },
-    { "name": "Josh Hazlewood", "role": "Bowler", "skill": 91, "economy": 6.8 }
+    {
+      "name": "Travis Head",
+      "role": "Batsman",
+      "battingSkill": 92,
+      "bowlingSkill": 35,
+      "aggression": 96,
+      "economy": 8.5
+    },
+    {
+      "name": "Jake Fraser-McGurk",
+      "role": "Batsman",
+      "battingSkill": 84,
+      "bowlingSkill": 10,
+      "aggression": 98,
+      "economy": 9.0
+    },
+    {
+      "name": "Mitchell Marsh",
+      "role": "All-Rounder",
+      "battingSkill": 88,
+      "bowlingSkill": 82,
+      "aggression": 88,
+      "economy": 7.9
+    },
+    {
+      "name": "Glenn Maxwell",
+      "role": "All-Rounder",
+      "battingSkill": 90,
+      "bowlingSkill": 80,
+      "aggression": 95,
+      "economy": 7.5
+    },
+    {
+      "name": "Josh Inglis",
+      "role": "Wicketkeeper",
+      "battingSkill": 86,
+      "bowlingSkill": 0,
+      "aggression": 85,
+      "economy": 0
+    },
+    {
+      "name": "Marcus Stoinis",
+      "role": "All-Rounder",
+      "battingSkill": 87,
+      "bowlingSkill": 84,
+      "aggression": 85,
+      "economy": 8.1
+    },
+    {
+      "name": "Tim David",
+      "role": "Batsman",
+      "battingSkill": 84,
+      "bowlingSkill": 20,
+      "aggression": 94,
+      "economy": 9.0
+    },
+    {
+      "name": "Pat Cummins",
+      "role": "Bowler",
+      "battingSkill": 45,
+      "bowlingSkill": 93,
+      "aggression": 50,
+      "economy": 7.2
+    },
+    {
+      "name": "Mitchell Starc",
+      "role": "Bowler",
+      "battingSkill": 35,
+      "bowlingSkill": 91,
+      "aggression": 55,
+      "economy": 7.9
+    },
+    {
+      "name": "Adam Zampa",
+      "role": "Bowler",
+      "battingSkill": 15,
+      "bowlingSkill": 90,
+      "aggression": 30,
+      "economy": 7.0
+    },
+    {
+      "name": "Josh Hazlewood",
+      "role": "Bowler",
+      "battingSkill": 10,
+      "bowlingSkill": 91,
+      "aggression": 25,
+      "economy": 6.8
+    }
   ]
 }
