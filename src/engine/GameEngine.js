@@ -82,6 +82,11 @@ export class GameEngine {
 
     /* --- GAME LOOP --- */
 
+    stopMatch() {
+        if (this.timer) clearTimeout(this.timer);
+        GameState.isRunning.value = false;
+    }
+
     startMatch(t1, t2, format) {
         if (t1) GameState.teams.team1.value = null; // Reset if new
         GameState.view.value = "live";
