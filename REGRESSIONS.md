@@ -75,3 +75,9 @@ This document records functionality regressions and issues identified during the
 - **Issue**: Potential for stale data (toss results, team names) to persist if the app state wasn't fully cleared on restart.
 - **Reason**: `resetToConfig` omitted several state properties (`tossResult`, `lastMilestone`, `squads`).
 - **Status**: ✅ Fixed (Added comprehensive state cleanup in `resetToConfig`).
+
+## 16. ODI Early Collapses
+- **Issue**: ODI innings were ending prematurely (20-25 overs) due to frequent wickets.
+- **Reason**: The combination of `wicketMod: 1.1` and high dot ball pressure was too lethal.
+- **Status**: ✅ Fixed (Reduced `wicketMod` to `0.9`, increased `boundaryMod` to `0.75`).
+

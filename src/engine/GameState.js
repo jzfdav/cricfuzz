@@ -14,7 +14,7 @@ export const GameState = {
     // Configs
     formatConfigs: {
         T20: { balls: 120, innings: 2, aggMod: 1.1, boundaryMod: 1.1, wicketMod: 1.1, dotMod: 0.9 },
-        ODI: { balls: 300, innings: 2, aggMod: 0.80, boundaryMod: 0.70, wicketMod: 1.1, dotMod: 1.5 },
+        ODI: { balls: 300, innings: 2, aggMod: 0.80, boundaryMod: 0.75, wicketMod: 0.9, dotMod: 1.5 },
         TEST: { balls: 2400, innings: 4, aggMod: 0.6, boundaryMod: 0.7, wicketMod: 0.7, dotMod: 1.5 }
     },
 
