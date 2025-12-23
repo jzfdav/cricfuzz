@@ -1,4 +1,6 @@
 // CRICFUZZ ENGINE LOGIC
+import './style.css';
+
 const app = {
     teams: {
         team1: [],
@@ -91,11 +93,11 @@ const app = {
     async loadTeams(t1, t2) {
         try {
             const [team1Data, team2Data] = await Promise.all([
-                fetch(`teams/${t1}.json`).then(res => {
+                fetch(`/teams/${t1}.json`).then(res => {
                     if (!res.ok) throw new Error(`Failed to load team ${t1}`);
                     return res.json();
                 }),
-                fetch(`teams/${t2}.json`).then(res => {
+                fetch(`/teams/${t2}.json`).then(res => {
                     if (!res.ok) throw new Error(`Failed to load team ${t2}`);
                     return res.json();
                 })
@@ -285,7 +287,6 @@ const app = {
 
     switchInnings() {
         this.state.isRunning = false;
-        const config = this.formatConfigs[this.state.format];
 
         this.saveInningsHistory();
 
@@ -303,7 +304,6 @@ const app = {
                 // Team 2 already ahead on aggregate after three innings -> innings victory, no 4th innings.
                 const margin = Math.abs(lead);
                 const winner = this.teams.team2Name;
-                const loser = this.teams.team1Name;
                 this.endMatch(`${winner} WINS by an innings and ${margin} runs!`);
                 return;
             }
@@ -477,7 +477,7 @@ const app = {
         const container = document.getElementById('scorecard-container');
         container.innerHTML = "";
 
-        this.state.history.forEach((inn, idx) => {
+        this.state.history.forEach((inn) => {
             const innDiv = document.createElement('div');
             innDiv.className = "bg-[#161B22] rounded-2xl border border-gray-800 overflow-hidden shadow-2xl transition-all hover:border-gray-600 mb-6";
 
@@ -589,3 +589,6 @@ const app = {
         return (s[(v - 20) % 10] || s[v] || s[0]);
     }
 };
+
+// Expose app globally for inline event handlers
+window.app = app;
