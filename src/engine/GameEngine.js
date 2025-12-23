@@ -131,6 +131,11 @@ export class GameEngine {
         GameState.history.value = [];
         GameState.totalTeam1Score.value = 0;
         GameState.totalTeam2Score.value = 0;
+        // Missing Resets
+        GameState.allOut.value = false;
+        GameState.overRuns.value = 0;
+        GameState.lastOverWasMaiden.value = false;
+        GameState.nextBatterIndex.value = 2;
     }
 
     switchInnings() {
