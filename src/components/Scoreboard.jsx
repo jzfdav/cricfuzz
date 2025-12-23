@@ -69,6 +69,10 @@ export function Scoreboard() {
 
             <WormGraph
                 data={[{ over: 0, score: 0, wickets: 0 }, ...GameState.inningsTimeline.value]}
+                targetData={(GameState.innings.value === 2 && GameState.history.value[0])
+                    ? [{ over: 0, score: 0, wickets: 0 }, ...GameState.history.value[0].timeline]
+                    : null
+                }
                 totalOvers={GameState.formatConfigs[GameState.format.value].balls / 6}
                 color={GameState.innings.value === 2 ? "#ecc94b" : "#60a5fa"}
             />
