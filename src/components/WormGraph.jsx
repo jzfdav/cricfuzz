@@ -40,7 +40,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }) {
     return (
         <div
             className={`transition-all duration-300 ${expanded ? 'fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm' : 'relative'}`}
-            onClick={() => !expanded && setExpanded(true)}
+            onClick={() => setExpanded(!expanded)}
         >
             <div
                 className={`bg-[#161B22] border border-gray-700 rounded-xl overflow-hidden transition-all duration-300 relative ${expanded ? 'w-[700px] p-8' : 'w-full hover:border-amber-500/50 cursor-pointer'}`}
