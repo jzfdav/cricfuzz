@@ -1,0 +1,95 @@
+{
+  "id": "WI",
+  "name": "West Indies",
+  "color": "#7B0031",
+  "players": [
+    {
+      "name": "Brandon King",
+      "role": "Batsman",
+      "battingSkill": 85,
+      "bowlingSkill": 0,
+      "aggression": 82,
+      "economy": 0
+    },
+    {
+      "name": "Evin Lewis",
+      "role": "Batsman",
+      "battingSkill": 84,
+      "bowlingSkill": 0,
+      "aggression": 94,
+      "economy": 0
+    },
+    {
+      "name": "Nicholas Pooran",
+      "role": "Wicketkeeper",
+      "battingSkill": 91,
+      "bowlingSkill": 0,
+      "aggression": 95,
+      "economy": 0
+    },
+    {
+      "name": "Shai Hope",
+      "role": "Batsman",
+      "battingSkill": 87,
+      "bowlingSkill": 0,
+      "aggression": 70,
+      "economy": 0
+    },
+    {
+      "name": "Rovman Powell",
+      "role": "All-Rounder",
+      "battingSkill": 85,
+      "bowlingSkill": 70,
+      "aggression": 92,
+      "economy": 8.5
+    },
+    {
+      "name": "Andre Russell",
+      "role": "All-Rounder",
+      "battingSkill": 89,
+      "bowlingSkill": 87,
+      "aggression": 98,
+      "economy": 8.2
+    },
+    {
+      "name": "Sherfane Rutherford",
+      "role": "Batsman",
+      "battingSkill": 83,
+      "bowlingSkill": 60,
+      "aggression": 88,
+      "economy": 8.1
+    },
+    {
+      "name": "Romario Shepherd",
+      "role": "All-Rounder",
+      "battingSkill": 78,
+      "bowlingSkill": 84,
+      "aggression": 85,
+      "economy": 8.5
+    },
+    {
+      "name": "Akeal Hosein",
+      "role": "Bowler",
+      "battingSkill": 35,
+      "bowlingSkill": 89,
+      "aggression": 60,
+      "economy": 6.5
+    },
+    {
+      "name": "Alzarri Joseph",
+      "role": "Bowler",
+      "battingSkill": 20,
+      "bowlingSkill": 88,
+      "aggression": 40,
+      "economy": 7.9
+    },
+    {
+      "name": "Gudakesh Motie",
+      "role": "Bowler",
+      "battingSkill": 15,
+      "bowlingSkill": 87,
+      "aggression": 30,
+      "economy": 6.9
+    }
+  ]
+}

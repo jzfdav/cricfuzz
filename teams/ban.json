@@ -1,0 +1,95 @@
+{
+  "id": "BAN",
+  "name": "Bangladesh",
+  "color": "#006A4E",
+  "players": [
+    {
+      "name": "Tanzid Hasan",
+      "role": "Batsman",
+      "battingSkill": 82,
+      "bowlingSkill": 10,
+      "aggression": 85,
+      "economy": 9.0
+    },
+    {
+      "name": "Soumya Sarkar",
+      "role": "Batsman",
+      "battingSkill": 80,
+      "bowlingSkill": 65,
+      "aggression": 80,
+      "economy": 8.2
+    },
+    {
+      "name": "Najmul Hossain Shanto",
+      "role": "Batsman",
+      "battingSkill": 85,
+      "bowlingSkill": 15,
+      "aggression": 75,
+      "economy": 9.0
+    },
+    {
+      "name": "Towhid Hridoy",
+      "role": "Batsman",
+      "battingSkill": 86,
+      "bowlingSkill": 10,
+      "aggression": 82,
+      "economy": 9.0
+    },
+    {
+      "name": "Mushfiqur Rahim",
+      "role": "Wicketkeeper",
+      "battingSkill": 87,
+      "bowlingSkill": 0,
+      "aggression": 70,
+      "economy": 0
+    },
+    {
+      "name": "Mahmudullah",
+      "role": "All-Rounder",
+      "battingSkill": 84,
+      "bowlingSkill": 70,
+      "aggression": 78,
+      "economy": 7.8
+    },
+    {
+      "name": "Mehidy Hasan Miraz",
+      "role": "All-Rounder",
+      "battingSkill": 82,
+      "bowlingSkill": 88,
+      "aggression": 65,
+      "economy": 6.9
+    },
+    {
+      "name": "Rishad Hossain",
+      "role": "Bowler",
+      "battingSkill": 35,
+      "bowlingSkill": 85,
+      "aggression": 60,
+      "economy": 7.2
+    },
+    {
+      "name": "Taskin Ahmed",
+      "role": "Bowler",
+      "battingSkill": 20,
+      "bowlingSkill": 88,
+      "aggression": 35,
+      "economy": 7.5
+    },
+    {
+      "name": "Mustafizur Rahman",
+      "role": "Bowler",
+      "battingSkill": 15,
+      "bowlingSkill": 89,
+      "aggression": 25,
+      "economy": 7.1
+    },
+    {
+      "name": "Tanzim Hasan Sakib",
+      "role": "Bowler",
+      "battingSkill": 25,
+      "bowlingSkill": 83,
+      "aggression": 40,
+      "economy": 8.1
+    }
+  ]
+}

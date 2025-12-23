@@ -1,0 +1,95 @@
+{
+  "id": "IRE",
+  "name": "Ireland",
+  "color": "#169B62",
+  "players": [
+    {
+      "name": "Paul Stirling",
+      "role": "Batsman",
+      "battingSkill": 86,
+      "bowlingSkill": 45,
+      "aggression": 90,
+      "economy": 8.5
+    },
+    {
+      "name": "Andrew Balbirnie",
+      "role": "Batsman",
+      "battingSkill": 85,
+      "bowlingSkill": 10,
+      "aggression": 72,
+      "economy": 9.0
+    },
+    {
+      "name": "Lorcan Tucker",
+      "role": "Wicketkeeper",
+      "battingSkill": 84,
+      "bowlingSkill": 0,
+      "aggression": 82,
+      "economy": 0
+    },
+    {
+      "name": "Harry Tector",
+      "role": "Batsman",
+      "battingSkill": 88,
+      "bowlingSkill": 60,
+      "aggression": 78,
+      "economy": 7.9
+    },
+    {
+      "name": "Curtis Campher",
+      "role": "All-Rounder",
+      "battingSkill": 85,
+      "bowlingSkill": 82,
+      "aggression": 84,
+      "economy": 8.1
+    },
+    {
+      "name": "George Dockrell",
+      "role": "All-Rounder",
+      "battingSkill": 82,
+      "bowlingSkill": 83,
+      "aggression": 80,
+      "economy": 7.8
+    },
+    {
+      "name": "Gareth Delany",
+      "role": "All-Rounder",
+      "battingSkill": 81,
+      "bowlingSkill": 78,
+      "aggression": 88,
+      "economy": 8.4
+    },
+    {
+      "name": "Mark Adair",
+      "role": "Bowler",
+      "battingSkill": 45,
+      "bowlingSkill": 87,
+      "aggression": 75,
+      "economy": 7.8
+    },
+    {
+      "name": "Josh Little",
+      "role": "Bowler",
+      "battingSkill": 20,
+      "bowlingSkill": 89,
+      "aggression": 35,
+      "economy": 7.4
+    },
+    {
+      "name": "Barry McCarthy",
+      "role": "Bowler",
+      "battingSkill": 25,
+      "bowlingSkill": 82,
+      "aggression": 40,
+      "economy": 8.2
+    },
+    {
+      "name": "Craig Young",
+      "role": "Bowler",
+      "battingSkill": 15,
+      "bowlingSkill": 81,
+      "aggression": 30,
+      "economy": 8.0
+    }
+  ]
+}

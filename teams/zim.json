@@ -1,0 +1,95 @@
+{
+  "id": "ZIM",
+  "name": "Zimbabwe",
+  "color": "#D40000",
+  "players": [
+    {
+      "name": "Wessly Madhevere",
+      "role": "Batsman",
+      "battingSkill": 81,
+      "bowlingSkill": 75,
+      "aggression": 84,
+      "economy": 7.8
+    },
+    {
+      "name": "Tadiwanashe Marumani",
+      "role": "Batsman",
+      "battingSkill": 79,
+      "bowlingSkill": 0,
+      "aggression": 86,
+      "economy": 0
+    },
+    {
+      "name": "Sikandar Raza",
+      "role": "All-Rounder",
+      "battingSkill": 88,
+      "bowlingSkill": 92,
+      "aggression": 88,
+      "economy": 6.8
+    },
+    {
+      "name": "Brian Bennett",
+      "role": "Batsman",
+      "battingSkill": 83,
+      "bowlingSkill": 60,
+      "aggression": 82,
+      "economy": 8.0
+    },
+    {
+      "name": "Sean Williams",
+      "role": "All-Rounder",
+      "battingSkill": 86,
+      "bowlingSkill": 80,
+      "aggression": 75,
+      "economy": 7.2
+    },
+    {
+      "name": "Ryan Burl",
+      "role": "All-Rounder",
+      "battingSkill": 84,
+      "bowlingSkill": 78,
+      "aggression": 85,
+      "economy": 7.5
+    },
+    {
+      "name": "Clive Madande",
+      "role": "Wicketkeeper",
+      "battingSkill": 80,
+      "bowlingSkill": 0,
+      "aggression": 78,
+      "economy": 0
+    },
+    {
+      "name": "Richard Ngarava",
+      "role": "Bowler",
+      "battingSkill": 15,
+      "bowlingSkill": 88,
+      "aggression": 25,
+      "economy": 7.2
+    },
+    {
+      "name": "Blessing Muzarabani",
+      "role": "Bowler",
+      "battingSkill": 10,
+      "bowlingSkill": 89,
+      "aggression": 20,
+      "economy": 7.0
+    },
+    {
+      "name": "Wellington Masakadza",
+      "role": "Bowler",
+      "battingSkill": 25,
+      "bowlingSkill": 82,
+      "aggression": 35,
+      "economy": 7.5
+    },
+    {
+      "name": "Luke Jongwe",
+      "role": "Bowler",
+      "battingSkill": 35,
+      "bowlingSkill": 81,
+      "aggression": 50,
+      "economy": 8.4
+    }
+  ]
+}
