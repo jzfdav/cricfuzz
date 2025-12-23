@@ -12,7 +12,7 @@ export function Scoreboard() {
                 </div>
                 <div className="text-right">
                     <p className={`text-[10px] font-bold uppercase ${GameState.innings.value === 2 ? 'text-amber-500' : 'text-gray-500'}`}>
-                        {GameState.target.value ? `Target: ${GameState.target.value}` : `${GameState.innings.value}st INNINGS`}
+                        {GameState.target.value ? `Target: ${GameState.target.value}` : `${['1st', '2nd', '3rd', '4th'][GameState.innings.value - 1] || GameState.innings.value + 'th'} INNINGS`}
                     </p>
                     <p className="text-xs text-gray-400">RR: {runRate.value}</p>
                 </div>

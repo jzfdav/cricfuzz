@@ -17,7 +17,7 @@ export function ResultScreen({ engine }) {
                         <div className="bg-gray-800/50 p-4 flex justify-between items-center border-b border-gray-700">
                             <div>
                                 <h3 className="font-black text-amber-500 uppercase tracking-widest text-[10px] mb-1">{inn.team}</h3>
-                                <p className="text-[9px] text-gray-400 uppercase font-bold">{i + 1} INNINGS</p>
+                                <p className="text-[9px] text-gray-400 uppercase font-bold">{['1st', '2nd', '3rd', '4th'][i] || (i + 1) + 'th'} INNINGS</p>
                             </div>
                             <div className="text-right">
                                 <span className="mono font-black text-2xl text-white">{inn.score}/{inn.wickets}</span>
