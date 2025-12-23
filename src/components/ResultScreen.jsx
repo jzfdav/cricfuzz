@@ -1,4 +1,3 @@
-```javascript
 import { useState } from 'preact/hooks';
 import { GameState } from "../engine/GameState";
 
@@ -20,13 +19,13 @@ export function ResultScreen({ engine }) {
                     const isExpanded = expanded === i;
                     return (
                         <div key={i} className="bg-[#161B22] rounded-2xl border border-gray-800 overflow-hidden transition-all duration-300">
-                            <div 
+                            <div
                                 onClick={() => setExpanded(isExpanded ? null : i)}
                                 className="bg-gray-800/50 p-4 flex justify-between items-center border-b border-gray-700 cursor-pointer hover:bg-gray-800 transition-colors"
                             >
                                 <div>
                                     <h3 className="font-black text-amber-500 uppercase tracking-widest text-[10px] mb-1">{inn.team}</h3>
-                                    <p className="text-[9px] text-gray-400 uppercase font-bold">{['1st','2nd','3rd','4th'][i] || (i+1)+'th'} INNINGS</p>
+                                    <p className="text-[9px] text-gray-400 uppercase font-bold">{['1st', '2nd', '3rd', '4th'][i] || (i + 1) + 'th'} INNINGS</p>
                                 </div>
                                 <div className="text-right">
                                     <span className="mono font-black text-2xl text-white">{inn.score}/{inn.wickets}</span>
@@ -39,7 +38,7 @@ export function ResultScreen({ engine }) {
                                 <div>
                                     <p className="mb-2 font-bold uppercase text-[10px] text-amber-500/80">Batting</p>
                                     {(isExpanded ? inn.batting : inn.batting.sort((a, b) => b.batStats.runs - a.batStats.runs).slice(0, 3)).map(p => (
-                                        <div key={p.name} className={`flex justify - between border - b border - gray - 800 py - 1 ${ p.batStats.out ? 'text-gray-500' : 'text-white' } `}>
+                                        <div key={p.name} className={`flex justify-between border-b border-gray-800 py-1 ${p.batStats.out ? 'text-gray-500' : 'text-white'}`}>
                                             <span>{p.name.split(' ').pop()} {p.batStats.out ? '' : '*'}</span>
                                             <span className="font-mono">{p.batStats.runs} ({p.batStats.balls})</span>
                                         </div>
@@ -53,18 +52,18 @@ export function ResultScreen({ engine }) {
                                         .sort((a, b) => (b.bowlStats.wicketsTaken - a.bowlStats.wicketsTaken) || (a.bowlStats.runsConceded - b.bowlStats.runsConceded))
                                         .slice(0, 3))
                                         .map(p => (
-                                        <div key={p.name} className="flex justify-between border-b border-gray-800 py-1">
-                                            <span>{p.name.split(' ').pop()}</span>
-                                            <span className="font-mono text-white">
-                                                {p.bowlStats.wicketsTaken}-{p.bowlStats.runsConceded} <span className="text-gray-600 text-[9px]">({Math.floor(p.bowlStats.balls/6)}.{p.bowlStats.balls%6})</span>
-                                            </span>
-                                        </div>
-                                    ))}
+                                            <div key={p.name} className="flex justify-between border-b border-gray-800 py-1">
+                                                <span>{p.name.split(' ').pop()}</span>
+                                                <span className="font-mono text-white">
+                                                    {p.bowlStats.wicketsTaken}-{p.bowlStats.runsConceded} <span className="text-gray-600 text-[9px]">({Math.floor(p.bowlStats.balls / 6)}.{p.bowlStats.balls % 6})</span>
+                                                </span>
+                                            </div>
+                                        ))}
                                     {!isExpanded && <p className="text-[9px] italic mt-1 opacity-50">+ more</p>}
                                 </div>
                             </div>
-                            
-                            <div 
+
+                            <div
                                 onClick={() => setExpanded(isExpanded ? null : i)}
                                 className="bg-gray-900/50 p-2 text-center text-[10px] uppercase font-bold text-gray-500 hover:text-white cursor-pointer transition-colors"
                             >
@@ -84,4 +83,3 @@ export function ResultScreen({ engine }) {
         </div>
     );
 }
-```
