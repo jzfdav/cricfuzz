@@ -50,8 +50,11 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }) {
             >
                 {expanded && (
                     <button
-                        onClick={() => setExpanded(false)}
-                        className="absolute top-4 right-4 text-gray-400 hover:text-white"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setExpanded(false);
+                        }}
+                        className="absolute top-4 right-4 text-gray-400 hover:text-white p-2 z-10"
                     >
                         ✕
                     </button>
