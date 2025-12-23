@@ -41,3 +41,8 @@ This document records functionality regressions and issues identified during the
 - **Issue**: Scoreboard displayed "1st INNINGS", "2st INNINGS", "3st INNINGS".
 - **Reason**: Developing shortcut using naive string interpolation `${innings}st`.
 - **Status**: ✅ Fixed (Implemented proper ordinal suffix logic).
+
+## 9. Malformed HTML Header
+- **Issue**: Visible HTML text `href="..."` appeared at the top of the page.
+- **Reason**: Accidental deletion of the opening `<link` tag when inserting the favicon link during an edit.
+- **Status**: ✅ Fixed (Restored `<link>` tag structure).
