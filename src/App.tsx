@@ -1,10 +1,8 @@
 import { GameEngine } from './engine/GameEngine';
 import { GameState } from './engine/GameState';
 import { Scoreboard } from './components/Scoreboard';
-// @ts-ignore - Allowing JS import for now
 import { CommentaryFeed } from './components/CommentaryFeed';
 import { Controls } from './components/Controls';
-// @ts-ignore - Allowing JS import for now
 import { ConfigScreen } from './components/ConfigScreen';
 import { ResultScreen } from './components/ResultScreen';
 

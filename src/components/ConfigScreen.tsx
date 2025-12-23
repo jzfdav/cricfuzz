@@ -1,27 +1,32 @@
 import { useState } from 'preact/hooks';
-import { GameState } from '../engine/GameState';
+import { GameState, FormatType } from '../engine/GameState';
+import { GameEngine } from '../engine/GameEngine';
 
-export function ConfigScreen({ engine }) {
+interface ConfigScreenProps {
+    engine: GameEngine;
+}
+
+export function ConfigScreen({ engine }: ConfigScreenProps) {
     const [t1, setT1] = useState('ind');
     const [t2, setT2] = useState('aus');
-    const [format, setFormat] = useState('T20');
+    const [format, setFormat] = useState<FormatType>('T20');
     const [loading, setLoading] = useState(false);
 
     const handleStart = async () => {
         setLoading(true);
         try {
             await engine.loadTeams(t1, t2);
-            engine.performToss(t1, t2);
+            engine.performToss();
             GameState.format.value = format;
-            engine.startMatch();
-        } catch (e) {
+            engine.startMatch(t1, t2);
+        } catch (e: any) {
             alert("Failed to load teams: " + e.message);
         } finally {
             setLoading(false);
         }
     };
 
-    const preventSame = (val, isT1) => {
+    const preventSame = (val: string, isT1: boolean) => {
         if (isT1) {
             setT1(val);
             if (val === t2) setT2(val === 'ind' ? 'aus' : 'ind');
@@ -80,7 +85,7 @@ export function ConfigScreen({ engine }) {
                         <label className="text-[10px] text-gray-500 uppercase block mb-2">Format</label>
                         <select
                             value={format}
-                            onChange={(e) => setFormat(e.target.value)}
+                            onChange={(e) => setFormat((e.target as HTMLSelectElement).value as FormatType)}
                             className="w-full bg-transparent text-amber-500 font-bold outline-none text-xl"
                         >
                             <option value="T20">T20</option>
@@ -96,7 +101,7 @@ export function ConfigScreen({ engine }) {
                         <input
                             type="range" min="1" max="100"
                             value={GameState.speed.value}
-                            onInput={(e) => engine.setSpeed(parseInt(e.target.value))}
+                            onInput={(e) => engine.setSpeed(parseInt((e.target as HTMLInputElement).value))}
                             className="w-full accent-amber-500"
                         />
                     </div>
@@ -114,11 +119,18 @@ export function ConfigScreen({ engine }) {
     );
 }
 
-function TeamSelect({ value, onChange, teams, alignRight }) {
+interface TeamSelectProps {
+    value: string;
+    onChange: (val: string) => void;
+    teams: { id: string; name: string; }[];
+    alignRight?: boolean;
+}
+
+function TeamSelect({ value, onChange, teams, alignRight }: TeamSelectProps) {
     return (
         <select
             value={value}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={(e) => onChange((e.target as HTMLSelectElement).value)}
             className={`w-full bg-transparent text-lg sm:text-2xl font-black text-amber-500 outline-none truncate ${alignRight ? 'text-right' : 'text-left'}`}
         >
             {teams.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}

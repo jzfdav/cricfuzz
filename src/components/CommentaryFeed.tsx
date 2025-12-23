@@ -1,4 +1,5 @@
 import { GameState } from "../engine/GameState";
+import { CommentaryEntry } from "../types";
 
 export function CommentaryFeed() {
     const items = GameState.commentary.value;
@@ -12,7 +13,11 @@ export function CommentaryFeed() {
     );
 }
 
-function CommentaryItem({ item }) {
+interface CommentaryItemProps {
+    item: CommentaryEntry;
+}
+
+function CommentaryItem({ item }: CommentaryItemProps) {
     // Style based on type
     let className = "p-3 border-l-4 text-sm font-medium animate-fade-in ";
 
