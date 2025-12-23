@@ -1,6 +1,6 @@
 # CricFuzz 🏏
 
-A premium cricket match simulation engine built with Vanilla JS and Tailwind CSS. Experience realistic, ball-by-ball simulations across T20, ODI, and Test match formats.
+A premium cricket match simulation engine built with TypeScript, Preact, and Tailwind CSS. Experience realistic, ball-by-ball simulations across T20, ODI, and Test match formats.
 
 ## Features
 
@@ -48,14 +48,16 @@ Build output is in the `dist/` directory, ready for deployment to any static hos
 ```
 cricfuzz/
 ├── src/
-│   ├── engine/          # Game Logic & State (Signals + Class)
+│   ├── engine/          # Game Logic (Simulation, MatchController, Stats)
 │   ├── components/      # Preact Components (UI)
-│   ├── app.jsx          # Main App Component
-│   ├── main.jsx         # Entry Point
+│   ├── App.tsx          # Main App Component
+│   ├── main.tsx         # Entry Point
+│   ├── types/           # Support Interfaces
 │   └── style.css        # Tailwind directives
 ├── public/
 │   └── teams/           # Team JSON data
 ├── index.html           # Entry HTML
+├── tsconfig.json        # TypeScript Config
 ├── vite.config.js       # Vite + Preact
 └── package.json         # Dependencies
 ```
@@ -63,7 +65,8 @@ cricfuzz/
 ## Technologies
 
 - **Vite**: Fast build tool
-- **Preact**: Lightweight React alternative (Migration Complete)
+- **TypeScript**: Strictly typed development
+- **Preact**: Lightweight React alternative
 - **Signals**: High-performance reactive state management
 - **Tailwind CSS**: Utility-first CSS
 
