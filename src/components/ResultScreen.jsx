@@ -92,12 +92,20 @@ export function ResultScreen({ engine }) {
                 })}
             </div>
 
-            <button
-                onClick={() => engine.resetToConfig()}
-                className="w-full max-w-md bg-amber-500 text-black py-4 rounded-xl font-black uppercase tracking-widest text-sm active:scale-95 transition-transform mb-10 shadow-lg hover:shadow-amber-500/20"
-            >
-                New Simulation
-            </button>
+            <div className="w-full max-w-md flex flex-col gap-3 mb-10">
+                <button
+                    onClick={() => engine.rematch()}
+                    className="w-full bg-emerald-500 text-black py-4 rounded-xl font-black uppercase tracking-widest text-sm active:scale-95 transition-transform shadow-lg hover:shadow-emerald-500/20"
+                >
+                    Rematch (Same Teams)
+                </button>
+                <button
+                    onClick={() => engine.resetToConfig()}
+                    className="w-full bg-gray-800 text-gray-400 py-3 rounded-xl font-bold uppercase tracking-widest text-xs active:scale-95 transition-transform hover:bg-gray-700 hover:text-white"
+                >
+                    New Simulation
+                </button>
+            </div>
         </div>
     );
 }

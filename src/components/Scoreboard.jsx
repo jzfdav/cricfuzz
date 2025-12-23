@@ -23,6 +23,19 @@ export function Scoreboard() {
                         {GameState.target.value ? `Target: ${GameState.target.value}` : `${['1st', '2nd', '3rd', '4th'][GameState.innings.value - 1] || GameState.innings.value + 'th'} INNINGS`}
                     </p>
                     <p className="text-xs text-gray-400">RR: {runRate.value}</p>
+                    {GameState.innings.value === 2 && (
+                        <div className="mt-1 flex items-center justify-end gap-2">
+                            <div className="w-16 h-1.5 bg-gray-800 rounded-full overflow-hidden">
+                                <div
+                                    className={`h-full transition-all duration-300 ${GameState.winProbability.value > 50 ? 'bg-emerald-500' : 'bg-red-500'}`}
+                                    style={{ width: `${GameState.winProbability.value}%` }}
+                                />
+                            </div>
+                            <p className={`text-[10px] font-black ${GameState.winProbability.value > 50 ? 'text-emerald-500' : 'text-red-500'}`}>
+                                {GameState.winProbability.value}% WIN
+                            </p>
+                        </div>
+                    )}
                 </div>
             </div>
 

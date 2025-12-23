@@ -302,6 +302,97 @@ export class GameEngine {
         }
     }
 
+    calculateWinProbability() {
+        if (GameState.innings.value !== 2) return;
+
+        const target = GameState.target.value;
+        const current = GameState.score.value;
+        const wickets = GameState.wickets.value;
+        const ballsThrown = GameState.balls.value;
+        const totalBalls = GameState.formatConfigs[GameState.format.value].balls;
+
+        const runsNeeded = target - current;
+        const ballsLeft = totalBalls - ballsThrown;
+        const wicketsInHand = 10 - wickets;
+
+        if (runsNeeded <= 0) {
+            GameState.winProbability.value = 100;
+            return;
+        }
+        if (ballsLeft <= 0 || wicketsInHand <= 0) {
+            GameState.winProbability.value = 0;
+            return;
+        }
+
+        const rrr = runsNeeded / (ballsLeft / 6);
+        let baseProb = 50;
+
+        // Base Probability based on RRR curve (heuristic)
+        // Easy < 6, Par 8, Tough 10, Hard 12+
+        if (rrr < 6) baseProb = 90;
+        else if (rrr < 8) baseProb = 70;
+        else if (rrr < 10) baseProb = 50;
+        else if (rrr < 12) baseProb = 30;
+        else if (rrr < 15) baseProb = 10;
+        else baseProb = 1;
+
+        // Wicket Resource Adjustment (The most critical factor)
+        // Full resources = 1.0, 5 wickets = 0.5... squared for punishment
+        // losing wickets early is bad.
+        const resourceFactor = Math.pow(wicketsInHand / 10, 1.2);
+
+        // Momentum adjustment (Run Rate Differential)
+        // If current RR is high, boost prob
+        const crr = current / (ballsThrown / 6 || 1);
+        const momentum = Math.max(0.8, Math.min(1.2, crr / rrr));
+
+        let finalProb = baseProb * resourceFactor * momentum;
+
+        // Clamp
+        finalProb = Math.min(99, Math.max(1, finalProb));
+
+        GameState.winProbability.value = Math.round(finalProb);
+    }
+
+    rematch() {
+        // Reset Game Logic but keep teams
+        this.stopMatch();
+        this.resetToConfig();
+
+        // Re-toss and start
+        // Access existing teams
+        const t1 = GameState.teams.team1Name.value; // Store names? No, names are in state
+        // Actually resetToConfig clears teams... wait.
+        // I need to confirm if 'resetToConfig' clears the loaded players.
+        // Checking resetToConfig... lines 121-149 of GameEngine.js
+        // It resets score, wickets, bals... does NOT nullify teams usually unless explicitly told.
+        // Wait, startMatch(t1, t2) often reloads?
+        // Let's check startMatch... line 90.
+        // "if (t1) GameState.teams.team1.value = null;" -> Logic depends on args.
+
+        // If I call startMatch(null, null, format), it should reuse? 
+        // Logic in startMatch: "const boostPlayer..." checks for squad.
+        // It assumes squads exist if t1,t2 are null?
+        // Actually loadTeams is what populates squads. startMatch just sets them up?
+        // No, startMatch expects teams to be loaded IN GameState?
+        // Let's check startMatch fully. 
+        // It boosts players. It resets game state (resetToConfig).
+        // It calls performToss.
+
+        // So `rematch` just needs to call `performToss` then `loop`? 
+        // Or `resetToConfig` then `performToss` then `loop`.
+        // Let's safe-guard:
+
+        this.resetToConfig();
+
+        // Determine IDs to re-perform Toss (randomly)
+        // actually performToss doesn't need IDs, it uses GameState.teams.
+        this.performToss();
+
+        GameState.isRunning.value = true;
+        this.loop();
+    }
+
     setSpeed(val) {
         GameState.speed.value = val;
     }
@@ -465,15 +556,21 @@ export class GameEngine {
                 }
             ];
 
-            if (GameState.overRuns.value === 0 && !GameState.allOut.value) {
-                if (bowlerObj) bowlerObj.bowlStats.maidens++;
-                this.addCommentary(this.commentary.getMaidenCommentary(), 'maiden');
-            }
-            GameState.overRuns.value = 0;
-            this.swapBatters();
-            this.selectBestBowler();
+            // Recalculate Win Prob (Every over is good, but every ball is better? 
+            // User asked for "Live", implies every ball.
+            // But let's put it here for efficiency? No, every ball is cooler.)
         }
 
+        // Recalculate every ball for "Live" feel
+        this.calculateWinProbability();
+
+        if (GameState.overRuns.value === 0 && !GameState.allOut.value) {
+            if (bowlerObj) bowlerObj.bowlStats.maidens++;
+            this.addCommentary(this.commentary.getMaidenCommentary(), 'maiden');
+        }
+        GameState.overRuns.value = 0;
+        this.swapBatters();
+        this.selectBestBowler();
         this.checkGameStatus();
     }
 
