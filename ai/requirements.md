@@ -23,9 +23,10 @@ CricFuzz is a premium cricket match simulation engine built with Vanilla JS and 
   - Narrative Commentary Feed.
   - Intensity/Speed Slider (500ms to 4000ms delay).
 
-## Constraints & Requirements
+- **Constraints & Requirements**
 - **Aesthetics**: Modern, premium dark mode (`#0B0E14` background), high-contrast amber accents.
-- **Vanilla Tech**: Must use Vanilla JavaScript, HTML5, and Tailwind CSS. No heavy frameworks.
+- **Tech Stack**: Preact (Signals), TypeScript, Vite, and Tailwind CSS.
+- **Architecture**: Service-Oriented Architecture (MatchController, StatsEngine, SimulationEngine, CommentaryEngine).
 - **Offline/Single-Page**: Data is loaded from local JSON team files. All state is managed in-memory (no persistence required).
 - **Haptics**: Vibrate on boundaries and wickets for compatible devices.
 - **Post-Match**:

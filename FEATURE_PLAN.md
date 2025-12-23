@@ -107,3 +107,11 @@ pill.className = `px-3 py-1 rounded mono text-xs animate-ball ${res === 'W' ? 'b
 - Consider user feedback before prioritizing
 - Each feature is independent and can be done in any order
 
+
+---
+
+## 5. Future Roadmap (Post-Refactor Opportunities)
+- **Career Mode**: Track player stats across multiple matches.
+- **Tournament Mode**: Group stage and knockout brackets.
+- **Team Editor**: UI to edit team rosters and player skills.
+- **Save/Load**: Persist match state to localStorage.

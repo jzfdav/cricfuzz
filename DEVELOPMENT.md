@@ -46,7 +46,8 @@ Build output is in the `dist/` directory, ready for deployment to any static hos
 ```
 cricfuzz/
 ├── src/
-│   ├── engine/          # Game Logic (Simulation, MatchController, Stats)
+│   ├── engine/          # Game Logic (Simulation, MatchController, Stats, Commentary)
+│   ├── utils/           # Shared Math Utilities
 │   ├── components/      # Preact Components (UI)
 │   ├── App.tsx          # Main App Component
 │   ├── main.tsx         # Entry Point
