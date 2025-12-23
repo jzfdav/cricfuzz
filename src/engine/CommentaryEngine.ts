@@ -1,4 +1,4 @@
-import { GameState } from "./engine/GameState";
+import { GameState } from "./GameState";
 
 interface CommentaryTemplates {
     wicket: string[];
@@ -128,8 +128,9 @@ export class CommentaryEngine {
         return parts.length > 1 ? parts[parts.length - 1] : fullName;
     }
 
-    getCommentary(result: number | string, state: typeof GameState, bowlerName: string, batterName: string): string | undefined {
+    getCommentary(result: number | string, bowlerName: string, batterName: string): string | undefined {
         // Fix: State values are Preact Signals, so we need to access .value
+        const state = GameState;
         const score = state.score.value;
         const wickets = state.wickets.value;
         const balls = state.balls.value;

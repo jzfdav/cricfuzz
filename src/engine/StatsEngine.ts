@@ -80,4 +80,39 @@ export class StatsEngine {
             GameState.bowler.value = squad[0].name;
         }
     }
+    updateStats(result: number | 'W', striker: Player, bowlerName: string) {
+        // Runs & Balls
+        const runs = typeof result === 'number' ? result : 0;
+
+        // Global State Update
+        GameState.balls.value++;
+        GameState.score.value += runs;
+        if (typeof result === 'number') GameState.overRuns.value += runs;
+
+        // Striker Stats
+        striker.batStats.balls++;
+        striker.batStats.runs += runs;
+        if (result === 4) striker.batStats.fours++;
+        if (result === 6) striker.batStats.sixes++;
+        if (result === 'W') striker.batStats.out = true;
+
+        // Bowler Stats
+        const bowlerObj = GameState.bowlingSquad.value.find(p => p.name === bowlerName);
+        if (bowlerObj) {
+            bowlerObj.bowlStats.balls++;
+            bowlerObj.bowlStats.runsConceded += runs;
+            if (result === 'W') bowlerObj.bowlStats.wicketsTaken++;
+
+            // Check Maiden (if end of over)
+            // Logic handled in MatchController for now, could be moved here but requires more state knowledge
+        } else {
+            console.error(`Bowler not found: ${bowlerName}`);
+            this.selectBestBowler();
+        }
+
+        // Timeline Update
+        GameState.timeline.value = [result, ...GameState.timeline.value].slice(0, 12);
+
+        // This method encapsulates all "Math" regarding stats
+    }
 }

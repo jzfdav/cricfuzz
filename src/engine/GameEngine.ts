@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 import { GameState } from "./GameState";
-import { CommentaryEngine } from "../CommentaryEngine";
+import { CommentaryEngine } from "./CommentaryEngine";
 import { SimulationEngine } from "./SimulationEngine";
 import { StatsEngine } from "./StatsEngine";
 import { MatchController } from "./MatchController";
