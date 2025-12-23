@@ -88,6 +88,7 @@ export class StatsEngine {
         GameState.balls.value++;
         GameState.score.value += runs;
         if (typeof result === 'number') GameState.overRuns.value += runs;
+        if (result === 'W') GameState.wickets.value++;
 
         // Striker Stats
         striker.batStats.balls++;
