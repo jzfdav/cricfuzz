@@ -89,6 +89,30 @@ export class GameEngine {
 
     startMatch(t1, t2, format) {
         if (t1) GameState.teams.team1.value = null; // Reset if new
+
+        // --- Match Winner Mechanic (X-Factor) ---
+        const boostPlayer = (squad) => {
+            if (!squad || squad.length === 0) return null;
+            const p = squad[Math.floor(Math.random() * squad.length)];
+            const factor = 1 + (Math.random() * 0.2 + 0.1); // 1.10 to 1.30
+            const ecoFactor = 1 - (Math.random() * 0.2 + 0.1); // 0.90 to 0.70 (Lower is better)
+
+            p.battingSkill = Math.floor((p.battingSkill || 75) * factor);
+            p.bowlingSkill = Math.floor((p.bowlingSkill || 75) * factor);
+            p.aggression = Math.floor((p.aggression || 75) * factor);
+            p.economy = (p.economy || 8.0) * ecoFactor;
+            return p;
+        };
+
+        const p1 = boostPlayer(GameState.teams.team1.value);
+        const p2 = boostPlayer(GameState.teams.team2.value);
+
+        if (p1 && p2) {
+            console.log(`🔥 Match Winners (Boosted): ${p1.name} & ${p2.name}`);
+            this.addCommentary(`Experts are keeping a close eye on ${p1.name.split(' ').pop()} and ${p2.name.split(' ').pop()} today - they looked in supreme touch during the warmups!`, "info");
+        }
+        // ----------------------------------------
+
         GameState.view.value = "live";
         GameState.isRunning.value = true;
         this.loop();
