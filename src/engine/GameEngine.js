@@ -242,7 +242,7 @@ export class GameEngine {
                 this.switchInnings();
             }
         } else if (inn === 2) {
-            if (score >= target) {
+            if (target && score >= target) {
                 this.endMatch(`${GameState.battingTeamName.value} WINS by ${10 - wickets} wickets!`);
             } else if (inningsEnded) {
                 if (score === target - 1) this.endMatch("MATCH TIED!");
