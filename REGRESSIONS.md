@@ -44,5 +44,9 @@ This document records functionality regressions and issues identified during the
 
 ## 9. Malformed HTML Header
 - **Issue**: Visible HTML text `href="..."` appeared at the top of the page.
-- **Reason**: Accidental deletion of the opening `<link` tag when inserting the favicon link during an edit.
 - **Status**: ✅ Fixed (Restored `<link>` tag structure).
+
+## 10. File Corruption (Markdown Artifacts)
+- **Issue**: `ResultScreen.jsx` contained ` ```javascript ` and ` ``` ` lines, likely breaking the build.
+- **Reason**: Tool usage error where code blocks were pasted directly into the file content during a rewrite.
+- **Status**: ✅ Fixed (Removed artifacts).
