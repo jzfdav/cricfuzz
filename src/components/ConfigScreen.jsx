@@ -52,9 +52,9 @@ export function ConfigScreen({ engine }) {
                         <span>Home Team</span>
                         <span className="text-right">Away Team</span>
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2">
                         <TeamSelect value={t1} onChange={(v) => preventSame(v, true)} teams={teams} />
-                        <span className="font-black text-gray-600">VS</span>
+                        <span className="font-black text-gray-600 text-sm">VS</span>
                         <TeamSelect value={t2} onChange={(v) => preventSame(v, false)} teams={teams} alignRight />
                     </div>
                 </div>
@@ -103,7 +103,7 @@ function TeamSelect({ value, onChange, teams, alignRight }) {
         <select
             value={value}
             onChange={(e) => onChange(e.target.value)}
-            className={`w-full bg-transparent text-2xl font-black text-amber-500 outline-none ${alignRight ? 'text-right' : 'text-left'}`}
+            className={`w-full bg-transparent text-lg sm:text-2xl font-black text-amber-500 outline-none truncate ${alignRight ? 'text-right' : 'text-left'}`}
         >
             {teams.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
         </select>
