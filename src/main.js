@@ -92,12 +92,14 @@ const app = {
 
     async loadTeams(t1, t2) {
         try {
+            // Use Vite's BASE_URL to handle GitHub Pages base path correctly
+            const baseUrl = import.meta.env.BASE_URL;
             const [team1Data, team2Data] = await Promise.all([
-                fetch(`/teams/${t1}.json`).then(res => {
+                fetch(`${baseUrl}teams/${t1}.json`).then(res => {
                     if (!res.ok) throw new Error(`Failed to load team ${t1}`);
                     return res.json();
                 }),
-                fetch(`/teams/${t2}.json`).then(res => {
+                fetch(`${baseUrl}teams/${t2}.json`).then(res => {
                     if (!res.ok) throw new Error(`Failed to load team ${t2}`);
                     return res.json();
                 })
