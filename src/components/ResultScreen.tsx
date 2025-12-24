@@ -68,10 +68,12 @@ export function ResultScreen({ engine }: ResultScreenProps) {
                         data={[{ over: 0, score: 0, wickets: 0 }, ...(history[0]?.timeline || [])]}
                         targetData={history[1] ? [{ over: 0, score: 0, wickets: 0 }, ...(history[1]?.timeline || [])] : null}
                         totalOvers={GameState.formatConfigs[GameState.format.value].balls / 6}
-                        color="#60a5fa"
+                        color={GameState.teams.team1.value?.color || "#60a5fa"}
                         legend={{
                             main: t1Name,
-                            target: t2Name
+                            target: t2Name,
+                            mainColor: GameState.teams.team1.value?.color || "#60a5fa",
+                            targetColor: GameState.teams.team2.value?.color || "#9ca3af" // Default gray for target if not provided, but we should probably use team 2 color
                         }}
                     />
                 </div>

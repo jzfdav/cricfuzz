@@ -92,10 +92,12 @@ export function Scoreboard() {
                     : null
                 }
                 totalOvers={GameState.formatConfigs[GameState.format.value].balls / 6}
-                color={GameState.innings.value === 2 ? "#ecc94b" : "#60a5fa"}
+                color={GameState.innings.value === 2 ? (GameState.teams.team2.value?.color || "#ecc94b") : (GameState.teams.team1.value?.color || "#60a5fa")}
                 legend={{
                     main: GameState.innings.value === 2 ? GameState.teams.team2Name.value : GameState.teams.team1Name.value,
-                    target: GameState.innings.value === 2 ? GameState.teams.team1Name.value : undefined
+                    target: GameState.innings.value === 2 ? GameState.teams.team1Name.value : undefined,
+                    mainColor: GameState.innings.value === 2 ? (GameState.teams.team2.value?.color || "#ecc94b") : (GameState.teams.team1.value?.color || "#60a5fa"),
+                    targetColor: GameState.teams.team1.value?.color || "#555"
                 }}
             />
         </header>

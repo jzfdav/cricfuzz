@@ -14,6 +14,8 @@ interface WormGraphProps {
     legend?: {
         main: string;
         target?: string;
+        mainColor?: string;
+        targetColor?: string;
     };
 }
 
@@ -131,7 +133,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
 
                     {/* Target Line (if 2nd innings) */}
                     {targetLine && (
-                        <path d={targetLine} fill="none" stroke="#555" strokeWidth="1.5" strokeDasharray="3" />
+                        <path d={targetLine} fill="none" stroke={legend?.targetColor || "#555"} strokeWidth="1.5" strokeDasharray="3" />
                     )}
 
                     {/* Main Line */}
@@ -157,7 +159,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
                         {/* Main Team (Left) */}
                         <div className="flex items-center gap-2">
                             <svg width="25" height="6" className="overflow-visible">
-                                <line x1="0" y1="3" x2="25" y2="3" stroke={color} strokeWidth={expanded ? 2.5 : 1.5} strokeLinecap="round" />
+                                <line x1="0" y1="3" x2="25" y2="3" stroke={legend.mainColor || color} strokeWidth={expanded ? 2.5 : 1.5} strokeLinecap="round" />
                             </svg>
                             <span className="text-[10px] font-bold text-gray-300 uppercase tracking-wider">{legend.main}</span>
                         </div>
@@ -167,7 +169,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
                             <div className="flex items-center gap-2">
                                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{legend.target}</span>
                                 <svg width="25" height="6" className="overflow-visible">
-                                    <path d="M 0 3 L 25 3" fill="none" stroke="#555" strokeWidth="1.5" strokeDasharray="3" strokeLinecap="round" />
+                                    <path d="M 0 3 L 25 3" fill="none" stroke={legend.targetColor || "#555"} strokeWidth="1.5" strokeDasharray="3" strokeLinecap="round" />
                                 </svg>
                             </div>
                         )}
