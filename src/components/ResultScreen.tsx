@@ -33,6 +33,58 @@ export function ResultScreen({ engine }: ResultScreenProps) {
                 </div>
             </div>
 
+            {/* Top Performers Summary */}
+            <div className="w-full max-w-2xl grid grid-cols-2 gap-4 mb-6">
+                <div className="bg-[#161B22] p-4 rounded-xl border border-gray-800">
+                    <h3 className="text-[10px] font-black uppercase tracking-widest text-amber-500 mb-3 border-b border-gray-700 pb-2">Best Batters</h3>
+                    <div className="space-y-2">
+                        {getTopPerformers(history).batters.slice(0, 3).map((p, i) => (
+                            <div key={i} className="flex justify-between items-center text-xs">
+                                <span className={`${i === 0 ? 'text-white font-bold' : 'text-gray-400'}`}>{p.name.split(' ').pop()}</span>
+                                <span className="font-mono text-gray-300">{p.batStats.runs} <span className="text-[9px] text-gray-600">({p.batStats.balls})</span></span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="bg-[#161B22] p-4 rounded-xl border border-gray-800">
+                    <h3 className="text-[10px] font-black uppercase tracking-widest text-emerald-500 mb-3 border-b border-gray-700 pb-2">Best Bowlers</h3>
+                    <div className="space-y-2">
+                        {getTopPerformers(history).bowlers.slice(0, 3).map((p, i) => (
+                            <div key={i} className="flex justify-between items-center text-xs">
+                                <span className={`${i === 0 ? 'text-white font-bold' : 'text-gray-400'}`}>{p.name.split(' ').pop()}</span>
+                                <span className="font-mono text-gray-300">{p.bowlStats.wicketsTaken}/{p.bowlStats.runsConceded} <span className="text-[9px] text-gray-600">({Math.floor(p.bowlStats.balls / 6)}.{p.bowlStats.balls % 6})</span></span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Top Performers Summary */}
+            <div className="w-full max-w-2xl grid grid-cols-2 gap-4 mb-6">
+                <div className="bg-[#161B22] p-4 rounded-xl border border-gray-800">
+                    <h3 className="text-[10px] font-black uppercase tracking-widest text-amber-500 mb-3 border-b border-gray-700 pb-2">Best Batters</h3>
+                    <div className="space-y-2">
+                        {getTopPerformers(history).batters.slice(0, 3).map((p, i) => (
+                            <div key={i} className="flex justify-between items-center text-xs">
+                                <span className={`${i === 0 ? 'text-white font-bold' : 'text-gray-400'}`}>{p.name.split(' ').pop()}</span>
+                                <span className="font-mono text-gray-300">{p.batStats.runs} <span className="text-[9px] text-gray-600">({p.batStats.balls})</span></span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="bg-[#161B22] p-4 rounded-xl border border-gray-800">
+                    <h3 className="text-[10px] font-black uppercase tracking-widest text-emerald-500 mb-3 border-b border-gray-700 pb-2">Best Bowlers</h3>
+                    <div className="space-y-2">
+                        {getTopPerformers(history).bowlers.slice(0, 3).map((p, i) => (
+                            <div key={i} className="flex justify-between items-center text-xs">
+                                <span className={`${i === 0 ? 'text-white font-bold' : 'text-gray-400'}`}>{p.name.split(' ').pop()}</span>
+                                <span className="font-mono text-gray-300">{p.bowlStats.wicketsTaken}/{p.bowlStats.runsConceded} <span className="text-[9px] text-gray-600">({Math.floor(p.bowlStats.balls / 6)}.{p.bowlStats.balls % 6})</span></span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
             {/* Match Analysis Graph */}
             {(history.length >= 1) && (
                 <div className="w-full max-w-2xl mb-6">
@@ -169,4 +221,22 @@ function getMatchDescription(history: MatchHistoryEntry[], t1: string, t2: strin
         description += `${(topPerformer as any).name.split(' ').pop()}'s ${(topPerformer as any).stat} was the standout performance of the match.`;
     }
     return description;
+}
+
+function getTopPerformers(history: MatchHistoryEntry[]) {
+    const allBatters: Player[] = [];
+    const allBowlers: Player[] = [];
+
+    history.forEach(inn => {
+        allBatters.push(...inn.batting.filter(p => p.batStats.balls > 0 || p.batStats.out));
+        allBowlers.push(...inn.bowling.filter(p => p.bowlStats.balls > 0));
+    });
+
+    // Sort Batters: Most Runs, then Fewest Balls
+    allBatters.sort((a, b) => (b.batStats.runs - a.batStats.runs) || (a.batStats.balls - b.batStats.balls));
+
+    // Sort Bowlers: Most Wickets, then Fewest Runs
+    allBowlers.sort((a, b) => (b.bowlStats.wicketsTaken - a.bowlStats.wicketsTaken) || (a.bowlStats.runsConceded - b.bowlStats.runsConceded));
+
+    return { batters: allBatters, bowlers: allBowlers };
 }
