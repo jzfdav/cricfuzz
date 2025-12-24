@@ -20,7 +20,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
 
     // Config - Compact Defaults
     const width = expanded ? 700 : 300;
-    const height = expanded ? 350 : 120; // Increased height slightly to accommodate padding
+    const height = expanded ? 500 : 120; // Increased height slightly to accommodate padding
     const padding = expanded ? 40 : 25;  // Increased padding to clear title overlap
     const graphWidth = width - padding * 2;
     const graphHeight = height - padding * 2;
@@ -92,7 +92,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
 
                 {expanded && <h3 className="font-black uppercase tracking-[0.2em] text-amber-500 text-sm mb-4 text-center">Match Analysis</h3>}
 
-                <svg width="100%" height={expanded ? 400 : 120} viewBox={`0 0 ${width} ${height}`} className="overflow-visible">
+                <svg width="100%" height={expanded ? 500 : 120} viewBox={`0 0 ${width} ${height}`} className="overflow-visible">
                     {/* Axes & Grid */}
                     <>
                         {/* Grid & Ticks */}
