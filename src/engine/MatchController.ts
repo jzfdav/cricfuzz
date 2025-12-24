@@ -102,8 +102,8 @@ export class MatchController {
             const factor = 1 + (Math.random() * 0.2 + 0.1); // 1.10 to 1.30
             const ecoFactor = 1 - (Math.random() * 0.2 + 0.1); // 0.90 to 0.70 (Lower is better)
 
-            (p as any).aggression = Math.floor(((p as any).aggression || 75) * factor);
-            (p as any).economy = ((p as any).economy || 8.0) * ecoFactor;
+            p.aggression = Math.floor((p.aggression || 75) * factor);
+            p.economy = (p.economy || 8.0) * ecoFactor;
             return p;
         };
 
@@ -299,8 +299,12 @@ export class MatchController {
                 }
                 if (inningsEnded) {
                     if (score < lead) this.endMatch(`${GameState.bowlingTeamName.value} WINS by ${lead - score} runs!`);
-                    else if (score === lead) this.endMatch("MATCH TIED!");
-                    else this.endMatch("MATCH DRAWN!");
+                    else if (score === lead) {
+                        if (GameState.allOut.value || wickets >= 10) this.endMatch("MATCH TIED!");
+                        else this.endMatch("MATCH DRAWN!");
+                    } else {
+                        this.endMatch("MATCH DRAWN!");
+                    }
                     return;
                 }
             } else {

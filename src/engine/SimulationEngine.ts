@@ -14,9 +14,9 @@ export class SimulationEngine {
         let weights = [35, 30, 10, 15, 5, 5];
 
         let batterSkill = striker.battingSkill || 75;
-        let batterAggression = (striker as any).aggression || 70;
+        let batterAggression = striker.aggression || 70;
         let bowlerSkill = bowler.bowlingSkill || 75;
-        let bowlerEconomy = (bowler as any).economy || 8.0;
+        let bowlerEconomy = bowler.economy || 8.0;
 
         // Pitch Modifiers
         if (pitch === "Flat") { batterSkill *= 1.1; bowlerSkill *= 0.9; }

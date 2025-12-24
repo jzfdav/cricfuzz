@@ -75,9 +75,9 @@ export class StatsEngine {
         if (candidates.length) {
             GameState.bowler.value = candidates[0].name;
         } else if (squad.length > 0) {
-            // Panic fallback: just pick the first player if no one matches criteria
-            // This prevents the 'bowler from previous innings' bug
-            GameState.bowler.value = squad[0].name;
+            // Panic fallback: pick a bowler who isn't the current one
+            const fallback = squad.find(p => p.name !== current) || squad[0];
+            GameState.bowler.value = fallback.name;
         }
     }
     updateStats(result: number | 'W', striker: Player, bowlerName: string) {

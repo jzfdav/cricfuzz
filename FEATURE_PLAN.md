@@ -38,6 +38,14 @@ This document outlines planned and in-progress features for the CricFuzz simulat
 
 ---
 
+## 4. Visual Polish & Flags
+- **Status**: ✅ COMPLETED
+- **Features**: 
+    - **Team Flags**: Added to Scoreboard, Results, and Config.
+    - **Worm Graph**: Adjusted layout and font size for mobile.
+
+---
+
 ## Implementation Priority Summary
 
 | Feature | Priority | Effort | Impact |
