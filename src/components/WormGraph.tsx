@@ -26,7 +26,20 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
     const graphHeight = height - padding * 2;
 
     // Scales
-    const maxOvers = totalOvers || 20;
+    const currentDataOver = data[data.length - 1]?.over || 0;
+
+    // Dynamic Scaling Logic
+    let maxOvers = totalOvers || 20;
+
+    // If it's the 1st innings (no targetData), scale dynamically
+    if (!targetData) {
+        // Round up to nearest 10
+        const dynamicCeiling = Math.ceil((currentDataOver + 0.1) / 10) * 10;
+        maxOvers = Math.min(dynamicCeiling, totalOvers);
+    }
+
+    // Safety lower bound
+    maxOvers = Math.max(10, maxOvers);
     const maxScore = Math.max(
         data[data.length - 1]?.score || 0,
         targetData ? targetData[targetData.length - 1]?.score || 0 : 0,
