@@ -29,8 +29,8 @@ export class MatchController {
 
         GameState.teams.team1Name.value = d1.name;
         GameState.teams.team2Name.value = d2.name;
-        GameState.teams.team1.value = { id: t1Id, name: d1.name, players: p1 };
-        GameState.teams.team2.value = { id: t2Id, name: d2.name, players: p2 };
+        GameState.teams.team1.value = { id: t1Id, name: d1.name, color: d1.color, players: p1 };
+        GameState.teams.team2.value = { id: t2Id, name: d2.name, color: d2.color, players: p2 };
     }
 
     performToss() {

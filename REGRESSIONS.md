@@ -105,3 +105,8 @@ This document records functionality regressions and issues identified during the
 - **Issue**: The Worm Graph on the post-match summary screen defaulted to Team 1's color for the main line, even if Team 2 batted first.
 - **Reason**: The `ResultScreen` component hardcoded `team1Name` and `team1Color` as the primary dataset props, ignoring the actual `history` order.
 - **Status**: ✅ Fixed (Implemented dynamic logic to match `history[0]` team to its correct color).
+
+## 22. Missing Team Colors (Match Controller)
+- **Issue**: Teams were displaying default colors (Blue/Yellow) in match instead of their custom JSON colors (e.g., Black for NZ).
+- **Reason**: `MatchController.loadTeams` was constructing `TeamStructure` objects by cherry-picking `id`, `name`, and `players`, explicitly omitting the `color` property from the fetched data.
+- **Status**: ✅ Fixed (Added `color: d.color` to the team state assignment).
