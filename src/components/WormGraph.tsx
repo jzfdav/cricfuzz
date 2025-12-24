@@ -115,7 +115,39 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
         return getLuminance(hex) < 45; // slightly higher threshold for safety
     };
 
-    const hasDarkTeam = isDark(color) || isDark(legend?.targetColor);
+    // Color Clashing Logic
+    const getColorDistance = (c1: string, c2: string) => {
+        const hexToRgb = (hex: string) => {
+            const c = hex.replace('#', '');
+            return {
+                r: parseInt(c.substring(0, 2), 16),
+                g: parseInt(c.substring(2, 4), 16),
+                b: parseInt(c.substring(4, 6), 16)
+            }
+        }
+        try {
+            const rgb1 = hexToRgb(c1);
+            const rgb2 = hexToRgb(c2);
+            return Math.sqrt(
+                Math.pow(rgb1.r - rgb2.r, 2) +
+                Math.pow(rgb1.g - rgb2.g, 2) +
+                Math.pow(rgb1.b - rgb2.b, 2)
+            );
+        } catch (e) { return 500; } // Fallback if invalid hex
+    };
+
+    let effectiveTargetColor = legend?.targetColor || "#555";
+    if (color && legend?.targetColor) {
+        const dist = getColorDistance(color, legend.targetColor);
+        if (dist < 60) { // Threshold for "Too Similar"
+            // Clash detected! Shift target color for contrast.
+            // If main color is dark, make target light. If main is light, make target dark.
+            const mainIsDark = getLuminance(color) < 128;
+            effectiveTargetColor = mainIsDark ? "#e2e8f0" : "#1e293b"; // Slate-200 or Slate-800
+        }
+    }
+
+    const hasDarkTeam = isDark(color) || isDark(effectiveTargetColor);
     // If dark team, use Slate-500 (#64748b) - contrasts with Black AND White
     // If normal, use transparent/dark (#161B22 is parent, so transparent is fine)
     const graphBg = hasDarkTeam ? "#64748b" : "transparent";
@@ -190,7 +222,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
                             </filter>
                         </defs>
 
-                        {targetLine && <path d={targetLine} fill="none" stroke={legend?.targetColor || "#555"} strokeWidth="1.5" strokeDasharray="3" filter="url(#shadow)" />}
+                        {targetLine && <path d={targetLine} fill="none" stroke={effectiveTargetColor} strokeWidth="1.5" strokeDasharray="3" filter="url(#shadow)" />}
                         <path d={mainLine} fill="none" stroke={color} strokeWidth={expanded ? 2.5 : 1.5} filter="url(#shadow)" />
 
                         {/* Wicket Dots (Target) */}
@@ -201,7 +233,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
                                     cy={p.cy}
                                     r={expanded ? 4 : 2}
                                     fill="#ef4444"
-                                    stroke={legend?.targetColor || "#555"}
+                                    stroke={effectiveTargetColor}
                                     strokeWidth={expanded ? 2 : 1}
                                 />
                             </g>
@@ -226,7 +258,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
                 {/* Expanded FOW Section */}
                 {expanded && (
                     <div className="border-t border-gray-700 pt-4 px-4">
-                        <h4 className="text-xs font-bold uppercase text-gray-400 mb-2">Fall of Wickets - <span style={{ color: selectedLegend === 'target' ? legend?.targetColor : legend?.mainColor }}>{activeTeamName}</span></h4>
+                        <h4 className="text-xs font-bold uppercase text-gray-400 mb-2">Fall of Wickets - <span style={{ color: selectedLegend === 'target' ? effectiveTargetColor : legend?.mainColor }}>{activeTeamName}</span></h4>
                         <div className="flex flex-wrap gap-2">
                             {activeFOW.length === 0 ? <span className="text-xs text-gray-600 italic">No Wickets</span> :
                                 activeFOW.map((p, i) => (
@@ -269,7 +301,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
                             >
                                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{legend.target}</span>
                                 <svg width="25" height="6" className="overflow-visible">
-                                    <path d="M 0 3 L 25 3" fill="none" stroke={legend.targetColor || "#555"} strokeWidth="1.5" strokeDasharray="3" strokeLinecap="round" />
+                                    <path d="M 0 3 L 25 3" fill="none" stroke={effectiveTargetColor} strokeWidth="1.5" strokeDasharray="3" strokeLinecap="round" />
                                 </svg>
                             </div>
                         )}
