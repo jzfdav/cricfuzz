@@ -130,3 +130,8 @@ This document records functionality regressions and issues identified during the
 - **Issue**: Users lacked context on why a team might have batted/bowled first, as Pitch Condition was not visible in the summary.
 - **Reason**: Feature request.
 - **Status**: ✅ Added (Pitch condition now displayed alongside Toss result).
+
+## 27. Double Counted Over Runs (Match Controller)
+- **Issue**: `overRuns` was being incremented in both `StatsEngine` and `MatchController`. While effective `overRuns` were reset every over, this theoretical double-counting could lead to issues if logic changed or if we displayed "Runs this over" in real-time.
+- **Reason**: Redundant logic during previous bug fix.
+- **Status**: ✅ Fixed (Removed duplicate increment in `MatchController`).

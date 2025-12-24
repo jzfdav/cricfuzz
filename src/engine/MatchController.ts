@@ -391,9 +391,8 @@ export class MatchController {
         }
 
         // Update Over Runs
-        if (typeof res === 'number') {
-            GameState.overRuns.value += res;
-        }
+        // GameState.overRuns.value += res; // Handled in StatsEngine
+
 
         // Timeline checks & Over Management
         if (GameState.balls.value > 0 && GameState.balls.value % 6 === 0) {
