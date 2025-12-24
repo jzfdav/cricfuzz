@@ -90,7 +90,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
                             return (
                                 <g key={`x-${tick}`}>
                                     <line x1={x} y1={padding} x2={x} y2={height - padding} stroke="#333" strokeWidth="0.5" strokeDasharray="2" />
-                                    <text x={x} y={height - padding + (expanded ? 15 : 10)} fill="#666" fontSize={expanded ? "10" : "4.5"} textAnchor="middle" fontWeight="bold">{tick}</text>
+                                    <text x={x} y={height - padding + (expanded ? 15 : 10)} fill="#666" fontSize={expanded ? "10" : "3"} textAnchor="middle" fontWeight="bold">{tick}</text>
                                 </g>
                             );
                         })}
@@ -103,7 +103,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
                             return (
                                 <g key={`y-${tick}`}>
                                     <line x1={padding} y1={y} x2={width - padding} y2={y} stroke="#333" strokeWidth="0.5" strokeDasharray="2" />
-                                    <text x={padding - (expanded ? 5 : 2)} y={y + (expanded ? 3 : 1.5)} fill="#666" fontSize={expanded ? "10" : "4.5"} textAnchor="end" fontWeight="bold">{tick}</text>
+                                    <text x={padding - (expanded ? 8 : 4)} y={y + (expanded ? 3 : 1.5)} fill="#666" fontSize={expanded ? "10" : "3"} textAnchor="end" style={{ textAnchor: 'end' }} fontWeight="bold">{tick}</text>
                                 </g>
                             );
                         })}

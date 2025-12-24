@@ -101,7 +101,9 @@ export const GameState = {
 };
 
 interface TeamStructure {
+    id: string; // Added id
     name: string;
+    color?: string;
     players: Player[];
 }
 

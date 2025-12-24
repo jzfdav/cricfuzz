@@ -1,6 +1,7 @@
 import { useState } from 'preact/hooks';
 import { GameState, FormatType } from '../engine/GameState';
 import { GameEngine } from '../engine/GameEngine';
+import { getTeamFlag } from "../utils";
 
 interface ConfigScreenProps {
     engine: GameEngine;
@@ -133,7 +134,7 @@ function TeamSelect({ value, onChange, teams, alignRight }: TeamSelectProps) {
             onChange={(e) => onChange((e.target as HTMLSelectElement).value)}
             className={`w-full bg-transparent text-lg sm:text-2xl font-black text-amber-500 outline-none truncate ${alignRight ? 'text-right' : 'text-left'}`}
         >
-            {teams.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
+            {teams.map(t => <option key={t.id} value={t.id}>{getTeamFlag(t.id)} {t.name}</option>)}
         </select>
     );
 }

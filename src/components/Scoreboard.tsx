@@ -1,15 +1,19 @@
 import { GameState, currentOver, runRate, currentPhase } from "../engine/GameState";
 import { WormGraph } from "./WormGraph";
 import { Player } from "../types";
+import { getTeamFlag } from "../utils";
 
 export function Scoreboard() {
     return (
         <header className="bg-[#161B22] p-5 border-b border-amber-500/30 sticky top-0 z-20 shadow-lg">
             <div className="flex justify-between items-end mb-2">
                 <div>
-                    <h1 className="text-4xl font-black mono tracking-tighter text-white">
-                        {GameState.score.value}-{GameState.wickets.value}
-                    </h1>
+                    <div className="flex items-center gap-2">
+                        <span className="text-3xl">{getTeamFlag(GameState.teams[GameState.innings.value === 1 ? 'team1' : 'team2'].value?.id || '')}</span>
+                        <h1 className="text-4xl font-black mono tracking-tighter text-white">
+                            {GameState.score.value}-{GameState.wickets.value}
+                        </h1>
+                    </div>
                     <div className="flex items-center gap-2">
                         <p className="text-sm text-gray-400 font-bold">{currentOver.value} OVERS</p>
                         {currentPhase.value && (

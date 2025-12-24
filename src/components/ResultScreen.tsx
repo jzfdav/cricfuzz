@@ -3,6 +3,7 @@ import { GameState } from "../engine/GameState";
 import { WormGraph } from "./WormGraph";
 import { GameEngine } from "../engine/GameEngine";
 import { MatchHistoryEntry, Player } from '../types';
+import { getTeamFlag } from "../utils";
 
 interface ResultScreenProps {
     engine: GameEngine;
@@ -13,6 +14,12 @@ export function ResultScreen({ engine }: ResultScreenProps) {
     const history = GameState.history.value;
     const [expanded, setExpanded] = useState<number | null>(null); // Index of expanded card
 
+    // Helper safely access team data even if history is partial
+    const t1Name = GameState.teams.team1Name.value;
+    const t2Name = GameState.teams.team2Name.value;
+    const t1Id = GameState.teams.team1.value?.id || '';
+    const t2Id = GameState.teams.team2.value?.id || '';
+
     return (
         <div className="min-h-screen p-6 flex flex-col items-center animate-fade-in bg-[#0B0E14] text-white">
             <div className="text-center mt-10 mb-8">
@@ -21,7 +28,7 @@ export function ResultScreen({ engine }: ResultScreenProps) {
                 <p className="text-xs text-gray-400 italic mb-4">{GameState.tossResult.value}</p>
                 <div className="max-w-xl mx-auto p-4 bg-gray-800/30 rounded-xl border border-gray-800">
                     <p className="text-sm text-gray-300 font-medium italic leading-relaxed">
-                        {getMatchDescription(history, GameState.teams.team1Name.value, GameState.teams.team2Name.value, GameState.format.value)}
+                        {getMatchDescription(history, t1Name, t2Name, GameState.format.value)}
                     </p>
                 </div>
             </div>
@@ -41,15 +48,24 @@ export function ResultScreen({ engine }: ResultScreenProps) {
             <div className="w-full max-w-2xl space-y-6 flex-grow overflow-y-auto pb-10">
                 {history.map((inn, i) => {
                     const isExpanded = expanded === i;
+                    // Determine team name and flag for this innings
+                    // Note: history[0] is innings 1 (team1 usually, unless chased?), history[1] is innings 2
+                    // Actually, innings 1 is always the team that batted first.
+                    const isTeam1Innings = inn.team === t1Name;
+                    const flag = isTeam1Innings ? getTeamFlag(t1Id) : getTeamFlag(t2Id);
+
                     return (
                         <div key={i} className="bg-[#161B22] rounded-2xl border border-gray-800 overflow-hidden transition-all duration-300">
                             <div
                                 onClick={() => setExpanded(isExpanded ? null : i)}
                                 className="bg-gray-800/50 p-4 flex justify-between items-center border-b border-gray-700 cursor-pointer hover:bg-gray-800 transition-colors"
                             >
-                                <div>
-                                    <h3 className="font-black text-amber-500 uppercase tracking-widest text-[10px] mb-1">{inn.team}</h3>
-                                    <p className="text-[9px] text-gray-400 uppercase font-bold">{['1st', '2nd', '3rd', '4th'][i] || (i + 1) + 'th'} INNINGS</p>
+                                <div className="flex items-center gap-3">
+                                    <span className="text-2xl">{flag}</span>
+                                    <div>
+                                        <h3 className="font-black text-amber-500 uppercase tracking-widest text-[10px] mb-1">{inn.team}</h3>
+                                        <p className="text-[9px] text-gray-400 uppercase font-bold">{['1st', '2nd', '3rd', '4th'][i] || (i + 1) + 'th'} INNINGS</p>
+                                    </div>
                                 </div>
                                 <div className="text-right">
                                     <span className="mono font-black text-2xl text-white">{inn.score}/{inn.wickets}</span>
@@ -57,35 +73,33 @@ export function ResultScreen({ engine }: ResultScreenProps) {
                                 </div>
                             </div>
 
-                            {/* Scorecard Grid */}
-                            <div className="grid grid-cols-2 gap-4 p-4 text-xs text-gray-400">
-                                <div>
-                                    <p className="mb-2 font-bold uppercase text-[10px] text-amber-500/80">Batting</p>
-                                    {(isExpanded ? inn.batting : [...inn.batting].sort((a, b) => b.batStats.runs - a.batStats.runs).slice(0, 3)).map(p => (
-                                        <div key={p.name} className={`flex justify-between border-b border-gray-800 py-1 ${p.batStats.out ? 'text-gray-500' : 'text-white'}`}>
-                                            <span>{p.name.split(' ').pop()} {p.batStats.out ? '' : '*'}</span>
-                                            <span className="font-mono">{p.batStats.runs} ({p.batStats.balls})</span>
-                                        </div>
-                                    ))}
-                                    {!isExpanded && <p className="text-[9px] italic mt-1 opacity-50">+ more</p>}
-                                </div>
-                                <div>
-                                    <p className="mb-2 font-bold uppercase text-[10px] text-amber-500/80">Bowling</p>
-                                    {(isExpanded ? inn.bowling.filter(p => p.bowlStats.balls > 0) : inn.bowling
-                                        .filter(p => p.bowlStats.balls > 0)
-                                        .sort((a, b) => (b.bowlStats.wicketsTaken - a.bowlStats.wicketsTaken) || (a.bowlStats.runsConceded - b.bowlStats.runsConceded))
-                                        .slice(0, 3))
-                                        .map(p => (
-                                            <div key={p.name} className="flex justify-between border-b border-gray-800 py-1">
-                                                <span>{p.name.split(' ').pop()}</span>
-                                                <span className="font-mono text-white">
-                                                    {p.bowlStats.wicketsTaken}-{p.bowlStats.runsConceded} <span className="text-gray-600 text-[9px]">({Math.floor(p.bowlStats.balls / 6)}.{p.bowlStats.balls % 6})</span>
-                                                </span>
+                            {/* Scorecard Grid - Visible only when expanded */}
+                            {isExpanded && (
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 text-xs text-gray-400 animate-fade-in-down">
+                                    <div>
+                                        <p className="mb-2 font-bold uppercase text-[10px] text-amber-500/80">Batting</p>
+                                        {inn.batting.map(p => (
+                                            <div key={p.name} className={`flex justify-between border-b border-gray-800 py-1 ${p.batStats.out ? 'text-gray-500' : 'text-white'}`}>
+                                                <span>{p.name.split(' ').pop()} {p.batStats.out ? '' : '*'}</span>
+                                                <span className="font-mono">{p.batStats.runs} ({p.batStats.balls})</span>
                                             </div>
                                         ))}
-                                    {!isExpanded && <p className="text-[9px] italic mt-1 opacity-50">+ more</p>}
+                                    </div>
+                                    <div>
+                                        <p className="mb-2 font-bold uppercase text-[10px] text-amber-500/80">Bowling</p>
+                                        {inn.bowling.filter(p => p.bowlStats.balls > 0)
+                                            .sort((a, b) => (b.bowlStats.wicketsTaken - a.bowlStats.wicketsTaken) || (a.bowlStats.runsConceded - b.bowlStats.runsConceded))
+                                            .map(p => (
+                                                <div key={p.name} className="flex justify-between border-b border-gray-800 py-1">
+                                                    <span>{p.name.split(' ').pop()}</span>
+                                                    <span className="font-mono text-white">
+                                                        {p.bowlStats.wicketsTaken}-{p.bowlStats.runsConceded} <span className="text-gray-600 text-[9px]">({Math.floor(p.bowlStats.balls / 6)}.{p.bowlStats.balls % 6})</span>
+                                                    </span>
+                                                </div>
+                                            ))}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
 
                             <div
                                 onClick={() => setExpanded(isExpanded ? null : i)}
@@ -112,7 +126,7 @@ export function ResultScreen({ engine }: ResultScreenProps) {
                     New Simulation
                 </button>
             </div>
-        </div>
+        </div >
     );
 }
 
