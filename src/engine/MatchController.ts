@@ -390,31 +390,14 @@ export class MatchController {
             if (runsScored % 2 !== 0) this.swapBatters();
         }
 
-        // Timeline checks & Over Management
-
-
-        // Maiden Check
-        if (GameState.overRuns.value === 0 && !GameState.allOut.value && GameState.balls.value > 0 && GameState.balls.value % 6 === 0) {
-            const bowlerObj = GameState.bowlingSquad.value.find((p: Player) => p.name === GameState.bowler.value);
-            // Note: Maiden stat already incremented in StatsEngine? 
-            // Logic in StatsEngine needs to know if over just ended to increment maiden. 
-            // Currently StatsEngine doesn't handle "End of Over" Logic for maidens perfectly without extra persistent state.
-            // So we keep Maiden logic here?
-            // Actually, StatsEngine.updateStats increments runsConceded.
-            // GameState.overRuns is updated in StatsEngine? No.
-            // Let's check StatsEngine.updateStats again.
-            // It does NOT update GameState.overRuns.value.
+        // Update Over Runs
+        if (typeof res === 'number') {
+            GameState.overRuns.value += res;
         }
 
-        // Wait! I need to ensure StatsEngine DOES update overRuns or I need to do it here.
-        // GameState.overRuns IS NOT updated in my StatsEngine.ts implementation above.
-        // I should have checked that.
-
-        // Let's assume for this step I fix the code I am pasting to include overRuns update manually if StatsEngine missed it, 
-        // OR I rely on the fact that I am REWRITING MatchController so I can add it back.
-
+        // Timeline checks & Over Management
         if (GameState.balls.value > 0 && GameState.balls.value % 6 === 0) {
-            // Maiden Check Logic needs GameState.overRuns
+            // Maiden Check
             if (GameState.overRuns.value === 0 && !GameState.allOut.value) {
                 const bowlerObj = GameState.bowlingSquad.value.find((p: Player) => p.name === GameState.bowler.value);
                 if (bowlerObj) bowlerObj.bowlStats.maidens++;

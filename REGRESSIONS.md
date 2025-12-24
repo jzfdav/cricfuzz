@@ -110,3 +110,13 @@ This document records functionality regressions and issues identified during the
 - **Issue**: Teams were displaying default colors (Blue/Yellow) in match instead of their custom JSON colors (e.g., Black for NZ).
 - **Reason**: `MatchController.loadTeams` was constructing `TeamStructure` objects by cherry-picking `id`, `name`, and `players`, explicitly omitting the `color` property from the fetched data.
 - **Status**: ✅ Fixed (Added `color: d.color` to the team state assignment).
+
+## 23. Result Screen Type Safety
+- **Issue**: TypeScript error `Property 'name' does not exist on type 'never'` due to poor type inference for `topPerformer` variable.
+- **Reason**: The variable was initialized to null and implicitly typed, confusing the compiler.
+- **Status**: ✅ Fixed (Defined explicit `Performer` interface).
+
+## 24. Broken Maiden Over Logic (Match Controller)
+- **Issue**: Every over was potentially being recorded as a maiden over, and code contained "ghost comments" (my internal notes).
+- **Reason**: `GameState.overRuns.value` was never being incremented when runs were scored, so the End-of-Over check always saw 0 runs.
+- **Status**: ✅ Fixed (Added `GameState.overRuns.value += res` logic and removed ghost comments).

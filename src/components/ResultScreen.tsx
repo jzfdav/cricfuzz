@@ -184,7 +184,8 @@ function getMatchDescription(history: MatchHistoryEntry[], t1: string, t2: strin
     });
 
     // Dynamic summary
-    let topPerformer: { name: string; stat: string; type: 'bat' | 'bowl' } | null = null;
+    interface Performer { name: string; stat: string; type: 'bat' | 'bowl'; }
+    let topPerformer: Performer | null = null;
     let maxImpact = -1;
 
     history.forEach(inn => {
@@ -208,7 +209,7 @@ function getMatchDescription(history: MatchHistoryEntry[], t1: string, t2: strin
     let description = `A thrilling ${format} encounter between ${t1} and ${t2}. `;
     if (totalMaidens > 0) description += `Defensive pressure was key with ${totalMaidens} maiden over${totalMaidens > 1 ? 's' : ''} bowled. `;
     if (topPerformer) {
-        description += `${(topPerformer as any).name.split(' ').pop()}'s ${(topPerformer as any).stat} was the standout performance of the match.`;
+        description += `${topPerformer.name.split(' ').pop()}'s ${topPerformer.stat} was the standout performance of the match.`;
     }
     return description;
 }
