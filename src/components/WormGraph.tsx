@@ -87,6 +87,40 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
     const activeFOW = (selectedLegend === 'target' && targetData) ? getFOWList(targetData) : getFOWList(data);
     const activeTeamName = (selectedLegend === 'target' && legend?.target) ? legend.target : legend?.main;
 
+    // Determine Background Color
+    // If any team has a very dark color (like Black), we need a lighter background for contrast.
+    // Otherwise, we stick to the dark theme.
+    // Imports would need to be added at top, but assumes isDarkColor available or inline it. 
+    // Since I appended to utils/index.ts, I will import it.
+
+    // Inline helper since I cannot edit imports easily in this replacing block without context
+    const getLuminance = (hex: string) => {
+        const c = hex.replace('#', '');
+        const rgb = parseInt(c, 16);
+        const r = (rgb >> 16) & 0xff;
+        const g = (rgb >> 8) & 0xff;
+        const b = (rgb >> 0) & 0xff;
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    };
+
+    const isDark = (hex?: string) => {
+        if (!hex) return false;
+        // Handle short hex codes (e.g., #000)
+        if (hex.length === 4) {
+            const r = hex[1];
+            const g = hex[2];
+            const b = hex[3];
+            hex = `#${r}${r}${g}${g}${b}${b}`;
+        }
+        return getLuminance(hex) < 45; // slightly higher threshold for safety
+    };
+
+    const hasDarkTeam = isDark(color) || isDark(legend?.targetColor);
+    // If dark team, use Slate-500 (#64748b) - contrasts with Black AND White
+    // If normal, use transparent/dark (#161B22 is parent, so transparent is fine)
+    const graphBg = hasDarkTeam ? "#64748b" : "transparent";
+    const graphClass = hasDarkTeam ? "rounded-lg shadow-inner" : "";
+
     return (
         <div
             className={`transition-all duration-300 ${expanded ? 'fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm' : 'relative mt-2'}`}
@@ -118,7 +152,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
 
                 {expanded && <h3 className="font-black uppercase tracking-[0.2em] text-amber-500 text-sm text-center mt-2">Match Analysis</h3>}
 
-                <div className="relative">
+                <div className={`relative ${expanded ? 'mt-4' : 'mt-6'} ${graphClass}`} style={{ backgroundColor: graphBg }}>
                     <svg width="100%" height={height} viewBox={`0 0 ${width} ${height}`} className="overflow-visible">
                         {/* Axes & Grid */}
                         <>
@@ -129,7 +163,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
                                 return (
                                     <g key={`x-${tick}`}>
                                         <line x1={x} y1={padding} x2={x} y2={height - padding} stroke="#333" strokeWidth="0.5" strokeDasharray="2" />
-                                        <text x={x} y={height - padding + (expanded ? 20 : 12)} fill="#666" style={{ fontSize: expanded ? '12px' : '8px' }} textAnchor="middle" fontWeight="bold">{tick}</text>
+                                        <text x={x} y={height - padding + (expanded ? 20 : 12)} fill={hasDarkTeam ? "#f1f5f9" : "#666"} style={{ fontSize: expanded ? '12px' : '8px' }} textAnchor="middle" fontWeight="bold">{tick}</text>
                                     </g>
                                 );
                             })}
@@ -141,17 +175,23 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
                                 return (
                                     <g key={`y-${tick}`}>
                                         <line x1={padding} y1={y} x2={width - padding} y2={y} stroke="#333" strokeWidth="0.5" strokeDasharray="2" />
-                                        <text x={padding - (expanded ? 10 : 6)} y={y + (expanded ? 4 : 3)} fill="#666" style={{ textAnchor: 'end', fontSize: expanded ? '12px' : '8px' }} fontWeight="bold">{tick}</text>
+                                        <text x={padding - (expanded ? 10 : 6)} y={y + (expanded ? 4 : 3)} fill={hasDarkTeam ? "#f1f5f9" : "#666"} style={{ textAnchor: 'end', fontSize: expanded ? '12px' : '8px' }} fontWeight="bold">{tick}</text>
                                     </g>
                                 );
                             })}
-                            <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding} stroke="#555" strokeWidth="1" />
-                            <line x1={padding} y1={padding} x2={padding} y2={height - padding} stroke="#555" strokeWidth="1" />
+                            <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding} stroke={hasDarkTeam ? "#cbd5e1" : "#555"} strokeWidth="1" />
+                            <line x1={padding} y1={padding} x2={padding} y2={height - padding} stroke={hasDarkTeam ? "#cbd5e1" : "#555"} strokeWidth="1" />
                         </>
 
-                        {/* Lines */}
-                        {targetLine && <path d={targetLine} fill="none" stroke={legend?.targetColor || "#555"} strokeWidth="1.5" strokeDasharray="3" />}
-                        <path d={mainLine} fill="none" stroke={color} strokeWidth={expanded ? 2.5 : 1.5} />
+                        {/* Lines - Added drop shadow filter for pop */}
+                        <defs>
+                            <filter id="shadow">
+                                <feDropShadow dx="0" dy="1" stdDeviation="1" floodOpacity="0.5" />
+                            </filter>
+                        </defs>
+
+                        {targetLine && <path d={targetLine} fill="none" stroke={legend?.targetColor || "#555"} strokeWidth="1.5" strokeDasharray="3" filter="url(#shadow)" />}
+                        <path d={mainLine} fill="none" stroke={color} strokeWidth={expanded ? 2.5 : 1.5} filter="url(#shadow)" />
 
                         {/* Wicket Dots (Target) */}
                         {targetWickets.map((p, i) => (
