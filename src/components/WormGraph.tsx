@@ -155,12 +155,30 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
 
                         {/* Wicket Dots (Target) */}
                         {targetWickets.map((p, i) => (
-                            <circle key={`t-${i}`} cx={p.cx} cy={p.cy} r={expanded ? 3 : 1.5} fill="#ef4444" stroke="#161B22" strokeWidth="1" />
+                            <g key={`t-${i}`}>
+                                <circle
+                                    cx={p.cx}
+                                    cy={p.cy}
+                                    r={expanded ? 4 : 2}
+                                    fill="#ef4444"
+                                    stroke={legend?.targetColor || "#555"}
+                                    strokeWidth={expanded ? 2 : 1}
+                                />
+                            </g>
                         ))}
 
                         {/* Wicket Dots (Main) */}
                         {mainWickets.map((p, i) => (
-                            <circle key={`m-${i}`} cx={p.cx} cy={p.cy} r={expanded ? 3 : 1.5} fill="#ef4444" stroke="#161B22" strokeWidth="1" />
+                            <g key={`m-${i}`}>
+                                <circle
+                                    cx={p.cx}
+                                    cy={p.cy}
+                                    r={expanded ? 4 : 2}
+                                    fill="#ef4444"
+                                    stroke={legend?.mainColor || color}
+                                    strokeWidth={expanded ? 2 : 1}
+                                />
+                            </g>
                         ))}
                     </svg>
                 </div>
