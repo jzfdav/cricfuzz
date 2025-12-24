@@ -18,6 +18,7 @@ export interface Player {
     role: 'Batter' | 'Bowler' | 'All-Rounder' | 'WicketKeeper';
     battingSkill: number;
     bowlingSkill: number;
+    bowlingStyle?: 'Pace' | 'Spin';
     aggression?: number;
     economy?: number;
     batStats: BatStats;

@@ -6,17 +6,19 @@
     {
       "name": "Abhishek Sharma",
       "role": "Batsman",
-      "battingSkill": 91,
+      "battingSkill": 92,
       "bowlingSkill": 15,
-      "aggression": 95,
+      "bowlingStyle": "Spin",
+      "aggression": 96,
       "economy": 9.0
     },
     {
       "name": "Suryakumar Yadav",
       "role": "Batsman",
-      "battingSkill": 92,
+      "battingSkill": 97,
       "bowlingSkill": 10,
-      "aggression": 90,
+      "bowlingStyle": "Pace",
+      "aggression": 94,
       "economy": 9.0
     },
     {
@@ -24,62 +26,70 @@
       "role": "Batsman",
       "battingSkill": 89,
       "bowlingSkill": 25,
+      "bowlingStyle": "Spin",
       "aggression": 85,
       "economy": 8.5
     },
     {
       "name": "Hardik Pandya",
       "role": "All-Rounder",
-      "battingSkill": 88,
-      "bowlingSkill": 85,
-      "aggression": 88,
+      "battingSkill": 89,
+      "bowlingSkill": 88,
+      "bowlingStyle": "Pace",
+      "aggression": 95,
       "economy": 7.8
     },
     {
       "name": "Rinku Singh",
       "role": "Batsman",
-      "battingSkill": 86,
+      "battingSkill": 90,
       "bowlingSkill": 10,
-      "aggression": 92,
+      "bowlingStyle": "Spin",
+      "aggression": 97,
       "economy": 9.0
     },
     {
       "name": "Sanju Samson",
       "role": "Wicketkeeper",
-      "battingSkill": 87,
+      "battingSkill": 88,
       "bowlingSkill": 0,
-      "aggression": 85,
+      "bowlingStyle": "Pace",
+      "aggression": 90,
       "economy": 0
     },
     {
       "name": "Axar Patel",
       "role": "All-Rounder",
-      "battingSkill": 87,
-      "bowlingSkill": 88,
-      "aggression": 60,
-      "economy": 7.2
+      "battingSkill": 84,
+      "bowlingSkill": 89,
+      "bowlingStyle": "Spin",
+      "aggression": 75,
+      "economy": 6.8
     },
     {
       "name": "Jasprit Bumrah",
       "role": "Bowler",
-      "battingSkill": 25,
+      "battingSkill": 20,
       "bowlingSkill": 99,
+      "bowlingStyle": "Pace",
       "aggression": 40,
-      "economy": 6.1
+      "economy": 5.8
     },
     {
       "name": "Kuldeep Yadav",
       "role": "Bowler",
-      "battingSkill": 20,
-      "bowlingSkill": 91,
+      "battingSkill": 15,
+      "bowlingSkill": 94,
+      "bowlingStyle": "Spin",
       "aggression": 30,
-      "economy": 6.8
+      "economy": 6.7
     },
     {
       "name": "Arshdeep Singh",
       "role": "Bowler",
       "battingSkill": 15,
-      "bowlingSkill": 88,
+      "bowlingSkill": 89,
+      "bowlingStyle": "Pace",
       "aggression": 35,
       "economy": 7.6
     },
@@ -88,8 +98,9 @@
       "role": "Bowler",
       "battingSkill": 10,
       "bowlingSkill": 88,
+      "bowlingStyle": "Spin",
       "aggression": 30,
-      "economy": 6.7
+      "economy": 6.6
     }
   ]
 }

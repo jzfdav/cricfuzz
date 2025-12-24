@@ -140,3 +140,33 @@ This document records functionality regressions and issues identified during the
 - **Issue**: The Worm Graph took up significant space in live view, preventing users from reading commentary while the match auto-played.
 - **Reason**: Feature request.
 - **Status**: ✅ Fixed (Added "Click to Collapse" / "Hide Graph" toggle).
+
+## 29. Commentary Engine Revamp (Refactor)
+- **Issue**: Commentary was repetitive and lacked context (e.g. generic "Four runs" for all shots).
+- **Reason**: Engine only knew the run value, not the shot or delivery type.
+- **Status**: ✅ Fixed (Implemented `BallOutcome` interface with rich metadata: Shot Type, Delivery Type, Timing. Updated entire pipeline to propagate this data). Verified with green build.
+
+## 30. Spinner Support (New Feature)
+- **Feature**: Added `Pace` vs `Spin` bowling styles.
+- **Changes**: 
+    - `BowlingEngine`: Spinners preferred in middle overs (T20: 7-15, ODI: 10-40).
+    - `SimulationEngine`: Spinners bowl 'full' (flighted) and 'length' (turn), rarely 'bouncer'.
+    - `CommentaryEngine`: Added spin-specific context ("Foxed him!", "Turn and bounce").
+    - `MatchController`: Randomly assigns `bowlingStyle` (40% spin chance for bowlers).
+- **Verification**: `npm run build` passed. Type safety confirmed.
+
+## 31. Data-Driven Bowling Styles (Migration)
+- **Feature**: Removed randomization of bowler styles.
+- **Changes**: 
+    - Updated 10 Team JSON files (`ind`, `aus`, `eng`, etc.) with explicit `bowlingStyle` for every player.
+    - Updated `MatchController` to use JSON data directly.
+- **Verification**: `npm run build` passed. JSON syntax validated via tool usage. Matches now reflect real-world bowler types.
+
+## 32. Realistic Player Stats Calibration
+- **Feature**: Recalibrated stats for all 10 teams based on real-world tiers.
+- **Changes**:
+    - **Batting**: Elite (95-99), High (90-95), Good (85-90).
+    - **Bowling**: Elite (95-99), High (90-95), Good (85-90).
+    - **Economy**: Elite (5.5-6.5), Standard (7.0-8.5).
+    - **Aggression**: Power Hitters (95-99).
+- **Verification**: `npm run build` passed. JSON files are valid.

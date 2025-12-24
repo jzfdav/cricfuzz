@@ -6,90 +6,101 @@
     {
       "name": "Brandon King",
       "role": "Batsman",
-      "battingSkill": 85,
+      "battingSkill": 86,
       "bowlingSkill": 0,
-      "aggression": 82,
+      "bowlingStyle": "Pace",
+      "aggression": 85,
       "economy": 0
     },
     {
       "name": "Evin Lewis",
       "role": "Batsman",
-      "battingSkill": 84,
+      "battingSkill": 86,
       "bowlingSkill": 0,
-      "aggression": 94,
+      "bowlingStyle": "Pace",
+      "aggression": 95,
       "economy": 0
     },
     {
       "name": "Nicholas Pooran",
       "role": "Wicketkeeper",
-      "battingSkill": 91,
+      "battingSkill": 95,
       "bowlingSkill": 0,
-      "aggression": 95,
+      "bowlingStyle": "Pace",
+      "aggression": 97,
       "economy": 0
     },
     {
       "name": "Shai Hope",
       "role": "Batsman",
-      "battingSkill": 87,
+      "battingSkill": 89,
       "bowlingSkill": 0,
-      "aggression": 70,
+      "bowlingStyle": "Pace",
+      "aggression": 75,
       "economy": 0
     },
     {
       "name": "Rovman Powell",
       "role": "All-Rounder",
-      "battingSkill": 85,
+      "battingSkill": 88,
       "bowlingSkill": 70,
-      "aggression": 92,
+      "bowlingStyle": "Pace",
+      "aggression": 95,
       "economy": 8.5
     },
     {
       "name": "Andre Russell",
       "role": "All-Rounder",
-      "battingSkill": 89,
+      "battingSkill": 90,
       "bowlingSkill": 87,
-      "aggression": 98,
+      "bowlingStyle": "Pace",
+      "aggression": 99,
       "economy": 8.2
     },
     {
       "name": "Sherfane Rutherford",
       "role": "Batsman",
-      "battingSkill": 83,
+      "battingSkill": 85,
       "bowlingSkill": 60,
-      "aggression": 88,
+      "bowlingStyle": "Pace",
+      "aggression": 90,
       "economy": 8.1
     },
     {
       "name": "Romario Shepherd",
       "role": "All-Rounder",
-      "battingSkill": 78,
-      "bowlingSkill": 84,
-      "aggression": 85,
+      "battingSkill": 80,
+      "bowlingSkill": 85,
+      "bowlingStyle": "Pace",
+      "aggression": 90,
       "economy": 8.5
     },
     {
       "name": "Akeal Hosein",
       "role": "Bowler",
-      "battingSkill": 35,
-      "bowlingSkill": 89,
+      "battingSkill": 40,
+      "bowlingSkill": 91,
+      "bowlingStyle": "Spin",
       "aggression": 60,
-      "economy": 6.5
+      "economy": 6.2
     },
     {
       "name": "Alzarri Joseph",
       "role": "Bowler",
-      "battingSkill": 20,
-      "bowlingSkill": 88,
-      "aggression": 40,
-      "economy": 7.9
+      "battingSkill": 25,
+      "bowlingSkill": 90,
+      "bowlingStyle": "Pace",
+      "aggression": 50,
+      "economy": 7.8
     },
     {
       "name": "Gudakesh Motie",
       "role": "Bowler",
-      "battingSkill": 15,
-      "bowlingSkill": 87,
+      "battingSkill": 20,
+      "bowlingSkill": 89,
+      "bowlingStyle": "Spin",
       "aggression": 30,
-      "economy": 6.9
+      "economy": 6.7
     }
   ]
 }

@@ -3,6 +3,7 @@ import { GameState } from "./GameState";
 import { Player, Squad, MatchHistoryEntry, CommentaryEntry } from "../types";
 import { StatsEngine } from "./StatsEngine";
 import { CommentaryEngine } from "./CommentaryEngine";
+import { BallOutcome } from "./SimulationEngine";
 
 export class MatchController {
     constructor(private stats: StatsEngine, private commentary: CommentaryEngine) { }
@@ -16,11 +17,14 @@ export class MatchController {
             fetch(`${baseUrl}teams/${t2Id}.json`).then(r => r.json())
         ]);
 
-        const initStats = (p: Partial<Player>): Player => ({
-            ...p as Player,
-            batStats: { runs: 0, balls: 0, fours: 0, sixes: 0, out: false },
-            bowlStats: { runsConceded: 0, wicketsTaken: 0, maidens: 0, balls: 0 }
-        });
+        const initStats = (p: Partial<Player>): Player => {
+            return {
+                ...p as Player,
+                bowlingStyle: p.bowlingStyle || 'Pace', // Default to Pace if missing (will be populated in JSON)
+                batStats: { runs: 0, balls: 0, fours: 0, sixes: 0, out: false },
+                bowlStats: { runsConceded: 0, wicketsTaken: 0, maidens: 0, balls: 0 }
+            };
+        };
 
         // Initialize and Sort by Batting Skill
         // We assume d1.players matches the Player shape roughly except stats
@@ -339,20 +343,20 @@ export class MatchController {
         GameState.nonStriker.value = s;
     }
 
-    processOutcome(res: number | 'W') {
+    processOutcome(res: BallOutcome) {
         const striker = GameState.striker.value;
         const oldRuns = striker.batStats.runs;
 
         // Delegate State Updates
         this.stats.updateStats(res, striker, GameState.bowler.value);
         const newRuns = striker.batStats.runs;
-        const runsScored = typeof res === 'number' ? res : 0;
+        const runsScored = res.runs;
 
         // UI Effects & Commentary
-        if (res === 'W') {
+        if (res.isWicket) {
             if (typeof window !== 'undefined') window.navigator.vibrate?.([40, 30, 40]);
 
-            this.addCommentary(this.commentary.getCommentary('W', GameState.bowler.value, striker.name), 'wicket');
+            this.addCommentary(this.commentary.getCommentary(res, GameState.bowler.value, striker.name), 'wicket');
 
             if (GameState.nextBatterIndex.value < GameState.battingSquad.value.length) {
                 const nextBatter = GameState.battingSquad.value[GameState.nextBatterIndex.value];
@@ -375,14 +379,14 @@ export class MatchController {
             if (oldRuns < 100 && newRuns >= 100) this.addCommentary(this.commentary.getMilestoneCommentary('century', striker.name), 'milestone');
 
             // Commentary for runs
-            if (res === 4) {
+            if (res.runs === 4) {
                 if (typeof window !== 'undefined') window.navigator.vibrate?.([40]);
-                this.addCommentary(this.commentary.getCommentary(4, GameState.bowler.value, striker.name), 'four');
-            } else if (res === 6) {
+                this.addCommentary(this.commentary.getCommentary(res, GameState.bowler.value, striker.name), 'four');
+            } else if (res.runs === 6) {
                 if (typeof window !== 'undefined') window.navigator.vibrate?.([40, 30, 40]);
-                this.addCommentary(this.commentary.getCommentary(6, GameState.bowler.value, striker.name), 'six');
-            } else if (res === 0) {
-                this.addCommentary(this.commentary.getCommentary(0, GameState.bowler.value, striker.name), 'dot');
+                this.addCommentary(this.commentary.getCommentary(res, GameState.bowler.value, striker.name), 'six');
+            } else if (res.runs === 0) {
+                this.addCommentary(this.commentary.getCommentary(res, GameState.bowler.value, striker.name), 'dot');
             } else {
                 this.addCommentary(this.commentary.getCommentary(res, GameState.bowler.value, striker.name), 'run');
             }
@@ -390,9 +394,7 @@ export class MatchController {
             if (runsScored % 2 !== 0) this.swapBatters();
         }
 
-        // Update Over Runs
-        // GameState.overRuns.value += res; // Handled in StatsEngine
-
+        // Over Runs handled in StatsEngine now
 
         // Timeline checks & Over Management
         if (GameState.balls.value > 0 && GameState.balls.value % 6 === 0) {

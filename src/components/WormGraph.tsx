@@ -30,9 +30,119 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
     const width = expanded ? 700 : 300;
     const height = expanded ? 400 : 120;
     const padding = expanded ? 40 : 25;
-    // ... rest of config
+    const graphWidth = width - padding * 2;
+    const graphHeight = height - padding * 2;
 
-    // ... (keep scales and path logic)
+    // Scales
+    const currentDataOver = data[data.length - 1]?.over || 0;
+    let maxOvers = totalOvers || 20;
+
+    // If it's the 1st innings (no targetData), scale dynamically
+    if (!targetData) {
+        const dynamicCeiling = Math.ceil((currentDataOver + 0.1) / 10) * 10;
+        maxOvers = Math.min(dynamicCeiling, totalOvers);
+    }
+    maxOvers = Math.max(10, maxOvers);
+    const maxScore = Math.max(
+        data[data.length - 1]?.score || 0,
+        targetData ? targetData[targetData.length - 1]?.score || 0 : 0,
+        100
+    );
+
+    const getX = (over: number) => padding + (over / maxOvers) * graphWidth;
+    const getY = (score: number) => height - padding - (score / maxScore) * graphHeight;
+
+    // Build Paths
+    const buildPath = (pts: DataPoint[]) => {
+        if (!pts.length) return "";
+        let d = `M ${getX(0)} ${getY(0)} `;
+        pts.forEach(p => {
+            d += `L ${getX(p.over)} ${getY(p.score)} `;
+        });
+        return d;
+    };
+
+    const mainLine = buildPath(data);
+    const targetLine = targetData ? buildPath(targetData) : "";
+
+    // Wicket Dots Calculation (Helper)
+    const getWicketDots = (pts: DataPoint[]) => {
+        return pts.filter((p, i) => i > 0 && p.wickets > pts[i - 1].wickets).map(p => ({
+            cx: getX(p.over),
+            cy: getY(p.score),
+            over: p.over,
+            score: p.score,
+            wicketNo: p.wickets
+        }));
+    };
+
+    const mainWickets = getWicketDots(data);
+    const targetWickets = targetData ? getWicketDots(targetData) : [];
+
+    // FOW Data Extraction (only when expanded)
+    const getFOWList = (pts: DataPoint[]) => {
+        return pts.filter((p, i) => i > 0 && p.wickets > pts[i - 1].wickets);
+    }
+
+    // Default to main team if none selected
+    const activeFOW = (selectedLegend === 'target' && targetData) ? getFOWList(targetData) : getFOWList(data);
+    const activeTeamName = (selectedLegend === 'target' && legend?.target) ? legend.target : legend?.main;
+
+    // Helper functions
+    const getLuminance = (hex: string) => {
+        const c = hex.replace('#', '');
+        const rgb = parseInt(c, 16);
+        const r = (rgb >> 16) & 0xff;
+        const g = (rgb >> 8) & 0xff;
+        const b = (rgb >> 0) & 0xff;
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    };
+
+    const isDark = (hex?: string) => {
+        if (!hex) return false;
+        // Handle short hex codes (e.g., #000)
+        if (hex.length === 4) {
+            const r = hex[1];
+            const g = hex[2];
+            const b = hex[3];
+            hex = `#${r}${r}${g}${g}${b}${b}`;
+        }
+        return getLuminance(hex) < 45;
+    };
+
+    // Color Clashing Logic
+    const getColorDistance = (c1: string, c2: string) => {
+        const hexToRgb = (hex: string) => {
+            const c = hex.replace('#', '');
+            return {
+                r: parseInt(c.substring(0, 2), 16),
+                g: parseInt(c.substring(2, 4), 16),
+                b: parseInt(c.substring(4, 6), 16)
+            }
+        }
+        try {
+            const rgb1 = hexToRgb(c1);
+            const rgb2 = hexToRgb(c2);
+            return Math.sqrt(
+                Math.pow(rgb1.r - rgb2.r, 2) +
+                Math.pow(rgb1.g - rgb2.g, 2) +
+                Math.pow(rgb1.b - rgb2.b, 2)
+            );
+        } catch (e) { return 500; }
+    };
+
+    let effectiveTargetColor = legend?.targetColor || "#555";
+    if (color && legend?.targetColor) {
+        const dist = getColorDistance(color, legend.targetColor);
+        if (dist < 60) {
+            const mainIsDark = getLuminance(color) < 128;
+            effectiveTargetColor = mainIsDark ? "#e2e8f0" : "#1e293b";
+        }
+    }
+
+    const hasDarkTeam = isDark(color) || isDark(effectiveTargetColor);
+    const graphBg = hasDarkTeam ? "#64748b" : "transparent";
+    const graphClass = hasDarkTeam ? "rounded-lg shadow-inner" : "";
 
     return (
         <div

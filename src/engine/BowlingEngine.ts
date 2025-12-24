@@ -84,6 +84,23 @@ export class BowlingEngine {
         if (isTired) return 1; // Avoid unless desperate
         if (isWarm) score *= 1.5; // Keep them on if they are bowling well/in a spell
 
+        // --- Role & Phase Logic ---
+        const b = GameState.balls.value;
+        const currentOver = b / 6;
+        const style = p.bowlingStyle || 'Pace';
+
+        // Define Middle Overs
+        const isMiddle = (format === 'T20' && currentOver >= 6 && currentOver < 15) ||
+            (format === 'ODI' && currentOver >= 10 && currentOver < 40);
+
+        // Define Death Overs
+        const isDeath = (format === 'T20' && currentOver >= 16) ||
+            (format === 'ODI' && currentOver >= 40);
+
+        if (isMiddle && style === 'Spin') score *= 1.25; // Spinners rule the middle
+        if (isDeath && style === 'Pace') score *= 1.2; // Pacers close the game
+        if (isDeath && style === 'Spin') score *= 0.8; // Spinners risky at death
+
         // Random jitter
         score += Math.random() * 20;
 

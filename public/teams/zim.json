@@ -6,89 +6,100 @@
     {
       "name": "Wessly Madhevere",
       "role": "Batsman",
-      "battingSkill": 81,
+      "battingSkill": 83,
       "bowlingSkill": 75,
-      "aggression": 84,
+      "bowlingStyle": "Spin",
+      "aggression": 85,
       "economy": 7.8
     },
     {
       "name": "Tadiwanashe Marumani",
       "role": "Batsman",
-      "battingSkill": 79,
+      "battingSkill": 80,
       "bowlingSkill": 0,
-      "aggression": 86,
+      "bowlingStyle": "Pace",
+      "aggression": 88,
       "economy": 0
     },
     {
       "name": "Sikandar Raza",
       "role": "All-Rounder",
-      "battingSkill": 88,
+      "battingSkill": 92,
       "bowlingSkill": 92,
-      "aggression": 88,
+      "bowlingStyle": "Spin",
+      "aggression": 90,
       "economy": 6.8
     },
     {
       "name": "Brian Bennett",
       "role": "Batsman",
-      "battingSkill": 83,
+      "battingSkill": 84,
       "bowlingSkill": 60,
-      "aggression": 82,
+      "bowlingStyle": "Pace",
+      "aggression": 84,
       "economy": 8.0
     },
     {
       "name": "Sean Williams",
       "role": "All-Rounder",
-      "battingSkill": 86,
-      "bowlingSkill": 80,
-      "aggression": 75,
+      "battingSkill": 88,
+      "bowlingSkill": 82,
+      "bowlingStyle": "Spin",
+      "aggression": 78,
       "economy": 7.2
     },
     {
       "name": "Ryan Burl",
       "role": "All-Rounder",
-      "battingSkill": 84,
-      "bowlingSkill": 78,
-      "aggression": 85,
+      "battingSkill": 86,
+      "bowlingSkill": 80,
+      "bowlingStyle": "Pace",
+      "aggression": 88,
       "economy": 7.5
     },
     {
       "name": "Clive Madande",
       "role": "Wicketkeeper",
-      "battingSkill": 80,
+      "battingSkill": 82,
       "bowlingSkill": 0,
-      "aggression": 78,
+      "bowlingStyle": "Pace",
+      "aggression": 80,
       "economy": 0
     },
     {
       "name": "Richard Ngarava",
       "role": "Bowler",
-      "battingSkill": 15,
-      "bowlingSkill": 88,
+      "battingSkill": 20,
+      "bowlingSkill": 90,
+      "bowlingStyle": "Pace",
       "aggression": 25,
       "economy": 7.2
     },
     {
       "name": "Blessing Muzarabani",
       "role": "Bowler",
-      "battingSkill": 10,
-      "bowlingSkill": 89,
+      "battingSkill": 15,
+      "bowlingSkill": 91,
+      "bowlingStyle": "Pace",
       "aggression": 20,
-      "economy": 7.0
+      "economy": 6.9
     },
     {
       "name": "Wellington Masakadza",
       "role": "Bowler",
-      "battingSkill": 25,
-      "bowlingSkill": 82,
+      "battingSkill": 30,
+      "bowlingSkill": 84,
+      "bowlingStyle": "Spin",
       "aggression": 35,
       "economy": 7.5
     },
     {
       "name": "Luke Jongwe",
       "role": "Bowler",
-      "battingSkill": 35,
-      "bowlingSkill": 81,
-      "aggression": 50,
+      "battingSkill": 40,
+      "bowlingSkill": 83,
+      "bowlingStyle": "Pace",
+      "aggression": 55,
       "economy": 8.4
     }
   ]

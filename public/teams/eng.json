@@ -6,80 +6,90 @@
     {
       "name": "Phil Salt",
       "role": "Batsman",
-      "battingSkill": 90,
+      "battingSkill": 93,
       "bowlingSkill": 0,
-      "aggression": 95,
+      "bowlingStyle": "Pace",
+      "aggression": 97,
       "economy": 0
     },
     {
       "name": "Jos Buttler",
       "role": "Wicketkeeper",
-      "battingSkill": 92,
+      "battingSkill": 96,
       "bowlingSkill": 0,
-      "aggression": 90,
+      "bowlingStyle": "Pace",
+      "aggression": 95,
       "economy": 0
     },
     {
       "name": "Will Jacks",
       "role": "All-Rounder",
-      "battingSkill": 86,
-      "bowlingSkill": 75,
-      "aggression": 92,
+      "battingSkill": 88,
+      "bowlingSkill": 78,
+      "bowlingStyle": "Spin",
+      "aggression": 95,
       "economy": 8.1
     },
     {
       "name": "Harry Brook",
       "role": "Batsman",
-      "battingSkill": 91,
+      "battingSkill": 94,
       "bowlingSkill": 20,
-      "aggression": 85,
+      "bowlingStyle": "Pace",
+      "aggression": 88,
       "economy": 9.0
     },
     {
       "name": "Jacob Bethell",
       "role": "All-Rounder",
-      "battingSkill": 82,
-      "bowlingSkill": 70,
+      "battingSkill": 84,
+      "bowlingSkill": 72,
+      "bowlingStyle": "Spin",
       "aggression": 88,
       "economy": 8.5
     },
     {
       "name": "Liam Livingstone",
       "role": "All-Rounder",
-      "battingSkill": 85,
-      "bowlingSkill": 78,
-      "aggression": 94,
+      "battingSkill": 90,
+      "bowlingSkill": 80,
+      "bowlingStyle": "Spin",
+      "aggression": 98,
       "economy": 8.2
     },
     {
       "name": "Sam Curran",
       "role": "All-Rounder",
-      "battingSkill": 83,
-      "bowlingSkill": 86,
-      "aggression": 75,
+      "battingSkill": 84,
+      "bowlingSkill": 87,
+      "bowlingStyle": "Pace",
+      "aggression": 78,
       "economy": 7.9
     },
     {
       "name": "Adil Rashid",
       "role": "Bowler",
       "battingSkill": 35,
-      "bowlingSkill": 90,
+      "bowlingSkill": 95,
+      "bowlingStyle": "Spin",
       "aggression": 45,
-      "economy": 7.1
+      "economy": 6.8
     },
     {
       "name": "Jofra Archer",
       "role": "Bowler",
-      "battingSkill": 40,
-      "bowlingSkill": 92,
-      "aggression": 50,
-      "economy": 7.3
+      "battingSkill": 45,
+      "bowlingSkill": 93,
+      "bowlingStyle": "Pace",
+      "aggression": 55,
+      "economy": 7.2
     },
     {
       "name": "Saqib Mahmood",
       "role": "Bowler",
       "battingSkill": 25,
-      "bowlingSkill": 84,
+      "bowlingSkill": 85,
+      "bowlingStyle": "Pace",
       "aggression": 40,
       "economy": 8.0
     },
@@ -87,9 +97,10 @@
       "name": "Reece Topley",
       "role": "Bowler",
       "battingSkill": 15,
-      "bowlingSkill": 86,
+      "bowlingSkill": 88,
+      "bowlingStyle": "Pace",
       "aggression": 25,
-      "economy": 7.5
+      "economy": 7.4
     }
   ]
 }

@@ -2,6 +2,7 @@ import { GameState } from "./GameState";
 import { Player } from "../types";
 import { clamp } from "../utils";
 import { BowlingEngine } from "./BowlingEngine";
+import { BallOutcome } from "./SimulationEngine";
 
 export class StatsEngine {
 
@@ -94,39 +95,38 @@ export class StatsEngine {
             GameState.bowler.value = fallback.name;
         }
     }
-    updateStats(result: number | 'W', striker: Player, bowlerName: string) {
+    updateStats(result: BallOutcome, striker: Player, bowlerName: string) {
         // Runs & Balls
-        const runs = typeof result === 'number' ? result : 0;
+        const runs = result.runs;
 
         // Global State Update
         GameState.balls.value++;
         GameState.score.value += runs;
-        if (typeof result === 'number') GameState.overRuns.value += runs;
-        if (result === 'W') GameState.wickets.value++;
+        GameState.overRuns.value += runs; // Updated here
+        if (result.isWicket) GameState.wickets.value++;
 
         // Striker Stats
         striker.batStats.balls++;
         striker.batStats.runs += runs;
-        if (result === 4) striker.batStats.fours++;
-        if (result === 6) striker.batStats.sixes++;
-        if (result === 'W') striker.batStats.out = true;
+        if (runs === 4) striker.batStats.fours++;
+        if (runs === 6) striker.batStats.sixes++;
+        if (result.isWicket) striker.batStats.out = true;
 
         // Bowler Stats
         const bowlerObj = GameState.bowlingSquad.value.find(p => p.name === bowlerName);
         if (bowlerObj) {
             bowlerObj.bowlStats.balls++;
             bowlerObj.bowlStats.runsConceded += runs;
-            if (result === 'W') bowlerObj.bowlStats.wicketsTaken++;
-
-            // Check Maiden (if end of over)
-            // Logic handled in MatchController for now, could be moved here but requires more state knowledge
+            if (result.isWicket) bowlerObj.bowlStats.wicketsTaken++;
         } else {
             console.error(`Bowler not found: ${bowlerName}`);
             this.selectBestBowler();
         }
 
-        // Timeline Update
-        GameState.timeline.value = [result, ...GameState.timeline.value].slice(0, 12);
+        // Timeline Update (Visual Feed)
+        // Store simple visual representation for now ('W', '4', '6', '0', '1', etc.)
+        const visual = result.isWicket ? 'W' : result.runs;
+        GameState.timeline.value = [visual, ...GameState.timeline.value].slice(0, 12);
 
         // Innings Timeline (Graph Data) - End of Over
         if (GameState.balls.value % 6 === 0) {

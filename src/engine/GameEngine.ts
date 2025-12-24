@@ -90,10 +90,8 @@ export class GameEngine {
         const result = this.simulation.simulateBall(batter, bowlerObj);
 
         // 2. Process Result (Update Stats, Commentary)
-        if (result === 'W') {
+        if (result.isWicket) {
             // Side-effect: Pause is handled by pauseMultiplier which lives here.
-            // But MatchController handles the logic. 
-            // We can check if it was a wicket here to set pause?
             this.pauseMultiplier = 4;
         }
 

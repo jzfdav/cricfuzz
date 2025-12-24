@@ -6,88 +6,99 @@
     {
       "name": "Paul Stirling",
       "role": "Batsman",
-      "battingSkill": 86,
+      "battingSkill": 89,
       "bowlingSkill": 45,
-      "aggression": 90,
+      "bowlingStyle": "Spin",
+      "aggression": 95,
       "economy": 8.5
     },
     {
       "name": "Andrew Balbirnie",
       "role": "Batsman",
-      "battingSkill": 85,
+      "battingSkill": 86,
       "bowlingSkill": 10,
-      "aggression": 72,
+      "bowlingStyle": "Pace",
+      "aggression": 75,
       "economy": 9.0
     },
     {
       "name": "Lorcan Tucker",
       "role": "Wicketkeeper",
-      "battingSkill": 84,
+      "battingSkill": 86,
       "bowlingSkill": 0,
-      "aggression": 82,
+      "bowlingStyle": "Pace",
+      "aggression": 85,
       "economy": 0
     },
     {
       "name": "Harry Tector",
       "role": "Batsman",
-      "battingSkill": 88,
+      "battingSkill": 90,
       "bowlingSkill": 60,
-      "aggression": 78,
+      "bowlingStyle": "Spin",
+      "aggression": 80,
       "economy": 7.9
     },
     {
       "name": "Curtis Campher",
       "role": "All-Rounder",
-      "battingSkill": 85,
-      "bowlingSkill": 82,
-      "aggression": 84,
-      "economy": 8.1
+      "battingSkill": 86,
+      "bowlingSkill": 84,
+      "bowlingStyle": "Pace",
+      "aggression": 86,
+      "economy": 8.0
     },
     {
       "name": "George Dockrell",
       "role": "All-Rounder",
-      "battingSkill": 82,
-      "bowlingSkill": 83,
-      "aggression": 80,
+      "battingSkill": 84,
+      "bowlingSkill": 84,
+      "bowlingStyle": "Spin",
+      "aggression": 82,
       "economy": 7.8
     },
     {
       "name": "Gareth Delany",
       "role": "All-Rounder",
-      "battingSkill": 81,
-      "bowlingSkill": 78,
-      "aggression": 88,
+      "battingSkill": 83,
+      "bowlingSkill": 80,
+      "bowlingStyle": "Spin",
+      "aggression": 90,
       "economy": 8.4
     },
     {
       "name": "Mark Adair",
       "role": "Bowler",
-      "battingSkill": 45,
-      "bowlingSkill": 87,
+      "battingSkill": 50,
+      "bowlingSkill": 89,
+      "bowlingStyle": "Pace",
       "aggression": 75,
       "economy": 7.8
     },
     {
       "name": "Josh Little",
       "role": "Bowler",
-      "battingSkill": 20,
-      "bowlingSkill": 89,
+      "battingSkill": 25,
+      "bowlingSkill": 91,
+      "bowlingStyle": "Pace",
       "aggression": 35,
-      "economy": 7.4
+      "economy": 7.2
     },
     {
       "name": "Barry McCarthy",
       "role": "Bowler",
-      "battingSkill": 25,
-      "bowlingSkill": 82,
+      "battingSkill": 30,
+      "bowlingSkill": 84,
+      "bowlingStyle": "Pace",
       "aggression": 40,
       "economy": 8.2
     },
     {
       "name": "Craig Young",
       "role": "Bowler",
-      "battingSkill": 15,
-      "bowlingSkill": 81,
+      "battingSkill": 20,
+      "bowlingSkill": 83,
+      "bowlingStyle": "Pace",
       "aggression": 30,
       "economy": 8.0
     }

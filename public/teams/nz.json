@@ -6,88 +6,99 @@
     {
       "name": "Devon Conway",
       "role": "Wicketkeeper",
-      "battingSkill": 89,
+      "battingSkill": 92,
       "bowlingSkill": 0,
+      "bowlingStyle": "Pace",
       "aggression": 75,
       "economy": 0
     },
     {
       "name": "Finn Allen",
       "role": "Batsman",
-      "battingSkill": 85,
+      "battingSkill": 88,
       "bowlingSkill": 0,
+      "bowlingStyle": "Pace",
       "aggression": 97,
       "economy": 0
     },
     {
       "name": "Rachin Ravindra",
       "role": "All-Rounder",
-      "battingSkill": 91,
+      "battingSkill": 92,
       "bowlingSkill": 85,
+      "bowlingStyle": "Spin",
       "aggression": 80,
       "economy": 7.4
     },
     {
       "name": "Daryl Mitchell",
       "role": "All-Rounder",
-      "battingSkill": 88,
+      "battingSkill": 90,
       "bowlingSkill": 75,
-      "aggression": 82,
+      "bowlingStyle": "Pace",
+      "aggression": 85,
       "economy": 8.1
     },
     {
       "name": "Glenn Phillips",
       "role": "Batsman",
-      "battingSkill": 87,
+      "battingSkill": 90,
       "bowlingSkill": 70,
-      "aggression": 88,
+      "bowlingStyle": "Spin",
+      "aggression": 95,
       "economy": 7.8
     },
     {
       "name": "Mark Chapman",
       "role": "Batsman",
-      "battingSkill": 82,
+      "battingSkill": 85,
       "bowlingSkill": 35,
-      "aggression": 84,
+      "bowlingStyle": "Spin",
+      "aggression": 88,
       "economy": 8.5
     },
     {
       "name": "Mitchell Santner",
       "role": "All-Rounder",
-      "battingSkill": 78,
-      "bowlingSkill": 88,
-      "aggression": 70,
-      "economy": 6.8
+      "battingSkill": 82,
+      "bowlingSkill": 90,
+      "bowlingStyle": "Spin",
+      "aggression": 75,
+      "economy": 6.5
     },
     {
       "name": "Matt Henry",
       "role": "Bowler",
-      "battingSkill": 30,
-      "bowlingSkill": 89,
+      "battingSkill": 35,
+      "bowlingSkill": 91,
+      "bowlingStyle": "Pace",
       "aggression": 40,
-      "economy": 7.2
+      "economy": 7.0
     },
     {
       "name": "Lockie Ferguson",
       "role": "Bowler",
-      "battingSkill": 15,
-      "bowlingSkill": 87,
+      "battingSkill": 20,
+      "bowlingSkill": 90,
+      "bowlingStyle": "Pace",
       "aggression": 35,
       "economy": 7.8
     },
     {
       "name": "Trent Boult",
       "role": "Bowler",
-      "battingSkill": 25,
-      "bowlingSkill": 90,
+      "battingSkill": 30,
+      "bowlingSkill": 94,
+      "bowlingStyle": "Pace",
       "aggression": 45,
-      "economy": 7.1
+      "economy": 6.8
     },
     {
       "name": "Ish Sodhi",
       "role": "Bowler",
       "battingSkill": 20,
-      "bowlingSkill": 85,
+      "bowlingSkill": 86,
+      "bowlingStyle": "Spin",
       "aggression": 30,
       "economy": 8.1
     }
