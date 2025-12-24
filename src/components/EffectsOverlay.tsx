@@ -6,6 +6,7 @@ export function EffectsOverlay() {
     const [activeEvent, setActiveEvent] = useState<{ type: string | null, timestamp: number } | null>(null);
 
     useEffect(() => {
+        if (!GameState.immersiveEffects.value) return;
         const ev = GameState.lastEvent.value;
         if (ev && ev.timestamp !== activeEvent?.timestamp) {
             setActiveEvent(ev);
@@ -42,6 +43,7 @@ export function ShakeWrapper({ children }: { children: any }) {
     const [shake, setShake] = useState(false);
 
     useEffect(() => {
+        if (!GameState.immersiveEffects.value) return;
         const ev = GameState.lastEvent.value;
         if (ev?.type === 'wicket' || ev?.type === 'six') {
             setShake(true);

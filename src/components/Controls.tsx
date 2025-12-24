@@ -29,6 +29,22 @@ export function Controls({ engine }: ControlsProps) {
             {/* Separator */}
             <div className="h-6 w-px bg-gray-700"></div>
 
+            {/* Effects Toggle */}
+            <button
+                onClick={() => GameState.immersiveEffects.value = !GameState.immersiveEffects.value}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border transition-all ${GameState.immersiveEffects.value
+                    ? "bg-amber-500/10 border-amber-500/50 text-amber-500"
+                    : "bg-gray-800 border-gray-700 text-gray-500"
+                    }`}
+            >
+                <span className="text-[10px] font-black uppercase tracking-wider">
+                    {GameState.immersiveEffects.value ? "Effects On" : "Effects Off"}
+                </span>
+            </button>
+
+            {/* Separator */}
+            <div className="h-6 w-px bg-gray-700"></div>
+
             {/* Play/Pause Button - Compact */}
             <button
                 onClick={() => GameState.isRunning.value ? engine.stopMatch() : engine.resumeMatch()}

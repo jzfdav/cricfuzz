@@ -103,7 +103,8 @@ export const GameState = {
 
     // Real-time Visualization
     currentMindset: signal<'Defensive' | 'Balanced' | 'Attacking'>('Balanced'),
-    lastEvent: signal<{ type: 'wicket' | 'four' | 'six' | null, timestamp: number } | null>(null)
+    lastEvent: signal<{ type: 'wicket' | 'four' | 'six' | null, timestamp: number } | null>(null),
+    immersiveEffects: signal<boolean>(true)
 };
 
 export interface TeamStructure {
