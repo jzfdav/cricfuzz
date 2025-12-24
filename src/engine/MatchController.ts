@@ -227,11 +227,8 @@ export class MatchController {
         if (GameState.format.value === 'TEST' && GameState.innings.value === 3) {
             const lead = GameState.totalTeam1Score.value - GameState.totalTeam2Score.value;
             if (lead < 0) {
-                const margin = Math.abs(lead);
-                if (lead < 0) {
-                    this.endMatch(`${GameState.teams.team2Name.value} WINS by an innings and ${margin} runs!`);
-                    return;
-                }
+                this.endMatch(`${GameState.teams.team2Name.value} WINS by an innings and ${Math.abs(lead)} runs!`);
+                return;
             }
         }
 
@@ -248,8 +245,6 @@ export class MatchController {
         GameState.wickets.value = 0;
         GameState.balls.value = 0;
         GameState.allOut.value = false;
-        GameState.overRuns.value = 0;
-        GameState.lastOverWasMaiden.value = false;
         GameState.overRuns.value = 0;
         GameState.lastOverWasMaiden.value = false;
         GameState.nextBatterIndex.value = 2;

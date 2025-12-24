@@ -7,15 +7,30 @@ import { BallOutcome } from "./SimulationEngine";
 export class StatsEngine {
 
     calculateWinProbability() {
-        if (GameState.innings.value !== 2) return;
+        const inn = GameState.innings.value;
+        const format = GameState.format.value;
 
-        const target = GameState.target.value;
-        if (!target) return;
+        // Win probability for: 
+        // 1. Chasing in Limited Overs (Innings 2)
+        // 2. Chasing in Test Match (Innings 4)
+        if (inn !== 2 && !(format === 'TEST' && inn === 4)) return;
+
+        let target = GameState.target.value;
+        if (format === 'TEST' && inn === 4) {
+            // In Test 4th innings, target is lead from first 3 innings + 1
+            const lead = GameState.totalTeam1Score.value - GameState.totalTeam2Score.value;
+            target = lead + 1;
+        }
+
+        if (!target) {
+            GameState.winProbability.value = 50;
+            return;
+        }
 
         const current = GameState.score.value;
         const wickets = GameState.wickets.value;
         const ballsThrown = GameState.balls.value;
-        const totalBalls = GameState.formatConfigs[GameState.format.value].balls;
+        const totalBalls = GameState.formatConfigs[format].balls;
 
         const runsNeeded = target - current;
         const ballsLeft = totalBalls - ballsThrown;
@@ -25,7 +40,7 @@ export class StatsEngine {
             GameState.winProbability.value = 100;
             return;
         }
-        if (ballsLeft <= 0 || wicketsInHand <= 0) {
+        if (wicketsInHand <= 0 || (format !== 'TEST' && ballsLeft <= 0)) {
             GameState.winProbability.value = 0;
             return;
         }
