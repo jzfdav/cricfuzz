@@ -1,6 +1,7 @@
 import { GameState } from "./GameState";
 import { Player } from "../types";
 import { clamp } from "../utils";
+import { BowlingEngine } from "./BowlingEngine";
 
 export class StatsEngine {
 
@@ -52,7 +53,20 @@ export class StatsEngine {
         GameState.winProbability.value = Math.round(finalProb);
     }
 
+    bowlingEngine: BowlingEngine;
+
+    constructor() {
+        this.bowlingEngine = new BowlingEngine();
+    }
+
     selectBestBowler() {
+        // First, update spell data for the PREVIOUS over (managed implicitly by who was 'current')
+        // But wait, this is called BEFORE the new over starts.
+        // The last bowler was GameState.bowler.value.
+        if (GameState.bowler.value) {
+            this.bowlingEngine.updateSpells(GameState.bowler.value);
+        }
+
         const format = GameState.format.value;
         const limit = format === 'T20' ? 4 : format === 'ODI' ? 10 : 999;
         const current = GameState.bowler.value;
@@ -60,22 +74,22 @@ export class StatsEngine {
 
         const eligible = squad.filter((p: Player) => {
             if (p.role !== 'Bowler' && p.role !== 'All-Rounder') return false;
-            // safe check balls in case undefined
             if (((p.bowlStats?.balls || 0) / 6) >= limit) return false;
-            if (p.name === current) return false;
             return true;
         });
 
         const candidates = eligible.length ? eligible : squad.filter((p: Player) => p.name !== current);
 
         candidates.sort((a, b) => {
-            return ((b.bowlingSkill || 0) + Math.random()) - ((a.bowlingSkill || 0) + Math.random());
+            // New Scoring Logic via Bowling Engine
+            const scoreA = this.bowlingEngine.getSelectionScore(a, current);
+            const scoreB = this.bowlingEngine.getSelectionScore(b, current);
+            return scoreB - scoreA;
         });
 
         if (candidates.length) {
             GameState.bowler.value = candidates[0].name;
         } else if (squad.length > 0) {
-            // Panic fallback: pick a bowler who isn't the current one
             const fallback = squad.find(p => p.name !== current) || squad[0];
             GameState.bowler.value = fallback.name;
         }

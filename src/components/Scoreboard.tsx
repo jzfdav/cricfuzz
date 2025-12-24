@@ -9,7 +9,7 @@ export function Scoreboard() {
             <div className="flex justify-between items-end mb-2">
                 <div>
                     <div className="flex items-center gap-2">
-                        <span className="text-3xl">{getTeamFlag(GameState.teams[GameState.innings.value === 1 ? 'team1' : 'team2'].value?.id || '')}</span>
+                        <span className="text-3xl">{getTeamFlag(GameState.teams.team1Name.value === GameState.battingTeamName.value ? GameState.teams.team1.value?.id || '' : GameState.teams.team2.value?.id || '')}</span>
                         <h1 className="text-4xl font-black mono tracking-tighter text-white">
                             {GameState.score.value}-{GameState.wickets.value}
                         </h1>
@@ -92,12 +92,12 @@ export function Scoreboard() {
                     : null
                 }
                 totalOvers={GameState.formatConfigs[GameState.format.value].balls / 6}
-                color={GameState.innings.value === 2 ? (GameState.teams.team2.value?.color || "#ecc94b") : (GameState.teams.team1.value?.color || "#60a5fa")}
+                color={GameState.battingTeamName.value === GameState.teams.team2Name.value ? (GameState.teams.team2.value?.color || "#ecc94b") : (GameState.teams.team1.value?.color || "#60a5fa")}
                 legend={{
-                    main: GameState.innings.value === 2 ? GameState.teams.team2Name.value : GameState.teams.team1Name.value,
-                    target: GameState.innings.value === 2 ? GameState.teams.team1Name.value : undefined,
-                    mainColor: GameState.innings.value === 2 ? (GameState.teams.team2.value?.color || "#ecc94b") : (GameState.teams.team1.value?.color || "#60a5fa"),
-                    targetColor: GameState.teams.team1.value?.color || "#555"
+                    main: GameState.battingTeamName.value,
+                    target: GameState.bowlingTeamName.value,
+                    mainColor: GameState.battingTeamName.value === GameState.teams.team2Name.value ? (GameState.teams.team2.value?.color || "#ecc94b") : (GameState.teams.team1.value?.color || "#60a5fa"),
+                    targetColor: GameState.battingTeamName.value === GameState.teams.team1Name.value ? (GameState.teams.team2.value?.color || "#ecc94b") : (GameState.teams.team1.value?.color || "#60a5fa")
                 }}
             />
         </header>

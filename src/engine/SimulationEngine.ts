@@ -1,8 +1,14 @@
 import { GameState } from "./GameState";
 import { Player } from "../types";
 import { clamp } from "../utils";
+import { BattingEngine } from "./BattingEngine";
 
 export class SimulationEngine {
+    private battingEngine: BattingEngine;
+
+    constructor() {
+        this.battingEngine = new BattingEngine();
+    }
 
     // Simulate a single ball
     simulateBall(striker: Player, bowler: Player): number | 'W' {
@@ -14,22 +20,28 @@ export class SimulationEngine {
         let weights = [35, 30, 10, 15, 5, 5];
 
         let batterSkill = striker.battingSkill || 75;
-        let batterAggression = striker.aggression || 70;
         let bowlerSkill = bowler.bowlingSkill || 75;
         let bowlerEconomy = bowler.economy || 8.0;
+
+        // New: Get Dynamic Aggression from BattingEngine
+        const wicketsDown = GameState.wickets.value;
+        const ballsThrown = GameState.balls.value;
+        const totalBalls = config.balls;
+        const oversLeft = (totalBalls - ballsThrown) / 6;
+
+        let aggFactor = this.battingEngine.getAggressionFactor(striker, wicketsDown, oversLeft);
 
         // Pitch Modifiers
         if (pitch === "Flat") { batterSkill *= 1.1; bowlerSkill *= 0.9; }
         else if (pitch === "Green") { batterSkill *= 0.95; bowlerSkill *= 1.15; }
         else if (pitch === "Dusty") { batterSkill *= 0.9; bowlerSkill *= 1.1; }
 
-        let aggFactor = clamp((batterAggression / 90) * config.aggMod, 0.5, 1.8);
         const skillFactor = clamp(batterSkill / 90, 0.6, 1.4);
         const bowlSkillFactor = clamp(bowlerSkill / 90, 0.6, 1.4);
         const ecoFactor = clamp((10 - bowlerEconomy) / 3, 0.4, 1.8);
 
         // --- Phase Logic ---
-        const b = GameState.balls.value; // Accessing signal directly since this is engine code
+        const b = GameState.balls.value;
         const currentOver = Math.floor(b / 6);
         const phases = GameState.formatConfigs.phases[format];
         const activePhase = phases ? phases.find((p) => currentOver >= p.start && currentOver <= p.end) : null;
