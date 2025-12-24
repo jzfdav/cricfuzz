@@ -93,6 +93,10 @@ export function Scoreboard() {
                 }
                 totalOvers={GameState.formatConfigs[GameState.format.value].balls / 6}
                 color={GameState.innings.value === 2 ? "#ecc94b" : "#60a5fa"}
+                legend={{
+                    main: GameState.innings.value === 2 ? GameState.teams.team2Name.value : GameState.teams.team1Name.value,
+                    target: GameState.innings.value === 2 ? GameState.teams.team1Name.value : undefined
+                }}
             />
         </header>
     );

@@ -41,6 +41,10 @@ export function ResultScreen({ engine }: ResultScreenProps) {
                         targetData={history[1] ? [{ over: 0, score: 0, wickets: 0 }, ...(history[1]?.timeline || [])] : null}
                         totalOvers={GameState.formatConfigs[GameState.format.value].balls / 6}
                         color="#60a5fa"
+                        legend={{
+                            main: t1Name,
+                            target: t2Name
+                        }}
                     />
                 </div>
             )}

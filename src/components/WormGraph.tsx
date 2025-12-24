@@ -11,9 +11,13 @@ interface WormGraphProps {
     targetData?: DataPoint[] | null;
     totalOvers: number;
     color?: string;
+    legend?: {
+        main: string;
+        target?: string;
+    };
 }
 
-export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: WormGraphProps) {
+export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", legend }: WormGraphProps) {
     if (!data || data.length === 0) return null;
 
     const [expanded, setExpanded] = useState(false);
@@ -91,6 +95,22 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24" }: W
                 </div>
 
                 {expanded && <h3 className="font-black uppercase tracking-[0.2em] text-amber-500 text-sm mb-4 text-center">Match Analysis</h3>}
+
+                {/* Legend Overlay */}
+                {legend && (
+                    <div className={`absolute ${expanded ? 'top-16 left-16' : 'top-2 left-2'} flex flex-col gap-1 pointer-events-none z-10`}>
+                        <div className="flex items-center gap-2">
+                            <div className="w-3 h-1" style={{ backgroundColor: color }}></div>
+                            <span className="text-[10px] font-bold text-gray-300 shadow-black drop-shadow-md">{legend.main}</span>
+                        </div>
+                        {legend.target && targetData && (
+                            <div className="flex items-center gap-2">
+                                <div className="w-3 h-1 border-t border-dashed border-gray-500"></div>
+                                <span className="text-[10px] font-bold text-gray-400 shadow-black drop-shadow-md">{legend.target}</span>
+                            </div>
+                        )}
+                    </div>
+                )}
 
                 <svg width="100%" height={expanded ? 500 : 120} viewBox={`0 0 ${width} ${height}`} className="overflow-visible">
                     {/* Axes & Grid */}
