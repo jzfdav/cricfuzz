@@ -1,106 +1,310 @@
 {
   "id": "AUS",
   "name": "Australia",
-  "color": "#FFD700",
-  "players": [
-    {
-      "name": "Travis Head",
-      "role": "Batsman",
-      "battingSkill": 96,
-      "bowlingSkill": 35,
-      "bowlingStyle": "Spin",
-      "aggression": 98,
-      "economy": 8.5
-    },
-    {
-      "name": "Jake Fraser-McGurk",
-      "role": "Batsman",
-      "battingSkill": 88,
-      "bowlingSkill": 10,
-      "bowlingStyle": "Spin",
-      "aggression": 99,
-      "economy": 9.0
-    },
-    {
-      "name": "Mitchell Marsh",
-      "role": "All-Rounder",
-      "battingSkill": 90,
-      "bowlingSkill": 85,
-      "bowlingStyle": "Pace",
-      "aggression": 92,
-      "economy": 7.9
-    },
-    {
-      "name": "Glenn Maxwell",
-      "role": "All-Rounder",
-      "battingSkill": 94,
-      "bowlingSkill": 82,
-      "bowlingStyle": "Spin",
-      "aggression": 98,
-      "economy": 7.5
-    },
-    {
-      "name": "Josh Inglis",
-      "role": "Wicketkeeper",
-      "battingSkill": 88,
-      "bowlingSkill": 0,
-      "bowlingStyle": "Pace",
-      "aggression": 90,
-      "economy": 0
-    },
-    {
-      "name": "Marcus Stoinis",
-      "role": "All-Rounder",
-      "battingSkill": 89,
-      "bowlingSkill": 85,
-      "bowlingStyle": "Pace",
-      "aggression": 92,
-      "economy": 8.1
-    },
-    {
-      "name": "Tim David",
-      "role": "Batsman",
-      "battingSkill": 88,
-      "bowlingSkill": 20,
-      "bowlingStyle": "Spin",
-      "aggression": 97,
-      "economy": 9.0
-    },
-    {
-      "name": "Pat Cummins",
-      "role": "Bowler",
-      "battingSkill": 65,
-      "bowlingSkill": 96,
-      "bowlingStyle": "Pace",
-      "aggression": 60,
-      "economy": 6.5
-    },
-    {
-      "name": "Mitchell Starc",
-      "role": "Bowler",
-      "battingSkill": 50,
-      "bowlingSkill": 94,
-      "bowlingStyle": "Pace",
-      "aggression": 60,
-      "economy": 7.5
-    },
-    {
-      "name": "Adam Zampa",
-      "role": "Bowler",
-      "battingSkill": 20,
-      "bowlingSkill": 94,
-      "bowlingStyle": "Spin",
-      "aggression": 30,
-      "economy": 6.7
-    },
-    {
-      "name": "Josh Hazlewood",
-      "role": "Bowler",
-      "battingSkill": 15,
-      "bowlingSkill": 95,
-      "bowlingStyle": "Pace",
-      "aggression": 25,
-      "economy": 6.2
-    }
-  ]
+  "color": "#FFCD00",
+  "rosters": {
+    "t20": [
+      {
+        "name": "Travis Head",
+        "role": "Batter",
+        "battingSkill": 96,
+        "bowlingSkill": 40,
+        "bowlingStyle": "Spin",
+        "aggression": 98,
+        "economy": 8.5
+      },
+      {
+        "name": "David Warner",
+        "role": "Batter",
+        "battingSkill": 92,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 94,
+        "economy": 0
+      },
+      {
+        "name": "Mitchell Marsh",
+        "role": "All-Rounder",
+        "battingSkill": 90,
+        "bowlingSkill": 82,
+        "bowlingStyle": "Pace",
+        "aggression": 92,
+        "economy": 8.8
+      },
+      {
+        "name": "Glenn Maxwell",
+        "role": "All-Rounder",
+        "battingSkill": 92,
+        "bowlingSkill": 85,
+        "bowlingStyle": "Spin",
+        "aggression": 98,
+        "economy": 7.5
+      },
+      {
+        "name": "Marcus Stoinis",
+        "role": "All-Rounder",
+        "battingSkill": 88,
+        "bowlingSkill": 84,
+        "bowlingStyle": "Pace",
+        "aggression": 95,
+        "economy": 8.6
+      },
+      {
+        "name": "Tim David",
+        "role": "Batter",
+        "battingSkill": 87,
+        "bowlingSkill": 20,
+        "bowlingStyle": "Spin",
+        "aggression": 97,
+        "economy": 9.2
+      },
+      {
+        "name": "Matthew Wade",
+        "role": "WicketKeeper",
+        "battingSkill": 85,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 93,
+        "economy": 0
+      },
+      {
+        "name": "Pat Cummins",
+        "role": "Bowler",
+        "battingSkill": 65,
+        "bowlingSkill": 96,
+        "bowlingStyle": "Pace",
+        "aggression": 60,
+        "economy": 7.4
+      },
+      {
+        "name": "Mitchell Starc",
+        "role": "Bowler",
+        "battingSkill": 40,
+        "bowlingSkill": 95,
+        "bowlingStyle": "Pace",
+        "aggression": 50,
+        "economy": 8.2
+      },
+      {
+        "name": "Adam Zampa",
+        "role": "Bowler",
+        "battingSkill": 10,
+        "bowlingSkill": 97,
+        "bowlingStyle": "Spin",
+        "aggression": 30,
+        "economy": 6.8
+      },
+      {
+        "name": "Josh Hazlewood",
+        "role": "Bowler",
+        "battingSkill": 10,
+        "bowlingSkill": 94,
+        "bowlingStyle": "Pace",
+        "aggression": 30,
+        "economy": 7.2
+      }
+    ],
+    "odi": [
+      {
+        "name": "Travis Head",
+        "role": "Batter",
+        "battingSkill": 94,
+        "bowlingSkill": 35,
+        "bowlingStyle": "Spin",
+        "aggression": 90,
+        "economy": 7.5
+      },
+      {
+        "name": "David Warner",
+        "role": "Batter",
+        "battingSkill": 93,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 88,
+        "economy": 0
+      },
+      {
+        "name": "Steve Smith",
+        "role": "Batter",
+        "battingSkill": 96,
+        "bowlingSkill": 40,
+        "bowlingStyle": "Spin",
+        "aggression": 82,
+        "economy": 6.0
+      },
+      {
+        "name": "Marnus Labuschagne",
+        "role": "Batter",
+        "battingSkill": 90,
+        "bowlingSkill": 45,
+        "bowlingStyle": "Spin",
+        "aggression": 78,
+        "economy": 6.5
+      },
+      {
+        "name": "Josh Inglis",
+        "role": "WicketKeeper",
+        "battingSkill": 88,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 86,
+        "economy": 0
+      },
+      {
+        "name": "Glenn Maxwell",
+        "role": "All-Rounder",
+        "battingSkill": 94,
+        "bowlingSkill": 88,
+        "bowlingStyle": "Spin",
+        "aggression": 97,
+        "economy": 6.8
+      },
+      {
+        "name": "Marcus Stoinis",
+        "role": "All-Rounder",
+        "battingSkill": 86,
+        "bowlingSkill": 84,
+        "bowlingStyle": "Pace",
+        "aggression": 90,
+        "economy": 7.8
+      },
+      {
+        "name": "Pat Cummins",
+        "role": "Bowler",
+        "battingSkill": 60,
+        "bowlingSkill": 96,
+        "bowlingStyle": "Pace",
+        "aggression": 55,
+        "economy": 6.5
+      },
+      {
+        "name": "Mitchell Starc",
+        "role": "Bowler",
+        "battingSkill": 35,
+        "bowlingSkill": 94,
+        "bowlingStyle": "Pace",
+        "aggression": 45,
+        "economy": 7.2
+      },
+      {
+        "name": "Adam Zampa",
+        "role": "Bowler",
+        "battingSkill": 10,
+        "bowlingSkill": 98,
+        "bowlingStyle": "Spin",
+        "aggression": 30,
+        "economy": 5.8
+      },
+      {
+        "name": "Josh Hazlewood",
+        "role": "Bowler",
+        "battingSkill": 10,
+        "bowlingSkill": 95,
+        "bowlingStyle": "Pace",
+        "aggression": 30,
+        "economy": 6.2
+      }
+    ],
+    "test": [
+      {
+        "name": "Usman Khawaja",
+        "role": "Batter",
+        "battingSkill": 94,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 65,
+        "economy": 0
+      },
+      {
+        "name": "Steve Smith",
+        "role": "Batter",
+        "battingSkill": 98,
+        "bowlingSkill": 30,
+        "bowlingStyle": "Spin",
+        "aggression": 68,
+        "economy": 0
+      },
+      {
+        "name": "Marnus Labuschagne",
+        "role": "Batter",
+        "battingSkill": 92,
+        "bowlingSkill": 50,
+        "bowlingStyle": "Spin",
+        "aggression": 62,
+        "economy": 0
+      },
+      {
+        "name": "Travis Head",
+        "role": "Batter",
+        "battingSkill": 91,
+        "bowlingSkill": 45,
+        "bowlingStyle": "Spin",
+        "aggression": 90,
+        "economy": 0
+      },
+      {
+        "name": "Mitchell Marsh",
+        "role": "All-Rounder",
+        "battingSkill": 88,
+        "bowlingSkill": 84,
+        "bowlingStyle": "Pace",
+        "aggression": 82,
+        "economy": 4.5
+      },
+      {
+        "name": "Alex Carey",
+        "role": "WicketKeeper",
+        "battingSkill": 86,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 70,
+        "economy": 0
+      },
+      {
+        "name": "Pat Cummins",
+        "role": "Bowler",
+        "battingSkill": 65,
+        "bowlingSkill": 98,
+        "bowlingStyle": "Pace",
+        "aggression": 55,
+        "economy": 4.0
+      },
+      {
+        "name": "Mitchell Starc",
+        "role": "Bowler",
+        "battingSkill": 40,
+        "bowlingSkill": 94,
+        "bowlingStyle": "Pace",
+        "aggression": 50,
+        "economy": 4.8
+      },
+      {
+        "name": "Nathan Lyon",
+        "role": "Bowler",
+        "battingSkill": 25,
+        "bowlingSkill": 96,
+        "bowlingStyle": "Spin",
+        "aggression": 40,
+        "economy": 3.8
+      },
+      {
+        "name": "Josh Hazlewood",
+        "role": "Bowler",
+        "battingSkill": 15,
+        "bowlingSkill": 96,
+        "bowlingStyle": "Pace",
+        "aggression": 35,
+        "economy": 3.5
+      },
+      {
+        "name": "Scott Boland",
+        "role": "Bowler",
+        "battingSkill": 10,
+        "bowlingSkill": 88,
+        "bowlingStyle": "Pace",
+        "aggression": 30,
+        "economy": 4.0
+      }
+    ]
+  }
 }

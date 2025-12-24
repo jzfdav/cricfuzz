@@ -1,106 +1,310 @@
 {
   "id": "ZIM",
   "name": "Zimbabwe",
-  "color": "#D40000",
-  "players": [
-    {
-      "name": "Wessly Madhevere",
-      "role": "Batsman",
-      "battingSkill": 83,
-      "bowlingSkill": 75,
-      "bowlingStyle": "Spin",
-      "aggression": 85,
-      "economy": 7.8
-    },
-    {
-      "name": "Tadiwanashe Marumani",
-      "role": "Batsman",
-      "battingSkill": 80,
-      "bowlingSkill": 0,
-      "bowlingStyle": "Pace",
-      "aggression": 88,
-      "economy": 0
-    },
-    {
-      "name": "Sikandar Raza",
-      "role": "All-Rounder",
-      "battingSkill": 92,
-      "bowlingSkill": 92,
-      "bowlingStyle": "Spin",
-      "aggression": 90,
-      "economy": 6.8
-    },
-    {
-      "name": "Brian Bennett",
-      "role": "Batsman",
-      "battingSkill": 84,
-      "bowlingSkill": 60,
-      "bowlingStyle": "Pace",
-      "aggression": 84,
-      "economy": 8.0
-    },
-    {
-      "name": "Sean Williams",
-      "role": "All-Rounder",
-      "battingSkill": 88,
-      "bowlingSkill": 82,
-      "bowlingStyle": "Spin",
-      "aggression": 78,
-      "economy": 7.2
-    },
-    {
-      "name": "Ryan Burl",
-      "role": "All-Rounder",
-      "battingSkill": 86,
-      "bowlingSkill": 80,
-      "bowlingStyle": "Pace",
-      "aggression": 88,
-      "economy": 7.5
-    },
-    {
-      "name": "Clive Madande",
-      "role": "Wicketkeeper",
-      "battingSkill": 82,
-      "bowlingSkill": 0,
-      "bowlingStyle": "Pace",
-      "aggression": 80,
-      "economy": 0
-    },
-    {
-      "name": "Richard Ngarava",
-      "role": "Bowler",
-      "battingSkill": 20,
-      "bowlingSkill": 90,
-      "bowlingStyle": "Pace",
-      "aggression": 25,
-      "economy": 7.2
-    },
-    {
-      "name": "Blessing Muzarabani",
-      "role": "Bowler",
-      "battingSkill": 15,
-      "bowlingSkill": 91,
-      "bowlingStyle": "Pace",
-      "aggression": 20,
-      "economy": 6.9
-    },
-    {
-      "name": "Wellington Masakadza",
-      "role": "Bowler",
-      "battingSkill": 30,
-      "bowlingSkill": 84,
-      "bowlingStyle": "Spin",
-      "aggression": 35,
-      "economy": 7.5
-    },
-    {
-      "name": "Luke Jongwe",
-      "role": "Bowler",
-      "battingSkill": 40,
-      "bowlingSkill": 83,
-      "bowlingStyle": "Pace",
-      "aggression": 55,
-      "economy": 8.4
-    }
-  ]
+  "color": "#E4332F",
+  "rosters": {
+    "t20": [
+      {
+        "name": "Wessly Madhevere",
+        "role": "All-Rounder",
+        "battingSkill": 82,
+        "bowlingSkill": 78,
+        "bowlingStyle": "Spin",
+        "aggression": 88,
+        "economy": 8.0
+      },
+      {
+        "name": "Tadiwanashe Marumani",
+        "role": "Batter",
+        "battingSkill": 80,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 92,
+        "economy": 0
+      },
+      {
+        "name": "Sikandar Raza",
+        "role": "All-Rounder",
+        "battingSkill": 92,
+        "bowlingSkill": 93,
+        "bowlingStyle": "Spin",
+        "aggression": 96,
+        "economy": 6.8
+      },
+      {
+        "name": "Dion Myers",
+        "role": "Batter",
+        "battingSkill": 84,
+        "bowlingSkill": 40,
+        "bowlingStyle": "Spin",
+        "aggression": 85,
+        "economy": 8.5
+      },
+      {
+        "name": "Ryan Burl",
+        "role": "All-Rounder",
+        "battingSkill": 86,
+        "bowlingSkill": 82,
+        "bowlingStyle": "Spin",
+        "aggression": 94,
+        "economy": 7.8
+      },
+      {
+        "name": "Clive Madande",
+        "role": "WicketKeeper",
+        "battingSkill": 80,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 90,
+        "economy": 0
+      },
+      {
+        "name": "Brian Bennett",
+        "role": "Batter",
+        "battingSkill": 81,
+        "bowlingSkill": 35,
+        "bowlingStyle": "Spin",
+        "aggression": 91,
+        "economy": 8.2
+      },
+      {
+        "name": "Luke Jongwe",
+        "role": "All-Rounder",
+        "battingSkill": 78,
+        "bowlingSkill": 84,
+        "bowlingStyle": "Pace",
+        "aggression": 88,
+        "economy": 8.4
+      },
+      {
+        "name": "Blessing Muzarabani",
+        "role": "Bowler",
+        "battingSkill": 15,
+        "bowlingSkill": 93,
+        "bowlingStyle": "Pace",
+        "aggression": 35,
+        "economy": 7.4
+      },
+      {
+        "name": "Richard Ngarava",
+        "role": "Bowler",
+        "battingSkill": 20,
+        "bowlingSkill": 91,
+        "bowlingStyle": "Pace",
+        "aggression": 40,
+        "economy": 7.6
+      },
+      {
+        "name": "Wellington Masakadza",
+        "role": "Bowler",
+        "battingSkill": 35,
+        "bowlingSkill": 85,
+        "bowlingStyle": "Spin",
+        "aggression": 45,
+        "economy": 7.2
+      }
+    ],
+    "odi": [
+      {
+        "name": "Craig Ervine",
+        "role": "Batter",
+        "battingSkill": 88,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 78,
+        "economy": 0
+      },
+      {
+        "name": "Joylord Gumbie",
+        "role": "WicketKeeper",
+        "battingSkill": 82,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 75,
+        "economy": 0
+      },
+      {
+        "name": "Sean Williams",
+        "role": "All-Rounder",
+        "battingSkill": 91,
+        "bowlingSkill": 84,
+        "bowlingStyle": "Spin",
+        "aggression": 82,
+        "economy": 5.2
+      },
+      {
+        "name": "Sikandar Raza",
+        "role": "All-Rounder",
+        "battingSkill": 93,
+        "bowlingSkill": 91,
+        "bowlingStyle": "Spin",
+        "aggression": 90,
+        "economy": 5.5
+      },
+      {
+        "name": "Ryan Burl",
+        "role": "All-Rounder",
+        "battingSkill": 87,
+        "bowlingSkill": 80,
+        "bowlingStyle": "Spin",
+        "aggression": 88,
+        "economy": 5.8
+      },
+      {
+        "name": "Clive Madande",
+        "role": "WicketKeeper",
+        "battingSkill": 80,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 84,
+        "economy": 0
+      },
+      {
+        "name": "Brandon Mavuta",
+        "role": "All-Rounder",
+        "battingSkill": 75,
+        "bowlingSkill": 83,
+        "bowlingStyle": "Spin",
+        "aggression": 80,
+        "economy": 5.6
+      },
+      {
+        "name": "Luke Jongwe",
+        "role": "All-Rounder",
+        "battingSkill": 78,
+        "bowlingSkill": 85,
+        "bowlingStyle": "Pace",
+        "aggression": 86,
+        "economy": 6.2
+      },
+      {
+        "name": "Blessing Muzarabani",
+        "role": "Bowler",
+        "battingSkill": 20,
+        "bowlingSkill": 94,
+        "bowlingStyle": "Pace",
+        "aggression": 35,
+        "economy": 5.4
+      },
+      {
+        "name": "Richard Ngarava",
+        "role": "Bowler",
+        "battingSkill": 25,
+        "bowlingSkill": 92,
+        "bowlingStyle": "Pace",
+        "aggression": 40,
+        "economy": 5.6
+      },
+      {
+        "name": "Tendai Chatara",
+        "role": "Bowler",
+        "battingSkill": 15,
+        "bowlingSkill": 88,
+        "bowlingStyle": "Pace",
+        "aggression": 35,
+        "economy": 6.0
+      }
+    ],
+    "test": [
+      {
+        "name": "Craig Ervine",
+        "role": "Batter",
+        "battingSkill": 90,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 65,
+        "economy": 0
+      },
+      {
+        "name": "Milton Shumba",
+        "role": "Batter",
+        "battingSkill": 80,
+        "bowlingSkill": 40,
+        "bowlingStyle": "Spin",
+        "aggression": 60,
+        "economy": 0
+      },
+      {
+        "name": "Sean Williams",
+        "role": "All-Rounder",
+        "battingSkill": 92,
+        "bowlingSkill": 82,
+        "bowlingStyle": "Spin",
+        "aggression": 70,
+        "economy": 3.8
+      },
+      {
+        "name": "Sikandar Raza",
+        "role": "All-Rounder",
+        "battingSkill": 91,
+        "bowlingSkill": 88,
+        "bowlingStyle": "Spin",
+        "aggression": 75,
+        "economy": 4.0
+      },
+      {
+        "name": "Ryan Burl",
+        "role": "All-Rounder",
+        "battingSkill": 85,
+        "bowlingSkill": 78,
+        "bowlingStyle": "Spin",
+        "aggression": 72,
+        "economy": 4.2
+      },
+      {
+        "name": "Donald Tiripano",
+        "role": "All-Rounder",
+        "battingSkill": 78,
+        "bowlingSkill": 82,
+        "bowlingStyle": "Pace",
+        "aggression": 55,
+        "economy": 3.5
+      },
+      {
+        "name": "Clive Madande",
+        "role": "WicketKeeper",
+        "battingSkill": 78,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 60,
+        "economy": 0
+      },
+      {
+        "name": "Blessing Muzarabani",
+        "role": "Bowler",
+        "battingSkill": 25,
+        "bowlingSkill": 95,
+        "bowlingStyle": "Pace",
+        "aggression": 40,
+        "economy": 3.2
+      },
+      {
+        "name": "Richard Ngarava",
+        "role": "Bowler",
+        "battingSkill": 30,
+        "bowlingSkill": 91,
+        "bowlingStyle": "Pace",
+        "aggression": 45,
+        "economy": 3.5
+      },
+      {
+        "name": "Victor Nyauchi",
+        "role": "Bowler",
+        "battingSkill": 20,
+        "bowlingSkill": 86,
+        "bowlingStyle": "Pace",
+        "aggression": 40,
+        "economy": 3.8
+      },
+      {
+        "name": "Carl Mumba",
+        "role": "Bowler",
+        "battingSkill": 15,
+        "bowlingSkill": 84,
+        "bowlingStyle": "Pace",
+        "aggression": 35,
+        "economy": 4.2
+      }
+    ]
+  }
 }

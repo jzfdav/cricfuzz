@@ -17,24 +17,43 @@ export class MatchController {
             fetch(`${baseUrl}teams/${t2Id}.json`).then(r => r.json())
         ]);
 
+        GameState.teams.team1Data.value = d1;
+        GameState.teams.team2Data.value = d2;
+        GameState.teams.team1Name.value = d1.name;
+        GameState.teams.team2Name.value = d2.name;
+
+        // Apply initial roster selection
+        this.selectRoster(GameState.format.value);
+    }
+
+    selectRoster(format: string) {
+        const d1 = GameState.teams.team1Data.value;
+        const d2 = GameState.teams.team2Data.value;
+        if (!d1 || !d2) return;
+
+        const fmtKey = format.toLowerCase() as 't20' | 'odi' | 'test';
+
+        const getSquad = (d: any): Squad => {
+            if (d.rosters && d.rosters[fmtKey]) {
+                return d.rosters[fmtKey];
+            }
+            return d.players || [];
+        };
+
         const initStats = (p: Partial<Player>): Player => {
             return {
                 ...p as Player,
-                bowlingStyle: p.bowlingStyle || 'Pace', // Default to Pace if missing (will be populated in JSON)
+                bowlingStyle: p.bowlingStyle || 'Pace',
                 batStats: { runs: 0, balls: 0, fours: 0, sixes: 0, out: false },
                 bowlStats: { runsConceded: 0, wicketsTaken: 0, maidens: 0, balls: 0 }
             };
         };
 
-        // Initialize and Sort by Batting Skill
-        // We assume d1.players matches the Player shape roughly except stats
-        const p1: Squad = d1.players.map(initStats).sort((a: Player, b: Player) => (b.battingSkill || 0) - (a.battingSkill || 0));
-        const p2: Squad = d2.players.map(initStats).sort((a: Player, b: Player) => (b.battingSkill || 0) - (a.battingSkill || 0));
+        const p1: Squad = getSquad(d1).map(initStats).sort((a: Player, b: Player) => (b.battingSkill || 0) - (a.battingSkill || 0));
+        const p2: Squad = getSquad(d2).map(initStats).sort((a: Player, b: Player) => (b.battingSkill || 0) - (a.battingSkill || 0));
 
-        GameState.teams.team1Name.value = d1.name;
-        GameState.teams.team2Name.value = d2.name;
-        GameState.teams.team1.value = { id: t1Id, name: d1.name, color: d1.color, players: p1 };
-        GameState.teams.team2.value = { id: t2Id, name: d2.name, color: d2.color, players: p2 };
+        GameState.teams.team1.value = { id: d1.id, name: d1.name, color: d1.color, players: p1 };
+        GameState.teams.team2.value = { id: d2.id, name: d2.name, color: d2.color, players: p2 };
     }
 
     performToss() {

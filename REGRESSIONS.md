@@ -170,3 +170,19 @@ This document records functionality regressions and issues identified during the
     - **Economy**: Elite (5.5-6.5), Standard (7.0-8.5).
     - **Aggression**: Power Hitters (95-99).
 - **Verification**: `npm run build` passed. JSON files are valid.
+
+## 33. Multi-Format Roster Support
+- **Feature**: Separate squads for T20, ODI, and Test matches.
+- **Changes**:
+    - **Refactor**: Replaced `players` array with `rosters: { t20: [], odi: [], test: [] }` in all 10 team JSON files.
+    - **Logic**: `MatchController` now dynamically loads the correct roster based on `GameState.format`.
+    - **Legacy Support**: Included fallback to `players` key if `rosters` is missing.
+- **Verification**: `npm run build` passed. JSON restructuring is complete for all teams. Squads like India now correctly show Kohli/Rohit in ODI/Test but not T20.
+
+## 33. Multi-Format Roster Support
+- **Feature**: Separate squads for T20, ODI, and Test matches.
+- **Changes**:
+    - **Refactor**: Replaced `players` array with `rosters: { t20: [], odi: [], test: [] }` in all 10 team JSON files.
+    - **Logic**: `MatchController` now dynamically loads the correct roster based on `GameState.format`.
+    - **Legacy Support**: Included fallback to `players` key if `rosters` is missing.
+- **Verification**: `npm run build` passed. JSON restructuring is complete for all teams. Squads like India now correctly show Kohli/Rohit in ODI/Test but not T20.

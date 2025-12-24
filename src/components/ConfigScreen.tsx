@@ -16,9 +16,9 @@ export function ConfigScreen({ engine }: ConfigScreenProps) {
     const handleStart = async () => {
         setLoading(true);
         try {
+            GameState.format.value = format;
             await engine.loadTeams(t1, t2);
             engine.performToss();
-            GameState.format.value = format;
             engine.startMatch(t1, t2);
         } catch (e: any) {
             alert("Failed to load teams: " + e.message);

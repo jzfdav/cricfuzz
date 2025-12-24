@@ -1,106 +1,310 @@
 {
   "id": "AFG",
   "name": "Afghanistan",
-  "color": "#004B96",
-  "players": [
-    {
-      "name": "Rahmanullah Gurbaz",
-      "role": "Wicketkeeper",
-      "battingSkill": 90,
-      "bowlingSkill": 0,
-      "bowlingStyle": "Pace",
-      "aggression": 96,
-      "economy": 0
-    },
-    {
-      "name": "Ibrahim Zadran",
-      "role": "Batsman",
-      "battingSkill": 89,
-      "bowlingSkill": 10,
-      "bowlingStyle": "Spin",
-      "aggression": 70,
-      "economy": 9.0
-    },
-    {
-      "name": "Azmatullah Omarzai",
-      "role": "All-Rounder",
-      "battingSkill": 87,
-      "bowlingSkill": 84,
-      "bowlingStyle": "Pace",
-      "aggression": 85,
-      "economy": 7.8
-    },
-    {
-      "name": "Mohammad Nabi",
-      "role": "All-Rounder",
-      "battingSkill": 84,
-      "bowlingSkill": 86,
-      "bowlingStyle": "Spin",
-      "aggression": 75,
-      "economy": 6.9
-    },
-    {
-      "name": "Karim Janat",
-      "role": "All-Rounder",
-      "battingSkill": 82,
-      "bowlingSkill": 78,
-      "bowlingStyle": "Pace",
-      "aggression": 85,
-      "economy": 8.2
-    },
-    {
-      "name": "Rashid Khan",
-      "role": "Bowler",
-      "battingSkill": 75,
-      "bowlingSkill": 99,
-      "bowlingStyle": "Spin",
-      "aggression": 90,
-      "economy": 5.5
-    },
-    {
-      "name": "Noor Ahmad",
-      "role": "Bowler",
-      "battingSkill": 25,
-      "bowlingSkill": 91,
-      "bowlingStyle": "Spin",
-      "aggression": 30,
-      "economy": 6.6
-    },
-    {
-      "name": "Fazalhaq Farooqi",
-      "role": "Bowler",
-      "battingSkill": 15,
-      "bowlingSkill": 92,
-      "bowlingStyle": "Pace",
-      "aggression": 25,
-      "economy": 7.0
-    },
-    {
-      "name": "Naveen-ul-Haq",
-      "role": "Bowler",
-      "battingSkill": 20,
-      "bowlingSkill": 89,
-      "bowlingStyle": "Pace",
-      "aggression": 30,
-      "economy": 7.8
-    },
-    {
-      "name": "Mujeeb Ur Rahman",
-      "role": "Bowler",
-      "battingSkill": 20,
-      "bowlingSkill": 89,
-      "bowlingStyle": "Spin",
-      "aggression": 30,
-      "economy": 6.4
-    },
-    {
-      "name": "Gulbadin Naib",
-      "role": "All-Rounder",
-      "battingSkill": 84,
-      "bowlingSkill": 80,
-      "bowlingStyle": "Pace",
-      "aggression": 88,
-      "economy": 8.0
-    }
-  ]
+  "color": "#002D62",
+  "rosters": {
+    "t20": [
+      {
+        "name": "Rahmanullah Gurbaz",
+        "role": "WicketKeeper",
+        "battingSkill": 90,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 96,
+        "economy": 0
+      },
+      {
+        "name": "Ibrahim Zadran",
+        "role": "Batter",
+        "battingSkill": 88,
+        "bowlingSkill": 10,
+        "bowlingStyle": "Pace",
+        "aggression": 82,
+        "economy": 0
+      },
+      {
+        "name": "Azmatullah Omarzai",
+        "role": "All-Rounder",
+        "battingSkill": 86,
+        "bowlingSkill": 85,
+        "bowlingStyle": "Pace",
+        "aggression": 88,
+        "economy": 8.0
+      },
+      {
+        "name": "Mohammad Nabi",
+        "role": "All-Rounder",
+        "battingSkill": 85,
+        "bowlingSkill": 88,
+        "bowlingStyle": "Spin",
+        "aggression": 85,
+        "economy": 7.2
+      },
+      {
+        "name": "Najibullah Zadran",
+        "role": "Batter",
+        "battingSkill": 84,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 94,
+        "economy": 0
+      },
+      {
+        "name": "Rashid Khan",
+        "role": "Bowler",
+        "battingSkill": 70,
+        "bowlingSkill": 99,
+        "bowlingStyle": "Spin",
+        "aggression": 95,
+        "economy": 6.2
+      },
+      {
+        "name": "Noor Ahmad",
+        "role": "Bowler",
+        "battingSkill": 15,
+        "bowlingSkill": 92,
+        "bowlingStyle": "Spin",
+        "aggression": 40,
+        "economy": 6.8
+      },
+      {
+        "name": "Mujeeb Ur Rahman",
+        "role": "Bowler",
+        "battingSkill": 20,
+        "bowlingSkill": 90,
+        "bowlingStyle": "Spin",
+        "aggression": 35,
+        "economy": 6.5
+      },
+      {
+        "name": "Fazalhaq Farooqi",
+        "role": "Bowler",
+        "battingSkill": 10,
+        "bowlingSkill": 93,
+        "bowlingStyle": "Pace",
+        "aggression": 30,
+        "economy": 7.5
+      },
+      {
+        "name": "Naveen-ul-Haq",
+        "role": "Bowler",
+        "battingSkill": 15,
+        "bowlingSkill": 88,
+        "bowlingStyle": "Pace",
+        "aggression": 35,
+        "economy": 7.8
+      },
+      {
+        "name": "Gulbadin Naib",
+        "role": "All-Rounder",
+        "battingSkill": 82,
+        "bowlingSkill": 83,
+        "bowlingStyle": "Pace",
+        "aggression": 92,
+        "economy": 8.5
+      }
+    ],
+    "odi": [
+      {
+        "name": "Rahmanullah Gurbaz",
+        "role": "WicketKeeper",
+        "battingSkill": 92,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 90,
+        "economy": 0
+      },
+      {
+        "name": "Ibrahim Zadran",
+        "role": "Batter",
+        "battingSkill": 91,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 80,
+        "economy": 0
+      },
+      {
+        "name": "Rahmat Shah",
+        "role": "Batter",
+        "battingSkill": 89,
+        "bowlingSkill": 25,
+        "bowlingStyle": "Spin",
+        "aggression": 72,
+        "economy": 5.5
+      },
+      {
+        "name": "Hashmatullah Shahidi",
+        "role": "Batter",
+        "battingSkill": 88,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 70,
+        "economy": 0
+      },
+      {
+        "name": "Azmatullah Omarzai",
+        "role": "All-Rounder",
+        "battingSkill": 88,
+        "bowlingSkill": 86,
+        "bowlingStyle": "Pace",
+        "aggression": 85,
+        "economy": 5.8
+      },
+      {
+        "name": "Mohammad Nabi",
+        "role": "All-Rounder",
+        "battingSkill": 84,
+        "bowlingSkill": 89,
+        "bowlingStyle": "Spin",
+        "aggression": 80,
+        "economy": 4.8
+      },
+      {
+        "name": "Rashid Khan",
+        "role": "Bowler",
+        "battingSkill": 65,
+        "bowlingSkill": 99,
+        "bowlingStyle": "Spin",
+        "aggression": 90,
+        "economy": 4.5
+      },
+      {
+        "name": "Mujeeb Ur Rahman",
+        "role": "Bowler",
+        "battingSkill": 20,
+        "bowlingSkill": 91,
+        "bowlingStyle": "Spin",
+        "aggression": 30,
+        "economy": 4.8
+      },
+      {
+        "name": "Fazalhaq Farooqi",
+        "role": "Bowler",
+        "battingSkill": 10,
+        "bowlingSkill": 92,
+        "bowlingStyle": "Pace",
+        "aggression": 35,
+        "economy": 5.5
+      },
+      {
+        "name": "Naveen-ul-Haq",
+        "role": "Bowler",
+        "battingSkill": 15,
+        "bowlingSkill": 86,
+        "bowlingStyle": "Pace",
+        "aggression": 40,
+        "economy": 6.2
+      },
+      {
+        "name": "Ikram Alikhil",
+        "role": "WicketKeeper",
+        "battingSkill": 80,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 72,
+        "economy": 0
+      }
+    ],
+    "test": [
+      {
+        "name": "Ibrahim Zadran",
+        "role": "Batter",
+        "battingSkill": 90,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 65,
+        "economy": 0
+      },
+      {
+        "name": "Rahmat Shah",
+        "role": "Batter",
+        "battingSkill": 88,
+        "bowlingSkill": 30,
+        "bowlingStyle": "Spin",
+        "aggression": 60,
+        "economy": 4.0
+      },
+      {
+        "name": "Hashmatullah Shahidi",
+        "role": "Batter",
+        "battingSkill": 86,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 55,
+        "economy": 0
+      },
+      {
+        "name": "Nasir Jamal",
+        "role": "Batter",
+        "battingSkill": 78,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 58,
+        "economy": 0
+      },
+      {
+        "name": "Azmatullah Omarzai",
+        "role": "All-Rounder",
+        "battingSkill": 85,
+        "bowlingSkill": 88,
+        "bowlingStyle": "Pace",
+        "aggression": 70,
+        "economy": 3.8
+      },
+      {
+        "name": "Rashid Khan",
+        "role": "Bowler",
+        "battingSkill": 60,
+        "bowlingSkill": 99,
+        "bowlingStyle": "Spin",
+        "aggression": 80,
+        "economy": 3.5
+      },
+      {
+        "name": "Zahir Khan",
+        "role": "Bowler",
+        "battingSkill": 10,
+        "bowlingSkill": 88,
+        "bowlingStyle": "Spin",
+        "aggression": 30,
+        "economy": 4.2
+      },
+      {
+        "name": "Naveed Zadran",
+        "role": "Bowler",
+        "battingSkill": 20,
+        "bowlingSkill": 85,
+        "bowlingStyle": "Pace",
+        "aggression": 40,
+        "economy": 3.6
+      },
+      {
+        "name": "Nijat Masood",
+        "role": "Bowler",
+        "battingSkill": 15,
+        "bowlingSkill": 84,
+        "bowlingStyle": "Pace",
+        "aggression": 35,
+        "economy": 3.8
+      },
+      {
+        "name": "Ikram Alikhil",
+        "role": "WicketKeeper",
+        "battingSkill": 75,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 60,
+        "economy": 0
+      },
+      {
+        "name": "Qais Ahmad",
+        "role": "Bowler",
+        "battingSkill": 50,
+        "bowlingSkill": 86,
+        "bowlingStyle": "Spin",
+        "aggression": 75,
+        "economy": 4.5
+      }
+    ]
+  }
 }

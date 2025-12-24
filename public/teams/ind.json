@@ -2,105 +2,309 @@
   "id": "IND",
   "name": "India",
   "color": "#133C8B",
-  "players": [
-    {
-      "name": "Abhishek Sharma",
-      "role": "Batsman",
-      "battingSkill": 92,
-      "bowlingSkill": 15,
-      "bowlingStyle": "Spin",
-      "aggression": 96,
-      "economy": 9.0
-    },
-    {
-      "name": "Suryakumar Yadav",
-      "role": "Batsman",
-      "battingSkill": 97,
-      "bowlingSkill": 10,
-      "bowlingStyle": "Pace",
-      "aggression": 94,
-      "economy": 9.0
-    },
-    {
-      "name": "Tilak Varma",
-      "role": "Batsman",
-      "battingSkill": 89,
-      "bowlingSkill": 25,
-      "bowlingStyle": "Spin",
-      "aggression": 85,
-      "economy": 8.5
-    },
-    {
-      "name": "Hardik Pandya",
-      "role": "All-Rounder",
-      "battingSkill": 89,
-      "bowlingSkill": 88,
-      "bowlingStyle": "Pace",
-      "aggression": 95,
-      "economy": 7.8
-    },
-    {
-      "name": "Rinku Singh",
-      "role": "Batsman",
-      "battingSkill": 90,
-      "bowlingSkill": 10,
-      "bowlingStyle": "Spin",
-      "aggression": 97,
-      "economy": 9.0
-    },
-    {
-      "name": "Sanju Samson",
-      "role": "Wicketkeeper",
-      "battingSkill": 88,
-      "bowlingSkill": 0,
-      "bowlingStyle": "Pace",
-      "aggression": 90,
-      "economy": 0
-    },
-    {
-      "name": "Axar Patel",
-      "role": "All-Rounder",
-      "battingSkill": 84,
-      "bowlingSkill": 89,
-      "bowlingStyle": "Spin",
-      "aggression": 75,
-      "economy": 6.8
-    },
-    {
-      "name": "Jasprit Bumrah",
-      "role": "Bowler",
-      "battingSkill": 20,
-      "bowlingSkill": 99,
-      "bowlingStyle": "Pace",
-      "aggression": 40,
-      "economy": 5.8
-    },
-    {
-      "name": "Kuldeep Yadav",
-      "role": "Bowler",
-      "battingSkill": 15,
-      "bowlingSkill": 94,
-      "bowlingStyle": "Spin",
-      "aggression": 30,
-      "economy": 6.7
-    },
-    {
-      "name": "Arshdeep Singh",
-      "role": "Bowler",
-      "battingSkill": 15,
-      "bowlingSkill": 89,
-      "bowlingStyle": "Pace",
-      "aggression": 35,
-      "economy": 7.6
-    },
-    {
-      "name": "Varun Chakaravarthy",
-      "role": "Bowler",
-      "battingSkill": 10,
-      "bowlingSkill": 88,
-      "bowlingStyle": "Spin",
-      "aggression": 30,
-      "economy": 6.6
-    }
-  ]
+  "rosters": {
+    "t20": [
+      {
+        "name": "Abhishek Sharma",
+        "role": "Batter",
+        "battingSkill": 92,
+        "bowlingSkill": 15,
+        "bowlingStyle": "Spin",
+        "aggression": 96,
+        "economy": 9.0
+      },
+      {
+        "name": "Suryakumar Yadav",
+        "role": "Batter",
+        "battingSkill": 97,
+        "bowlingSkill": 10,
+        "bowlingStyle": "Pace",
+        "aggression": 94,
+        "economy": 9.0
+      },
+      {
+        "name": "Tilak Varma",
+        "role": "Batter",
+        "battingSkill": 89,
+        "bowlingSkill": 25,
+        "bowlingStyle": "Spin",
+        "aggression": 85,
+        "economy": 8.5
+      },
+      {
+        "name": "Hardik Pandya",
+        "role": "All-Rounder",
+        "battingSkill": 89,
+        "bowlingSkill": 88,
+        "bowlingStyle": "Pace",
+        "aggression": 95,
+        "economy": 7.8
+      },
+      {
+        "name": "Rinku Singh",
+        "role": "Batter",
+        "battingSkill": 90,
+        "bowlingSkill": 10,
+        "bowlingStyle": "Spin",
+        "aggression": 97,
+        "economy": 9.0
+      },
+      {
+        "name": "Sanju Samson",
+        "role": "WicketKeeper",
+        "battingSkill": 88,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 90,
+        "economy": 0
+      },
+      {
+        "name": "Axar Patel",
+        "role": "All-Rounder",
+        "battingSkill": 84,
+        "bowlingSkill": 89,
+        "bowlingStyle": "Spin",
+        "aggression": 75,
+        "economy": 6.8
+      },
+      {
+        "name": "Jasprit Bumrah",
+        "role": "Bowler",
+        "battingSkill": 20,
+        "bowlingSkill": 99,
+        "bowlingStyle": "Pace",
+        "aggression": 40,
+        "economy": 5.8
+      },
+      {
+        "name": "Kuldeep Yadav",
+        "role": "Bowler",
+        "battingSkill": 15,
+        "bowlingSkill": 94,
+        "bowlingStyle": "Spin",
+        "aggression": 30,
+        "economy": 6.7
+      },
+      {
+        "name": "Arshdeep Singh",
+        "role": "Bowler",
+        "battingSkill": 15,
+        "bowlingSkill": 89,
+        "bowlingStyle": "Pace",
+        "aggression": 35,
+        "economy": 7.6
+      },
+      {
+        "name": "Varun Chakaravarthy",
+        "role": "Bowler",
+        "battingSkill": 10,
+        "bowlingSkill": 88,
+        "bowlingStyle": "Spin",
+        "aggression": 30,
+        "economy": 6.6
+      }
+    ],
+    "odi": [
+      {
+        "name": "Rohit Sharma",
+        "role": "Batter",
+        "battingSkill": 96,
+        "bowlingSkill": 15,
+        "bowlingStyle": "Spin",
+        "aggression": 92,
+        "economy": 8.0
+      },
+      {
+        "name": "Shubman Gill",
+        "role": "Batter",
+        "battingSkill": 94,
+        "bowlingSkill": 10,
+        "bowlingStyle": "Pace",
+        "aggression": 85,
+        "economy": 0
+      },
+      {
+        "name": "Virat Kohli",
+        "role": "Batter",
+        "battingSkill": 98,
+        "bowlingSkill": 15,
+        "bowlingStyle": "Pace",
+        "aggression": 88,
+        "economy": 7.5
+      },
+      {
+        "name": "Shreyas Iyer",
+        "role": "Batter",
+        "battingSkill": 90,
+        "bowlingSkill": 20,
+        "bowlingStyle": "Spin",
+        "aggression": 86,
+        "economy": 8.0
+      },
+      {
+        "name": "KL Rahul",
+        "role": "WicketKeeper",
+        "battingSkill": 91,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 82,
+        "economy": 0
+      },
+      {
+        "name": "Hardik Pandya",
+        "role": "All-Rounder",
+        "battingSkill": 89,
+        "bowlingSkill": 88,
+        "bowlingStyle": "Pace",
+        "aggression": 94,
+        "economy": 7.2
+      },
+      {
+        "name": "Ravindra Jadeja",
+        "role": "All-Rounder",
+        "battingSkill": 85,
+        "bowlingSkill": 92,
+        "bowlingStyle": "Spin",
+        "aggression": 80,
+        "economy": 6.2
+      },
+      {
+        "name": "Kuldeep Yadav",
+        "role": "Bowler",
+        "battingSkill": 15,
+        "bowlingSkill": 96,
+        "bowlingStyle": "Spin",
+        "aggression": 30,
+        "economy": 6.4
+      },
+      {
+        "name": "Jasprit Bumrah",
+        "role": "Bowler",
+        "battingSkill": 25,
+        "bowlingSkill": 99,
+        "bowlingStyle": "Pace",
+        "aggression": 40,
+        "economy": 5.8
+      },
+      {
+        "name": "Mohammed Siraj",
+        "role": "Bowler",
+        "battingSkill": 15,
+        "bowlingSkill": 91,
+        "bowlingStyle": "Pace",
+        "aggression": 45,
+        "economy": 7.4
+      },
+      {
+        "name": "Mohammed Shami",
+        "role": "Bowler",
+        "battingSkill": 20,
+        "bowlingSkill": 95,
+        "bowlingStyle": "Pace",
+        "aggression": 50,
+        "economy": 7.0
+      }
+    ],
+    "test": [
+      {
+        "name": "Rohit Sharma",
+        "role": "Batter",
+        "battingSkill": 95,
+        "bowlingSkill": 10,
+        "bowlingStyle": "Spin",
+        "aggression": 75,
+        "economy": 0
+      },
+      {
+        "name": "Yashasvi Jaiswal",
+        "role": "Batter",
+        "battingSkill": 92,
+        "bowlingSkill": 15,
+        "bowlingStyle": "Spin",
+        "aggression": 88,
+        "economy": 0
+      },
+      {
+        "name": "Shubman Gill",
+        "role": "Batter",
+        "battingSkill": 90,
+        "bowlingSkill": 5,
+        "bowlingStyle": "Pace",
+        "aggression": 70,
+        "economy": 0
+      },
+      {
+        "name": "Virat Kohli",
+        "role": "Batter",
+        "battingSkill": 97,
+        "bowlingSkill": 5,
+        "bowlingStyle": "Pace",
+        "aggression": 72,
+        "economy": 0
+      },
+      {
+        "name": "Rishabh Pant",
+        "role": "WicketKeeper",
+        "battingSkill": 94,
+        "bowlingSkill": 0,
+        "bowlingStyle": "Pace",
+        "aggression": 95,
+        "economy": 0
+      },
+      {
+        "name": "Ravindra Jadeja",
+        "role": "All-Rounder",
+        "battingSkill": 88,
+        "bowlingSkill": 94,
+        "bowlingStyle": "Spin",
+        "aggression": 65,
+        "economy": 5.0
+      },
+      {
+        "name": "Ravichandran Ashwin",
+        "role": "All-Rounder",
+        "battingSkill": 80,
+        "bowlingSkill": 96,
+        "bowlingStyle": "Spin",
+        "aggression": 60,
+        "economy": 4.5
+      },
+      {
+        "name": "Jasprit Bumrah",
+        "role": "Bowler",
+        "battingSkill": 25,
+        "bowlingSkill": 99,
+        "bowlingStyle": "Pace",
+        "aggression": 40,
+        "economy": 4.2
+      },
+      {
+        "name": "Mohammed Shami",
+        "role": "Bowler",
+        "battingSkill": 20,
+        "bowlingSkill": 93,
+        "bowlingStyle": "Pace",
+        "aggression": 45,
+        "economy": 4.8
+      },
+      {
+        "name": "Mohammed Siraj",
+        "role": "Bowler",
+        "battingSkill": 15,
+        "bowlingSkill": 90,
+        "bowlingStyle": "Pace",
+        "aggression": 40,
+        "economy": 5.5
+      },
+      {
+        "name": "Akash Deep",
+        "role": "Bowler",
+        "battingSkill": 25,
+        "bowlingSkill": 85,
+        "bowlingStyle": "Pace",
+        "aggression": 50,
+        "economy": 5.2
+      }
+    ]
+  }
 }

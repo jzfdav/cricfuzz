@@ -27,7 +27,19 @@ export interface Player {
 
 export type Squad = Player[];
 
+export interface Rosters {
+    t20: Squad;
+    odi: Squad;
+    test: Squad;
+}
 
+export interface TeamData {
+    id: string;
+    name: string;
+    color: string;
+    players?: Squad; // Legacy support or default
+    rosters?: Rosters; // New structure
+}
 
 export interface MatchHistoryEntry {
     team: string;

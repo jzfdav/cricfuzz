@@ -1,5 +1,5 @@
 import { signal, computed, Signal } from "@preact/signals";
-import { Player, Squad, MatchHistoryEntry, CommentaryEntry } from "../types";
+import { Player, Squad, MatchHistoryEntry, CommentaryEntry, TeamData } from "../types";
 
 export type FormatType = "T20" | "ODI" | "TEST";
 export type PitchType = "Green" | "Dry" | "Balanced" | "Flat" | "Dusty";
@@ -33,6 +33,8 @@ export const GameState = {
     teams: {
         team1: signal<TeamStructure | null>(null),
         team2: signal<TeamStructure | null>(null),
+        team1Data: signal<TeamData | null>(null), // Raw Data
+        team2Data: signal<TeamData | null>(null), // Raw Data
         team1Name: signal<string>(""),
         team2Name: signal<string>(""),
     },
@@ -100,7 +102,7 @@ export const GameState = {
     nextBatterIndex: signal<number>(2)
 };
 
-interface TeamStructure {
+export interface TeamStructure {
     id: string; // Added id
     name: string;
     color?: string;
