@@ -91,3 +91,12 @@ This document records functionality regressions and issues identified during the
 - **Reason**: `commentary.js` was trying to access `target` and `score` directly from the `GameState` object, but they are Signals and require `.value`.
 - **Status**: ✅ Fixed (Added proper signal destructuring in `getCommentary`).
 
+## 19. Flag Swap Bug (Live Match)
+- **Issue**: The flag displayed next to the score in the live match header did not match the batting team.
+- **Reason**: The `Scoreboard` component was assuming `innings === 1` meant Team 1, but the batting team depends on the toss decision.
+- **Status**: ✅ Fixed (Updated logic to check `battingTeamName` against team names).
+
+## 20. Missing Worm Graph Wickets (Render Issue)
+- **Issue**: Red dots indicating wickets were only appearing for one team or were inconsistent.
+- **Reason**: The wicket rendering logic in `WormGraph.tsx` wasn't correctly iterating over the `targetData` set.
+- **Status**: ✅ Fixed (Added dedicated wicket rendering loops for both main and target lines).
