@@ -125,3 +125,8 @@ This document records functionality regressions and issues identified during the
 - **Issue**: Bowlers were never completing long spells because their spell count was reset every time they didn't bowl an over (i.e., every alternate over).
 - **Reason**: `updateSpells` logic was too aggressive, resetting `currentSpellBalls` effectively every over for the non-active bowler.
 - **Status**: ✅ Fixed (Modified logic to only reset spell if gap > 12 balls).
+
+## 26. Missing Pitch Details (Result Screen)
+- **Issue**: Users lacked context on why a team might have batted/bowled first, as Pitch Condition was not visible in the summary.
+- **Reason**: Feature request.
+- **Status**: ✅ Added (Pitch condition now displayed alongside Toss result).

@@ -25,7 +25,9 @@ export function ResultScreen({ engine }: ResultScreenProps) {
             <div className="text-center mt-10 mb-8">
                 <h2 className="text-xs uppercase tracking-[0.3em] text-amber-500 font-bold mb-2">Match Finished</h2>
                 <h1 className="text-3xl font-black italic mb-2">{result}</h1>
-                <p className="text-xs text-gray-400 italic mb-4">{GameState.tossResult.value}</p>
+                <p className="text-xs text-gray-400 italic mb-4">
+                    {GameState.tossResult.value} • <span className="text-gray-500">{GameState.pitch.value} Pitch</span>
+                </p>
                 <div className="max-w-xl mx-auto p-4 bg-gray-800/30 rounded-xl border border-gray-800">
                     <p className="text-sm text-gray-300 font-medium italic leading-relaxed">
                         {getMatchDescription(history, t1Name, t2Name, GameState.format.value)}
