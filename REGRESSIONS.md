@@ -120,3 +120,8 @@ This document records functionality regressions and issues identified during the
 - **Issue**: Every over was potentially being recorded as a maiden over, and code contained "ghost comments" (my internal notes).
 - **Reason**: `GameState.overRuns.value` was never being incremented when runs were scored, so the End-of-Over check always saw 0 runs.
 - **Status**: ✅ Fixed (Added `GameState.overRuns.value += res` logic and removed ghost comments).
+
+## 25. Broken Bowling Spells (Bowling Engine)
+- **Issue**: Bowlers were never completing long spells because their spell count was reset every time they didn't bowl an over (i.e., every alternate over).
+- **Reason**: `updateSpells` logic was too aggressive, resetting `currentSpellBalls` effectively every over for the non-active bowler.
+- **Status**: ✅ Fixed (Modified logic to only reset spell if gap > 12 balls).

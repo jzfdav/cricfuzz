@@ -19,7 +19,11 @@ export class BowlingEngine {
         this.spellData.forEach((data, name) => {
             if (name !== lastBowlerName) {
                 data.ballsSinceLastSpell += 6;
-                data.currentSpellBalls = 0; // Reset spell if they didn't bowl
+                // Only reset the spell if they have rested for more than 1 over (i.e. > 12 balls gap)
+                // This allows them to bowl Over 1, skip Over 2 (other end), and bowl Over 3 as part of same spell.
+                if (data.ballsSinceLastSpell > 12) {
+                    data.currentSpellBalls = 0;
+                }
             }
         });
 
