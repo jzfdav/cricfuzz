@@ -156,11 +156,10 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
                 }}
             >
                 {/* Header Controls */}
-                <div className={`flex justify-between items-center px-4 ${expanded ? 'pt-0' : 'pt-2'} absolute w-full top-0 left-0 h-10 z-10`}
+                <div className={`flex justify-between items-center px-4 ${expanded ? 'absolute w-full top-0 left-0 pt-0 h-10 z-10' : 'relative h-10 border-b border-gray-800/50'}`}
                     onClick={(e) => {
                         if (!expanded) {
-                            e.stopPropagation(); // Prevent expansion if clicking header controls directly (optional, but safer to let clicking anywhere expand)
-                            // Actually user wants "Click to collapse" button alongside "Click to expand"
+                            // expansion is handled by parent, but we want to make sure clicks on the header don't conflict
                         }
                     }}
                 >
@@ -172,7 +171,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
                                     e.stopPropagation();
                                     setCollapsed(!collapsed);
                                 }}
-                                className="text-[9px] text-gray-500 hover:text-white uppercase font-bold px-2 py-1 rounded hover:bg-gray-800 transition-colors"
+                                className="text-[9px] text-amber-500 hover:text-white uppercase font-black px-2 py-1 rounded bg-gray-800 hover:bg-gray-700 transition-colors border border-amber-500/20"
                             >
                                 {collapsed ? "Show Graph" : "Hide Graph"}
                             </button>
@@ -197,7 +196,7 @@ export function WormGraph({ data, targetData, totalOvers, color = "#fbbf24", leg
 
                 {/* Main Graph Content - Hidden if Collapsed (and not expanded) */}
                 {(!collapsed || expanded) && (
-                    <div className={`relative ${expanded ? 'mt-4' : 'mt-8'} ${graphClass}`} style={{ backgroundColor: graphBg }}>
+                    <div className={`relative ${expanded ? 'mt-8' : 'mt-2'} ${graphClass}`} style={{ backgroundColor: graphBg }}>
 
                         <svg width="100%" height={height} viewBox={`0 0 ${width} ${height}`} className="overflow-visible">
                             {/* Axes & Grid */}
