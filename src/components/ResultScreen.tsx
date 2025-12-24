@@ -42,7 +42,7 @@ export function ResultScreen({ engine }: ResultScreenProps) {
                     <div className="space-y-2">
                         {getTopPerformers(history).batters.slice(0, 3).map((p, i) => (
                             <div key={i} className="flex justify-between items-center text-xs">
-                                <span className={`${i === 0 ? 'text-white font-bold' : 'text-gray-400'}`}>{p.name.split(' ').pop()}</span>
+                                <span className={`${i === 0 ? 'text-white font-bold' : 'text-gray-400'}`}>{p.name}</span>
                                 <span className="font-mono text-gray-300">{p.batStats.runs} <span className="text-[9px] text-gray-600">({p.batStats.balls})</span></span>
                             </div>
                         ))}
@@ -53,7 +53,7 @@ export function ResultScreen({ engine }: ResultScreenProps) {
                     <div className="space-y-2">
                         {getTopPerformers(history).bowlers.slice(0, 3).map((p, i) => (
                             <div key={i} className="flex justify-between items-center text-xs">
-                                <span className={`${i === 0 ? 'text-white font-bold' : 'text-gray-400'}`}>{p.name.split(' ').pop()}</span>
+                                <span className={`${i === 0 ? 'text-white font-bold' : 'text-gray-400'}`}>{p.name}</span>
                                 <span className="font-mono text-gray-300">{p.bowlStats.wicketsTaken}/{p.bowlStats.runsConceded} <span className="text-[9px] text-gray-600">({Math.floor(p.bowlStats.balls / 6)}.{p.bowlStats.balls % 6})</span></span>
                             </div>
                         ))}
@@ -128,7 +128,7 @@ export function ResultScreen({ engine }: ResultScreenProps) {
                                         <p className="mb-2 font-bold uppercase text-[10px] text-amber-500/80">Batting</p>
                                         {inn.batting.map(p => (
                                             <div key={p.name} className={`flex justify-between border-b border-gray-800 py-1 ${p.batStats.out ? 'text-gray-500' : 'text-white'}`}>
-                                                <span>{p.name.split(' ').pop()} {p.batStats.out ? '' : '*'}</span>
+                                                <span>{p.name} {p.batStats.out ? '' : '*'}</span>
                                                 <span className="font-mono">{p.batStats.runs} ({p.batStats.balls})</span>
                                             </div>
                                         ))}
@@ -139,7 +139,7 @@ export function ResultScreen({ engine }: ResultScreenProps) {
                                             .sort((a, b) => (b.bowlStats.wicketsTaken - a.bowlStats.wicketsTaken) || (a.bowlStats.runsConceded - b.bowlStats.runsConceded))
                                             .map(p => (
                                                 <div key={p.name} className="flex justify-between border-b border-gray-800 py-1">
-                                                    <span>{p.name.split(' ').pop()}</span>
+                                                    <span>{p.name}</span>
                                                     <span className="font-mono text-white">
                                                         {p.bowlStats.wicketsTaken}-{p.bowlStats.runsConceded} <span className="text-gray-600 text-[9px]">({Math.floor(p.bowlStats.balls / 6)}.{p.bowlStats.balls % 6})</span>
                                                     </span>
@@ -211,7 +211,8 @@ function getMatchDescription(history: MatchHistoryEntry[], t1: string, t2: strin
     let description = `A thrilling ${format} encounter between ${t1} and ${t2}. `;
     if (totalMaidens > 0) description += `Defensive pressure was key with ${totalMaidens} maiden over${totalMaidens > 1 ? 's' : ''} bowled. `;
     if (topPerformer) {
-        description += `${topPerformer.name.split(' ').pop()}'s ${topPerformer.stat} was the standout performance of the match.`;
+        const p = topPerformer as Performer;
+        description += `${p.name}'s ${p.stat} was the standout performance of the match.`;
     }
     return description;
 }

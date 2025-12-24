@@ -1,4 +1,4 @@
-import { GameState, currentOver, runRate, currentPhase } from "../engine/GameState";
+import { GameState, currentOver, runRate, currentPhase, ballsRemaining, requiredRunRate } from "../engine/GameState";
 import { WormGraph } from "./WormGraph";
 import { Player } from "../types";
 import { getTeamFlag } from "../utils";
@@ -43,20 +43,39 @@ export function Scoreboard() {
                     )}
                 </div>
             </div>
-
+            {/* Chase Summary Bar */}
+            {GameState.innings.value === 2 && GameState.target.value !== null && (
+                <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-2 mb-3 flex justify-between items-center text-[10px] sm:text-xs">
+                    <div className="flex items-center gap-2">
+                        <span className="font-black text-amber-500 uppercase tracking-tighter">
+                            {GameState.battingTeamName.value} need {GameState.target.value - GameState.score.value} runs
+                        </span>
+                        <span className="text-gray-500">in</span>
+                        <span className="font-bold text-white">
+                            {Math.floor(ballsRemaining.value / 6)}.{ballsRemaining.value % 6} overs
+                        </span>
+                        <span className="text-gray-500">to win</span>
+                    </div>
+                    <div className="flex items-center gap-3 font-mono">
+                        <span className="text-gray-400">CRR: <span className="text-white">{runRate.value}</span></span>
+                        <span className="text-gray-500">·</span>
+                        <span className="text-gray-400">RRR: <span className="text-amber-500 font-bold">{requiredRunRate.value}</span></span>
+                    </div>
+                </div>
+            )}
             {/* Active Batter/Bowler Info Bar */}
             <div className="bg-[#0B0E14] rounded-lg p-3 border border-gray-800 grid grid-cols-2 gap-4 mb-3">
                 <div>
                     <p className="text-sm font-bold text-amber-400 italic">
-                        {GameState.striker.value.name.split(' ').pop()}* <span className="text-white not-italic">{GameState.striker.value.batStats.runs}({GameState.striker.value.batStats.balls})</span>
+                        {GameState.striker.value.name}* <span className="text-white not-italic">{GameState.striker.value.batStats.runs}({GameState.striker.value.batStats.balls})</span>
                     </p>
                     <p className="text-xs text-gray-400 mt-1">
-                        {GameState.nonStriker.value.name.split(' ').pop()} <span className="text-gray-300">{GameState.nonStriker.value.batStats.runs}({GameState.nonStriker.value.batStats.balls})</span>
+                        {GameState.nonStriker.value.name} <span className="text-gray-300">{GameState.nonStriker.value.batStats.runs}({GameState.nonStriker.value.batStats.balls})</span>
                     </p>
                 </div>
                 <div className="text-right border-l border-gray-700 pl-4">
                     <p className="text-sm font-bold text-gray-300">
-                        {GameState.bowler.value.split(' ').pop()}
+                        {GameState.bowler.value}
                     </p>
                     {(() => {
                         const bowlerObj = GameState.bowlingSquad.value.find((p: Player) => p.name === GameState.bowler.value);

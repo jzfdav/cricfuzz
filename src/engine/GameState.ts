@@ -125,6 +125,21 @@ export const runRate = computed(() => {
     return (GameState.score.value / (b / 6)).toFixed(2);
 });
 
+export const ballsRemaining = computed(() => {
+    const format = GameState.format.value;
+    const totalBalls = GameState.formatConfigs[format].balls;
+    return Math.max(0, totalBalls - GameState.balls.value);
+});
+
+export const requiredRunRate = computed(() => {
+    const target = GameState.target.value;
+    if (target === null) return null;
+    const runsNeeded = target - GameState.score.value;
+    const b = ballsRemaining.value;
+    if (b === 0) return runsNeeded > 0 ? "∞" : "0.00";
+    return ((runsNeeded / b) * 6).toFixed(2);
+});
+
 export const currentPhase = computed(() => {
     const format = GameState.format.value;
     const b = GameState.balls.value;
