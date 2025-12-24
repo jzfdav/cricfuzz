@@ -100,3 +100,8 @@ This document records functionality regressions and issues identified during the
 - **Issue**: Red dots indicating wickets were only appearing for one team or were inconsistent.
 - **Reason**: The wicket rendering logic in `WormGraph.tsx` wasn't correctly iterating over the `targetData` set.
 - **Status**: ✅ Fixed (Added dedicated wicket rendering loops for both main and target lines).
+
+## 21. Result Screen Worm Graph Colors
+- **Issue**: The Worm Graph on the post-match summary screen defaulted to Team 1's color for the main line, even if Team 2 batted first.
+- **Reason**: The `ResultScreen` component hardcoded `team1Name` and `team1Color` as the primary dataset props, ignoring the actual `history` order.
+- **Status**: ✅ Fixed (Implemented dynamic logic to match `history[0]` team to its correct color).

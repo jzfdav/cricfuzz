@@ -62,22 +62,34 @@ export function ResultScreen({ engine }: ResultScreenProps) {
 
 
             {/* Match Analysis Graph */}
-            {(history.length >= 1) && (
-                <div className="w-full max-w-2xl mb-6">
-                    <WormGraph
-                        data={[{ over: 0, score: 0, wickets: 0 }, ...(history[0]?.timeline || [])]}
-                        targetData={history[1] ? [{ over: 0, score: 0, wickets: 0 }, ...(history[1]?.timeline || [])] : null}
-                        totalOvers={GameState.formatConfigs[GameState.format.value].balls / 6}
-                        color={GameState.teams.team1.value?.color || "#60a5fa"}
-                        legend={{
-                            main: t1Name,
-                            target: t2Name,
-                            mainColor: GameState.teams.team1.value?.color || "#60a5fa",
-                            targetColor: GameState.teams.team2.value?.color || "#9ca3af" // Default gray for target if not provided, but we should probably use team 2 color
-                        }}
-                    />
-                </div>
-            )}
+            {(history.length >= 1) && (() => {
+                const inn1 = history[0];
+                const inn2 = history[1]; // might be undefined
+
+                // Determine colors based on which team played which innings
+                const isT1Inn1 = inn1.team === t1Name;
+                const inn1Color = isT1Inn1 ? (GameState.teams.team1.value?.color || "#60a5fa") : (GameState.teams.team2.value?.color || "#ecc94b");
+
+                const isT1Inn2 = inn2 ? inn2.team === t1Name : false;
+                const inn2Color = inn2 ? (isT1Inn2 ? (GameState.teams.team1.value?.color || "#60a5fa") : (GameState.teams.team2.value?.color || "#ecc94b")) : undefined;
+
+                return (
+                    <div className="w-full max-w-2xl mb-6">
+                        <WormGraph
+                            data={[{ over: 0, score: 0, wickets: 0 }, ...(inn1.timeline || [])]}
+                            targetData={inn2 ? [{ over: 0, score: 0, wickets: 0 }, ...(inn2.timeline || [])] : null}
+                            totalOvers={GameState.formatConfigs[GameState.format.value].balls / 6}
+                            color={inn1Color}
+                            legend={{
+                                main: inn1.team,
+                                target: inn2?.team,
+                                mainColor: inn1Color,
+                                targetColor: inn2Color || "#555"
+                            }}
+                        />
+                    </div>
+                );
+            })()}
 
             <div className="w-full max-w-2xl space-y-6 flex-grow overflow-y-auto pb-10">
                 {history.map((inn, i) => {
