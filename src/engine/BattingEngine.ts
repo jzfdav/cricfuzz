@@ -43,4 +43,10 @@ export class BattingEngine {
 
         return clamp(baseAgg * config.aggMod, 0.2, 2.5);
     }
+
+    getMindset(aggFactor: number): 'Defensive' | 'Balanced' | 'Attacking' {
+        if (aggFactor < 0.75) return 'Defensive';
+        if (aggFactor > 1.25) return 'Attacking';
+        return 'Balanced';
+    }
 }

@@ -29,6 +29,7 @@ export class GameplayService {
         const runsScored = res.runs;
 
         if (res.isWicket) {
+            GameState.lastEvent.value = { type: 'wicket', timestamp: Date.now() };
             if (typeof window !== 'undefined') window.navigator.vibrate?.([40, 30, 40]);
             this.addCommentary(this.commentary.getCommentary(res, GameState.bowler.value, striker.name), 'wicket');
 
@@ -50,9 +51,11 @@ export class GameplayService {
             if (oldRuns < 100 && newRuns >= 100) this.addCommentary(this.commentary.getMilestoneCommentary('century', striker.name), 'milestone');
 
             if (res.runs === 4) {
+                GameState.lastEvent.value = { type: 'four', timestamp: Date.now() };
                 if (typeof window !== 'undefined') window.navigator.vibrate?.([40]);
                 this.addCommentary(this.commentary.getCommentary(res, GameState.bowler.value, striker.name), 'four');
             } else if (res.runs === 6) {
+                GameState.lastEvent.value = { type: 'six', timestamp: Date.now() };
                 if (typeof window !== 'undefined') window.navigator.vibrate?.([40, 30, 40]);
                 this.addCommentary(this.commentary.getCommentary(res, GameState.bowler.value, striker.name), 'six');
             } else if (res.runs === 0) {

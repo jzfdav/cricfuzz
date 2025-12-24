@@ -99,7 +99,11 @@ export const GameState = {
     tossResult: signal<string>(""),
     allOut: signal<boolean>(false),
     overRuns: signal<number>(0),
-    nextBatterIndex: signal<number>(2)
+    nextBatterIndex: signal<number>(2),
+
+    // Real-time Visualization
+    currentMindset: signal<'Defensive' | 'Balanced' | 'Attacking'>('Balanced'),
+    lastEvent: signal<{ type: 'wicket' | 'four' | 'six' | null, timestamp: number } | null>(null)
 };
 
 export interface TeamStructure {

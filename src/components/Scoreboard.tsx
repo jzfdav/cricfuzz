@@ -74,7 +74,11 @@ export function Scoreboard() {
             <div className="bg-[#0B0E14] rounded-lg p-3 border border-gray-800 grid grid-cols-2 gap-4 mb-3">
                 <div>
                     <p className="text-sm font-bold text-amber-400 italic">
-                        {GameState.striker.value.name}* <span className="text-white not-italic">{GameState.striker.value.batStats.runs}({GameState.striker.value.batStats.balls})</span>
+                        {GameState.striker.value.name}*
+                        <span className="ml-2 text-[9px] px-1.5 py-0.5 rounded-full bg-white/10 text-white font-bold uppercase tracking-wider not-italic border border-white/5">
+                            {GameState.currentMindset.value === 'Attacking' ? '🔥' : GameState.currentMindset.value === 'Defensive' ? '🛡️' : '⚖️'} {GameState.currentMindset.value}
+                        </span>
+                        <span className="text-white not-italic ml-2 font-mono">{GameState.striker.value.batStats.runs}({GameState.striker.value.batStats.balls})</span>
                     </p>
                     <p className="text-xs text-gray-400 mt-1">
                         {GameState.nonStriker.value.name} <span className="text-gray-300">{GameState.nonStriker.value.batStats.runs}({GameState.nonStriker.value.batStats.balls})</span>

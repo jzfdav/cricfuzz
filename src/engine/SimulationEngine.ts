@@ -44,6 +44,7 @@ export class SimulationEngine {
         const oversLeft = (totalBalls - ballsThrown) / 6;
 
         let aggFactor = this.battingEngine.getAggressionFactor(striker, wicketsDown, oversLeft);
+        GameState.currentMindset.value = this.battingEngine.getMindset(aggFactor);
 
         // Pitch Modifiers
         if (pitch === "Flat") { batterSkill *= 1.1; bowlerSkill *= 0.9; }

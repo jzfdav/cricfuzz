@@ -8,6 +8,8 @@ import { ResultScreen } from './components/ResultScreen';
 
 const engine = new GameEngine();
 
+import { EffectsOverlay, ShakeWrapper } from './components/EffectsOverlay';
+
 export function App() {
     const view = GameState.view.value;
 
@@ -19,12 +21,15 @@ export function App() {
     if (!GameState.teams.team1.value) return <div className="p-10 text-center text-amber-500">Initializing...</div>;
 
     return (
-        <div className="flex flex-col h-screen bg-[#0B0E14] text-white">
-            <Scoreboard />
-            <CommentaryFeed />
-            <div className="p-4 bg-[#0B0E14] border-t border-gray-800">
-                <Controls engine={engine} />
+        <ShakeWrapper>
+            <div className="flex flex-col h-screen bg-[#0B0E14] text-white">
+                <EffectsOverlay />
+                <Scoreboard />
+                <CommentaryFeed />
+                <div className="p-4 bg-[#0B0E14] border-t border-gray-800">
+                    <Controls engine={engine} />
+                </div>
             </div>
-        </div>
+        </ShakeWrapper>
     );
 }
