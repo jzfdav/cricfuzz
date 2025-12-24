@@ -135,3 +135,8 @@ This document records functionality regressions and issues identified during the
 - **Issue**: `overRuns` was being incremented in both `StatsEngine` and `MatchController`. While effective `overRuns` were reset every over, this theoretical double-counting could lead to issues if logic changed or if we displayed "Runs this over" in real-time.
 - **Reason**: Redundant logic during previous bug fix.
 - **Status**: ✅ Fixed (Removed duplicate increment in `MatchController`).
+
+## 28. Worm Graph Obscuring Commentary (UI)
+- **Issue**: The Worm Graph took up significant space in live view, preventing users from reading commentary while the match auto-played.
+- **Reason**: Feature request.
+- **Status**: ✅ Fixed (Added "Click to Collapse" / "Hide Graph" toggle).
