@@ -1,4 +1,4 @@
-import type { Player, Squad } from "../types";
+import type { Player, Squad, TeamData } from "../types";
 import type { CommentaryEngine } from "./CommentaryEngine";
 import { GameState } from "./GameState";
 import type { StatsEngine } from "./StatsEngine";
@@ -31,8 +31,8 @@ export class MatchSetupService {
 
 		const fmtKey = format.toLowerCase() as "t20" | "odi" | "test";
 
-		const getSquad = (d: any): Squad => {
-			if (d.rosters && d.rosters[fmtKey]) {
+		const getSquad = (d: TeamData): Squad => {
+			if (d.rosters?.[fmtKey]) {
 				return d.rosters[fmtKey];
 			}
 			return d.players || [];
@@ -72,7 +72,12 @@ export class MatchSetupService {
 		};
 	}
 
-	performToss(addCommentary: (text: string, type: any) => void) {
+	performToss(
+		addCommentary: (
+			text: string,
+			type: "info" | "wicket" | "four" | "six",
+		) => void,
+	) {
 		const pitches = ["Flat", "Green", "Dusty", "Balanced", "Dry"] as const;
 		const p = pitches[Math.floor(Math.random() * pitches.length)];
 		GameState.pitch.value = p;
@@ -91,8 +96,10 @@ export class MatchSetupService {
 				: GameState.teams.team2Name.value;
 		GameState.tossResult.value = `${winnerName} won the toss and elected to ${decision}`;
 
-		const t1 = GameState.teams.team1.value!;
-		const t2 = GameState.teams.team2.value!;
+		const t1 = GameState.teams.team1.value;
+		const t2 = GameState.teams.team2.value;
+
+		if (!t1 || !t2) return;
 
 		let batSquad: Squad, bowlSquad: Squad, batName: string, bowlName: string;
 
@@ -123,7 +130,7 @@ export class MatchSetupService {
 		this.stats.selectBestBowler();
 		addCommentary(
 			this.commentary.getIntroCommentary(winnerName, decision, p),
-			"intro",
+			"intro" as "info",
 		);
 	}
 }

@@ -1,11 +1,10 @@
-import type { CommentaryEntry, MatchHistoryEntry } from "../types";
-import { CommentaryEngine } from "./CommentaryEngine";
+import type { CommentaryEntry, MatchHistoryEntry, Player } from "../types";
+import type { CommentaryEngine } from "./CommentaryEngine";
 import { GameplayService } from "./GameplayService";
 import { GameState, resetMatchState, resetPlayerStats } from "./GameState";
 import { MatchSetupService } from "./MatchSetupService";
-import { BallOutcome } from "./SimulationEngine";
-import { StatsEngine } from "./StatsEngine";
-import { Player } from "../types";
+import type { BallOutcome } from "./SimulationEngine";
+import type { StatsEngine } from "./StatsEngine";
 
 export class MatchController {
 	private setup: MatchSetupService;
@@ -45,8 +44,8 @@ export class MatchController {
 		GameState.isRunning.value = false;
 	}
 
-	startMatch(t1: string | null, t2: string | null, loopCallback: () => void) {
-		const boostPlayer = (squad: any) => {
+	startMatch(_t1: string | null, _t2: string | null, loopCallback: () => void) {
+		const boostPlayer = (squad: Player[]) => {
 			if (!squad || squad.length === 0) return null;
 			const p = squad[Math.floor(Math.random() * squad.length)];
 			const factor = 1 + (Math.random() * 0.2 + 0.1);
@@ -88,10 +87,8 @@ export class MatchController {
 	}
 
 	resetPlayerStats() {
-		if (GameState.teams.team1.value)
-			GameState.teams.team1.value.players.forEach(resetPlayerStats);
-		if (GameState.teams.team2.value)
-			GameState.teams.team2.value.players.forEach(resetPlayerStats);
+		GameState.teams.team1.value?.players.forEach(resetPlayerStats);
+		GameState.teams.team2.value?.players.forEach(resetPlayerStats);
 	}
 
 	rematch(loopCallback: () => void) {
@@ -130,14 +127,14 @@ export class MatchController {
 			const battingFirst = GameState.history.value[0].team;
 
 			let lead: number;
-			let leader: string;
+			let _leader: string;
 
 			if (battingFirst === GameState.teams.team1Name.value) {
 				lead = team1Total - team2Total;
-				leader = GameState.teams.team1Name.value;
+				_leader = GameState.teams.team1Name.value;
 			} else {
 				lead = team2Total - team1Total;
-				leader = GameState.teams.team2Name.value;
+				_leader = GameState.teams.team2Name.value;
 			}
 
 			if (lead < 0) {

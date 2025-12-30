@@ -37,9 +37,11 @@ export class BowlingEngine {
 				ballsSinceLastSpell: 0,
 			});
 		}
-		const bowlerData = this.spellData.get(lastBowlerName)!;
-		bowlerData.currentSpellBalls += 6;
-		bowlerData.ballsSinceLastSpell = 0;
+		const bowlerData = this.spellData.get(lastBowlerName);
+		if (bowlerData) {
+			bowlerData.currentSpellBalls += 6;
+			bowlerData.ballsSinceLastSpell = 0;
+		}
 	}
 
 	getSpellStatus(bowlerName: string) {
@@ -49,7 +51,12 @@ export class BowlingEngine {
 				ballsSinceLastSpell: 999,
 			});
 		}
-		return this.spellData.get(bowlerName)!;
+		return (
+			this.spellData.get(bowlerName) || {
+				currentSpellBalls: 0,
+				ballsSinceLastSpell: 0,
+			}
+		);
 	}
 
 	// Returns a score (higher is better) for selecting this bowler

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "preact/hooks";
+import { type ComponentChildren, useEffect, useState } from "preact/hooks";
 import { GameState } from "../engine/GameState";
 import "../styles/effects.css";
 
@@ -48,7 +48,8 @@ export function EffectsOverlay() {
 	);
 }
 
-export function ShakeWrapper({ children }: { children: any }) {
+
+export function ShakeWrapper({ children }: { children: ComponentChildren }) {
 	const [shake, setShake] = useState(false);
 
 	useEffect(() => {

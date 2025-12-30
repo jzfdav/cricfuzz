@@ -7,7 +7,6 @@ import {
 	requiredRunRate,
 	runRate,
 } from "../engine/GameState";
-import { MatchHistoryEntry, type Player } from "../types";
 import { getTeamFlag } from "../utils";
 import { WormGraph } from "./WormGraph";
 
@@ -47,7 +46,7 @@ export function Scoreboard() {
 						{(() => {
 							if (GameState.target.value)
 								return `Target: ${GameState.target.value}`;
-							return `${["1st", "2nd", "3rd", "4th"][GameState.innings.value - 1] || GameState.innings.value + "th"} INNINGS`;
+							return `${["1st", "2nd", "3rd", "4th"][GameState.innings.value - 1] || `${GameState.innings.value}th`} INNINGS`;
 						})()}
 					</p>
 					<p className="text-xs text-gray-400">RR: {runRate.value}</p>

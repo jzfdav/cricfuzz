@@ -131,9 +131,9 @@ export function ResultScreen({ engine }: ResultScreenProps) {
 								targetData={
 									inn2
 										? [
-												{ over: 0, score: 0, wickets: 0 },
-												...(inn2.timeline || []),
-											]
+											{ over: 0, score: 0, wickets: 0 },
+											...(inn2.timeline || []),
+										]
 										: null
 								}
 								totalOvers={
@@ -165,9 +165,16 @@ export function ResultScreen({ engine }: ResultScreenProps) {
 							key={i}
 							className="bg-[#161B22] rounded-2xl border border-gray-800 overflow-hidden transition-all duration-300"
 						>
+							{/* biome-ignore lint/a11y/useSemanticElements: Interactive container cannot be a button due to nested buttons */}
 							<div
 								onClick={() => setExpanded(isExpanded ? null : i)}
-								className="bg-gray-800/50 p-4 flex justify-between items-center border-b border-gray-700 cursor-pointer hover:bg-gray-800 transition-colors"
+								onKeyDown={(e) =>
+									(e.key === "Enter" || e.key === " ") &&
+									setExpanded(isExpanded ? null : i)
+								}
+								role="button"
+								tabIndex={0}
+								className="w-full text-left bg-gray-800/50 p-4 flex justify-between items-center border-b border-gray-700 cursor-pointer hover:bg-gray-800 transition-colors"
 							>
 								<div className="flex items-center gap-3">
 									<span className="text-2xl">{flag}</span>
@@ -176,7 +183,7 @@ export function ResultScreen({ engine }: ResultScreenProps) {
 											{inn.team}
 										</h3>
 										<p className="text-[9px] text-gray-400 uppercase font-bold">
-											{["1st", "2nd", "3rd", "4th"][i] || i + 1 + "th"} INNINGS
+											{["1st", "2nd", "3rd", "4th"][i] || `${i + 1}th`} INNINGS
 										</p>
 									</div>
 								</div>
@@ -242,12 +249,13 @@ export function ResultScreen({ engine }: ResultScreenProps) {
 								</div>
 							)}
 
-							<div
+							<button
+								type="button"
 								onClick={() => setExpanded(isExpanded ? null : i)}
-								className="bg-gray-900/50 p-2 text-center text-[10px] uppercase font-bold text-gray-500 hover:text-white cursor-pointer transition-colors"
+								className="w-full bg-gray-900/50 p-2 text-center text-[10px] uppercase font-bold text-gray-500 hover:text-white cursor-pointer transition-colors"
 							>
 								{isExpanded ? "Collapse Scorecard" : "View Full Scorecard"}
-							</div>
+							</button>
 						</div>
 					);
 				})}
@@ -255,12 +263,14 @@ export function ResultScreen({ engine }: ResultScreenProps) {
 
 			<div className="w-full max-w-md flex flex-col gap-3 mb-10">
 				<button
+					type="button"
 					onClick={() => engine.rematch()}
 					className="w-full bg-emerald-500 text-black py-4 rounded-xl font-black uppercase tracking-widest text-sm active:scale-95 transition-transform shadow-lg hover:shadow-emerald-500/20"
 				>
 					Rematch (Same Teams)
 				</button>
 				<button
+					type="button"
 					onClick={() => engine.resetToConfig()}
 					className="w-full bg-gray-800 text-gray-400 py-3 rounded-xl font-bold uppercase tracking-widest text-xs active:scale-95 transition-transform hover:bg-gray-700 hover:text-white"
 				>
@@ -280,7 +290,9 @@ function getMatchDescription(
 	// Calculate total maidens for description
 	let totalMaidens = 0;
 	history.forEach((inn) => {
-		inn.bowling.forEach((p) => (totalMaidens += p.bowlStats.maidens || 0));
+		inn.bowling.forEach((p) => {
+			totalMaidens += p.bowlStats.maidens || 0;
+		});
 	});
 
 	// Dynamic summary

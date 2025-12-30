@@ -1,4 +1,4 @@
-import { computed, Signal, signal } from "@preact/signals";
+import { computed, signal } from "@preact/signals";
 import type {
 	CommentaryEntry,
 	MatchHistoryEntry,

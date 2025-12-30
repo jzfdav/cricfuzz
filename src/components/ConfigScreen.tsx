@@ -20,8 +20,8 @@ export function ConfigScreen({ engine }: ConfigScreenProps) {
 			await engine.loadTeams(t1, t2);
 			engine.performToss();
 			engine.startMatch(t1, t2);
-		} catch (e: any) {
-			alert("Failed to load teams: " + e.message);
+		} catch (e: unknown) {
+			alert(`Failed to load teams: ${(e as Error).message}`);
 		} finally {
 			setLoading(false);
 		}
@@ -73,6 +73,7 @@ export function ConfigScreen({ engine }: ConfigScreenProps) {
 					<div className="flex justify-between items-center text-[10px] text-gray-500 uppercase font-bold">
 						<span>Home Team</span>
 						<button
+							type="button"
 							onClick={randomizeTeams}
 							className="bg-gray-800 hover:bg-gray-700 text-amber-500 p-1 rounded transition-colors"
 							title="Randomize Teams"
@@ -100,10 +101,14 @@ export function ConfigScreen({ engine }: ConfigScreenProps) {
 				{/* Format and Speed */}
 				<div className="grid grid-cols-2 gap-4">
 					<div className="p-4 bg-[#161B22] rounded-2xl border border-gray-800">
-						<label className="text-[10px] text-gray-500 uppercase block mb-2">
+						<label
+							htmlFor="format-select"
+							className="text-[10px] text-gray-500 uppercase block mb-2"
+						>
 							Format
 						</label>
 						<select
+							id="format-select"
 							value={format}
 							onChange={(e) =>
 								setFormat((e.target as HTMLSelectElement).value as FormatType)
@@ -116,17 +121,23 @@ export function ConfigScreen({ engine }: ConfigScreenProps) {
 						</select>
 					</div>
 					<div className="p-4 bg-[#161B22] rounded-2xl border border-gray-800">
-						<label className="text-[10px] text-gray-500 uppercase block mb-2 flex justify-between">
+						<label
+							htmlFor="speed-range"
+							className="text-[10px] text-gray-500 uppercase block mb-2 flex justify-between"
+						>
 							<span>Sim Speed</span>
 							<span className="text-amber-500">{GameState.speed.value}x</span>
 						</label>
 						<input
+							id="speed-range"
 							type="range"
 							min="1"
 							max="100"
 							value={GameState.speed.value}
 							onInput={(e) =>
-								engine.setSpeed(parseInt((e.target as HTMLInputElement).value))
+								engine.setSpeed(
+									Number.parseInt((e.target as HTMLInputElement).value, 10),
+								)
 							}
 							className="w-full accent-amber-500"
 						/>
@@ -134,6 +145,7 @@ export function ConfigScreen({ engine }: ConfigScreenProps) {
 				</div>
 
 				<button
+					type="button"
 					onClick={handleStart}
 					disabled={loading}
 					className="w-full bg-amber-500 text-black py-5 rounded-2xl font-black uppercase tracking-widest text-xl shadow-lg active:scale-95 transition-transform disabled:opacity-50"

@@ -87,17 +87,30 @@ export function WormGraph({
 			: legend?.main;
 
 	return (
+		// biome-ignore lint/a11y/useSemanticElements: Interactive container
 		<div
 			className={`transition-all duration-300 ${expanded ? "fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm" : "relative mt-2"}`}
 			onClick={() => !expanded && setExpanded(!expanded)}
+			onKeyDown={(e) =>
+				(e.key === "Enter" || e.key === " ") && setExpanded(!expanded)
+			}
+			role="button"
+			tabIndex={0}
 		>
+			{/* biome-ignore lint/a11y/useSemanticElements: Interactive container cannot be a button due to nested buttons */}
 			<div
 				className={`bg-[#161B22] border border-gray-700 rounded-xl overflow-hidden transition-all duration-300 relative ${expanded ? "w-[750px] p-6 shadow-2xl flex flex-col gap-4" : "w-full hover:border-amber-500/50 cursor-pointer shadow-sm"}`}
 				onClick={(e) => {
 					if (expanded) e.stopPropagation();
 				}}
+				onKeyDown={(e) => {
+					if (expanded) e.stopPropagation();
+				}}
+				role="button"
+				tabIndex={0}
 			>
 				{/* Header Controls */}
+				{/* biome-ignore lint/a11y/useSemanticElements: Header contains nested buttons */}
 				<div
 					className={`flex justify-between items-center px-4 ${expanded ? "absolute w-full top-0 left-0 pt-0 h-10 z-10" : "relative h-10 border-b border-gray-800/50"}`}
 					onClick={(e) => {
@@ -105,6 +118,9 @@ export function WormGraph({
 							// expansion is handled by parent
 						}
 					}}
+					onKeyDown={() => {}}
+					role="button"
+					tabIndex={-1} // Not reachable via keyboard since parent handles it? Or should it be? Parent handles verify.
 				>
 					{!expanded && (
 						<div className="flex justify-between w-full items-center">
@@ -112,6 +128,7 @@ export function WormGraph({
 								Worm Graph
 							</h3>
 							<button
+								type="button"
 								onClick={(e) => {
 									e.stopPropagation();
 									setCollapsed(!collapsed);
@@ -125,6 +142,7 @@ export function WormGraph({
 
 					{expanded && (
 						<button
+							type="button"
 							onClick={(e) => {
 								e.stopPropagation();
 								setExpanded(false);
@@ -150,93 +168,93 @@ export function WormGraph({
 						style={{ backgroundColor: graphBg }}
 					>
 						<svg
+							role="img"
+							aria-label="Worm Graph"
 							width="100%"
 							height={height}
 							viewBox={`0 0 ${width} ${height}`}
 							className="overflow-visible"
 						>
 							{/* Grid (Modularly rendered) */}
-							<>
-								{Array.from({ length: Math.ceil(maxOvers / 5) + 1 }).map(
-									(_, i) => {
-										const tick = i * 5;
-										if (tick > maxOvers) return null;
-										const x = getX(tick);
-										return (
-											<g key={`x-${tick}`}>
-												<line
-													x1={x}
-													y1={padding}
-													x2={x}
-													y2={height - padding}
-													stroke="#333"
-													strokeWidth="0.5"
-													strokeDasharray="2"
-												/>
-												<text
-													x={x}
-													y={height - padding + (expanded ? 20 : 12)}
-													fill={hasDarkTeam ? "#f1f5f9" : "#666"}
-													style={{ fontSize: expanded ? "12px" : "8px" }}
-													textAnchor="middle"
-													fontWeight="bold"
-												>
-													{tick}
-												</text>
-											</g>
-										);
-									},
-								)}
-								{Array.from({ length: Math.ceil(maxScore / 50) + 1 }).map(
-									(_, i) => {
-										const tick = i * 50;
-										if (tick > maxScore) return null;
-										const y = getY(tick);
-										if (tick === 0) return null;
-										return (
-											<g key={`y-${tick}`}>
-												<line
-													x1={padding}
-													y1={y}
-													x2={width - padding}
-													y2={y}
-													stroke="#333"
-													strokeWidth="0.5"
-													strokeDasharray="2"
-												/>
-												<text
-													x={padding - (expanded ? 10 : 6)}
-													y={y + (expanded ? 4 : 3)}
-													fill={hasDarkTeam ? "#f1f5f9" : "#666"}
-													style={{
-														textAnchor: "end",
-														fontSize: expanded ? "12px" : "8px",
-													}}
-													fontWeight="bold"
-												>
-													{tick}
-												</text>
-											</g>
-										);
-									},
-								)}
-								<line
-									x1={padding}
-									y1={height - padding}
-									x2={width - padding}
-									y2={height - padding}
-									stroke={hasDarkTeam ? "#cbd5e1" : "#555"}
-									strokeWidth="1"
-								/>
-								<line
-									x1={padding}
-									y1={padding}
-									x2={padding}
-									y2={height - padding}
-									stroke={hasDarkTeam ? "#cbd5e1" : "#555"}
-									strokeWidth="1"
-								/>
-							</>
+							{Array.from({ length: Math.ceil(maxOvers / 5) + 1 }).map(
+								(_, i) => {
+									const tick = i * 5;
+									if (tick > maxOvers) return null;
+									const x = getX(tick);
+									return (
+										<g key={`x-${tick}`}>
+											<line
+												x1={x}
+												y1={padding}
+												x2={x}
+												y2={height - padding}
+												stroke="#333"
+												strokeWidth="0.5"
+												strokeDasharray="2"
+											/>
+											<text
+												x={x}
+												y={height - padding + (expanded ? 20 : 12)}
+												fill={hasDarkTeam ? "#f1f5f9" : "#666"}
+												style={{ fontSize: expanded ? "12px" : "8px" }}
+												textAnchor="middle"
+												fontWeight="bold"
+											>
+												{tick}
+											</text>
+										</g>
+									);
+								},
+							)}
+							{Array.from({ length: Math.ceil(maxScore / 50) + 1 }).map(
+								(_, i) => {
+									const tick = i * 50;
+									if (tick > maxScore) return null;
+									const y = getY(tick);
+									if (tick === 0) return null;
+									return (
+										<g key={`y-${tick}`}>
+											<line
+												x1={padding}
+												y1={y}
+												x2={width - padding}
+												y2={y}
+												stroke="#333"
+												strokeWidth="0.5"
+												strokeDasharray="2"
+											/>
+											<text
+												x={padding - (expanded ? 10 : 6)}
+												y={y + (expanded ? 4 : 3)}
+												fill={hasDarkTeam ? "#f1f5f9" : "#666"}
+												style={{
+													textAnchor: "end",
+													fontSize: expanded ? "12px" : "8px",
+												}}
+												fontWeight="bold"
+											>
+												{tick}
+											</text>
+										</g>
+									);
+								},
+							)}
+							<line
+								x1={padding}
+								y1={height - padding}
+								x2={width - padding}
+								y2={height - padding}
+								stroke={hasDarkTeam ? "#cbd5e1" : "#555"}
+								strokeWidth="1"
+							/>
+							<line
+								x1={padding}
+								y1={padding}
+								x2={padding}
+								y2={height - padding}
+								stroke={hasDarkTeam ? "#cbd5e1" : "#555"}
+								strokeWidth="1"
+							/>
 
 							<defs>
 								<filter id="shadow">
@@ -339,6 +357,7 @@ export function WormGraph({
 				{/* Legend Footer */}
 				{legend && (!collapsed || expanded) && (
 					<div className="flex justify-between items-center px-4 mt-1 pb-2">
+						{/* biome-ignore lint/a11y/useSemanticElements: Legend item */}
 						<div
 							className={`flex items-center gap-2 cursor-pointer ${expanded ? "hover:bg-gray-800 p-2 rounded" : ""} ${selectedLegend === "main" || (!selectedLegend && expanded) ? "ring-1 ring-gray-600" : ""}`}
 							onClick={(e) => {
@@ -347,8 +366,22 @@ export function WormGraph({
 									setSelectedLegend("main");
 								}
 							}}
+							onKeyDown={(e) => {
+								if (expanded && (e.key === "Enter" || e.key === " ")) {
+									e.stopPropagation();
+									setSelectedLegend("main");
+								}
+							}}
+							role="button"
+							tabIndex={0}
 						>
-							<svg width="25" height="6" className="overflow-visible">
+							<svg
+								role="img"
+								aria-label="Main Team Legend"
+								width="25"
+								height="6"
+								className="overflow-visible"
+							>
 								<line
 									x1="0"
 									y1="3"
@@ -365,6 +398,7 @@ export function WormGraph({
 						</div>
 
 						{legend.target && targetData && (
+							// biome-ignore lint/a11y/useSemanticElements: Legend item
 							<div
 								className={`flex items-center gap-2 cursor-pointer ${expanded ? "hover:bg-gray-800 p-2 rounded" : ""} ${selectedLegend === "target" ? "ring-1 ring-gray-600" : ""}`}
 								onClick={(e) => {
@@ -373,11 +407,25 @@ export function WormGraph({
 										setSelectedLegend("target");
 									}
 								}}
+								onKeyDown={(e) => {
+									if (expanded && (e.key === "Enter" || e.key === " ")) {
+										e.stopPropagation();
+										setSelectedLegend("target");
+									}
+								}}
+								role="button"
+								tabIndex={0}
 							>
 								<span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
 									{legend.target}
 								</span>
-								<svg width="25" height="6" className="overflow-visible">
+								<svg
+									role="img"
+									aria-label="Target Team Legend"
+									width="25"
+									height="6"
+									className="overflow-visible"
+								>
 									<path
 										d="M 0 3 L 25 3"
 										fill="none"

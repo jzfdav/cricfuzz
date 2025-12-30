@@ -8,14 +8,14 @@ export interface BallOutcome {
 	isWicket: boolean;
 	wicketType?: "bowled" | "caught" | "lbw" | "runout";
 	shotType:
-	| "drive"
-	| "pull"
-	| "cut"
-	| "flick"
-	| "slog"
-	| "defense"
-	| "leave"
-	| "edge";
+		| "drive"
+		| "pull"
+		| "cut"
+		| "flick"
+		| "slog"
+		| "defense"
+		| "leave"
+		| "edge";
 	deliveryType: "bouncer" | "yorker" | "length" | "full" | "slow";
 	timing: "perfect" | "good" | "average" | "poor" | "edge" | "missed";
 }
@@ -162,7 +162,10 @@ export class SimulationEngine {
 
 		// Determine Shot & Timing
 		if (outcome.isWicket) {
-			outcome.timing = this.pick(["edge", "poor", "missed"]) as any;
+			outcome.timing = this.pick(["edge", "poor", "missed"]) as
+				| "edge"
+				| "poor"
+				| "missed";
 			outcome.shotType = this.pick(["slog", "defense", "drive", "pull"]);
 
 			// Adjust Shot for Spin

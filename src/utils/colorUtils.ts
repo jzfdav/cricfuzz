@@ -34,7 +34,7 @@ export const getColorDistance = (c1: string, c2: string) => {
 		return Math.sqrt(
 			(rgb1.r - rgb2.r) ** 2 + (rgb1.g - rgb2.g) ** 2 + (rgb1.b - rgb2.b) ** 2,
 		);
-	} catch (e) {
+	} catch (_e) {
 		return 500;
 	}
 };

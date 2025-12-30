@@ -43,7 +43,9 @@ export function Controls({ engine }: ControlsProps) {
                         max="100"
                         value={speed}
                         onInput={(e) =>
-                            engine.setSpeed(parseInt((e.target as HTMLInputElement).value))
+                            engine.setSpeed(
+                                Number.parseInt((e.target as HTMLInputElement).value, 10),
+                            )
                         }
                         className="w-full h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-amber-500 hover:accent-amber-400 transition-all"
                     />
@@ -57,11 +59,12 @@ export function Controls({ engine }: ControlsProps) {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => {
-                            GameState.immersiveEffects.value = !GameState.immersiveEffects.value;
+                            GameState.immersiveEffects.value =
+                                !GameState.immersiveEffects.value;
                         }}
                         className={`p-2.5 rounded-xl border transition-all ${effects
-                            ? "bg-amber-500/20 border-amber-500/50 text-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.2)]"
-                            : "bg-gray-800/50 border-gray-700 text-gray-500"
+                                ? "bg-amber-500/20 border-amber-500/50 text-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.2)]"
+                                : "bg-gray-800/50 border-gray-700 text-gray-500"
                             } `}
                         title={effects ? "Effects On" : "Effects Off"}
                     >
@@ -77,8 +80,8 @@ export function Controls({ engine }: ControlsProps) {
                             isRunning ? engine.stopMatch() : engine.resumeMatch()
                         }
                         className={`p-3 rounded-xl font-black transition-all shadow-lg ${isRunning
-                            ? "bg-red-500/10 text-red-500 border border-red-500/30 hover:bg-red-500/20"
-                            : "bg-emerald-500 text-black hover:bg-emerald-400 border border-emerald-400/50"
+                                ? "bg-red-500/10 text-red-500 border border-red-500/30 hover:bg-red-500/20"
+                                : "bg-emerald-500 text-black hover:bg-emerald-400 border border-emerald-400/50"
                             } `}
                         title={isRunning ? "Pause" : "Play"}
                     >
@@ -103,4 +106,3 @@ export function Controls({ engine }: ControlsProps) {
         </div>
     );
 }
-
