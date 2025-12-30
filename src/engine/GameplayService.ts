@@ -14,7 +14,7 @@ export class GameplayService {
 		) => void,
 		private endMatch: (msg: string) => void,
 		private switchInnings: (callback: () => void) => void,
-	) {}
+	) { }
 
 	swapBatters() {
 		const s = GameState.striker.value;
@@ -149,20 +149,18 @@ export class GameplayService {
 
 		if (format === "TEST") {
 			if (inn === 4) {
-				const lead =
-					GameState.totalTeam1Score.value - GameState.totalTeam2Score.value;
-				if (score > lead) {
+				if (target && score >= target) {
 					this.endMatch(
 						`${GameState.battingTeamName.value} WINS by ${10 - wickets} wickets!`,
 					);
 					return;
 				}
 				if (inningsEnded) {
-					if (score < lead)
+					if (target && score < target - 1)
 						this.endMatch(
-							`${GameState.bowlingTeamName.value} WINS by ${lead - score} runs!`,
+							`${GameState.bowlingTeamName.value} WINS by ${target - 1 - score} runs!`,
 						);
-					else if (score === lead) {
+					else if (target && score === target - 1) {
 						if (GameState.allOut.value || wickets >= 10)
 							this.endMatch("MATCH TIED!");
 						else this.endMatch("MATCH DRAWN!");

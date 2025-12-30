@@ -142,7 +142,7 @@ export class MatchController {
 
 			if (lead < 0) {
 				this.endMatch(
-					`${GameState.battingTeamName.value} WINS by an innings and ${Math.abs(lead)} runs!`,
+					`${GameState.bowlingTeamName.value} WINS by an innings and ${Math.abs(lead)} runs!`,
 				);
 				return;
 			}
