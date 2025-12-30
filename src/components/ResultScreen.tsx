@@ -131,9 +131,9 @@ export function ResultScreen({ engine }: ResultScreenProps) {
 								targetData={
 									inn2
 										? [
-											{ over: 0, score: 0, wickets: 0 },
-											...(inn2.timeline || []),
-										]
+												{ over: 0, score: 0, wickets: 0 },
+												...(inn2.timeline || []),
+											]
 										: null
 								}
 								totalOvers={

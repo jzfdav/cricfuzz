@@ -1,310 +1,310 @@
 {
-  "id": "NZ",
-  "name": "New Zealand",
-  "color": "#000000",
-  "rosters": {
-    "t20": [
-      {
-        "name": "Devon Conway",
-        "role": "Batter",
-        "battingSkill": 92,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 85,
-        "economy": 0
-      },
-      {
-        "name": "Finn Allen",
-        "role": "Batter",
-        "battingSkill": 88,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 98,
-        "economy": 0
-      },
-      {
-        "name": "Rachin Ravindra",
-        "role": "All-Rounder",
-        "battingSkill": 90,
-        "bowlingSkill": 82,
-        "bowlingStyle": "Spin",
-        "aggression": 88,
-        "economy": 7.8
-      },
-      {
-        "name": "Glenn Phillips",
-        "role": "All-Rounder",
-        "battingSkill": 89,
-        "bowlingSkill": 80,
-        "bowlingStyle": "Spin",
-        "aggression": 94,
-        "economy": 8.0
-      },
-      {
-        "name": "Daryl Mitchell",
-        "role": "All-Rounder",
-        "battingSkill": 91,
-        "bowlingSkill": 75,
-        "bowlingStyle": "Pace",
-        "aggression": 88,
-        "economy": 8.5
-      },
-      {
-        "name": "James Neesham",
-        "role": "All-Rounder",
-        "battingSkill": 86,
-        "bowlingSkill": 81,
-        "bowlingStyle": "Pace",
-        "aggression": 95,
-        "economy": 9.2
-      },
-      {
-        "name": "Mitchell Santner",
-        "role": "All-Rounder",
-        "battingSkill": 82,
-        "bowlingSkill": 93,
-        "bowlingStyle": "Spin",
-        "aggression": 78,
-        "economy": 6.8
-      },
-      {
-        "name": "Tim Southee",
-        "role": "Bowler",
-        "battingSkill": 60,
-        "bowlingSkill": 90,
-        "bowlingStyle": "Pace",
-        "aggression": 85,
-        "economy": 8.2
-      },
-      {
-        "name": "Trent Boult",
-        "role": "Bowler",
-        "battingSkill": 35,
-        "bowlingSkill": 94,
-        "bowlingStyle": "Pace",
-        "aggression": 40,
-        "economy": 7.5
-      },
-      {
-        "name": "Ish Sodhi",
-        "role": "Bowler",
-        "battingSkill": 25,
-        "bowlingSkill": 88,
-        "bowlingStyle": "Spin",
-        "aggression": 30,
-        "economy": 8.0
-      },
-      {
-        "name": "Lockie Ferguson",
-        "role": "Bowler",
-        "battingSkill": 15,
-        "bowlingSkill": 91,
-        "bowlingStyle": "Pace",
-        "aggression": 35,
-        "economy": 7.8
-      }
-    ],
-    "odi": [
-      {
-        "name": "Devon Conway",
-        "role": "Batter",
-        "battingSkill": 94,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 82,
-        "economy": 0
-      },
-      {
-        "name": "Will Young",
-        "role": "Batter",
-        "battingSkill": 88,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 78,
-        "economy": 0
-      },
-      {
-        "name": "Kane Williamson",
-        "role": "Batter",
-        "battingSkill": 98,
-        "bowlingSkill": 20,
-        "bowlingStyle": "Spin",
-        "aggression": 75,
-        "economy": 6.0
-      },
-      {
-        "name": "Daryl Mitchell",
-        "role": "Batter",
-        "battingSkill": 92,
-        "bowlingSkill": 70,
-        "bowlingStyle": "Pace",
-        "aggression": 85,
-        "economy": 7.2
-      },
-      {
-        "name": "Tom Latham",
-        "role": "WicketKeeper",
-        "battingSkill": 89,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 76,
-        "economy": 0
-      },
-      {
-        "name": "Glenn Phillips",
-        "role": "All-Rounder",
-        "battingSkill": 88,
-        "bowlingSkill": 82,
-        "bowlingStyle": "Spin",
-        "aggression": 90,
-        "economy": 7.5
-      },
-      {
-        "name": "Rachin Ravindra",
-        "role": "All-Rounder",
-        "battingSkill": 91,
-        "bowlingSkill": 84,
-        "bowlingStyle": "Spin",
-        "aggression": 86,
-        "economy": 7.0
-      },
-      {
-        "name": "Mitchell Santner",
-        "role": "All-Rounder",
-        "battingSkill": 84,
-        "bowlingSkill": 92,
-        "bowlingStyle": "Spin",
-        "aggression": 75,
-        "economy": 6.2
-      },
-      {
-        "name": "Matt Henry",
-        "role": "Bowler",
-        "battingSkill": 50,
-        "bowlingSkill": 94,
-        "bowlingStyle": "Pace",
-        "aggression": 65,
-        "economy": 6.8
-      },
-      {
-        "name": "Trent Boult",
-        "role": "Bowler",
-        "battingSkill": 35,
-        "bowlingSkill": 95,
-        "bowlingStyle": "Pace",
-        "aggression": 40,
-        "economy": 6.5
-      },
-      {
-        "name": "Tim Southee",
-        "role": "Bowler",
-        "battingSkill": 60,
-        "bowlingSkill": 91,
-        "bowlingStyle": "Pace",
-        "aggression": 80,
-        "economy": 7.0
-      }
-    ],
-    "test": [
-      {
-        "name": "Tom Latham",
-        "role": "Batter",
-        "battingSkill": 92,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 65,
-        "economy": 0
-      },
-      {
-        "name": "Devon Conway",
-        "role": "Batter",
-        "battingSkill": 90,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 68,
-        "economy": 0
-      },
-      {
-        "name": "Kane Williamson",
-        "role": "Batter",
-        "battingSkill": 99,
-        "bowlingSkill": 10,
-        "bowlingStyle": "Spin",
-        "aggression": 60,
-        "economy": 0
-      },
-      {
-        "name": "Rachin Ravindra",
-        "role": "Batter",
-        "battingSkill": 91,
-        "bowlingSkill": 80,
-        "bowlingStyle": "Spin",
-        "aggression": 72,
-        "economy": 4.5
-      },
-      {
-        "name": "Daryl Mitchell",
-        "role": "Batter",
-        "battingSkill": 90,
-        "bowlingSkill": 60,
-        "bowlingStyle": "Pace",
-        "aggression": 75,
-        "economy": 4.0
-      },
-      {
-        "name": "Tom Blundell",
-        "role": "WicketKeeper",
-        "battingSkill": 86,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 62,
-        "economy": 0
-      },
-      {
-        "name": "Glenn Phillips",
-        "role": "All-Rounder",
-        "battingSkill": 85,
-        "bowlingSkill": 86,
-        "bowlingStyle": "Spin",
-        "aggression": 85,
-        "economy": 4.8
-      },
-      {
-        "name": "Mitchell Santner",
-        "role": "All-Rounder",
-        "battingSkill": 82,
-        "bowlingSkill": 92,
-        "bowlingStyle": "Spin",
-        "aggression": 55,
-        "economy": 3.8
-      },
-      {
-        "name": "Matt Henry",
-        "role": "Bowler",
-        "battingSkill": 55,
-        "bowlingSkill": 95,
-        "bowlingStyle": "Pace",
-        "aggression": 60,
-        "economy": 4.0
-      },
-      {
-        "name": "Kyle Jamieson",
-        "role": "Bowler",
-        "battingSkill": 70,
-        "bowlingSkill": 93,
-        "bowlingStyle": "Pace",
-        "aggression": 55,
-        "economy": 3.5
-      },
-      {
-        "name": "Tim Southee",
-        "role": "Bowler",
-        "battingSkill": 65,
-        "bowlingSkill": 92,
-        "bowlingStyle": "Pace",
-        "aggression": 85,
-        "economy": 4.2
-      }
-    ]
-  }
+	"id": "NZ",
+	"name": "New Zealand",
+	"color": "#000000",
+	"rosters": {
+		"t20": [
+			{
+				"name": "Devon Conway",
+				"role": "Batter",
+				"battingSkill": 92,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 85,
+				"economy": 0
+			},
+			{
+				"name": "Finn Allen",
+				"role": "Batter",
+				"battingSkill": 88,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 98,
+				"economy": 0
+			},
+			{
+				"name": "Rachin Ravindra",
+				"role": "All-Rounder",
+				"battingSkill": 90,
+				"bowlingSkill": 82,
+				"bowlingStyle": "Spin",
+				"aggression": 88,
+				"economy": 7.8
+			},
+			{
+				"name": "Glenn Phillips",
+				"role": "All-Rounder",
+				"battingSkill": 89,
+				"bowlingSkill": 80,
+				"bowlingStyle": "Spin",
+				"aggression": 94,
+				"economy": 8.0
+			},
+			{
+				"name": "Daryl Mitchell",
+				"role": "All-Rounder",
+				"battingSkill": 91,
+				"bowlingSkill": 75,
+				"bowlingStyle": "Pace",
+				"aggression": 88,
+				"economy": 8.5
+			},
+			{
+				"name": "James Neesham",
+				"role": "All-Rounder",
+				"battingSkill": 86,
+				"bowlingSkill": 81,
+				"bowlingStyle": "Pace",
+				"aggression": 95,
+				"economy": 9.2
+			},
+			{
+				"name": "Mitchell Santner",
+				"role": "All-Rounder",
+				"battingSkill": 82,
+				"bowlingSkill": 93,
+				"bowlingStyle": "Spin",
+				"aggression": 78,
+				"economy": 6.8
+			},
+			{
+				"name": "Tim Southee",
+				"role": "Bowler",
+				"battingSkill": 60,
+				"bowlingSkill": 90,
+				"bowlingStyle": "Pace",
+				"aggression": 85,
+				"economy": 8.2
+			},
+			{
+				"name": "Trent Boult",
+				"role": "Bowler",
+				"battingSkill": 35,
+				"bowlingSkill": 94,
+				"bowlingStyle": "Pace",
+				"aggression": 40,
+				"economy": 7.5
+			},
+			{
+				"name": "Ish Sodhi",
+				"role": "Bowler",
+				"battingSkill": 25,
+				"bowlingSkill": 88,
+				"bowlingStyle": "Spin",
+				"aggression": 30,
+				"economy": 8.0
+			},
+			{
+				"name": "Lockie Ferguson",
+				"role": "Bowler",
+				"battingSkill": 15,
+				"bowlingSkill": 91,
+				"bowlingStyle": "Pace",
+				"aggression": 35,
+				"economy": 7.8
+			}
+		],
+		"odi": [
+			{
+				"name": "Devon Conway",
+				"role": "Batter",
+				"battingSkill": 94,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 82,
+				"economy": 0
+			},
+			{
+				"name": "Will Young",
+				"role": "Batter",
+				"battingSkill": 88,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 78,
+				"economy": 0
+			},
+			{
+				"name": "Kane Williamson",
+				"role": "Batter",
+				"battingSkill": 98,
+				"bowlingSkill": 20,
+				"bowlingStyle": "Spin",
+				"aggression": 75,
+				"economy": 6.0
+			},
+			{
+				"name": "Daryl Mitchell",
+				"role": "Batter",
+				"battingSkill": 92,
+				"bowlingSkill": 70,
+				"bowlingStyle": "Pace",
+				"aggression": 85,
+				"economy": 7.2
+			},
+			{
+				"name": "Tom Latham",
+				"role": "WicketKeeper",
+				"battingSkill": 89,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 76,
+				"economy": 0
+			},
+			{
+				"name": "Glenn Phillips",
+				"role": "All-Rounder",
+				"battingSkill": 88,
+				"bowlingSkill": 82,
+				"bowlingStyle": "Spin",
+				"aggression": 90,
+				"economy": 7.5
+			},
+			{
+				"name": "Rachin Ravindra",
+				"role": "All-Rounder",
+				"battingSkill": 91,
+				"bowlingSkill": 84,
+				"bowlingStyle": "Spin",
+				"aggression": 86,
+				"economy": 7.0
+			},
+			{
+				"name": "Mitchell Santner",
+				"role": "All-Rounder",
+				"battingSkill": 84,
+				"bowlingSkill": 92,
+				"bowlingStyle": "Spin",
+				"aggression": 75,
+				"economy": 6.2
+			},
+			{
+				"name": "Matt Henry",
+				"role": "Bowler",
+				"battingSkill": 50,
+				"bowlingSkill": 94,
+				"bowlingStyle": "Pace",
+				"aggression": 65,
+				"economy": 6.8
+			},
+			{
+				"name": "Trent Boult",
+				"role": "Bowler",
+				"battingSkill": 35,
+				"bowlingSkill": 95,
+				"bowlingStyle": "Pace",
+				"aggression": 40,
+				"economy": 6.5
+			},
+			{
+				"name": "Tim Southee",
+				"role": "Bowler",
+				"battingSkill": 60,
+				"bowlingSkill": 91,
+				"bowlingStyle": "Pace",
+				"aggression": 80,
+				"economy": 7.0
+			}
+		],
+		"test": [
+			{
+				"name": "Tom Latham",
+				"role": "Batter",
+				"battingSkill": 92,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 65,
+				"economy": 0
+			},
+			{
+				"name": "Devon Conway",
+				"role": "Batter",
+				"battingSkill": 90,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 68,
+				"economy": 0
+			},
+			{
+				"name": "Kane Williamson",
+				"role": "Batter",
+				"battingSkill": 99,
+				"bowlingSkill": 10,
+				"bowlingStyle": "Spin",
+				"aggression": 60,
+				"economy": 0
+			},
+			{
+				"name": "Rachin Ravindra",
+				"role": "Batter",
+				"battingSkill": 91,
+				"bowlingSkill": 80,
+				"bowlingStyle": "Spin",
+				"aggression": 72,
+				"economy": 4.5
+			},
+			{
+				"name": "Daryl Mitchell",
+				"role": "Batter",
+				"battingSkill": 90,
+				"bowlingSkill": 60,
+				"bowlingStyle": "Pace",
+				"aggression": 75,
+				"economy": 4.0
+			},
+			{
+				"name": "Tom Blundell",
+				"role": "WicketKeeper",
+				"battingSkill": 86,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 62,
+				"economy": 0
+			},
+			{
+				"name": "Glenn Phillips",
+				"role": "All-Rounder",
+				"battingSkill": 85,
+				"bowlingSkill": 86,
+				"bowlingStyle": "Spin",
+				"aggression": 85,
+				"economy": 4.8
+			},
+			{
+				"name": "Mitchell Santner",
+				"role": "All-Rounder",
+				"battingSkill": 82,
+				"bowlingSkill": 92,
+				"bowlingStyle": "Spin",
+				"aggression": 55,
+				"economy": 3.8
+			},
+			{
+				"name": "Matt Henry",
+				"role": "Bowler",
+				"battingSkill": 55,
+				"bowlingSkill": 95,
+				"bowlingStyle": "Pace",
+				"aggression": 60,
+				"economy": 4.0
+			},
+			{
+				"name": "Kyle Jamieson",
+				"role": "Bowler",
+				"battingSkill": 70,
+				"bowlingSkill": 93,
+				"bowlingStyle": "Pace",
+				"aggression": 55,
+				"economy": 3.5
+			},
+			{
+				"name": "Tim Southee",
+				"role": "Bowler",
+				"battingSkill": 65,
+				"bowlingSkill": 92,
+				"bowlingStyle": "Pace",
+				"aggression": 85,
+				"economy": 4.2
+			}
+		]
+	}
 }

@@ -1,310 +1,310 @@
 {
-  "id": "ENG",
-  "name": "England",
-  "color": "#CE1124",
-  "rosters": {
-    "t20": [
-      {
-        "name": "Phil Salt",
-        "role": "Batter",
-        "battingSkill": 93,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 97,
-        "economy": 0
-      },
-      {
-        "name": "Jos Buttler",
-        "role": "WicketKeeper",
-        "battingSkill": 96,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 95,
-        "economy": 0
-      },
-      {
-        "name": "Will Jacks",
-        "role": "All-Rounder",
-        "battingSkill": 88,
-        "bowlingSkill": 78,
-        "bowlingStyle": "Spin",
-        "aggression": 95,
-        "economy": 8.1
-      },
-      {
-        "name": "Harry Brook",
-        "role": "Batter",
-        "battingSkill": 94,
-        "bowlingSkill": 20,
-        "bowlingStyle": "Pace",
-        "aggression": 88,
-        "economy": 9.0
-      },
-      {
-        "name": "Liam Livingstone",
-        "role": "All-Rounder",
-        "battingSkill": 90,
-        "bowlingSkill": 80,
-        "bowlingStyle": "Spin",
-        "aggression": 98,
-        "economy": 8.2
-      },
-      {
-        "name": "Sam Curran",
-        "role": "All-Rounder",
-        "battingSkill": 84,
-        "bowlingSkill": 87,
-        "bowlingStyle": "Pace",
-        "aggression": 78,
-        "economy": 7.9
-      },
-      {
-        "name": "Jamie Overton",
-        "role": "All-Rounder",
-        "battingSkill": 82,
-        "bowlingSkill": 83,
-        "bowlingStyle": "Pace",
-        "aggression": 90,
-        "economy": 8.5
-      },
-      {
-        "name": "Adil Rashid",
-        "role": "Bowler",
-        "battingSkill": 35,
-        "bowlingSkill": 95,
-        "bowlingStyle": "Spin",
-        "aggression": 45,
-        "economy": 6.8
-      },
-      {
-        "name": "Jofra Archer",
-        "role": "Bowler",
-        "battingSkill": 45,
-        "bowlingSkill": 93,
-        "bowlingStyle": "Pace",
-        "aggression": 55,
-        "economy": 7.2
-      },
-      {
-        "name": "Saqib Mahmood",
-        "role": "Bowler",
-        "battingSkill": 25,
-        "bowlingSkill": 85,
-        "bowlingStyle": "Pace",
-        "aggression": 40,
-        "economy": 8.0
-      },
-      {
-        "name": "Reece Topley",
-        "role": "Bowler",
-        "battingSkill": 15,
-        "bowlingSkill": 88,
-        "bowlingStyle": "Pace",
-        "aggression": 25,
-        "economy": 7.4
-      }
-    ],
-    "odi": [
-      {
-        "name": "Phil Salt",
-        "role": "Batter",
-        "battingSkill": 90,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 88,
-        "economy": 0
-      },
-      {
-        "name": "Will Jacks",
-        "role": "Batter",
-        "battingSkill": 86,
-        "bowlingSkill": 75,
-        "bowlingStyle": "Spin",
-        "aggression": 85,
-        "economy": 7.5
-      },
-      {
-        "name": "Joe Root",
-        "role": "Batter",
-        "battingSkill": 95,
-        "bowlingSkill": 70,
-        "bowlingStyle": "Spin",
-        "aggression": 72,
-        "economy": 5.5
-      },
-      {
-        "name": "Harry Brook",
-        "role": "Batter",
-        "battingSkill": 92,
-        "bowlingSkill": 20,
-        "bowlingStyle": "Pace",
-        "aggression": 84,
-        "economy": 0
-      },
-      {
-        "name": "Jos Buttler",
-        "role": "WicketKeeper",
-        "battingSkill": 94,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 92,
-        "economy": 0
-      },
-      {
-        "name": "Liam Livingstone",
-        "role": "All-Rounder",
-        "battingSkill": 88,
-        "bowlingSkill": 78,
-        "bowlingStyle": "Spin",
-        "aggression": 95,
-        "economy": 7.2
-      },
-      {
-        "name": "Sam Curran",
-        "role": "All-Rounder",
-        "battingSkill": 82,
-        "bowlingSkill": 88,
-        "bowlingStyle": "Pace",
-        "aggression": 75,
-        "economy": 6.8
-      },
-      {
-        "name": "Adil Rashid",
-        "role": "Bowler",
-        "battingSkill": 35,
-        "bowlingSkill": 94,
-        "bowlingStyle": "Spin",
-        "aggression": 40,
-        "economy": 6.0
-      },
-      {
-        "name": "Jofra Archer",
-        "role": "Bowler",
-        "battingSkill": 40,
-        "bowlingSkill": 92,
-        "bowlingStyle": "Pace",
-        "aggression": 50,
-        "economy": 6.5
-      },
-      {
-        "name": "Gus Atkinson",
-        "role": "Bowler",
-        "battingSkill": 30,
-        "bowlingSkill": 88,
-        "bowlingStyle": "Pace",
-        "aggression": 45,
-        "economy": 7.0
-      },
-      {
-        "name": "Brydon Carse",
-        "role": "Bowler",
-        "battingSkill": 35,
-        "bowlingSkill": 86,
-        "bowlingStyle": "Pace",
-        "aggression": 55,
-        "economy": 7.2
-      }
-    ],
-    "test": [
-      {
-        "name": "Zak Crawley",
-        "role": "Batter",
-        "battingSkill": 88,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 85,
-        "economy": 0
-      },
-      {
-        "name": "Ben Duckett",
-        "role": "Batter",
-        "battingSkill": 89,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 82,
-        "economy": 0
-      },
-      {
-        "name": "Ollie Pope",
-        "role": "Batter",
-        "battingSkill": 90,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 75,
-        "economy": 0
-      },
-      {
-        "name": "Joe Root",
-        "role": "Batter",
-        "battingSkill": 98,
-        "bowlingSkill": 65,
-        "bowlingStyle": "Spin",
-        "aggression": 62,
-        "economy": 4.5
-      },
-      {
-        "name": "Harry Brook",
-        "role": "Batter",
-        "battingSkill": 92,
-        "bowlingSkill": 10,
-        "bowlingStyle": "Pace",
-        "aggression": 88,
-        "economy": 0
-      },
-      {
-        "name": "Ben Stokes",
-        "role": "All-Rounder",
-        "battingSkill": 90,
-        "bowlingSkill": 88,
-        "bowlingStyle": "Pace",
-        "aggression": 85,
-        "economy": 4.0
-      },
-      {
-        "name": "Jamie Smith",
-        "role": "WicketKeeper",
-        "battingSkill": 87,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 80,
-        "economy": 0
-      },
-      {
-        "name": "Chris Woakes",
-        "role": "All-Rounder",
-        "battingSkill": 84,
-        "bowlingSkill": 90,
-        "bowlingStyle": "Pace",
-        "aggression": 60,
-        "economy": 3.8
-      },
-      {
-        "name": "Gus Atkinson",
-        "role": "Bowler",
-        "battingSkill": 45,
-        "bowlingSkill": 92,
-        "bowlingStyle": "Pace",
-        "aggression": 55,
-        "economy": 4.2
-      },
-      {
-        "name": "Jack Leach",
-        "role": "Bowler",
-        "battingSkill": 25,
-        "bowlingSkill": 91,
-        "bowlingStyle": "Spin",
-        "aggression": 40,
-        "economy": 3.5
-      },
-      {
-        "name": "Shoaib Bashir",
-        "role": "Bowler",
-        "battingSkill": 20,
-        "bowlingSkill": 86,
-        "bowlingStyle": "Spin",
-        "aggression": 35,
-        "economy": 4.0
-      }
-    ]
-  }
+	"id": "ENG",
+	"name": "England",
+	"color": "#CE1124",
+	"rosters": {
+		"t20": [
+			{
+				"name": "Phil Salt",
+				"role": "Batter",
+				"battingSkill": 93,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 97,
+				"economy": 0
+			},
+			{
+				"name": "Jos Buttler",
+				"role": "WicketKeeper",
+				"battingSkill": 96,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 95,
+				"economy": 0
+			},
+			{
+				"name": "Will Jacks",
+				"role": "All-Rounder",
+				"battingSkill": 88,
+				"bowlingSkill": 78,
+				"bowlingStyle": "Spin",
+				"aggression": 95,
+				"economy": 8.1
+			},
+			{
+				"name": "Harry Brook",
+				"role": "Batter",
+				"battingSkill": 94,
+				"bowlingSkill": 20,
+				"bowlingStyle": "Pace",
+				"aggression": 88,
+				"economy": 9.0
+			},
+			{
+				"name": "Liam Livingstone",
+				"role": "All-Rounder",
+				"battingSkill": 90,
+				"bowlingSkill": 80,
+				"bowlingStyle": "Spin",
+				"aggression": 98,
+				"economy": 8.2
+			},
+			{
+				"name": "Sam Curran",
+				"role": "All-Rounder",
+				"battingSkill": 84,
+				"bowlingSkill": 87,
+				"bowlingStyle": "Pace",
+				"aggression": 78,
+				"economy": 7.9
+			},
+			{
+				"name": "Jamie Overton",
+				"role": "All-Rounder",
+				"battingSkill": 82,
+				"bowlingSkill": 83,
+				"bowlingStyle": "Pace",
+				"aggression": 90,
+				"economy": 8.5
+			},
+			{
+				"name": "Adil Rashid",
+				"role": "Bowler",
+				"battingSkill": 35,
+				"bowlingSkill": 95,
+				"bowlingStyle": "Spin",
+				"aggression": 45,
+				"economy": 6.8
+			},
+			{
+				"name": "Jofra Archer",
+				"role": "Bowler",
+				"battingSkill": 45,
+				"bowlingSkill": 93,
+				"bowlingStyle": "Pace",
+				"aggression": 55,
+				"economy": 7.2
+			},
+			{
+				"name": "Saqib Mahmood",
+				"role": "Bowler",
+				"battingSkill": 25,
+				"bowlingSkill": 85,
+				"bowlingStyle": "Pace",
+				"aggression": 40,
+				"economy": 8.0
+			},
+			{
+				"name": "Reece Topley",
+				"role": "Bowler",
+				"battingSkill": 15,
+				"bowlingSkill": 88,
+				"bowlingStyle": "Pace",
+				"aggression": 25,
+				"economy": 7.4
+			}
+		],
+		"odi": [
+			{
+				"name": "Phil Salt",
+				"role": "Batter",
+				"battingSkill": 90,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 88,
+				"economy": 0
+			},
+			{
+				"name": "Will Jacks",
+				"role": "Batter",
+				"battingSkill": 86,
+				"bowlingSkill": 75,
+				"bowlingStyle": "Spin",
+				"aggression": 85,
+				"economy": 7.5
+			},
+			{
+				"name": "Joe Root",
+				"role": "Batter",
+				"battingSkill": 95,
+				"bowlingSkill": 70,
+				"bowlingStyle": "Spin",
+				"aggression": 72,
+				"economy": 5.5
+			},
+			{
+				"name": "Harry Brook",
+				"role": "Batter",
+				"battingSkill": 92,
+				"bowlingSkill": 20,
+				"bowlingStyle": "Pace",
+				"aggression": 84,
+				"economy": 0
+			},
+			{
+				"name": "Jos Buttler",
+				"role": "WicketKeeper",
+				"battingSkill": 94,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 92,
+				"economy": 0
+			},
+			{
+				"name": "Liam Livingstone",
+				"role": "All-Rounder",
+				"battingSkill": 88,
+				"bowlingSkill": 78,
+				"bowlingStyle": "Spin",
+				"aggression": 95,
+				"economy": 7.2
+			},
+			{
+				"name": "Sam Curran",
+				"role": "All-Rounder",
+				"battingSkill": 82,
+				"bowlingSkill": 88,
+				"bowlingStyle": "Pace",
+				"aggression": 75,
+				"economy": 6.8
+			},
+			{
+				"name": "Adil Rashid",
+				"role": "Bowler",
+				"battingSkill": 35,
+				"bowlingSkill": 94,
+				"bowlingStyle": "Spin",
+				"aggression": 40,
+				"economy": 6.0
+			},
+			{
+				"name": "Jofra Archer",
+				"role": "Bowler",
+				"battingSkill": 40,
+				"bowlingSkill": 92,
+				"bowlingStyle": "Pace",
+				"aggression": 50,
+				"economy": 6.5
+			},
+			{
+				"name": "Gus Atkinson",
+				"role": "Bowler",
+				"battingSkill": 30,
+				"bowlingSkill": 88,
+				"bowlingStyle": "Pace",
+				"aggression": 45,
+				"economy": 7.0
+			},
+			{
+				"name": "Brydon Carse",
+				"role": "Bowler",
+				"battingSkill": 35,
+				"bowlingSkill": 86,
+				"bowlingStyle": "Pace",
+				"aggression": 55,
+				"economy": 7.2
+			}
+		],
+		"test": [
+			{
+				"name": "Zak Crawley",
+				"role": "Batter",
+				"battingSkill": 88,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 85,
+				"economy": 0
+			},
+			{
+				"name": "Ben Duckett",
+				"role": "Batter",
+				"battingSkill": 89,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 82,
+				"economy": 0
+			},
+			{
+				"name": "Ollie Pope",
+				"role": "Batter",
+				"battingSkill": 90,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 75,
+				"economy": 0
+			},
+			{
+				"name": "Joe Root",
+				"role": "Batter",
+				"battingSkill": 98,
+				"bowlingSkill": 65,
+				"bowlingStyle": "Spin",
+				"aggression": 62,
+				"economy": 4.5
+			},
+			{
+				"name": "Harry Brook",
+				"role": "Batter",
+				"battingSkill": 92,
+				"bowlingSkill": 10,
+				"bowlingStyle": "Pace",
+				"aggression": 88,
+				"economy": 0
+			},
+			{
+				"name": "Ben Stokes",
+				"role": "All-Rounder",
+				"battingSkill": 90,
+				"bowlingSkill": 88,
+				"bowlingStyle": "Pace",
+				"aggression": 85,
+				"economy": 4.0
+			},
+			{
+				"name": "Jamie Smith",
+				"role": "WicketKeeper",
+				"battingSkill": 87,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 80,
+				"economy": 0
+			},
+			{
+				"name": "Chris Woakes",
+				"role": "All-Rounder",
+				"battingSkill": 84,
+				"bowlingSkill": 90,
+				"bowlingStyle": "Pace",
+				"aggression": 60,
+				"economy": 3.8
+			},
+			{
+				"name": "Gus Atkinson",
+				"role": "Bowler",
+				"battingSkill": 45,
+				"bowlingSkill": 92,
+				"bowlingStyle": "Pace",
+				"aggression": 55,
+				"economy": 4.2
+			},
+			{
+				"name": "Jack Leach",
+				"role": "Bowler",
+				"battingSkill": 25,
+				"bowlingSkill": 91,
+				"bowlingStyle": "Spin",
+				"aggression": 40,
+				"economy": 3.5
+			},
+			{
+				"name": "Shoaib Bashir",
+				"role": "Bowler",
+				"battingSkill": 20,
+				"bowlingSkill": 86,
+				"bowlingStyle": "Spin",
+				"aggression": 35,
+				"economy": 4.0
+			}
+		]
+	}
 }

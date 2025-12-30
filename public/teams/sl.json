@@ -1,310 +1,310 @@
 {
-  "id": "SL",
-  "name": "Sri Lanka",
-  "color": "#00247D",
-  "rosters": {
-    "t20": [
-      {
-        "name": "Pathum Nissanka",
-        "role": "Batter",
-        "battingSkill": 92,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 90,
-        "economy": 0
-      },
-      {
-        "name": "Kusal Mendis",
-        "role": "WicketKeeper",
-        "battingSkill": 90,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 93,
-        "economy": 0
-      },
-      {
-        "name": "Kusal Perera",
-        "role": "Batter",
-        "battingSkill": 88,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 97,
-        "economy": 0
-      },
-      {
-        "name": "Charith Asalanka",
-        "role": "Batter",
-        "battingSkill": 91,
-        "bowlingSkill": 60,
-        "bowlingStyle": "Spin",
-        "aggression": 92,
-        "economy": 8.2
-      },
-      {
-        "name": "Kamindu Mendis",
-        "role": "All-Rounder",
-        "battingSkill": 91,
-        "bowlingSkill": 85,
-        "bowlingStyle": "Spin",
-        "aggression": 90,
-        "economy": 7.8
-      },
-      {
-        "name": "Bhanuka Rajapaksa",
-        "role": "Batter",
-        "battingSkill": 85,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 96,
-        "economy": 0
-      },
-      {
-        "name": "Wanindu Hasaranga",
-        "role": "Bowler",
-        "battingSkill": 84,
-        "bowlingSkill": 96,
-        "bowlingStyle": "Spin",
-        "aggression": 95,
-        "economy": 6.8
-      },
-      {
-        "name": "Dunith Wellalage",
-        "role": "All-Rounder",
-        "battingSkill": 82,
-        "bowlingSkill": 89,
-        "bowlingStyle": "Spin",
-        "aggression": 78,
-        "economy": 6.5
-      },
-      {
-        "name": "Maheesh Theekshana",
-        "role": "Bowler",
-        "battingSkill": 15,
-        "bowlingSkill": 94,
-        "bowlingStyle": "Spin",
-        "aggression": 35,
-        "economy": 6.6
-      },
-      {
-        "name": "Matheesha Pathirana",
-        "role": "Bowler",
-        "battingSkill": 10,
-        "bowlingSkill": 93,
-        "bowlingStyle": "Pace",
-        "aggression": 40,
-        "economy": 8.0
-      },
-      {
-        "name": "Nuwan Thushara",
-        "role": "Bowler",
-        "battingSkill": 10,
-        "bowlingSkill": 88,
-        "bowlingStyle": "Pace",
-        "aggression": 35,
-        "economy": 8.2
-      }
-    ],
-    "odi": [
-      {
-        "name": "Pathum Nissanka",
-        "role": "Batter",
-        "battingSkill": 94,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 85,
-        "economy": 0
-      },
-      {
-        "name": "Avishka Fernando",
-        "role": "Batter",
-        "battingSkill": 88,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 88,
-        "economy": 0
-      },
-      {
-        "name": "Kusal Mendis",
-        "role": "WicketKeeper",
-        "battingSkill": 91,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 85,
-        "economy": 0
-      },
-      {
-        "name": "Sadeera Samarawickrama",
-        "role": "Batter",
-        "battingSkill": 89,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 75,
-        "economy": 0
-      },
-      {
-        "name": "Charith Asalanka",
-        "role": "Batter",
-        "battingSkill": 92,
-        "bowlingSkill": 65,
-        "bowlingStyle": "Spin",
-        "aggression": 88,
-        "economy": 6.2
-      },
-      {
-        "name": "Kamindu Mendis",
-        "role": "All-Rounder",
-        "battingSkill": 90,
-        "bowlingSkill": 82,
-        "bowlingStyle": "Spin",
-        "aggression": 85,
-        "economy": 5.8
-      },
-      {
-        "name": "Dunith Wellalage",
-        "role": "All-Rounder",
-        "battingSkill": 84,
-        "bowlingSkill": 90,
-        "bowlingStyle": "Spin",
-        "aggression": 75,
-        "economy": 5.0
-      },
-      {
-        "name": "Janith Liyanage",
-        "role": "All-Rounder",
-        "battingSkill": 82,
-        "bowlingSkill": 75,
-        "bowlingStyle": "Pace",
-        "aggression": 78,
-        "economy": 5.5
-      },
-      {
-        "name": "Wanindu Hasaranga",
-        "role": "Bowler",
-        "battingSkill": 82,
-        "bowlingSkill": 94,
-        "bowlingStyle": "Spin",
-        "aggression": 90,
-        "economy": 5.4
-      },
-      {
-        "name": "Maheesh Theekshana",
-        "role": "Bowler",
-        "battingSkill": 20,
-        "bowlingSkill": 93,
-        "bowlingStyle": "Spin",
-        "aggression": 35,
-        "economy": 4.8
-      },
-      {
-        "name": "Dilshan Madushanka",
-        "role": "Bowler",
-        "battingSkill": 15,
-        "bowlingSkill": 90,
-        "bowlingStyle": "Pace",
-        "aggression": 40,
-        "economy": 5.9
-      }
-    ],
-    "test": [
-      {
-        "name": "Dimuth Karunaratne",
-        "role": "Batter",
-        "battingSkill": 95,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 62,
-        "economy": 0
-      },
-      {
-        "name": "Pathum Nissanka",
-        "role": "Batter",
-        "battingSkill": 92,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 65,
-        "economy": 0
-      },
-      {
-        "name": "Kusal Mendis",
-        "role": "WicketKeeper",
-        "battingSkill": 90,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 68,
-        "economy": 0
-      },
-      {
-        "name": "Angelo Mathews",
-        "role": "Batter",
-        "battingSkill": 94,
-        "bowlingSkill": 60,
-        "bowlingStyle": "Pace",
-        "aggression": 60,
-        "economy": 3.8
-      },
-      {
-        "name": "Dinesh Chandimal",
-        "role": "WicketKeeper",
-        "battingSkill": 91,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 64,
-        "economy": 0
-      },
-      {
-        "name": "Dhananjaya de Silva",
-        "role": "All-Rounder",
-        "battingSkill": 88,
-        "bowlingSkill": 85,
-        "bowlingStyle": "Spin",
-        "aggression": 66,
-        "economy": 3.5
-      },
-      {
-        "name": "Kamindu Mendis",
-        "role": "All-Rounder",
-        "battingSkill": 93,
-        "bowlingSkill": 82,
-        "bowlingStyle": "Spin",
-        "aggression": 78,
-        "economy": 4.0
-      },
-      {
-        "name": "Prabath Jayasuriya",
-        "role": "Bowler",
-        "battingSkill": 25,
-        "bowlingSkill": 96,
-        "bowlingStyle": "Spin",
-        "aggression": 45,
-        "economy": 3.2
-      },
-      {
-        "name": "Asitha Fernando",
-        "role": "Bowler",
-        "battingSkill": 15,
-        "bowlingSkill": 93,
-        "bowlingStyle": "Pace",
-        "aggression": 40,
-        "economy": 3.8
-      },
-      {
-        "name": "Lahiru Kumara",
-        "role": "Bowler",
-        "battingSkill": 10,
-        "bowlingSkill": 90,
-        "bowlingStyle": "Pace",
-        "aggression": 45,
-        "economy": 4.2
-      },
-      {
-        "name": "Vishwa Fernando",
-        "role": "Bowler",
-        "battingSkill": 15,
-        "bowlingSkill": 88,
-        "bowlingStyle": "Pace",
-        "aggression": 35,
-        "economy": 3.6
-      }
-    ]
-  }
+	"id": "SL",
+	"name": "Sri Lanka",
+	"color": "#00247D",
+	"rosters": {
+		"t20": [
+			{
+				"name": "Pathum Nissanka",
+				"role": "Batter",
+				"battingSkill": 92,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 90,
+				"economy": 0
+			},
+			{
+				"name": "Kusal Mendis",
+				"role": "WicketKeeper",
+				"battingSkill": 90,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 93,
+				"economy": 0
+			},
+			{
+				"name": "Kusal Perera",
+				"role": "Batter",
+				"battingSkill": 88,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 97,
+				"economy": 0
+			},
+			{
+				"name": "Charith Asalanka",
+				"role": "Batter",
+				"battingSkill": 91,
+				"bowlingSkill": 60,
+				"bowlingStyle": "Spin",
+				"aggression": 92,
+				"economy": 8.2
+			},
+			{
+				"name": "Kamindu Mendis",
+				"role": "All-Rounder",
+				"battingSkill": 91,
+				"bowlingSkill": 85,
+				"bowlingStyle": "Spin",
+				"aggression": 90,
+				"economy": 7.8
+			},
+			{
+				"name": "Bhanuka Rajapaksa",
+				"role": "Batter",
+				"battingSkill": 85,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 96,
+				"economy": 0
+			},
+			{
+				"name": "Wanindu Hasaranga",
+				"role": "Bowler",
+				"battingSkill": 84,
+				"bowlingSkill": 96,
+				"bowlingStyle": "Spin",
+				"aggression": 95,
+				"economy": 6.8
+			},
+			{
+				"name": "Dunith Wellalage",
+				"role": "All-Rounder",
+				"battingSkill": 82,
+				"bowlingSkill": 89,
+				"bowlingStyle": "Spin",
+				"aggression": 78,
+				"economy": 6.5
+			},
+			{
+				"name": "Maheesh Theekshana",
+				"role": "Bowler",
+				"battingSkill": 15,
+				"bowlingSkill": 94,
+				"bowlingStyle": "Spin",
+				"aggression": 35,
+				"economy": 6.6
+			},
+			{
+				"name": "Matheesha Pathirana",
+				"role": "Bowler",
+				"battingSkill": 10,
+				"bowlingSkill": 93,
+				"bowlingStyle": "Pace",
+				"aggression": 40,
+				"economy": 8.0
+			},
+			{
+				"name": "Nuwan Thushara",
+				"role": "Bowler",
+				"battingSkill": 10,
+				"bowlingSkill": 88,
+				"bowlingStyle": "Pace",
+				"aggression": 35,
+				"economy": 8.2
+			}
+		],
+		"odi": [
+			{
+				"name": "Pathum Nissanka",
+				"role": "Batter",
+				"battingSkill": 94,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 85,
+				"economy": 0
+			},
+			{
+				"name": "Avishka Fernando",
+				"role": "Batter",
+				"battingSkill": 88,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 88,
+				"economy": 0
+			},
+			{
+				"name": "Kusal Mendis",
+				"role": "WicketKeeper",
+				"battingSkill": 91,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 85,
+				"economy": 0
+			},
+			{
+				"name": "Sadeera Samarawickrama",
+				"role": "Batter",
+				"battingSkill": 89,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 75,
+				"economy": 0
+			},
+			{
+				"name": "Charith Asalanka",
+				"role": "Batter",
+				"battingSkill": 92,
+				"bowlingSkill": 65,
+				"bowlingStyle": "Spin",
+				"aggression": 88,
+				"economy": 6.2
+			},
+			{
+				"name": "Kamindu Mendis",
+				"role": "All-Rounder",
+				"battingSkill": 90,
+				"bowlingSkill": 82,
+				"bowlingStyle": "Spin",
+				"aggression": 85,
+				"economy": 5.8
+			},
+			{
+				"name": "Dunith Wellalage",
+				"role": "All-Rounder",
+				"battingSkill": 84,
+				"bowlingSkill": 90,
+				"bowlingStyle": "Spin",
+				"aggression": 75,
+				"economy": 5.0
+			},
+			{
+				"name": "Janith Liyanage",
+				"role": "All-Rounder",
+				"battingSkill": 82,
+				"bowlingSkill": 75,
+				"bowlingStyle": "Pace",
+				"aggression": 78,
+				"economy": 5.5
+			},
+			{
+				"name": "Wanindu Hasaranga",
+				"role": "Bowler",
+				"battingSkill": 82,
+				"bowlingSkill": 94,
+				"bowlingStyle": "Spin",
+				"aggression": 90,
+				"economy": 5.4
+			},
+			{
+				"name": "Maheesh Theekshana",
+				"role": "Bowler",
+				"battingSkill": 20,
+				"bowlingSkill": 93,
+				"bowlingStyle": "Spin",
+				"aggression": 35,
+				"economy": 4.8
+			},
+			{
+				"name": "Dilshan Madushanka",
+				"role": "Bowler",
+				"battingSkill": 15,
+				"bowlingSkill": 90,
+				"bowlingStyle": "Pace",
+				"aggression": 40,
+				"economy": 5.9
+			}
+		],
+		"test": [
+			{
+				"name": "Dimuth Karunaratne",
+				"role": "Batter",
+				"battingSkill": 95,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 62,
+				"economy": 0
+			},
+			{
+				"name": "Pathum Nissanka",
+				"role": "Batter",
+				"battingSkill": 92,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 65,
+				"economy": 0
+			},
+			{
+				"name": "Kusal Mendis",
+				"role": "WicketKeeper",
+				"battingSkill": 90,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 68,
+				"economy": 0
+			},
+			{
+				"name": "Angelo Mathews",
+				"role": "Batter",
+				"battingSkill": 94,
+				"bowlingSkill": 60,
+				"bowlingStyle": "Pace",
+				"aggression": 60,
+				"economy": 3.8
+			},
+			{
+				"name": "Dinesh Chandimal",
+				"role": "WicketKeeper",
+				"battingSkill": 91,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 64,
+				"economy": 0
+			},
+			{
+				"name": "Dhananjaya de Silva",
+				"role": "All-Rounder",
+				"battingSkill": 88,
+				"bowlingSkill": 85,
+				"bowlingStyle": "Spin",
+				"aggression": 66,
+				"economy": 3.5
+			},
+			{
+				"name": "Kamindu Mendis",
+				"role": "All-Rounder",
+				"battingSkill": 93,
+				"bowlingSkill": 82,
+				"bowlingStyle": "Spin",
+				"aggression": 78,
+				"economy": 4.0
+			},
+			{
+				"name": "Prabath Jayasuriya",
+				"role": "Bowler",
+				"battingSkill": 25,
+				"bowlingSkill": 96,
+				"bowlingStyle": "Spin",
+				"aggression": 45,
+				"economy": 3.2
+			},
+			{
+				"name": "Asitha Fernando",
+				"role": "Bowler",
+				"battingSkill": 15,
+				"bowlingSkill": 93,
+				"bowlingStyle": "Pace",
+				"aggression": 40,
+				"economy": 3.8
+			},
+			{
+				"name": "Lahiru Kumara",
+				"role": "Bowler",
+				"battingSkill": 10,
+				"bowlingSkill": 90,
+				"bowlingStyle": "Pace",
+				"aggression": 45,
+				"economy": 4.2
+			},
+			{
+				"name": "Vishwa Fernando",
+				"role": "Bowler",
+				"battingSkill": 15,
+				"bowlingSkill": 88,
+				"bowlingStyle": "Pace",
+				"aggression": 35,
+				"economy": 3.6
+			}
+		]
+	}
 }

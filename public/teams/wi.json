@@ -1,310 +1,310 @@
 {
-  "id": "WI",
-  "name": "West Indies",
-  "color": "#7B0032",
-  "rosters": {
-    "t20": [
-      {
-        "name": "Brandon King",
-        "role": "Batter",
-        "battingSkill": 88,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 90,
-        "economy": 0
-      },
-      {
-        "name": "Evin Lewis",
-        "role": "Batter",
-        "battingSkill": 86,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 97,
-        "economy": 0
-      },
-      {
-        "name": "Nicholas Pooran",
-        "role": "Batter",
-        "battingSkill": 95,
-        "bowlingSkill": 20,
-        "bowlingStyle": "Spin",
-        "aggression": 97,
-        "economy": 9.0
-      },
-      {
-        "name": "Rovman Powell",
-        "role": "Batter",
-        "battingSkill": 89,
-        "bowlingSkill": 40,
-        "bowlingStyle": "Pace",
-        "aggression": 96,
-        "economy": 9.5
-      },
-      {
-        "name": "Sherfane Rutherford",
-        "role": "Batter",
-        "battingSkill": 85,
-        "bowlingSkill": 30,
-        "bowlingStyle": "Pace",
-        "aggression": 94,
-        "economy": 9.0
-      },
-      {
-        "name": "Andre Russell",
-        "role": "All-Rounder",
-        "battingSkill": 91,
-        "bowlingSkill": 88,
-        "bowlingStyle": "Pace",
-        "aggression": 99,
-        "economy": 8.8
-      },
-      {
-        "name": "Jason Holder",
-        "role": "All-Rounder",
-        "battingSkill": 82,
-        "bowlingSkill": 86,
-        "bowlingStyle": "Pace",
-        "aggression": 80,
-        "economy": 8.4
-      },
-      {
-        "name": "Akeal Hosein",
-        "role": "Bowler",
-        "battingSkill": 60,
-        "bowlingSkill": 93,
-        "bowlingStyle": "Spin",
-        "aggression": 75,
-        "economy": 6.8
-      },
-      {
-        "name": "Alzarri Joseph",
-        "role": "Bowler",
-        "battingSkill": 45,
-        "bowlingSkill": 92,
-        "bowlingStyle": "Pace",
-        "aggression": 50,
-        "economy": 8.0
-      },
-      {
-        "name": "Gudakesh Motie",
-        "role": "Bowler",
-        "battingSkill": 30,
-        "bowlingSkill": 91,
-        "bowlingStyle": "Spin",
-        "aggression": 40,
-        "economy": 7.0
-      },
-      {
-        "name": "Obed McCoy",
-        "role": "Bowler",
-        "battingSkill": 10,
-        "bowlingSkill": 88,
-        "bowlingStyle": "Pace",
-        "aggression": 30,
-        "economy": 8.2
-      }
-    ],
-    "odi": [
-      {
-        "name": "Shai Hope",
-        "role": "WicketKeeper",
-        "battingSkill": 94,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 82,
-        "economy": 0
-      },
-      {
-        "name": "Brandon King",
-        "role": "Batter",
-        "battingSkill": 86,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 84,
-        "economy": 0
-      },
-      {
-        "name": "Nicholas Pooran",
-        "role": "Batter",
-        "battingSkill": 92,
-        "bowlingSkill": 15,
-        "bowlingStyle": "Spin",
-        "aggression": 90,
-        "economy": 0
-      },
-      {
-        "name": "Roston Chase",
-        "role": "All-Rounder",
-        "battingSkill": 84,
-        "bowlingSkill": 85,
-        "bowlingStyle": "Spin",
-        "aggression": 72,
-        "economy": 5.8
-      },
-      {
-        "name": "Shimron Hetmyer",
-        "role": "Batter",
-        "battingSkill": 88,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 92,
-        "economy": 0
-      },
-      {
-        "name": "Sherfane Rutherford",
-        "role": "Batter",
-        "battingSkill": 82,
-        "bowlingSkill": 35,
-        "bowlingStyle": "Pace",
-        "aggression": 88,
-        "economy": 8.5
-      },
-      {
-        "name": "Jason Holder",
-        "role": "All-Rounder",
-        "battingSkill": 84,
-        "bowlingSkill": 88,
-        "bowlingStyle": "Pace",
-        "aggression": 78,
-        "economy": 7.0
-      },
-      {
-        "name": "Akeal Hosein",
-        "role": "Bowler",
-        "battingSkill": 60,
-        "bowlingSkill": 91,
-        "bowlingStyle": "Spin",
-        "aggression": 70,
-        "economy": 6.2
-      },
-      {
-        "name": "Alzarri Joseph",
-        "role": "Bowler",
-        "battingSkill": 45,
-        "bowlingSkill": 93,
-        "bowlingStyle": "Pace",
-        "aggression": 50,
-        "economy": 7.5
-      },
-      {
-        "name": "Gudakesh Motie",
-        "role": "Bowler",
-        "battingSkill": 35,
-        "bowlingSkill": 90,
-        "bowlingStyle": "Spin",
-        "aggression": 40,
-        "economy": 6.5
-      },
-      {
-        "name": "Romario Shepherd",
-        "role": "All-Rounder",
-        "battingSkill": 78,
-        "bowlingSkill": 86,
-        "bowlingStyle": "Pace",
-        "aggression": 94,
-        "economy": 7.8
-      }
-    ],
-    "test": [
-      {
-        "name": "Kraigg Brathwaite",
-        "role": "Batter",
-        "battingSkill": 93,
-        "bowlingSkill": 60,
-        "bowlingStyle": "Spin",
-        "aggression": 55,
-        "economy": 4.5
-      },
-      {
-        "name": "Tagenarine Chanderpaul",
-        "role": "Batter",
-        "battingSkill": 88,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 58,
-        "economy": 0
-      },
-      {
-        "name": "Kirk McKenzie",
-        "role": "Batter",
-        "battingSkill": 82,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 65,
-        "economy": 0
-      },
-      {
-        "name": "Alick Athanaze",
-        "role": "Batter",
-        "battingSkill": 85,
-        "bowlingSkill": 50,
-        "bowlingStyle": "Spin",
-        "aggression": 70,
-        "economy": 4.8
-      },
-      {
-        "name": "Kavem Hodge",
-        "role": "Batter",
-        "battingSkill": 84,
-        "bowlingSkill": 55,
-        "bowlingStyle": "Spin",
-        "aggression": 68,
-        "economy": 4.2
-      },
-      {
-        "name": "Jason Holder",
-        "role": "All-Rounder",
-        "battingSkill": 88,
-        "bowlingSkill": 90,
-        "bowlingStyle": "Pace",
-        "aggression": 65,
-        "economy": 3.8
-      },
-      {
-        "name": "Joshua Da Silva",
-        "role": "WicketKeeper",
-        "battingSkill": 84,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 62,
-        "economy": 0
-      },
-      {
-        "name": "Alzarri Joseph",
-        "role": "Bowler",
-        "battingSkill": 65,
-        "bowlingSkill": 94,
-        "bowlingStyle": "Pace",
-        "aggression": 60,
-        "economy": 4.0
-      },
-      {
-        "name": "Kemar Roach",
-        "role": "Bowler",
-        "battingSkill": 35,
-        "bowlingSkill": 92,
-        "bowlingStyle": "Pace",
-        "aggression": 40,
-        "economy": 3.5
-      },
-      {
-        "name": "Jayden Seales",
-        "role": "Bowler",
-        "battingSkill": 25,
-        "bowlingSkill": 91,
-        "bowlingStyle": "Pace",
-        "aggression": 45,
-        "economy": 4.2
-      },
-      {
-        "name": "Shamar Joseph",
-        "role": "Bowler",
-        "battingSkill": 40,
-        "bowlingSkill": 94,
-        "bowlingStyle": "Pace",
-        "aggression": 65,
-        "economy": 4.5
-      }
-    ]
-  }
+	"id": "WI",
+	"name": "West Indies",
+	"color": "#7B0032",
+	"rosters": {
+		"t20": [
+			{
+				"name": "Brandon King",
+				"role": "Batter",
+				"battingSkill": 88,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 90,
+				"economy": 0
+			},
+			{
+				"name": "Evin Lewis",
+				"role": "Batter",
+				"battingSkill": 86,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 97,
+				"economy": 0
+			},
+			{
+				"name": "Nicholas Pooran",
+				"role": "Batter",
+				"battingSkill": 95,
+				"bowlingSkill": 20,
+				"bowlingStyle": "Spin",
+				"aggression": 97,
+				"economy": 9.0
+			},
+			{
+				"name": "Rovman Powell",
+				"role": "Batter",
+				"battingSkill": 89,
+				"bowlingSkill": 40,
+				"bowlingStyle": "Pace",
+				"aggression": 96,
+				"economy": 9.5
+			},
+			{
+				"name": "Sherfane Rutherford",
+				"role": "Batter",
+				"battingSkill": 85,
+				"bowlingSkill": 30,
+				"bowlingStyle": "Pace",
+				"aggression": 94,
+				"economy": 9.0
+			},
+			{
+				"name": "Andre Russell",
+				"role": "All-Rounder",
+				"battingSkill": 91,
+				"bowlingSkill": 88,
+				"bowlingStyle": "Pace",
+				"aggression": 99,
+				"economy": 8.8
+			},
+			{
+				"name": "Jason Holder",
+				"role": "All-Rounder",
+				"battingSkill": 82,
+				"bowlingSkill": 86,
+				"bowlingStyle": "Pace",
+				"aggression": 80,
+				"economy": 8.4
+			},
+			{
+				"name": "Akeal Hosein",
+				"role": "Bowler",
+				"battingSkill": 60,
+				"bowlingSkill": 93,
+				"bowlingStyle": "Spin",
+				"aggression": 75,
+				"economy": 6.8
+			},
+			{
+				"name": "Alzarri Joseph",
+				"role": "Bowler",
+				"battingSkill": 45,
+				"bowlingSkill": 92,
+				"bowlingStyle": "Pace",
+				"aggression": 50,
+				"economy": 8.0
+			},
+			{
+				"name": "Gudakesh Motie",
+				"role": "Bowler",
+				"battingSkill": 30,
+				"bowlingSkill": 91,
+				"bowlingStyle": "Spin",
+				"aggression": 40,
+				"economy": 7.0
+			},
+			{
+				"name": "Obed McCoy",
+				"role": "Bowler",
+				"battingSkill": 10,
+				"bowlingSkill": 88,
+				"bowlingStyle": "Pace",
+				"aggression": 30,
+				"economy": 8.2
+			}
+		],
+		"odi": [
+			{
+				"name": "Shai Hope",
+				"role": "WicketKeeper",
+				"battingSkill": 94,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 82,
+				"economy": 0
+			},
+			{
+				"name": "Brandon King",
+				"role": "Batter",
+				"battingSkill": 86,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 84,
+				"economy": 0
+			},
+			{
+				"name": "Nicholas Pooran",
+				"role": "Batter",
+				"battingSkill": 92,
+				"bowlingSkill": 15,
+				"bowlingStyle": "Spin",
+				"aggression": 90,
+				"economy": 0
+			},
+			{
+				"name": "Roston Chase",
+				"role": "All-Rounder",
+				"battingSkill": 84,
+				"bowlingSkill": 85,
+				"bowlingStyle": "Spin",
+				"aggression": 72,
+				"economy": 5.8
+			},
+			{
+				"name": "Shimron Hetmyer",
+				"role": "Batter",
+				"battingSkill": 88,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 92,
+				"economy": 0
+			},
+			{
+				"name": "Sherfane Rutherford",
+				"role": "Batter",
+				"battingSkill": 82,
+				"bowlingSkill": 35,
+				"bowlingStyle": "Pace",
+				"aggression": 88,
+				"economy": 8.5
+			},
+			{
+				"name": "Jason Holder",
+				"role": "All-Rounder",
+				"battingSkill": 84,
+				"bowlingSkill": 88,
+				"bowlingStyle": "Pace",
+				"aggression": 78,
+				"economy": 7.0
+			},
+			{
+				"name": "Akeal Hosein",
+				"role": "Bowler",
+				"battingSkill": 60,
+				"bowlingSkill": 91,
+				"bowlingStyle": "Spin",
+				"aggression": 70,
+				"economy": 6.2
+			},
+			{
+				"name": "Alzarri Joseph",
+				"role": "Bowler",
+				"battingSkill": 45,
+				"bowlingSkill": 93,
+				"bowlingStyle": "Pace",
+				"aggression": 50,
+				"economy": 7.5
+			},
+			{
+				"name": "Gudakesh Motie",
+				"role": "Bowler",
+				"battingSkill": 35,
+				"bowlingSkill": 90,
+				"bowlingStyle": "Spin",
+				"aggression": 40,
+				"economy": 6.5
+			},
+			{
+				"name": "Romario Shepherd",
+				"role": "All-Rounder",
+				"battingSkill": 78,
+				"bowlingSkill": 86,
+				"bowlingStyle": "Pace",
+				"aggression": 94,
+				"economy": 7.8
+			}
+		],
+		"test": [
+			{
+				"name": "Kraigg Brathwaite",
+				"role": "Batter",
+				"battingSkill": 93,
+				"bowlingSkill": 60,
+				"bowlingStyle": "Spin",
+				"aggression": 55,
+				"economy": 4.5
+			},
+			{
+				"name": "Tagenarine Chanderpaul",
+				"role": "Batter",
+				"battingSkill": 88,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 58,
+				"economy": 0
+			},
+			{
+				"name": "Kirk McKenzie",
+				"role": "Batter",
+				"battingSkill": 82,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 65,
+				"economy": 0
+			},
+			{
+				"name": "Alick Athanaze",
+				"role": "Batter",
+				"battingSkill": 85,
+				"bowlingSkill": 50,
+				"bowlingStyle": "Spin",
+				"aggression": 70,
+				"economy": 4.8
+			},
+			{
+				"name": "Kavem Hodge",
+				"role": "Batter",
+				"battingSkill": 84,
+				"bowlingSkill": 55,
+				"bowlingStyle": "Spin",
+				"aggression": 68,
+				"economy": 4.2
+			},
+			{
+				"name": "Jason Holder",
+				"role": "All-Rounder",
+				"battingSkill": 88,
+				"bowlingSkill": 90,
+				"bowlingStyle": "Pace",
+				"aggression": 65,
+				"economy": 3.8
+			},
+			{
+				"name": "Joshua Da Silva",
+				"role": "WicketKeeper",
+				"battingSkill": 84,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 62,
+				"economy": 0
+			},
+			{
+				"name": "Alzarri Joseph",
+				"role": "Bowler",
+				"battingSkill": 65,
+				"bowlingSkill": 94,
+				"bowlingStyle": "Pace",
+				"aggression": 60,
+				"economy": 4.0
+			},
+			{
+				"name": "Kemar Roach",
+				"role": "Bowler",
+				"battingSkill": 35,
+				"bowlingSkill": 92,
+				"bowlingStyle": "Pace",
+				"aggression": 40,
+				"economy": 3.5
+			},
+			{
+				"name": "Jayden Seales",
+				"role": "Bowler",
+				"battingSkill": 25,
+				"bowlingSkill": 91,
+				"bowlingStyle": "Pace",
+				"aggression": 45,
+				"economy": 4.2
+			},
+			{
+				"name": "Shamar Joseph",
+				"role": "Bowler",
+				"battingSkill": 40,
+				"bowlingSkill": 94,
+				"bowlingStyle": "Pace",
+				"aggression": 65,
+				"economy": 4.5
+			}
+		]
+	}
 }

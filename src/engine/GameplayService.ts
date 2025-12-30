@@ -14,7 +14,7 @@ export class GameplayService {
 		) => void,
 		private endMatch: (msg: string) => void,
 		private switchInnings: (callback: () => void) => void,
-	) { }
+	) {}
 
 	swapBatters() {
 		const s = GameState.striker.value;

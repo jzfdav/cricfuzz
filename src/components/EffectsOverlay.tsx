@@ -48,7 +48,6 @@ export function EffectsOverlay() {
 	);
 }
 
-
 export function ShakeWrapper({ children }: { children: ComponentChildren }) {
 	const [shake, setShake] = useState(false);
 

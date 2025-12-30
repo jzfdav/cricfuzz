@@ -1,310 +1,310 @@
 {
-  "id": "BAN",
-  "name": "Bangladesh",
-  "color": "#006A4E",
-  "rosters": {
-    "t20": [
-      {
-        "name": "Litton Das",
-        "role": "WicketKeeper",
-        "battingSkill": 88,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 92,
-        "economy": 0
-      },
-      {
-        "name": "Soumya Sarkar",
-        "role": "Batter",
-        "battingSkill": 84,
-        "bowlingSkill": 45,
-        "bowlingStyle": "Pace",
-        "aggression": 94,
-        "economy": 8.5
-      },
-      {
-        "name": "Towhid Hridoy",
-        "role": "Batter",
-        "battingSkill": 89,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 90,
-        "economy": 0
-      },
-      {
-        "name": "Najmul Hossain Shanto",
-        "role": "Batter",
-        "battingSkill": 86,
-        "bowlingSkill": 20,
-        "bowlingStyle": "Spin",
-        "aggression": 85,
-        "economy": 8.0
-      },
-      {
-        "name": "Shakib Al Hasan",
-        "role": "All-Rounder",
-        "battingSkill": 92,
-        "bowlingSkill": 94,
-        "bowlingStyle": "Spin",
-        "aggression": 88,
-        "economy": 6.8
-      },
-      {
-        "name": "Mahmudullah",
-        "role": "All-Rounder",
-        "battingSkill": 85,
-        "bowlingSkill": 75,
-        "bowlingStyle": "Spin",
-        "aggression": 90,
-        "economy": 7.5
-      },
-      {
-        "name": "Jaker Ali",
-        "role": "WicketKeeper",
-        "battingSkill": 82,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 93,
-        "economy": 0
-      },
-      {
-        "name": "Mahedi Hasan",
-        "role": "All-Rounder",
-        "battingSkill": 78,
-        "bowlingSkill": 90,
-        "bowlingStyle": "Spin",
-        "aggression": 92,
-        "economy": 6.5
-      },
-      {
-        "name": "Rishad Hossain",
-        "role": "Bowler",
-        "battingSkill": 80,
-        "bowlingSkill": 91,
-        "bowlingStyle": "Spin",
-        "aggression": 96,
-        "economy": 7.2
-      },
-      {
-        "name": "Mustafizur Rahman",
-        "role": "Bowler",
-        "battingSkill": 10,
-        "bowlingSkill": 93,
-        "bowlingStyle": "Pace",
-        "aggression": 30,
-        "economy": 7.8
-      },
-      {
-        "name": "Taskin Ahmed",
-        "role": "Bowler",
-        "battingSkill": 20,
-        "bowlingSkill": 91,
-        "bowlingStyle": "Pace",
-        "aggression": 40,
-        "economy": 8.2
-      }
-    ],
-    "odi": [
-      {
-        "name": "Litton Das",
-        "role": "WicketKeeper",
-        "battingSkill": 90,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 85,
-        "economy": 0
-      },
-      {
-        "name": "Anamul Haque",
-        "role": "Batter",
-        "battingSkill": 84,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 82,
-        "economy": 0
-      },
-      {
-        "name": "Najmul Hossain Shanto",
-        "role": "Batter",
-        "battingSkill": 88,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 78,
-        "economy": 0
-      },
-      {
-        "name": "Towhid Hridoy",
-        "role": "Batter",
-        "battingSkill": 88,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 85,
-        "economy": 0
-      },
-      {
-        "name": "Shakib Al Hasan",
-        "role": "All-Rounder",
-        "battingSkill": 94,
-        "bowlingSkill": 95,
-        "bowlingStyle": "Spin",
-        "aggression": 82,
-        "economy": 4.8
-      },
-      {
-        "name": "Mushfiqur Rahim",
-        "role": "WicketKeeper",
-        "battingSkill": 93,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 80,
-        "economy": 0
-      },
-      {
-        "name": "Mehidy Hasan Miraz",
-        "role": "All-Rounder",
-        "battingSkill": 87,
-        "bowlingSkill": 93,
-        "bowlingStyle": "Spin",
-        "aggression": 78,
-        "economy": 5.2
-      },
-      {
-        "name": "Mahmudullah",
-        "role": "All-Rounder",
-        "battingSkill": 88,
-        "bowlingSkill": 70,
-        "bowlingStyle": "Spin",
-        "aggression": 84,
-        "economy": 5.8
-      },
-      {
-        "name": "Taskin Ahmed",
-        "role": "Bowler",
-        "battingSkill": 25,
-        "bowlingSkill": 92,
-        "bowlingStyle": "Pace",
-        "aggression": 45,
-        "economy": 5.5
-      },
-      {
-        "name": "Mustafizur Rahman",
-        "role": "Bowler",
-        "battingSkill": 15,
-        "bowlingSkill": 94,
-        "bowlingStyle": "Pace",
-        "aggression": 35,
-        "economy": 5.8
-      },
-      {
-        "name": "Shoriful Islam",
-        "role": "Bowler",
-        "battingSkill": 20,
-        "bowlingSkill": 89,
-        "bowlingStyle": "Pace",
-        "aggression": 40,
-        "economy": 6.0
-      }
-    ],
-    "test": [
-      {
-        "name": "Shadman Islam",
-        "role": "Batter",
-        "battingSkill": 85,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 60,
-        "economy": 0
-      },
-      {
-        "name": "Zakir Hasan",
-        "role": "Batter",
-        "battingSkill": 84,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 65,
-        "economy": 0
-      },
-      {
-        "name": "Najmul Hossain Shanto",
-        "role": "Batter",
-        "battingSkill": 86,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 62,
-        "economy": 0
-      },
-      {
-        "name": "Mominul Haque",
-        "role": "Batter",
-        "battingSkill": 91,
-        "bowlingSkill": 20,
-        "bowlingStyle": "Spin",
-        "aggression": 58,
-        "economy": 0
-      },
-      {
-        "name": "Mushfiqur Rahim",
-        "role": "WicketKeeper",
-        "battingSkill": 94,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 65,
-        "economy": 0
-      },
-      {
-        "name": "Shakib Al Hasan",
-        "role": "All-Rounder",
-        "battingSkill": 93,
-        "bowlingSkill": 96,
-        "bowlingStyle": "Spin",
-        "aggression": 70,
-        "economy": 3.2
-      },
-      {
-        "name": "Litton Das",
-        "role": "WicketKeeper",
-        "battingSkill": 88,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 72,
-        "economy": 0
-      },
-      {
-        "name": "Mehidy Hasan Miraz",
-        "role": "All-Rounder",
-        "battingSkill": 86,
-        "bowlingSkill": 94,
-        "bowlingStyle": "Spin",
-        "aggression": 75,
-        "economy": 3.4
-      },
-      {
-        "name": "Taijul Islam",
-        "role": "Bowler",
-        "battingSkill": 30,
-        "bowlingSkill": 94,
-        "bowlingStyle": "Spin",
-        "aggression": 40,
-        "economy": 3.0
-      },
-      {
-        "name": "Taskin Ahmed",
-        "role": "Bowler",
-        "battingSkill": 25,
-        "bowlingSkill": 91,
-        "bowlingStyle": "Pace",
-        "aggression": 45,
-        "economy": 3.8
-      },
-      {
-        "name": "Hasan Mahmud",
-        "role": "Bowler",
-        "battingSkill": 20,
-        "bowlingSkill": 88,
-        "bowlingStyle": "Pace",
-        "aggression": 40,
-        "economy": 3.6
-      }
-    ]
-  }
+	"id": "BAN",
+	"name": "Bangladesh",
+	"color": "#006A4E",
+	"rosters": {
+		"t20": [
+			{
+				"name": "Litton Das",
+				"role": "WicketKeeper",
+				"battingSkill": 88,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 92,
+				"economy": 0
+			},
+			{
+				"name": "Soumya Sarkar",
+				"role": "Batter",
+				"battingSkill": 84,
+				"bowlingSkill": 45,
+				"bowlingStyle": "Pace",
+				"aggression": 94,
+				"economy": 8.5
+			},
+			{
+				"name": "Towhid Hridoy",
+				"role": "Batter",
+				"battingSkill": 89,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 90,
+				"economy": 0
+			},
+			{
+				"name": "Najmul Hossain Shanto",
+				"role": "Batter",
+				"battingSkill": 86,
+				"bowlingSkill": 20,
+				"bowlingStyle": "Spin",
+				"aggression": 85,
+				"economy": 8.0
+			},
+			{
+				"name": "Shakib Al Hasan",
+				"role": "All-Rounder",
+				"battingSkill": 92,
+				"bowlingSkill": 94,
+				"bowlingStyle": "Spin",
+				"aggression": 88,
+				"economy": 6.8
+			},
+			{
+				"name": "Mahmudullah",
+				"role": "All-Rounder",
+				"battingSkill": 85,
+				"bowlingSkill": 75,
+				"bowlingStyle": "Spin",
+				"aggression": 90,
+				"economy": 7.5
+			},
+			{
+				"name": "Jaker Ali",
+				"role": "WicketKeeper",
+				"battingSkill": 82,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 93,
+				"economy": 0
+			},
+			{
+				"name": "Mahedi Hasan",
+				"role": "All-Rounder",
+				"battingSkill": 78,
+				"bowlingSkill": 90,
+				"bowlingStyle": "Spin",
+				"aggression": 92,
+				"economy": 6.5
+			},
+			{
+				"name": "Rishad Hossain",
+				"role": "Bowler",
+				"battingSkill": 80,
+				"bowlingSkill": 91,
+				"bowlingStyle": "Spin",
+				"aggression": 96,
+				"economy": 7.2
+			},
+			{
+				"name": "Mustafizur Rahman",
+				"role": "Bowler",
+				"battingSkill": 10,
+				"bowlingSkill": 93,
+				"bowlingStyle": "Pace",
+				"aggression": 30,
+				"economy": 7.8
+			},
+			{
+				"name": "Taskin Ahmed",
+				"role": "Bowler",
+				"battingSkill": 20,
+				"bowlingSkill": 91,
+				"bowlingStyle": "Pace",
+				"aggression": 40,
+				"economy": 8.2
+			}
+		],
+		"odi": [
+			{
+				"name": "Litton Das",
+				"role": "WicketKeeper",
+				"battingSkill": 90,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 85,
+				"economy": 0
+			},
+			{
+				"name": "Anamul Haque",
+				"role": "Batter",
+				"battingSkill": 84,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 82,
+				"economy": 0
+			},
+			{
+				"name": "Najmul Hossain Shanto",
+				"role": "Batter",
+				"battingSkill": 88,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 78,
+				"economy": 0
+			},
+			{
+				"name": "Towhid Hridoy",
+				"role": "Batter",
+				"battingSkill": 88,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 85,
+				"economy": 0
+			},
+			{
+				"name": "Shakib Al Hasan",
+				"role": "All-Rounder",
+				"battingSkill": 94,
+				"bowlingSkill": 95,
+				"bowlingStyle": "Spin",
+				"aggression": 82,
+				"economy": 4.8
+			},
+			{
+				"name": "Mushfiqur Rahim",
+				"role": "WicketKeeper",
+				"battingSkill": 93,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 80,
+				"economy": 0
+			},
+			{
+				"name": "Mehidy Hasan Miraz",
+				"role": "All-Rounder",
+				"battingSkill": 87,
+				"bowlingSkill": 93,
+				"bowlingStyle": "Spin",
+				"aggression": 78,
+				"economy": 5.2
+			},
+			{
+				"name": "Mahmudullah",
+				"role": "All-Rounder",
+				"battingSkill": 88,
+				"bowlingSkill": 70,
+				"bowlingStyle": "Spin",
+				"aggression": 84,
+				"economy": 5.8
+			},
+			{
+				"name": "Taskin Ahmed",
+				"role": "Bowler",
+				"battingSkill": 25,
+				"bowlingSkill": 92,
+				"bowlingStyle": "Pace",
+				"aggression": 45,
+				"economy": 5.5
+			},
+			{
+				"name": "Mustafizur Rahman",
+				"role": "Bowler",
+				"battingSkill": 15,
+				"bowlingSkill": 94,
+				"bowlingStyle": "Pace",
+				"aggression": 35,
+				"economy": 5.8
+			},
+			{
+				"name": "Shoriful Islam",
+				"role": "Bowler",
+				"battingSkill": 20,
+				"bowlingSkill": 89,
+				"bowlingStyle": "Pace",
+				"aggression": 40,
+				"economy": 6.0
+			}
+		],
+		"test": [
+			{
+				"name": "Shadman Islam",
+				"role": "Batter",
+				"battingSkill": 85,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 60,
+				"economy": 0
+			},
+			{
+				"name": "Zakir Hasan",
+				"role": "Batter",
+				"battingSkill": 84,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 65,
+				"economy": 0
+			},
+			{
+				"name": "Najmul Hossain Shanto",
+				"role": "Batter",
+				"battingSkill": 86,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 62,
+				"economy": 0
+			},
+			{
+				"name": "Mominul Haque",
+				"role": "Batter",
+				"battingSkill": 91,
+				"bowlingSkill": 20,
+				"bowlingStyle": "Spin",
+				"aggression": 58,
+				"economy": 0
+			},
+			{
+				"name": "Mushfiqur Rahim",
+				"role": "WicketKeeper",
+				"battingSkill": 94,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 65,
+				"economy": 0
+			},
+			{
+				"name": "Shakib Al Hasan",
+				"role": "All-Rounder",
+				"battingSkill": 93,
+				"bowlingSkill": 96,
+				"bowlingStyle": "Spin",
+				"aggression": 70,
+				"economy": 3.2
+			},
+			{
+				"name": "Litton Das",
+				"role": "WicketKeeper",
+				"battingSkill": 88,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 72,
+				"economy": 0
+			},
+			{
+				"name": "Mehidy Hasan Miraz",
+				"role": "All-Rounder",
+				"battingSkill": 86,
+				"bowlingSkill": 94,
+				"bowlingStyle": "Spin",
+				"aggression": 75,
+				"economy": 3.4
+			},
+			{
+				"name": "Taijul Islam",
+				"role": "Bowler",
+				"battingSkill": 30,
+				"bowlingSkill": 94,
+				"bowlingStyle": "Spin",
+				"aggression": 40,
+				"economy": 3.0
+			},
+			{
+				"name": "Taskin Ahmed",
+				"role": "Bowler",
+				"battingSkill": 25,
+				"bowlingSkill": 91,
+				"bowlingStyle": "Pace",
+				"aggression": 45,
+				"economy": 3.8
+			},
+			{
+				"name": "Hasan Mahmud",
+				"role": "Bowler",
+				"battingSkill": 20,
+				"bowlingSkill": 88,
+				"bowlingStyle": "Pace",
+				"aggression": 40,
+				"economy": 3.6
+			}
+		]
+	}
 }

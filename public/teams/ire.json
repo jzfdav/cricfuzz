@@ -1,310 +1,310 @@
 {
-  "id": "IRE",
-  "name": "Ireland",
-  "color": "#169B62",
-  "rosters": {
-    "t20": [
-      {
-        "name": "Paul Stirling",
-        "role": "Batter",
-        "battingSkill": 91,
-        "bowlingSkill": 35,
-        "bowlingStyle": "Spin",
-        "aggression": 96,
-        "economy": 8.5
-      },
-      {
-        "name": "Andrew Balbirnie",
-        "role": "Batter",
-        "battingSkill": 88,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 84,
-        "economy": 0
-      },
-      {
-        "name": "Lorcan Tucker",
-        "role": "WicketKeeper",
-        "battingSkill": 89,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 92,
-        "economy": 0
-      },
-      {
-        "name": "Harry Tector",
-        "role": "Batter",
-        "battingSkill": 91,
-        "bowlingSkill": 45,
-        "bowlingStyle": "Spin",
-        "aggression": 86,
-        "economy": 8.0
-      },
-      {
-        "name": "Curtis Campher",
-        "role": "All-Rounder",
-        "battingSkill": 86,
-        "bowlingSkill": 84,
-        "bowlingStyle": "Pace",
-        "aggression": 90,
-        "economy": 8.8
-      },
-      {
-        "name": "George Dockrell",
-        "role": "All-Rounder",
-        "battingSkill": 84,
-        "bowlingSkill": 85,
-        "bowlingStyle": "Spin",
-        "aggression": 94,
-        "economy": 7.5
-      },
-      {
-        "name": "Gareth Delany",
-        "role": "All-Rounder",
-        "battingSkill": 82,
-        "bowlingSkill": 80,
-        "bowlingStyle": "Spin",
-        "aggression": 95,
-        "economy": 8.2
-      },
-      {
-        "name": "Mark Adair",
-        "role": "Bowler",
-        "battingSkill": 70,
-        "bowlingSkill": 90,
-        "bowlingStyle": "Pace",
-        "aggression": 88,
-        "economy": 8.0
-      },
-      {
-        "name": "Barry McCarthy",
-        "role": "Bowler",
-        "battingSkill": 40,
-        "bowlingSkill": 86,
-        "bowlingStyle": "Pace",
-        "aggression": 75,
-        "economy": 8.4
-      },
-      {
-        "name": "Josh Little",
-        "role": "Bowler",
-        "battingSkill": 15,
-        "bowlingSkill": 92,
-        "bowlingStyle": "Pace",
-        "aggression": 40,
-        "economy": 7.6
-      },
-      {
-        "name": "Ben White",
-        "role": "Bowler",
-        "battingSkill": 10,
-        "bowlingSkill": 84,
-        "bowlingStyle": "Spin",
-        "aggression": 30,
-        "economy": 8.5
-      }
-    ],
-    "odi": [
-      {
-        "name": "Paul Stirling",
-        "role": "Batter",
-        "battingSkill": 92,
-        "bowlingSkill": 30,
-        "bowlingStyle": "Spin",
-        "aggression": 88,
-        "economy": 7.2
-      },
-      {
-        "name": "Andrew Balbirnie",
-        "role": "Batter",
-        "battingSkill": 90,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 78,
-        "economy": 0
-      },
-      {
-        "name": "Curtis Campher",
-        "role": "Batter",
-        "battingSkill": 86,
-        "bowlingSkill": 84,
-        "bowlingStyle": "Pace",
-        "aggression": 82,
-        "economy": 6.8
-      },
-      {
-        "name": "Harry Tector",
-        "role": "Batter",
-        "battingSkill": 93,
-        "bowlingSkill": 40,
-        "bowlingStyle": "Spin",
-        "aggression": 80,
-        "economy": 5.5
-      },
-      {
-        "name": "Lorcan Tucker",
-        "role": "WicketKeeper",
-        "battingSkill": 88,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 84,
-        "economy": 0
-      },
-      {
-        "name": "George Dockrell",
-        "role": "All-Rounder",
-        "battingSkill": 85,
-        "bowlingSkill": 84,
-        "bowlingStyle": "Spin",
-        "aggression": 88,
-        "economy": 5.8
-      },
-      {
-        "name": "Mark Adair",
-        "role": "All-Rounder",
-        "battingSkill": 75,
-        "bowlingSkill": 90,
-        "bowlingStyle": "Pace",
-        "aggression": 82,
-        "economy": 5.5
-      },
-      {
-        "name": "Andy McBrine",
-        "role": "All-Rounder",
-        "battingSkill": 72,
-        "bowlingSkill": 88,
-        "bowlingStyle": "Spin",
-        "aggression": 70,
-        "economy": 4.8
-      },
-      {
-        "name": "Craig Young",
-        "role": "Bowler",
-        "battingSkill": 20,
-        "bowlingSkill": 87,
-        "bowlingStyle": "Pace",
-        "aggression": 35,
-        "economy": 6.2
-      },
-      {
-        "name": "Barry McCarthy",
-        "role": "Bowler",
-        "battingSkill": 30,
-        "bowlingSkill": 86,
-        "bowlingStyle": "Pace",
-        "aggression": 45,
-        "economy": 6.5
-      },
-      {
-        "name": "Graham Hume",
-        "role": "Bowler",
-        "battingSkill": 25,
-        "bowlingSkill": 84,
-        "bowlingStyle": "Pace",
-        "aggression": 40,
-        "economy": 5.9
-      }
-    ],
-    "test": [
-      {
-        "name": "PJ Moor",
-        "role": "Batter",
-        "battingSkill": 82,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 65,
-        "economy": 0
-      },
-      {
-        "name": "Andrew Balbirnie",
-        "role": "Batter",
-        "battingSkill": 91,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 68,
-        "economy": 0
-      },
-      {
-        "name": "Harry Tector",
-        "role": "Batter",
-        "battingSkill": 94,
-        "bowlingSkill": 35,
-        "bowlingStyle": "Spin",
-        "aggression": 62,
-        "economy": 0
-      },
-      {
-        "name": "Paul Stirling",
-        "role": "Batter",
-        "battingSkill": 88,
-        "bowlingSkill": 25,
-        "bowlingStyle": "Spin",
-        "aggression": 82,
-        "economy": 0
-      },
-      {
-        "name": "Lorcan Tucker",
-        "role": "WicketKeeper",
-        "battingSkill": 86,
-        "bowlingSkill": 0,
-        "bowlingStyle": "Pace",
-        "aggression": 75,
-        "economy": 0
-      },
-      {
-        "name": "Curtis Campher",
-        "role": "All-Rounder",
-        "battingSkill": 85,
-        "bowlingSkill": 84,
-        "bowlingStyle": "Pace",
-        "aggression": 72,
-        "economy": 4.0
-      },
-      {
-        "name": "Andy McBrine",
-        "role": "All-Rounder",
-        "battingSkill": 70,
-        "bowlingSkill": 89,
-        "bowlingStyle": "Spin",
-        "aggression": 60,
-        "economy": 3.4
-      },
-      {
-        "name": "Mark Adair",
-        "role": "Bowler",
-        "battingSkill": 72,
-        "bowlingSkill": 91,
-        "bowlingStyle": "Pace",
-        "aggression": 65,
-        "economy": 3.8
-      },
-      {
-        "name": "Barry McCarthy",
-        "role": "Bowler",
-        "battingSkill": 35,
-        "bowlingSkill": 85,
-        "bowlingStyle": "Pace",
-        "aggression": 45,
-        "economy": 4.2
-      },
-      {
-        "name": "Craig Young",
-        "role": "Bowler",
-        "battingSkill": 20,
-        "bowlingSkill": 84,
-        "bowlingStyle": "Pace",
-        "aggression": 40,
-        "economy": 4.5
-      },
-      {
-        "name": "Ben White",
-        "role": "Bowler",
-        "battingSkill": 10,
-        "bowlingSkill": 82,
-        "bowlingStyle": "Spin",
-        "aggression": 35,
-        "economy": 4.8
-      }
-    ]
-  }
+	"id": "IRE",
+	"name": "Ireland",
+	"color": "#169B62",
+	"rosters": {
+		"t20": [
+			{
+				"name": "Paul Stirling",
+				"role": "Batter",
+				"battingSkill": 91,
+				"bowlingSkill": 35,
+				"bowlingStyle": "Spin",
+				"aggression": 96,
+				"economy": 8.5
+			},
+			{
+				"name": "Andrew Balbirnie",
+				"role": "Batter",
+				"battingSkill": 88,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 84,
+				"economy": 0
+			},
+			{
+				"name": "Lorcan Tucker",
+				"role": "WicketKeeper",
+				"battingSkill": 89,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 92,
+				"economy": 0
+			},
+			{
+				"name": "Harry Tector",
+				"role": "Batter",
+				"battingSkill": 91,
+				"bowlingSkill": 45,
+				"bowlingStyle": "Spin",
+				"aggression": 86,
+				"economy": 8.0
+			},
+			{
+				"name": "Curtis Campher",
+				"role": "All-Rounder",
+				"battingSkill": 86,
+				"bowlingSkill": 84,
+				"bowlingStyle": "Pace",
+				"aggression": 90,
+				"economy": 8.8
+			},
+			{
+				"name": "George Dockrell",
+				"role": "All-Rounder",
+				"battingSkill": 84,
+				"bowlingSkill": 85,
+				"bowlingStyle": "Spin",
+				"aggression": 94,
+				"economy": 7.5
+			},
+			{
+				"name": "Gareth Delany",
+				"role": "All-Rounder",
+				"battingSkill": 82,
+				"bowlingSkill": 80,
+				"bowlingStyle": "Spin",
+				"aggression": 95,
+				"economy": 8.2
+			},
+			{
+				"name": "Mark Adair",
+				"role": "Bowler",
+				"battingSkill": 70,
+				"bowlingSkill": 90,
+				"bowlingStyle": "Pace",
+				"aggression": 88,
+				"economy": 8.0
+			},
+			{
+				"name": "Barry McCarthy",
+				"role": "Bowler",
+				"battingSkill": 40,
+				"bowlingSkill": 86,
+				"bowlingStyle": "Pace",
+				"aggression": 75,
+				"economy": 8.4
+			},
+			{
+				"name": "Josh Little",
+				"role": "Bowler",
+				"battingSkill": 15,
+				"bowlingSkill": 92,
+				"bowlingStyle": "Pace",
+				"aggression": 40,
+				"economy": 7.6
+			},
+			{
+				"name": "Ben White",
+				"role": "Bowler",
+				"battingSkill": 10,
+				"bowlingSkill": 84,
+				"bowlingStyle": "Spin",
+				"aggression": 30,
+				"economy": 8.5
+			}
+		],
+		"odi": [
+			{
+				"name": "Paul Stirling",
+				"role": "Batter",
+				"battingSkill": 92,
+				"bowlingSkill": 30,
+				"bowlingStyle": "Spin",
+				"aggression": 88,
+				"economy": 7.2
+			},
+			{
+				"name": "Andrew Balbirnie",
+				"role": "Batter",
+				"battingSkill": 90,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 78,
+				"economy": 0
+			},
+			{
+				"name": "Curtis Campher",
+				"role": "Batter",
+				"battingSkill": 86,
+				"bowlingSkill": 84,
+				"bowlingStyle": "Pace",
+				"aggression": 82,
+				"economy": 6.8
+			},
+			{
+				"name": "Harry Tector",
+				"role": "Batter",
+				"battingSkill": 93,
+				"bowlingSkill": 40,
+				"bowlingStyle": "Spin",
+				"aggression": 80,
+				"economy": 5.5
+			},
+			{
+				"name": "Lorcan Tucker",
+				"role": "WicketKeeper",
+				"battingSkill": 88,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 84,
+				"economy": 0
+			},
+			{
+				"name": "George Dockrell",
+				"role": "All-Rounder",
+				"battingSkill": 85,
+				"bowlingSkill": 84,
+				"bowlingStyle": "Spin",
+				"aggression": 88,
+				"economy": 5.8
+			},
+			{
+				"name": "Mark Adair",
+				"role": "All-Rounder",
+				"battingSkill": 75,
+				"bowlingSkill": 90,
+				"bowlingStyle": "Pace",
+				"aggression": 82,
+				"economy": 5.5
+			},
+			{
+				"name": "Andy McBrine",
+				"role": "All-Rounder",
+				"battingSkill": 72,
+				"bowlingSkill": 88,
+				"bowlingStyle": "Spin",
+				"aggression": 70,
+				"economy": 4.8
+			},
+			{
+				"name": "Craig Young",
+				"role": "Bowler",
+				"battingSkill": 20,
+				"bowlingSkill": 87,
+				"bowlingStyle": "Pace",
+				"aggression": 35,
+				"economy": 6.2
+			},
+			{
+				"name": "Barry McCarthy",
+				"role": "Bowler",
+				"battingSkill": 30,
+				"bowlingSkill": 86,
+				"bowlingStyle": "Pace",
+				"aggression": 45,
+				"economy": 6.5
+			},
+			{
+				"name": "Graham Hume",
+				"role": "Bowler",
+				"battingSkill": 25,
+				"bowlingSkill": 84,
+				"bowlingStyle": "Pace",
+				"aggression": 40,
+				"economy": 5.9
+			}
+		],
+		"test": [
+			{
+				"name": "PJ Moor",
+				"role": "Batter",
+				"battingSkill": 82,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 65,
+				"economy": 0
+			},
+			{
+				"name": "Andrew Balbirnie",
+				"role": "Batter",
+				"battingSkill": 91,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 68,
+				"economy": 0
+			},
+			{
+				"name": "Harry Tector",
+				"role": "Batter",
+				"battingSkill": 94,
+				"bowlingSkill": 35,
+				"bowlingStyle": "Spin",
+				"aggression": 62,
+				"economy": 0
+			},
+			{
+				"name": "Paul Stirling",
+				"role": "Batter",
+				"battingSkill": 88,
+				"bowlingSkill": 25,
+				"bowlingStyle": "Spin",
+				"aggression": 82,
+				"economy": 0
+			},
+			{
+				"name": "Lorcan Tucker",
+				"role": "WicketKeeper",
+				"battingSkill": 86,
+				"bowlingSkill": 0,
+				"bowlingStyle": "Pace",
+				"aggression": 75,
+				"economy": 0
+			},
+			{
+				"name": "Curtis Campher",
+				"role": "All-Rounder",
+				"battingSkill": 85,
+				"bowlingSkill": 84,
+				"bowlingStyle": "Pace",
+				"aggression": 72,
+				"economy": 4.0
+			},
+			{
+				"name": "Andy McBrine",
+				"role": "All-Rounder",
+				"battingSkill": 70,
+				"bowlingSkill": 89,
+				"bowlingStyle": "Spin",
+				"aggression": 60,
+				"economy": 3.4
+			},
+			{
+				"name": "Mark Adair",
+				"role": "Bowler",
+				"battingSkill": 72,
+				"bowlingSkill": 91,
+				"bowlingStyle": "Pace",
+				"aggression": 65,
+				"economy": 3.8
+			},
+			{
+				"name": "Barry McCarthy",
+				"role": "Bowler",
+				"battingSkill": 35,
+				"bowlingSkill": 85,
+				"bowlingStyle": "Pace",
+				"aggression": 45,
+				"economy": 4.2
+			},
+			{
+				"name": "Craig Young",
+				"role": "Bowler",
+				"battingSkill": 20,
+				"bowlingSkill": 84,
+				"bowlingStyle": "Pace",
+				"aggression": 40,
+				"economy": 4.5
+			},
+			{
+				"name": "Ben White",
+				"role": "Bowler",
+				"battingSkill": 10,
+				"bowlingSkill": 82,
+				"bowlingStyle": "Spin",
+				"aggression": 35,
+				"economy": 4.8
+			}
+		]
+	}
 }
