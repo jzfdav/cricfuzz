@@ -8,20 +8,28 @@ export interface BallOutcome {
 	isWicket: boolean;
 	wicketType?: "bowled" | "caught" | "lbw" | "runout";
 	shotType:
-		| "drive"
-		| "pull"
-		| "cut"
-		| "flick"
-		| "slog"
-		| "defense"
-		| "leave"
-		| "edge";
+	| "drive"
+	| "pull"
+	| "cut"
+	| "flick"
+	| "slog"
+	| "defense"
+	| "leave"
+	| "edge";
 	deliveryType: "bouncer" | "yorker" | "length" | "full" | "slow";
 	timing: "perfect" | "good" | "average" | "poor" | "edge" | "missed";
 }
 
 export class SimulationEngine {
 	private battingEngine: BattingEngine;
+	private baseWeights = {
+		dot: 35,
+		single: 30,
+		double: 10,
+		four: 15,
+		six: 5,
+		wicket: 5,
+	};
 
 	constructor() {
 		this.battingEngine = new BattingEngine();
@@ -39,7 +47,14 @@ export class SimulationEngine {
 		const pitch = GameState.pitch.value;
 
 		// Weights: [0, 1, 2, 4, 6, W]
-		const weights = [35, 30, 10, 15, 5, 5];
+		const weights = [
+			this.baseWeights.dot,
+			this.baseWeights.single,
+			this.baseWeights.double,
+			this.baseWeights.four,
+			this.baseWeights.six,
+			this.baseWeights.wicket,
+		];
 
 		let batterSkill = striker.battingSkill || 75;
 		let bowlerSkill = bowler.bowlingSkill || 75;

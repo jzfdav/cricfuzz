@@ -1,10 +1,11 @@
 import type { CommentaryEntry, MatchHistoryEntry } from "../types";
-import type { CommentaryEngine } from "./CommentaryEngine";
+import { CommentaryEngine } from "./CommentaryEngine";
 import { GameplayService } from "./GameplayService";
-import { GameState } from "./GameState";
+import { GameState, resetMatchState, resetPlayerStats } from "./GameState";
 import { MatchSetupService } from "./MatchSetupService";
-import type { BallOutcome } from "./SimulationEngine";
-import type { StatsEngine } from "./StatsEngine";
+import { BallOutcome } from "./SimulationEngine";
+import { StatsEngine } from "./StatsEngine";
+import { Player } from "../types";
 
 export class MatchController {
 	private setup: MatchSetupService;
@@ -82,41 +83,15 @@ export class MatchController {
 
 	resetToConfig() {
 		this.stopMatch();
+		resetMatchState();
 		GameState.view.value = "config";
-		GameState.score.value = 0;
-		GameState.wickets.value = 0;
-		GameState.balls.value = 0;
-		GameState.innings.value = 1;
-		GameState.timeline.value = [];
-		GameState.commentary.value = [];
-		GameState.matchResult.value = null;
-		GameState.history.value = [];
-		GameState.inningsTimeline.value = [];
-		GameState.totalTeam1Score.value = 0;
-		GameState.totalTeam2Score.value = 0;
-		GameState.target.value = null;
-		GameState.winProbability.value = 50;
-		GameState.tossResult.value = "";
-		GameState.battingTeamName.value = "";
-		GameState.bowlingTeamName.value = "";
-		GameState.battingSquad.value = [];
-		GameState.bowlingSquad.value = [];
-		GameState.lastMilestone.value = null;
-		GameState.allOut.value = false;
-		GameState.overRuns.value = 0;
-		GameState.lastOverWasMaiden.value = false;
-		GameState.nextBatterIndex.value = 2;
 	}
 
 	resetPlayerStats() {
-		const resetStats = (p: any) => {
-			p.batStats = { runs: 0, balls: 0, fours: 0, sixes: 0, out: false };
-			p.bowlStats = { runsConceded: 0, wicketsTaken: 0, maidens: 0, balls: 0 };
-		};
 		if (GameState.teams.team1.value)
-			GameState.teams.team1.value.players.forEach(resetStats);
+			GameState.teams.team1.value.players.forEach(resetPlayerStats);
 		if (GameState.teams.team2.value)
-			GameState.teams.team2.value.players.forEach(resetStats);
+			GameState.teams.team2.value.players.forEach(resetPlayerStats);
 	}
 
 	rematch(loopCallback: () => void) {
@@ -137,9 +112,9 @@ export class MatchController {
 			score: GameState.score.value,
 			wickets: GameState.wickets.value,
 			overs: GameState.balls.value,
-			batting: JSON.parse(JSON.stringify(GameState.battingSquad.value)),
-			bowling: JSON.parse(JSON.stringify(GameState.bowlingSquad.value)),
-			timeline: JSON.parse(JSON.stringify(GameState.inningsTimeline.value)),
+			batting: structuredClone(GameState.battingSquad.value),
+			bowling: structuredClone(GameState.bowlingSquad.value),
+			timeline: structuredClone(GameState.inningsTimeline.value),
 		};
 		GameState.history.value = [...GameState.history.value, entry];
 
@@ -214,19 +189,15 @@ export class MatchController {
 		GameState.battingTeamName.value = oldBowlName;
 		GameState.bowlingTeamName.value = oldBatName;
 
-		GameState.battingSquad.value.forEach(
-			(p: any) =>
-				(p.batStats = { runs: 0, balls: 0, fours: 0, sixes: 0, out: false }),
-		);
-		GameState.bowlingSquad.value.forEach(
-			(p: any) =>
-				(p.bowlStats = {
-					runsConceded: 0,
-					wicketsTaken: 0,
-					maidens: 0,
-					balls: 0,
-				}),
-		);
+		GameState.battingSquad.value.forEach(resetPlayerStats);
+		GameState.bowlingSquad.value.forEach((p: Player) => {
+			p.bowlStats = {
+				runsConceded: 0,
+				wicketsTaken: 0,
+				maidens: 0,
+				balls: 0,
+			};
+		});
 
 		GameState.striker.value = GameState.battingSquad.value[0];
 		GameState.nonStriker.value = GameState.battingSquad.value[1];
@@ -246,9 +217,9 @@ export class MatchController {
 			score: GameState.score.value,
 			wickets: GameState.wickets.value,
 			overs: GameState.balls.value,
-			batting: JSON.parse(JSON.stringify(GameState.battingSquad.value)),
-			bowling: JSON.parse(JSON.stringify(GameState.bowlingSquad.value)),
-			timeline: JSON.parse(JSON.stringify(GameState.inningsTimeline.value)),
+			batting: structuredClone(GameState.battingSquad.value),
+			bowling: structuredClone(GameState.bowlingSquad.value),
+			timeline: structuredClone(GameState.inningsTimeline.value),
 		};
 		GameState.history.value = [...GameState.history.value, entry];
 		GameState.matchResult.value = msg;

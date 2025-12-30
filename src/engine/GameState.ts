@@ -251,3 +251,34 @@ export const currentPhase = computed(() => {
 	const p = phases.find((ph) => cov >= ph.start && cov <= ph.end);
 	return p ? p.name : null;
 });
+
+export function resetMatchState() {
+	GameState.score.value = 0;
+	GameState.wickets.value = 0;
+	GameState.balls.value = 0;
+	GameState.innings.value = 1;
+	GameState.timeline.value = [];
+	GameState.commentary.value = [];
+	GameState.matchResult.value = null;
+	GameState.history.value = [];
+	GameState.inningsTimeline.value = [];
+	GameState.totalTeam1Score.value = 0;
+	GameState.totalTeam2Score.value = 0;
+	GameState.target.value = null;
+	GameState.winProbability.value = 50;
+	GameState.tossResult.value = "";
+	GameState.battingTeamName.value = "";
+	GameState.bowlingTeamName.value = "";
+	GameState.battingSquad.value = [];
+	GameState.bowlingSquad.value = [];
+	GameState.lastMilestone.value = null;
+	GameState.allOut.value = false;
+	GameState.overRuns.value = 0;
+	GameState.lastOverWasMaiden.value = false;
+	GameState.nextBatterIndex.value = 2;
+}
+
+export function resetPlayerStats(p: Player) {
+	p.batStats = { runs: 0, balls: 0, fours: 0, sixes: 0, out: false };
+	p.bowlStats = { runsConceded: 0, wicketsTaken: 0, maidens: 0, balls: 0 };
+}
