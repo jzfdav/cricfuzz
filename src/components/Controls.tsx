@@ -100,21 +100,7 @@ export function Controls({ engine }: ControlsProps) {
                     </motion.button>
                 </div>
             </motion.div>
-
-            {/* Footer: Version & Social */}
-            <div className="absolute -bottom-5 w-full flex justify-between items-center px-2 opacity-50 select-none">
-                <a
-                    href="https://github.com/jzfdav"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[9px] text-amber-500/80 font-mono hover:text-amber-400 hover:underline transition-colors flex items-center gap-1"
-                >
-                    <span>made by jzfdav</span>
-                </a>
-                <div className="text-[8px] text-gray-600 font-mono">
-                    Build: {__APP_VERSION__}
-                </div>
-            </div>
         </div>
     );
 }
+
