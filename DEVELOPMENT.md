@@ -9,6 +9,9 @@ This document covers the setup, build process, and architecture for developers c
 - **Preact**: Lightweight React alternative
 - **Signals**: High-performance reactive state management
 - **Tailwind CSS**: Utility-first CSS
+- **Biome**: Fast formatter and linter
+- **Lucide Icons**: Consistent, beautiful icons
+- **Framer Motion**: Smooth UI animations
 
 ## Prerequisites
 
@@ -29,6 +32,9 @@ npm run build
 
 # Preview production build
 npm run preview
+
+# Lint and Format with Biome
+npx @biomejs/biome check --write src/
 ```
 
 ## Production Build

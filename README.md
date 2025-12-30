@@ -1,5 +1,14 @@
 # CricFuzz 🏏
 
+[![Deploy to GitHub Pages](https://github.com/jzfdav/cricfuzz/actions/workflows/deploy.yml/badge.svg)](https://github.com/jzfdav/cricfuzz/actions/workflows/deploy.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+![Preact](https://img.shields.io/badge/Preact-673AB7?style=for-the-badge&logo=preact&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Biome](https://img.shields.io/badge/Biome-60a5fa?style=for-the-badge&logo=biome&logoColor=white)
+
 A premium cricket match simulation engine built with TypeScript, Preact, and Tailwind CSS. Experience realistic, ball-by-ball simulations across T20, ODI, and Test match formats.
 
 ## 🚀 Play Now
@@ -39,4 +48,4 @@ Any push to the `main` branch automatically builds and deploys the Preact app to
 
 ## License
 
-ISC
+MIT
