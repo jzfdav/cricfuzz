@@ -54,42 +54,42 @@ export function Scoreboard() {
 					{(GameState.innings.value === 2 ||
 						(GameState.format.value === "TEST" &&
 							GameState.innings.value === 4)) && (
-						<div className="mt-1 flex items-center justify-end gap-2">
-							<div className="w-16 h-1.5 bg-gray-800 rounded-full overflow-hidden">
-								<div
-									className={`h-full transition-all duration-300 ${GameState.winProbability.value > 50 ? "bg-emerald-500" : "bg-red-500"}`}
-									style={{ width: `${GameState.winProbability.value}%` }}
-								/>
+							<div className="mt-1 flex items-center justify-end gap-2">
+								<div className="w-16 h-1.5 bg-gray-800 rounded-full overflow-hidden">
+									<div
+										className={`h-full transition-all duration-300 ${GameState.winProbability.value > 50 ? "bg-emerald-500" : "bg-red-500"}`}
+										style={{ width: `${GameState.winProbability.value}%` }}
+									/>
+								</div>
+								<p
+									className={`text-[10px] font-black ${GameState.winProbability.value > 50 ? "text-emerald-500" : "text-red-500"}`}
+								>
+									{GameState.winProbability.value}% WIN
+								</p>
 							</div>
-							<p
-								className={`text-[10px] font-black ${GameState.winProbability.value > 50 ? "text-emerald-500" : "text-red-500"}`}
-							>
-								{GameState.winProbability.value}% WIN
-							</p>
-						</div>
-					)}
+						)}
 				</div>
 			</div>
 			{/* Chase Summary Bar */}
 			{GameState.innings.value === 2 && GameState.target.value !== null && (
-				<div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-2 mb-3 flex justify-between items-center text-[10px] sm:text-xs">
-					<div className="flex items-center gap-2">
-						<span className="font-black text-amber-500 uppercase tracking-tighter">
+				<div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-2 mb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 sm:gap-0 text-[10px] sm:text-xs">
+					<div className="flex items-center gap-1.5 flex-wrap">
+						<span className="font-black text-amber-500 uppercase tracking-tighter whitespace-nowrap">
 							{GameState.battingTeamName.value} need{" "}
 							{GameState.target.value - GameState.score.value} runs
 						</span>
 						<span className="text-gray-500">in</span>
-						<span className="font-bold text-white">
+						<span className="font-bold text-white whitespace-nowrap">
 							{Math.floor(ballsRemaining.value / 6)}.{ballsRemaining.value % 6}{" "}
 							overs
 						</span>
-						<span className="text-gray-500">to win</span>
+						<span className="text-gray-500 hidden xs:inline">to win</span>
 					</div>
-					<div className="flex items-center gap-3 font-mono">
+					<div className="flex items-center gap-3 font-mono self-end sm:self-auto w-full sm:w-auto justify-between sm:justify-start">
 						<span className="text-gray-400">
 							CRR: <span className="text-white">{runRate.value}</span>
 						</span>
-						<span className="text-gray-500">·</span>
+						<span className="text-gray-500 hidden sm:inline">·</span>
 						<span className="text-gray-400">
 							RRR:{" "}
 							<span className="text-amber-500 font-bold">
@@ -164,17 +164,16 @@ export function Scoreboard() {
 					<div
 						key={i}
 						className={`flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full text-xs font-black ball-pill animate-ball
-                        ${
-													res === "W"
-														? "bg-red-600 text-white"
-														: res === 4
-															? "bg-emerald-500 text-black"
-															: res === 6
-																? "bg-emerald-600 text-white border border-emerald-400"
-																: res === 0
-																	? "bg-gray-800 text-gray-500"
-																	: "bg-gray-700 text-white"
-												}`}
+                        ${res === "W"
+								? "bg-red-600 text-white"
+								: res === 4
+									? "bg-emerald-500 text-black"
+									: res === 6
+										? "bg-emerald-600 text-white border border-emerald-400"
+										: res === 0
+											? "bg-gray-800 text-gray-500"
+											: "bg-gray-700 text-white"
+							}`}
 					>
 						{res}
 					</div>
@@ -189,9 +188,9 @@ export function Scoreboard() {
 				targetData={
 					GameState.innings.value === 2 && GameState.history.value[0]
 						? [
-								{ over: 0, score: 0, wickets: 0 },
-								...GameState.history.value[0].timeline,
-							]
+							{ over: 0, score: 0, wickets: 0 },
+							...GameState.history.value[0].timeline,
+						]
 						: null
 				}
 				totalOvers={GameState.formatConfigs[GameState.format.value].balls / 6}
