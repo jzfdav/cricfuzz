@@ -179,10 +179,14 @@ This document records functionality regressions and issues identified during the
     - **Legacy Support**: Included fallback to `players` key if `rosters` is missing.
 - **Verification**: `npm run build` passed. JSON restructuring is complete for all teams. Squads like India now correctly show Kohli/Rohit in ODI/Test but not T20.
 
-## 33. Multi-Format Roster Support
-- **Feature**: Separate squads for T20, ODI, and Test matches.
-- **Changes**:
-    - **Refactor**: Replaced `players` array with `rosters: { t20: [], odi: [], test: [] }` in all 10 team JSON files.
-    - **Logic**: `MatchController` now dynamically loads the correct roster based on `GameState.format`.
-    - **Legacy Support**: Included fallback to `players` key if `rosters` is missing.
 - **Verification**: `npm run build` passed. JSON restructuring is complete for all teams. Squads like India now correctly show Kohli/Rohit in ODI/Test but not T20.
+
+## 34. Missing Test Match Target (4th Innings)
+- **Issue**: The target was not displaying in the scoreboard during the 4th innings of Test matches.
+- **Reason**: `GameState.target` was not being set at the start of the 4th innings in `MatchController.ts`.
+- **Status**: ✅ Fixed (Added target calculation in `switchInnings`).
+
+## 35. Incorrect Winner Name (Innings Order Bug)
+- **Issue**: Cumulative scores were tracked via `totalTeam1Score` based on innings count (odd/even), leading to incorrect winner names if the toss winner chose to bowl.
+- **Reason**: The engine assumed "Team 1" always batted first/third.
+- **Status**: ✅ Fixed (Refactored `switchInnings` to accumulate scores into team-specific signals based on `battingTeamName`).

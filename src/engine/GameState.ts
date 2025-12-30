@@ -64,8 +64,8 @@ export const GameState = {
     isRunning: signal<boolean>(false),
     speed: signal<number>(50),
 
-    totalTeam1Score: signal<number>(0),
-    totalTeam2Score: signal<number>(0),
+    totalTeam1Score: signal<number>(0), // Cumulative across innings
+    totalTeam2Score: signal<number>(0), // Cumulative across innings
 
     innings: signal<number>(1),
     score: signal<number>(0),

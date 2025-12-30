@@ -27,10 +27,6 @@ export function Scoreboard() {
                     <p className={`text-[10px] font-bold uppercase ${GameState.innings.value === 2 || (GameState.format.value === 'TEST' && GameState.innings.value === 4) ? 'text-amber-500' : 'text-gray-500'}`}>
                         {(() => {
                             if (GameState.target.value) return `Target: ${GameState.target.value}`;
-                            if (GameState.format.value === 'TEST' && GameState.innings.value === 4) {
-                                const lead = GameState.totalTeam1Score.value - GameState.totalTeam2Score.value;
-                                return `Target: ${lead + 1}`;
-                            }
                             return `${['1st', '2nd', '3rd', '4th'][GameState.innings.value - 1] || GameState.innings.value + 'th'} INNINGS`;
                         })()}
                     </p>

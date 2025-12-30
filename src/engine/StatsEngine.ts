@@ -16,11 +16,6 @@ export class StatsEngine {
         if (inn !== 2 && !(format === 'TEST' && inn === 4)) return;
 
         let target = GameState.target.value;
-        if (format === 'TEST' && inn === 4) {
-            // In Test 4th innings, target is lead from first 3 innings + 1
-            const lead = GameState.totalTeam1Score.value - GameState.totalTeam2Score.value;
-            target = lead + 1;
-        }
 
         if (!target) {
             GameState.winProbability.value = 50;

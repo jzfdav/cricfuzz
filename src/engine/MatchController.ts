@@ -135,13 +135,30 @@ export class MatchController {
         };
         GameState.history.value = [...GameState.history.value, entry];
 
-        if (GameState.innings.value % 2 !== 0) GameState.totalTeam1Score.value += GameState.score.value;
-        else GameState.totalTeam2Score.value += GameState.score.value;
+        if (GameState.battingTeamName.value === GameState.teams.team1Name.value) {
+            GameState.totalTeam1Score.value += GameState.score.value;
+        } else {
+            GameState.totalTeam2Score.value += GameState.score.value;
+        }
 
         if (GameState.format.value === 'TEST' && GameState.innings.value === 3) {
-            const lead = GameState.totalTeam1Score.value - GameState.totalTeam2Score.value;
+            const team1Total = GameState.totalTeam1Score.value;
+            const team2Total = GameState.totalTeam2Score.value;
+            const battingFirst = GameState.history.value[0].team;
+
+            let lead: number;
+            let leader: string;
+
+            if (battingFirst === GameState.teams.team1Name.value) {
+                lead = team1Total - team2Total;
+                leader = GameState.teams.team1Name.value;
+            } else {
+                lead = team2Total - team1Total;
+                leader = GameState.teams.team2Name.value;
+            }
+
             if (lead < 0) {
-                this.endMatch(`${GameState.teams.team2Name.value} WINS by an innings and ${Math.abs(lead)} runs!`);
+                this.endMatch(`${GameState.battingTeamName.value} WINS by an innings and ${Math.abs(lead)} runs!`);
                 return;
             }
         }
@@ -150,6 +167,18 @@ export class MatchController {
 
         if (GameState.format.value !== 'TEST' && GameState.innings.value === 2) {
             GameState.target.value = GameState.score.value + 1;
+        } else if (GameState.format.value === 'TEST' && GameState.innings.value === 4) {
+            const team1Total = GameState.totalTeam1Score.value;
+            const team2Total = GameState.totalTeam2Score.value;
+            const battingFirst = GameState.history.value[0].team;
+
+            if (battingFirst === GameState.teams.team1Name.value) {
+                // Team 1 batted 1st and 3rd. Team 2 batting 4th.
+                GameState.target.value = team1Total - team2Total + 1;
+            } else {
+                // Team 2 batted 1st and 3rd. Team 1 batting 4th.
+                GameState.target.value = team2Total - team1Total + 1;
+            }
         }
 
         GameState.score.value = 0;
