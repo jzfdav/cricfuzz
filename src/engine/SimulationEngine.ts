@@ -120,12 +120,14 @@ export class SimulationEngine {
 		let resultRaw: number | "W" = outcomes[0];
 
 		for (let i = 0; i < weights.length; i++) {
-			if (r < weights[i]) {
+			r -= weights[i];
+			if (r <= 0) {
 				resultRaw = outcomes[i];
 				break;
 			}
-			r -= weights[i];
 		}
+		// Fallback for floating point errors (though should be rare with <= 0 check)
+		if (resultRaw === undefined) resultRaw = outcomes[0];
 
 		// --- Metadata Generation ---
 		const outcome: BallOutcome = {

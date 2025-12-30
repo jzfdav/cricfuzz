@@ -40,7 +40,11 @@ export class BattingEngine {
 		}
 
 		// Target Pressure (Chasing)
-		if (GameState.innings.value === 2 && GameState.target.value) {
+		if (
+			(GameState.innings.value === 2 ||
+				(GameState.format.value === "TEST" && GameState.innings.value === 4)) &&
+			GameState.target.value
+		) {
 			const rrr =
 				(GameState.target.value - GameState.score.value) / (oversLeft || 1);
 			if (rrr > 10)

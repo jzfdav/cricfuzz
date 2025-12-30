@@ -11,17 +11,30 @@ export class MatchSetupService {
 
 	async loadTeams(t1Id: string, t2Id: string) {
 		const baseUrl = import.meta.env.BASE_URL;
-		const [d1, d2] = await Promise.all([
-			fetch(`${baseUrl}teams/${t1Id}.json`).then((r) => r.json()),
-			fetch(`${baseUrl}teams/${t2Id}.json`).then((r) => r.json()),
-		]);
+		try {
+			const [d1, d2] = await Promise.all([
+				fetch(`${baseUrl}teams/${t1Id}.json`).then((r) => {
+					if (!r.ok) throw new Error(`Failed to load team ${t1Id}`);
+					return r.json();
+				}),
+				fetch(`${baseUrl}teams/${t2Id}.json`).then((r) => {
+					if (!r.ok) throw new Error(`Failed to load team ${t2Id}`);
+					return r.json();
+				}),
+			]);
 
-		GameState.teams.team1Data.value = d1;
-		GameState.teams.team2Data.value = d2;
-		GameState.teams.team1Name.value = d1.name;
-		GameState.teams.team2Name.value = d2.name;
+			GameState.teams.team1Data.value = d1;
+			GameState.teams.team2Data.value = d2;
+			GameState.teams.team1Name.value = d1.name;
+			GameState.teams.team2Name.value = d2.name;
 
-		this.selectRoster(GameState.format.value);
+			this.selectRoster(GameState.format.value);
+		} catch (error) {
+			console.error("Error loading teams:", error);
+			// Fallback or alert could go here, but logging is a good first step
+			// Potentially set a state to show an error UI
+			GameState.matchResult.value = "Error loading teams. Please refresh.";
+		}
 	}
 
 	selectRoster(format: string) {
