@@ -190,3 +190,8 @@ This document records functionality regressions and issues identified during the
 - **Issue**: Cumulative scores were tracked via `totalTeam1Score` based on innings count (odd/even), leading to incorrect winner names if the toss winner chose to bowl.
 - **Reason**: The engine assumed "Team 1" always batted first/third.
 - **Status**: ✅ Fixed (Refactored `switchInnings` to accumulate scores into team-specific signals based on `battingTeamName`).
+
+## 36. Poor Bottom Bar Layout & Stuck Speed
+- **Issue**: The controls bar was cramped, text-heavy, and the speed control felt unresponsive or "stuck".
+- **Reason**: Non-optimal layout in `Controls.tsx` using text buttons instead of icons, and a dense slider section.
+- **Status**: ✅ Fixed (Redesigned `Controls.tsx` with SVG icons for Play/Pause and Effects, improved slider layout with better reactive labeling, and added backdrop-blur for a premium feel).
