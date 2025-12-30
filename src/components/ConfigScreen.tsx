@@ -153,7 +153,7 @@ export function ConfigScreen({ engine }: ConfigScreenProps) {
 					<span>made by jzfdav</span>
 				</a>
 				<div className="text-[8px] text-gray-600 font-mono">
-					Build: {__APP_VERSION__}
+					Build: {new Date(__APP_VERSION__).toLocaleString()}
 				</div>
 			</div>
 		</div>

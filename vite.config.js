@@ -38,6 +38,6 @@ export default defineConfig({
   ],
   base: './',
   define: {
-    __APP_VERSION__: JSON.stringify(new Date().toLocaleString())
+    __APP_VERSION__: JSON.stringify(new Date().toISOString())
   }
 });
