@@ -40,4 +40,12 @@ export default defineConfig({
 	define: {
 		__APP_VERSION__: JSON.stringify(new Date().toISOString()),
 	},
+	test: {
+		environment: "jsdom",
+		exclude: ["**/node_modules/**", "**/dist/**", "**/e2e/**"],
+	},
+	test: {
+		environment: "jsdom",
+		exclude: ["**/node_modules/**", "**/dist/**", "**/e2e/**"],
+	},
 });

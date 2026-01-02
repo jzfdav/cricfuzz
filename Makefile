@@ -1,6 +1,5 @@
 setup:
 	pnpm install
-	pnpm exec husky install
 	pnpm exec playwright install || true
 
 dev:
