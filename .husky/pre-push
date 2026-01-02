@@ -1,8 +1,4 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 echo "Running pre-push checks..."
-# cricfuzz doesn't have explicit typecheck script in original package.json, using check
 pnpm check
 pnpm test run
 pnpm build
