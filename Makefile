@@ -2,6 +2,9 @@ setup:
 	pnpm install
 	pnpm exec playwright install || true
 
+build:
+	pnpm build
+
 dev:
 	pnpm dev
 
