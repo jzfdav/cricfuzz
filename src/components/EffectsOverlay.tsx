@@ -1,4 +1,6 @@
-import { type ComponentChildren, useEffect, useState } from "preact/hooks";
+import type { ComponentChildren } from "preact";
+import { useEffect, useState } from "preact/hooks";
+
 import { GameState } from "../engine/GameState";
 import "../styles/effects.css";
 
